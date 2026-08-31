@@ -4,630 +4,3562 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#2f8f24">
+
 <title>USV Matchday</title>
+
 <style>
 :root{
-  --green:#2f8f24;--green2:#6fba50;--dark:#173b19;--light:#eaf5e6;
-  --bg:#f3f7f1;--card:#fff;--line:#dce6d9;--text:#172018;--muted:#687267;--red:#b63b32
+  --green:#2f8f24;
+  --green2:#6fba50;
+  --dark:#173b19;
+  --light:#eaf5e6;
+  --bg:#f3f7f1;
+  --card:#fff;
+  --line:#dce6d9;
+  --text:#172018;
+  --muted:#687267;
+  --red:#b63b32;
 }
+
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(180deg,#f8fbf7,#eef4eb);font-family:Arial,Helvetica,sans-serif;color:var(--text)}
-button,input,select{font:inherit}button{cursor:pointer}
-.app{max-width:1080px;margin:auto;min-height:100vh}
-header{position:sticky;top:0;z-index:20;padding:14px;color:#fff;background:linear-gradient(120deg,#142919,#2f7829 58%,#70b94d);box-shadow:0 4px 18px rgba(0,0,0,.15)}
-.brand{display:flex;gap:11px;align-items:center}
-.badge{width:50px;height:50px;border-radius:12px;background:#fff;color:var(--dark);display:grid;place-items:center;text-align:center;font-size:10px;font-weight:900;line-height:1.05;border:2px solid #b9e6a1}
-h1{font-size:22px;margin:0}.sub{font-size:12px;opacity:.85;margin-top:3px}
-nav{display:flex;gap:6px;overflow:auto;padding-top:10px}
-nav button{border:0;border-radius:9px;padding:9px 11px;background:rgba(255,255,255,.14);color:#fff;white-space:nowrap;font-size:12px}
-nav button.active{background:#fff;color:var(--green);font-weight:900}
-main{padding:13px}.view{display:none}.view.active{display:block}
-.status{padding:8px 10px;background:var(--light);border-radius:9px;color:#356232;font-size:11px;font-weight:800;margin-bottom:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:13px;box-shadow:0 5px 20px rgba(23,48,27,.05)}
-h2{font-size:19px;margin:0 0 10px}h3{font-size:15px;margin:0 0 9px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.field label{display:block;font-size:11px;font-weight:800;color:var(--muted);margin-bottom:5px}
-input,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text)}
-.btn{border:0;border-radius:10px;padding:11px 14px;font-weight:900}
-.primary{background:var(--green);color:#fff}.secondary{background:var(--light);color:var(--green)}.danger{background:#fff0ef;color:var(--red)}.wide{width:100%}
-.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.between{justify-content:space-between}
-.muted{font-size:12px;color:var(--muted)}.tag{background:var(--light);color:var(--green);padding:5px 8px;border-radius:999px;font-size:10px;font-weight:900}
-.game{border:1px solid var(--line);border-radius:14px;padding:11px;margin:8px 0;background:#fbfdfb}
-.game-top{display:flex;justify-content:space-between;align-items:center}
-.game-main{display:grid;grid-template-columns:1fr 48px 1fr;gap:5px;align-items:center;text-align:center;margin:9px 0}
-.teamname{font-size:12px;font-weight:900}.vs{font-weight:900;color:var(--green)}
-.logo-wrap{width:52px;height:52px;margin:4px auto;position:relative}
-.logo-img{width:52px;height:52px;object-fit:contain;display:block}
-.logo-fallback{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--dark),var(--green2));color:#fff;font-size:10px;font-weight:900}
-.actions{display:flex;gap:5px}.actions button{border:0;border-radius:8px;padding:7px 9px;font-size:11px}
-.clublist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.club{border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;align-items:center;gap:9px}
-.club .logo-wrap{margin:0;width:42px;height:42px;flex:none}.club .logo-img{width:42px;height:42px}
-.clubtext{flex:1}.clubname{font-size:12px;font-weight:900}.ages{font-size:10px;color:var(--muted);margin-top:3px}
-.empty{text-align:center;padding:20px;color:var(--muted);font-size:13px}
-.preview{padding:8px;border-radius:14px;background:#dfe5dc}.preview canvas{display:block;width:100%;height:auto;border-radius:10px}
-.note{padding:10px;border-radius:10px;background:#f4f8f2;color:#52604f;font-size:11px;margin-bottom:10px}
-hr{border:0;border-top:1px solid var(--line);margin:13px 0}
-@media(max-width:650px){main{padding:10px}.grid,.clublist{grid-template-columns:1fr}.card{padding:13px}}
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,#f8fbf7,#eef4eb);
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+}
+
+button,input,select{font:inherit}
+button{cursor:pointer}
+
+.app{
+  max-width:1080px;
+  margin:auto;
+  min-height:100vh;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:14px;
+  color:#fff;
+  background:linear-gradient(120deg,#142919,#2f7829 58%,#70b94d);
+  box-shadow:0 4px 18px rgba(0,0,0,.15);
+}
+
+.brand{
+  display:flex;
+  gap:11px;
+  align-items:center;
+}
+
+.badge{
+  width:58px;
+  height:58px;
+  border-radius:12px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  border:2px solid #b9e6a1;
+  overflow:hidden;
+  padding:4px;
+}
+
+.badge img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+h1{
+  font-size:22px;
+  margin:0;
+}
+
+.sub{
+  font-size:12px;
+  opacity:.85;
+  margin-top:3px;
+}
+
+nav{
+  display:flex;
+  gap:6px;
+  overflow:auto;
+  padding-top:10px;
+}
+
+nav button{
+  border:0;
+  border-radius:9px;
+  padding:9px 11px;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  white-space:nowrap;
+  font-size:12px;
+}
+
+nav button.active{
+  background:#fff;
+  color:var(--green);
+  font-weight:900;
+}
+
+main{padding:13px}
+
+.view{display:none}
+.view.active{display:block}
+
+.status{
+  padding:8px 10px;
+  background:var(--light);
+  border-radius:9px;
+  color:#356232;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:13px;
+  box-shadow:0 5px 20px rgba(23,48,27,.05);
+}
+
+h2{
+  font-size:19px;
+  margin:0 0 10px;
+}
+
+h3{
+  font-size:15px;
+  margin:0 0 9px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+
+.field label{
+  display:block;
+  font-size:11px;
+  font-weight:800;
+  color:var(--muted);
+  margin-bottom:5px;
+}
+
+input,select{
+  width:100%;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  color:var(--text);
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 14px;
+  font-weight:900;
+}
+
+.primary{
+  background:var(--green);
+  color:#fff;
+}
+
+.secondary{
+  background:var(--light);
+  color:var(--green);
+}
+
+.danger{
+  background:#fff0ef;
+  color:var(--red);
+}
+
+.wide{width:100%}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.between{
+  justify-content:space-between;
+}
+
+.muted{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.tag{
+  background:var(--light);
+  color:var(--green);
+  padding:5px 8px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.game{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:11px;
+  margin:8px 0;
+  background:#fbfdfb;
+}
+
+.game-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.game-main{
+  display:grid;
+  grid-template-columns:1fr 48px 1fr;
+  gap:5px;
+  align-items:center;
+  text-align:center;
+  margin:9px 0;
+}
+
+.teamname{
+  font-size:12px;
+  font-weight:900;
+}
+
+.vs{
+  font-weight:900;
+  color:var(--green);
+}
+
+.logo-wrap{
+  width:52px;
+  height:52px;
+  margin:4px auto;
+  position:relative;
+}
+
+.logo-img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  display:block;
+}
+
+.logo-fallback{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--dark),var(--green2));
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+}
+
+.actions{
+  display:flex;
+  gap:5px;
+}
+
+.actions button{
+  border:0;
+  border-radius:8px;
+  padding:7px 9px;
+  font-size:11px;
+}
+
+.clublist{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+}
+
+.club{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.club .logo-wrap{
+  margin:0;
+  width:42px;
+  height:42px;
+  flex:none;
+}
+
+.club .logo-img{
+  width:42px;
+  height:42px;
+}
+
+.clubtext{flex:1}
+
+.clubname{
+  font-size:12px;
+  font-weight:900;
+}
+
+.ages{
+  font-size:10px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.empty{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.preview{
+  padding:8px;
+  border-radius:14px;
+  background:#dfe5dc;
+}
+
+.preview canvas{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:10px;
+}
+
+.note{
+  padding:10px;
+  border-radius:10px;
+  background:#f4f8f2;
+  color:#52604f;
+  font-size:11px;
+  margin-bottom:10px;
+}
+
+hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:13px 0;
+}
+
+@media(max-width:650px){
+
+  main{padding:10px}
+
+  .grid,
+  .clublist{
+    grid-template-columns:1fr;
+  }
+
+  .card{padding:13px}
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
+
 <header>
+
   <div class="brand">
-    <div class="badge">USV<br>TU<br>DRESDEN</div>
-    <div><h1>USV MATCHDAY</h1><div class="sub">B- bis F-Jugend · Saison 2026/27</div></div>
+
+    <div class="badge">
+      <img
+        src="logos/usv-tu-dresden.png"
+        alt="USV TU Dresden"
+      >
+    </div>
+
+    <div>
+      <h1>USV MATCHDAY</h1>
+      <div class="sub">
+        B- bis F-Jugend · Saison 2026/27
+      </div>
+    </div>
+
   </div>
+
   <nav>
     <button class="active" data-view="dashboard">Dashboard</button>
     <button data-view="games">Spiele</button>
     <button data-view="clubs">Vereine</button>
     <button data-view="design">Design</button>
   </nav>
+
 </header>
 
 <main>
-<div id="status" class="status">● App wird gestartet …</div>
 
-<section id="dashboard" class="view active">
-  <div class="card">
-    <h2>⚽ Wochenende</h2>
-    <div class="grid">
-      <div class="field"><label>Von</label><input id="dateFrom" type="date"></div>
-      <div class="field"><label>Bis</label><input id="dateTo" type="date"></div>
-    </div>
-    <div style="height:10px"></div>
-    <button id="addDashboard" class="btn primary wide">＋ Spiel hinzufügen</button>
-  </div>
-
-  <div class="card">
-    <div class="row between"><h2>Spiele</h2><span id="gameCount" class="tag">0 Spiele</span></div>
-    <div id="homeGames"></div>
-    <button id="makeGraphic" class="btn primary wide">🖼️ MATCHDAY-BILD ERSTELLEN</button>
-  </div>
-
-  <div class="card">
-    <h2>Vorschau</h2>
-    <div class="preview"><canvas id="preview" width="1080" height="1350"></canvas></div>
-    <div class="row" style="margin-top:10px">
-      <button id="downloadImage" class="btn secondary">⬇ PNG speichern</button>
-      <button id="shareImage" class="btn primary">↗ Teilen</button>
-    </div>
-  </div>
-</section>
-
-<section id="games" class="view">
-  <div class="card">
-    <div class="row between"><h2>Spiele verwalten</h2><button id="newGame" class="btn primary">＋ Spiel</button></div>
-
-    <div id="gameForm" style="display:none">
-      <hr>
-      <h3 id="formTitle">Spiel hinzufügen</h3>
-      <input id="editId" type="hidden">
-
-      <div class="grid">
-        <div class="field">
-          <label>USV-Mannschaft</label>
-          <select id="ageTeam"></select>
-        </div>
-        <div class="field">
-          <label>Datum</label>
-          <input id="gameDate" type="date">
-        </div>
-        <div class="field">
-          <label>Uhrzeit</label>
-          <input id="gameTime" type="time">
-        </div>
-        <div class="field">
-          <label>Ort</label>
-          <input id="gamePlace" placeholder="Sportplatz / Halle">
-        </div>
-        <div class="field">
-          <label>Heim</label>
-          <select id="homeTeam"></select>
-        </div>
-        <div class="field">
-          <label>Gast</label>
-          <select id="awayTeam"></select>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top:10px">
-        <button id="saveGame" class="btn primary">Speichern</button>
-        <button id="cancelGame" class="btn secondary">Abbrechen</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card"><div id="gamesList"></div></div>
-</section>
-
-<section id="clubs" class="view">
-  <div class="card">
-    <h2>🏟️ Vereinsstamm B–F</h2>
-    <div class="note">
-      Mannschaft und Verein sind getrennt. Dadurch verwenden z. B. „SG Gittersee“, „SG Gittersee 2“ und „SG Gittersee 3“ automatisch dasselbe Vereinswappen.
-    </div>
-
-    <div class="grid">
-      <div class="field">
-        <label>Neue Mannschaft ergänzen</label>
-        <input id="manualTeam" placeholder="z. B. Radeberger SV 2">
-      </div>
-      <div class="field">
-        <label>Verein</label>
-        <input id="manualClub" placeholder="z. B. Radeberger SV">
-      </div>
-      <div class="field">
-        <label>Jugend</label>
-        <select id="manualAge">
-          <option value="B">B-Jugend</option>
-          <option value="C">C-Jugend</option>
-          <option value="D">D-Jugend</option>
-          <option value="E">E-Jugend</option>
-          <option value="F">F-Jugend</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="height:10px"></div>
-    <button id="addManual" class="btn primary">＋ Ergänzen</button>
-  </div>
-
-  <div class="card">
-    <div class="row between"><h2>Alle Vereine</h2><span id="clubCount" class="tag"></span></div>
-    <div id="clubList" class="clublist"></div>
-  </div>
-</section>
-
-<section id="design" class="view">
-  <div class="card">
-    <h2>🎨 Design</h2>
-    <div class="field">
-      <label>Eigener Hintergrund</label>
-      <input id="background" type="file" accept="image/png,image/jpeg,image/webp">
-    </div>
-    <div style="height:10px"></div>
-
-    <div class="grid">
-      <div class="field"><label>Überschrift</label><input id="designTitle" value="MATCHDAY"></div>
-      <div class="field"><label>Unterzeile</label><input id="designSubtitle" value="UNSER WOCHENENDE"></div>
-    </div>
-
-    <div style="height:10px"></div>
-    <button id="saveDesign" class="btn primary">Design speichern</button>
-    <button id="removeBackground" class="btn danger">Hintergrund entfernen</button>
-  </div>
-</section>
-</main>
+<div id="status" class="status">
+  ● App wird gestartet …
 </div>
 
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="view active">
+
+<div class="card">
+
+<h2>⚽ Wochenende</h2>
+
+<div class="grid">
+
+<div class="field">
+<label>Von</label>
+<input id="dateFrom" type="date">
+</div>
+
+<div class="field">
+<label>Bis</label>
+<input id="dateTo" type="date">
+</div>
+
+</div>
+
+<div style="height:10px"></div>
+
+<button id="addDashboard" class="btn primary wide">
+＋ Spiel hinzufügen
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="row between">
+
+<h2>Spiele</h2>
+
+<span id="gameCount" class="tag">
+0 Spiele
+</span>
+
+</div>
+
+<div id="homeGames"></div>
+
+<button id="makeGraphic" class="btn primary wide">
+🖼️ MATCHDAY-BILD ERSTELLEN
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>Vorschau</h2>
+
+<div class="preview">
+
+<canvas
+  id="preview"
+  width="1080"
+  height="1350">
+</canvas>
+
+</div>
+
+<div class="row" style="margin-top:10px">
+
+<button id="downloadImage" class="btn secondary">
+⬇ PNG speichern
+</button>
+
+<button id="shareImage" class="btn primary">
+↗ Teilen
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SPIELE -->
+
+<section id="games" class="view">
+
+<div class="card">
+
+<div class="row between">
+
+<h2>Spiele verwalten</h2>
+
+<button id="newGame" class="btn primary">
+＋ Spiel
+</button>
+
+</div>
+
+
+<div id="gameForm" style="display:none">
+
+<hr>
+
+<h3 id="formTitle">
+Spiel hinzufügen
+</h3>
+
+<input id="editId" type="hidden">
+
+
+<div class="grid">
+
+<div class="field">
+
+<label>USV-Mannschaft</label>
+
+<select id="ageTeam"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>Datum</label>
+
+<input id="gameDate" type="date">
+
+</div>
+
+
+<div class="field">
+
+<label>Uhrzeit</label>
+
+<input id="gameTime" type="time">
+
+</div>
+
+
+<div class="field">
+
+<label>Ort</label>
+
+<input
+  id="gamePlace"
+  placeholder="Sportplatz / Halle">
+
+</div>
+
+
+<div class="field">
+
+<label>Heim</label>
+
+<select id="homeTeam"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>Gast</label>
+
+<select id="awayTeam"></select>
+
+</div>
+
+</div>
+
+
+<div class="row" style="margin-top:10px">
+
+<button id="saveGame" class="btn primary">
+Speichern
+</button>
+
+<button id="cancelGame" class="btn secondary">
+Abbrechen
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div id="gamesList"></div>
+
+</div>
+
+</section>
+
+
+<!-- VEREINE -->
+
+<section id="clubs" class="view">
+
+<div class="card">
+
+<h2>🏟️ Vereinsstamm B–F</h2>
+
+<div class="note">
+
+Mannschaft und Verein sind getrennt.
+Dadurch verwenden z. B. SG Gittersee,
+SG Gittersee 2 und SG Gittersee 3
+automatisch dasselbe Vereinswappen.
+
+</div>
+
+
+<div class="grid">
+
+<div class="field">
+
+<label>Neue Mannschaft ergänzen</label>
+
+<input
+  id="manualTeam"
+  placeholder="z. B. Radeberger SV 2">
+
+</div>
+
+
+<div class="field">
+
+<label>Verein</label>
+
+<input
+  id="manualClub"
+  placeholder="z. B. Radeberger SV">
+
+</div>
+
+
+<div class="field">
+
+<label>Jugend</label>
+
+<select id="manualAge">
+
+<option value="B">B-Jugend</option>
+<option value="C">C-Jugend</option>
+<option value="D">D-Jugend</option>
+<option value="E">E-Jugend</option>
+<option value="F">F-Jugend</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div style="height:10px"></div>
+
+<button id="addManual" class="btn primary">
+＋ Ergänzen
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="row between">
+
+<h2>Alle Vereine</h2>
+
+<span id="clubCount" class="tag"></span>
+
+</div>
+
+<div
+  id="clubList"
+  class="clublist">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DESIGN -->
+
+<section id="design" class="view">
+
+<div class="card">
+
+<h2>🎨 Design</h2>
+
+<div class="field">
+
+<label>Eigener Hintergrund</label>
+
+<input
+  id="background"
+  type="file"
+  accept="image/png,image/jpeg,image/webp">
+
+</div>
+
+
+<div style="height:10px"></div>
+
+
+<div class="grid">
+
+<div class="field">
+
+<label>Überschrift</label>
+
+<input
+  id="designTitle"
+  value="MATCHDAY">
+
+</div>
+
+
+<div class="field">
+
+<label>Unterzeile</label>
+
+<input
+  id="designSubtitle"
+  value="UNSER WOCHENENDE">
+
+</div>
+
+</div>
+
+
+<div style="height:10px"></div>
+
+<button id="saveDesign" class="btn primary">
+Design speichern
+</button>
+
+<button id="removeBackground" class="btn danger">
+Hintergrund entfernen
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
 <script>
+
 "use strict";
 
-const KEY = "USV_MATCHDAY_BF_2627_FINAL_1";
 
-/*
-  WICHTIG:
-  logo = lokaler Pfad im GitHub-Repository.
-  Beispiel: logos/sg-gittersee.png
-*/
+const KEY =
+"USV_MATCHDAY_BF_2627_FINAL_1";
+
+
+/* ========================================
+   VEREINE + LOGOS
+======================================== */
+
 
 const CLUBS = {
-  "USV TU Dresden":                 {logo:"logos/usv-tu-dresden.png"},
-  "Dresdner SSV":                   {logo:"logos/dresdner-ssv.png"},
-  "FC Dresden":                     {logo:"logos/fc-dresden.png"},
-  "FSG Wacker 90 Dresden-Leuben":   {logo:"logos/wacker-90-dresden-leuben.png"},
-  "Post SV Dresden":                {logo:"logos/post-sv-dresden.png"},
-  "SC Borea Dresden":               {logo:"logos/sc-borea-dresden.png"},
-  "SG Bühlau 09":                   {logo:"logos/sg-buehlau-09.png"},
-  "SG Dölzschen":                   {logo:"logos/sg-doelzschen.png"},
-  "SG Weixdorf":                    {logo:"logos/sg-weixdorf.png"},
-  "SV Eintracht Strehlen":          {logo:"logos/sv-eintracht-strehlen.png"},
-  "SpG Neustadt / Trachenberge":    {logo:"logos/spg-neustadt-trachenberge.png"},
-  "TSV Rotation Dresden":           {logo:"logos/tsv-rotation-dresden.png"},
-  "SG Gittersee":                   {logo:"logos/sg-gittersee.png"},
-  "Serkowitzer FSV":                {logo:"logos/serkowitzer-fsv.png"},
-  "Racket- und Ballsport Dresden":  {logo:"logos/racket-ballsport-dresden.png"},
-  "SG Weißig":                      {logo:"logos/sg-weissig.png"},
-  "VfB Hellerau-Klotzsche":         {logo:"logos/vfb-hellerau-klotzsche.png"},
-  "FSV Lokomotive Dresden":         {logo:"logos/fsv-lokomotive-dresden.png"},
-  "SpVgg. Dresden-Löbtau":          {logo:"logos/spvgg-dresden-loebtau.png"},
-  "1. FFC Fortuna Dresden":         {logo:"logos/fortuna-dresden.png"},
-  "FV Löbtauer Kickers":            {logo:"logos/loebtauer-kickers.png"},
-  "SG Ullersdorf":                  {logo:"logos/sg-ullersdorf.png"},
-  "FV Dresden Süd-West":            {logo:"logos/fv-dresden-sued-west.png"},
-  "SG Dresdner Verkehrsbetriebe":   {logo:"logos/sg-dresdner-verkehrsbetriebe.png"},
-  "TSV Reichenberg-Boxdorf":        {logo:"logos/tsv-reichenberg-boxdorf.png"},
-  "Radebeuler BC 08":               {logo:"logos/radebeuler-bc-08.png"}
+
+"USV TU Dresden":{
+  logo:"logos/usv-tu-dresden.png"
+},
+
+"Dresdner SSV":{
+  logo:"logos/dresdner-ssv.png"
+},
+
+"FC Dresden":{
+  logo:"logos/fc-dresden.png"
+},
+
+"FSG Wacker 90 Dresden-Leuben":{
+  logo:"logos/wacker-90-dresden-leuben.png"
+},
+
+"Post SV Dresden":{
+  logo:"logos/post-sv-dresden.png"
+},
+
+"SC Borea Dresden":{
+  logo:"logos/sc-borea-dresden.png"
+},
+
+"SG Bühlau 09":{
+  logo:"logos/sg-buehlau-09.png"
+},
+
+"SG Dölzschen":{
+  logo:"logos/sg-doelzschen.png"
+},
+
+"SG Weixdorf":{
+  logo:"logos/sg-weixdorf.png"
+},
+
+"SV Eintracht Strehlen":{
+  logo:"logos/sv-eintracht-strehlen.png"
+},
+
+"SpG Neustadt / Trachenberge":{
+  logo:"logos/spg-neustadt-trachenberge.png"
+},
+
+"TSV Rotation Dresden":{
+  logo:"logos/tsv-rotation-dresden.png"
+},
+
+"SG Gittersee":{
+  logo:"logos/sg-gittersee.png"
+},
+
+"Serkowitzer FSV":{
+  logo:"logos/serkowitzer-fsv.png"
+},
+
+"Racket- und Ballsport Dresden":{
+  logo:"logos/racket-ballsport-dresden.png"
+},
+
+"SG Weißig":{
+  logo:"logos/sg-weissig.png"
+},
+
+"VfB Hellerau-Klotzsche":{
+  logo:"logos/vfb-hellerau-klotzsche.png"
+},
+
+"FSV Lokomotive Dresden":{
+  logo:"logos/fsv-lokomotive-dresden.png"
+},
+
+"SpVgg. Dresden-Löbtau":{
+  logo:"logos/spvgg-dresden-loebtau.png"
+},
+
+"1. FFC Fortuna Dresden":{
+  logo:"logos/fortuna-dresden.png"
+},
+
+"FV Löbtauer Kickers":{
+  logo:"logos/fv-loebtauer-kickers.png"
+},
+
+"SG Ullersdorf":{
+  logo:"logos/sg-ullersdorf.png"
+},
+
+"FV Dresden Süd-West":{
+  logo:"logos/fv-dresden-sued-west.png"
+},
+
+"SG Dresdner Verkehrsbetriebe":{
+  logo:"logos/sg-dresdner-verkehrsbetriebe.png"
+},
+
+"TSV Reichenberg-Boxdorf":{
+  logo:"logos/tsv-reichenberg-boxdorf.png"
+},
+
+"Radebeuler BC 08":{
+  logo:"logos/radebeuler-bc-08.png"
+}
+
 };
+
+
+/* ========================================
+   MANNSCHAFTEN
+======================================== */
+
 
 const TEAMS = {
-  B:[
-    {team:"USV TU Dresden",club:"USV TU Dresden"},
-    {team:"Dresdner SSV",club:"Dresdner SSV"},
-    {team:"FC Dresden",club:"FC Dresden"},
-    {team:"FSG Wacker 90 Dresden-Leuben",club:"FSG Wacker 90 Dresden-Leuben"},
-    {team:"Post SV Dresden",club:"Post SV Dresden"},
-    {team:"SC Borea Dresden 3",club:"SC Borea Dresden"},
-    {team:"SG Bühlau 09 2",club:"SG Bühlau 09"},
-    {team:"SG Dölzschen",club:"SG Dölzschen"},
-    {team:"SG Weixdorf 2",club:"SG Weixdorf"},
-    {team:"SV Eintracht Strehlen",club:"SV Eintracht Strehlen"},
-    {team:"SpG Neustadt / Trachenberge",club:"SpG Neustadt / Trachenberge"}
-  ],
-  C:[
-    {team:"USV TU Dresden",club:"USV TU Dresden"},
-    {team:"TSV Rotation Dresden 2",club:"TSV Rotation Dresden"},
-    {team:"SG Gittersee",club:"SG Gittersee"},
-    {team:"Serkowitzer FSV 2",club:"Serkowitzer FSV"},
-    {team:"Racket- und Ballsport Dresden 2",club:"Racket- und Ballsport Dresden"},
-    {team:"SG Bühlau 09 2",club:"SG Bühlau 09"},
-    {team:"SG Weißig 2",club:"SG Weißig"},
-    {team:"VfB Hellerau-Klotzsche 2",club:"VfB Hellerau-Klotzsche"}
-  ],
-  D:[
-    {team:"USV TU Dresden",club:"USV TU Dresden"},
-    {team:"Serkowitzer FSV",club:"Serkowitzer FSV"},
-    {team:"FSV Lokomotive Dresden",club:"FSV Lokomotive Dresden"},
-    {team:"SpVgg. Dresden-Löbtau 4",club:"SpVgg. Dresden-Löbtau"},
-    {team:"1. FFC Fortuna Dresden 4",club:"1. FFC Fortuna Dresden"},
-    {team:"FV Löbtauer Kickers 3",club:"FV Löbtauer Kickers"},
-    {team:"SG Gittersee 2",club:"SG Gittersee"},
-    {team:"SG Ullersdorf",club:"SG Ullersdorf"}
-  ],
-  E:[
-    {team:"USV TU Dresden",club:"USV TU Dresden"},
-    {team:"FSG Wacker 90 Dresden-Leuben 3",club:"FSG Wacker 90 Dresden-Leuben"},
-    {team:"SG Weißig 2",club:"SG Weißig"},
-    {team:"SV Eintracht Strehlen 2",club:"SV Eintracht Strehlen"},
-    {team:"Serkowitzer FSV 2",club:"Serkowitzer FSV"},
-    {team:"VfB Hellerau-Klotzsche 3",club:"VfB Hellerau-Klotzsche"},
-    {team:"FV Dresden Süd-West 3",club:"FV Dresden Süd-West"},
-    {team:"SG Gittersee 3",club:"SG Gittersee"},
-    {team:"Radebeuler BC 5",club:"Radebeuler BC 08"}
-  ],
-  F:[
-    {team:"USV TU Dresden",club:"USV TU Dresden"},
-    {team:"SG Dresdner Verkehrsbetriebe",club:"SG Dresdner Verkehrsbetriebe"},
-    {team:"TSV Reichenberg-Boxdorf 4",club:"TSV Reichenberg-Boxdorf"}
-  ]
+
+B:[
+
+{
+team:"USV TU Dresden",
+club:"USV TU Dresden"
+},
+
+{
+team:"Dresdner SSV",
+club:"Dresdner SSV"
+},
+
+{
+team:"FC Dresden",
+club:"FC Dresden"
+},
+
+{
+team:"FSG Wacker 90 Dresden-Leuben",
+club:"FSG Wacker 90 Dresden-Leuben"
+},
+
+{
+team:"Post SV Dresden",
+club:"Post SV Dresden"
+},
+
+{
+team:"SC Borea Dresden 3",
+club:"SC Borea Dresden"
+},
+
+{
+team:"SG Bühlau 09 2",
+club:"SG Bühlau 09"
+},
+
+{
+team:"SG Dölzschen",
+club:"SG Dölzschen"
+},
+
+{
+team:"SG Weixdorf 2",
+club:"SG Weixdorf"
+},
+
+{
+team:"SV Eintracht Strehlen",
+club:"SV Eintracht Strehlen"
+},
+
+{
+team:"SpG Neustadt / Trachenberge",
+club:"SpG Neustadt / Trachenberge"
+}
+
+],
+
+
+C:[
+
+{
+team:"USV TU Dresden",
+club:"USV TU Dresden"
+},
+
+{
+team:"TSV Rotation Dresden 2",
+club:"TSV Rotation Dresden"
+},
+
+{
+team:"SG Gittersee",
+club:"SG Gittersee"
+},
+
+{
+team:"Serkowitzer FSV 2",
+club:"Serkowitzer FSV"
+},
+
+{
+team:"Racket- und Ballsport Dresden 2",
+club:"Racket- und Ballsport Dresden"
+},
+
+{
+team:"SG Bühlau 09 2",
+club:"SG Bühlau 09"
+},
+
+{
+team:"SG Weißig 2",
+club:"SG Weißig"
+},
+
+{
+team:"VfB Hellerau-Klotzsche 2",
+club:"VfB Hellerau-Klotzsche"
+}
+
+],
+
+
+D:[
+
+{
+team:"USV TU Dresden",
+club:"USV TU Dresden"
+},
+
+{
+team:"Serkowitzer FSV",
+club:"Serkowitzer FSV"
+},
+
+{
+team:"FSV Lokomotive Dresden",
+club:"FSV Lokomotive Dresden"
+},
+
+{
+team:"SpVgg. Dresden-Löbtau 4",
+club:"SpVgg. Dresden-Löbtau"
+},
+
+{
+team:"1. FFC Fortuna Dresden 4",
+club:"1. FFC Fortuna Dresden"
+},
+
+{
+team:"FV Löbtauer Kickers 3",
+club:"FV Löbtauer Kickers"
+},
+
+{
+team:"SG Gittersee 2",
+club:"SG Gittersee"
+},
+
+{
+team:"SG Ullersdorf",
+club:"SG Ullersdorf"
+}
+
+],
+
+
+E:[
+
+{
+team:"USV TU Dresden",
+club:"USV TU Dresden"
+},
+
+{
+team:"FSG Wacker 90 Dresden-Leuben 3",
+club:"FSG Wacker 90 Dresden-Leuben"
+},
+
+{
+team:"SG Weißig 2",
+club:"SG Weißig"
+},
+
+{
+team:"SV Eintracht Strehlen 2",
+club:"SV Eintracht Strehlen"
+},
+
+{
+team:"Serkowitzer FSV 2",
+club:"Serkowitzer FSV"
+},
+
+{
+team:"VfB Hellerau-Klotzsche 3",
+club:"VfB Hellerau-Klotzsche"
+},
+
+{
+team:"FV Dresden Süd-West 3",
+club:"FV Dresden Süd-West"
+},
+
+{
+team:"SG Gittersee 3",
+club:"SG Gittersee"
+},
+
+{
+team:"Radebeuler BC 5",
+club:"Radebeuler BC 08"
+}
+
+],
+
+
+F:[
+
+{
+team:"USV TU Dresden",
+club:"USV TU Dresden"
+},
+
+{
+team:"SG Dresdner Verkehrsbetriebe",
+club:"SG Dresdner Verkehrsbetriebe"
+},
+
+{
+team:"TSV Reichenberg-Boxdorf 4",
+club:"TSV Reichenberg-Boxdorf"
+}
+
+]
+
 };
 
-function $(id){return document.getElementById(id)}
-function makeDB(){
-  return{
-    games:[],
-    manual:{B:[],C:[],D:[],E:[],F:[]},
-    manualClubs:{},
-    design:{title:"MATCHDAY",subtitle:"UNSER WOCHENENDE",background:null}
-  };
+
+/* ========================================
+   GRUNDFUNKTIONEN
+======================================== */
+
+
+function $(id){
+  return document.getElementById(id);
 }
+
+
+function makeDB(){
+
+return{
+
+games:[],
+
+manual:{
+B:[],
+C:[],
+D:[],
+E:[],
+F:[]
+},
+
+manualClubs:{},
+
+design:{
+title:"MATCHDAY",
+subtitle:"UNSER WOCHENENDE",
+background:null
+}
+
+};
+
+}
+
 
 let db;
-try{db=JSON.parse(localStorage.getItem(KEY)||"null")||makeDB()}catch(e){db=makeDB()}
-if(!db.games)db.games=[];
-if(!db.manual)db.manual={B:[],C:[],D:[],E:[],F:[]};
-if(!db.manualClubs)db.manualClubs={};
-if(!db.design)db.design={title:"MATCHDAY",subtitle:"UNSER WOCHENENDE",background:null};
 
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){setStatus("⚠️ Speichern nicht möglich")}}
-function setStatus(t){$("status").textContent=t}
-function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function uid(){return "g_"+Date.now()+"_"+Math.random().toString(36).slice(2,8)}
-function isoDate(d){const x=new Date(d.getTime()-d.getTimezoneOffset()*60000);return x.toISOString().slice(0,10)}
+
+try{
+
+db =
+JSON.parse(
+localStorage.getItem(KEY)
+)
+||
+makeDB();
+
+}catch(e){
+
+db =
+makeDB();
+
+}
+
+
+if(!db.games){
+db.games=[];
+}
+
+if(!db.manual){
+db.manual={B:[],C:[],D:[],E:[],F:[]};
+}
+
+if(!db.manualClubs){
+db.manualClubs={};
+}
+
+if(!db.design){
+
+db.design={
+title:"MATCHDAY",
+subtitle:"UNSER WOCHENENDE",
+background:null
+};
+
+}
+
+
+function persist(){
+
+try{
+
+localStorage.setItem(
+KEY,
+JSON.stringify(db)
+);
+
+}catch(e){
+
+setStatus(
+"⚠️ Speichern nicht möglich"
+);
+
+}
+
+}
+
+
+function setStatus(text){
+
+$("status").textContent =
+text;
+
+}
+
+
+function esc(value){
+
+return String(
+value ?? ""
+)
+.replace(
+/[&<>"']/g,
+character =>({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+
+}[character])
+
+);
+
+}
+
+
+function uid(){
+
+return(
+"g_"
++
+Date.now()
++
+"_"
++
+Math.random()
+.toString(36)
+.slice(2,8)
+);
+
+}
+
+
+function isoDate(date){
+
+const shifted =
+new Date(
+date.getTime()
+-
+date.getTimezoneOffset()
+*
+60000
+);
+
+return shifted
+.toISOString()
+.slice(0,10);
+
+}
+
+
 function initDates(){
-  const d=new Date(),day=d.getDay(),diff=day===0?-6:1-day;
-  const mon=new Date(d);mon.setDate(d.getDate()+diff);
-  const sun=new Date(mon);sun.setDate(mon.getDate()+6);
-  $("dateFrom").value=isoDate(mon);$("dateTo").value=isoDate(sun);
+
+const today =
+new Date();
+
+const day =
+today.getDay();
+
+const difference =
+day === 0
+?
+-6
+:
+1-day;
+
+const monday =
+new Date(today);
+
+monday.setDate(
+today.getDate()
++
+difference
+);
+
+const sunday =
+new Date(monday);
+
+sunday.setDate(
+monday.getDate()
++
+6
+);
+
+$("dateFrom").value =
+isoDate(monday);
+
+$("dateTo").value =
+isoDate(sunday);
+
 }
+
+
 function initials(name){
-  return String(name||"?").split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+
+return String(
+name || "?"
+)
+
+.split(/\s+/)
+
+.filter(Boolean)
+
+.slice(0,2)
+
+.map(
+word =>
+word[0]
+)
+
+.join("")
+
+.toUpperCase();
+
 }
+
+
 function getClub(clubName){
-  return CLUBS[clubName] || db.manualClubs[clubName] || {logo:""};
+
+return(
+CLUBS[clubName]
+||
+db.manualClubs[clubName]
+||
+{logo:""}
+);
+
 }
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+
 function logoHTML(clubName){
-  const club=getClub(clubName);
-  const fallback=esc(initials(clubName));
-  if(!club.logo){
-    return `<div class="logo-wrap"><div class="logo-fallback">${fallback}</div></div>`;
-  }
-  return `<div class="logo-wrap">
-    <div class="logo-fallback">${fallback}</div>
-    <img class="logo-img" src="${esc(club.logo)}" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
-  </div>`;
+
+const club =
+getClub(clubName);
+
+const fallback =
+esc(
+initials(clubName)
+);
+
+
+if(!club.logo){
+
+return`
+
+<div class="logo-wrap">
+
+<div class="logo-fallback">
+
+${fallback}
+
+</div>
+
+</div>
+
+`;
+
 }
+
+
+return`
+
+<div class="logo-wrap">
+
+<div class="logo-fallback">
+
+${fallback}
+
+</div>
+
+<img
+  class="logo-img"
+  src="${esc(club.logo)}"
+  alt=""
+  onload="this.previousElementSibling.style.display='none'"
+  onerror="this.style.display='none'">
+
+</div>
+
+`;
+
+}
+
+
+/* ========================================
+   MANNSCHAFTEN
+======================================== */
+
+
 function teamsForAge(age){
-  return [...(TEAMS[age]||[]),...(db.manual[age]||[])];
+
+return[
+
+...(TEAMS[age] || []),
+
+...(db.manual[age] || [])
+
+];
+
 }
-function teamOptionHTML(t){
-  return `<option value="${esc(t.team)}">${esc(t.team)}</option>`;
+
+
+function teamRecord(
+age,
+teamName
+){
+
+return(
+
+teamsForAge(age)
+.find(
+team =>
+team.team === teamName
+)
+
+||
+
+{
+team:teamName,
+club:teamName
 }
-function teamRecord(age,teamName){
-  return teamsForAge(age).find(t=>t.team===teamName) || {team:teamName,club:teamName};
+
+);
+
 }
+
+
 function fillAgeSelect(){
-  $("ageTeam").innerHTML=["B","C","D","E","F"].map(a=>`<option value="${a}">${a}-Jugend</option>`).join("");
+
+$("ageTeam").innerHTML =
+
+["B","C","D","E","F"]
+
+.map(
+age =>`
+
+<option value="${age}">
+
+${age}-Jugend
+
+</option>
+
+`
+)
+
+.join("");
+
 }
-function fillTeamSelects(age,homeValue="",awayValue=""){
-  const arr=teamsForAge(age);
-  const options=arr.map(teamOptionHTML).join("");
-  $("homeTeam").innerHTML=options;
-  $("awayTeam").innerHTML=options;
-  if(homeValue&&arr.some(t=>t.team===homeValue)) $("homeTeam").value=homeValue;
-  else $("homeTeam").value="USV TU Dresden";
-  if(awayValue&&arr.some(t=>t.team===awayValue)) $("awayTeam").value=awayValue;
-  else {
-    const opp=arr.find(t=>t.team!=="USV TU Dresden");
-    if(opp)$("awayTeam").value=opp.team;
-  }
+
+
+function fillTeamSelects(
+age,
+homeValue="",
+awayValue=""
+){
+
+const teams =
+teamsForAge(age);
+
+
+const options =
+teams
+
+.map(
+team =>`
+
+<option value="${esc(team.team)}">
+
+${esc(team.team)}
+
+</option>
+
+`
+)
+
+.join("");
+
+
+$("homeTeam").innerHTML =
+options;
+
+$("awayTeam").innerHTML =
+options;
+
+
+if(
+homeValue
+&&
+teams.some(
+team =>
+team.team === homeValue
+)
+){
+
+$("homeTeam").value =
+homeValue;
+
+}else{
+
+$("homeTeam").value =
+"USV TU Dresden";
+
 }
-$("ageTeam").addEventListener("change",()=>fillTeamSelects($("ageTeam").value));
+
+
+if(
+awayValue
+&&
+teams.some(
+team =>
+team.team === awayValue
+)
+){
+
+$("awayTeam").value =
+awayValue;
+
+}else{
+
+const opponent =
+teams.find(
+team =>
+team.team !==
+"USV TU Dresden"
+);
+
+
+if(opponent){
+
+$("awayTeam").value =
+opponent.team;
+
+}
+
+}
+
+}
+
+
+$("ageTeam")
+.addEventListener(
+"change",
+()=>{
+
+fillTeamSelects(
+$("ageTeam").value
+);
+
+}
+);
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
 
 function showView(view){
-  document.querySelectorAll(".view").forEach(el=>el.classList.remove("active"));
-  $(view).classList.add("active");
-  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
-  renderAll();
+
+document
+.querySelectorAll(
+".view"
+)
+.forEach(
+element =>
+element.classList.remove(
+"active"
+)
+);
+
+
+$(view)
+.classList.add(
+"active"
+);
+
+
+document
+.querySelectorAll(
+"nav button"
+)
+.forEach(
+button =>
+button.classList.toggle(
+"active",
+button.dataset.view === view
+)
+);
+
+
+renderAll();
+
 }
-document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
+
+
+document
+.querySelectorAll(
+"nav button"
+)
+.forEach(
+button =>{
+
+button.addEventListener(
+"click",
+()=>showView(
+button.dataset.view
+)
+);
+
+}
+);
+
+
+/* ========================================
+   SPIELE
+======================================== */
+
 
 function openGame(id=null){
-  fillAgeSelect();
-  $("gameForm").style.display="block";
-  $("editId").value=id||"";
-  if(id){
-    const g=db.games.find(x=>x.id===id); if(!g)return;
-    $("formTitle").textContent="Spiel bearbeiten";
-    $("ageTeam").value=g.age;
-    fillTeamSelects(g.age,g.home,g.away);
-    $("gameDate").value=g.date;
-    $("gameTime").value=g.time;
-    $("gamePlace").value=g.place||"";
-  }else{
-    $("formTitle").textContent="Spiel hinzufügen";
-    $("ageTeam").value="B";
-    fillTeamSelects("B");
-    $("gameDate").value=$("dateFrom").value;
-    $("gameTime").value="10:00";
-    $("gamePlace").value="";
-  }
+
+fillAgeSelect();
+
+$("gameForm")
+.style.display =
+"block";
+
+$("editId").value =
+id || "";
+
+
+if(id){
+
+const game =
+db.games.find(
+entry =>
+entry.id === id
+);
+
+if(!game){
+return;
 }
+
+$("formTitle")
+.textContent =
+"Spiel bearbeiten";
+
+$("ageTeam").value =
+game.age;
+
+fillTeamSelects(
+game.age,
+game.home,
+game.away
+);
+
+$("gameDate").value =
+game.date;
+
+$("gameTime").value =
+game.time;
+
+$("gamePlace").value =
+game.place || "";
+
+}else{
+
+$("formTitle")
+.textContent =
+"Spiel hinzufügen";
+
+$("ageTeam").value =
+"B";
+
+fillTeamSelects(
+"B"
+);
+
+$("gameDate").value =
+$("dateFrom").value;
+
+$("gameTime").value =
+"10:00";
+
+$("gamePlace").value =
+"";
+
+}
+
+}
+
+
 function saveGame(){
-  const age=$("ageTeam").value;
-  const home=$("homeTeam").value;
-  const away=$("awayTeam").value;
-  if(!$("gameDate").value){alert("Bitte Datum auswählen.");return}
-  if(home===away){alert("Heim und Gast dürfen nicht identisch sein.");return}
-  const hr=teamRecord(age,home), ar=teamRecord(age,away);
-  const game={
-    id:$("editId").value||uid(),
-    age,
-    date:$("gameDate").value,
-    time:$("gameTime").value,
-    place:$("gamePlace").value.trim(),
-    home,away,
-    homeClub:hr.club,
-    awayClub:ar.club
-  };
-  const i=db.games.findIndex(x=>x.id===game.id);
-  if(i>=0)db.games[i]=game; else db.games.push(game);
-  persist();
-  $("gameForm").style.display="none";
-  renderAll();
-  createGraphic();
-  setStatus("✓ Spiel gespeichert");
+
+const age =
+$("ageTeam").value;
+
+const home =
+$("homeTeam").value;
+
+const away =
+$("awayTeam").value;
+
+
+if(
+!$("gameDate").value
+){
+
+alert(
+"Bitte Datum auswählen."
+);
+
+return;
+
 }
+
+
+if(
+home === away
+){
+
+alert(
+"Heim und Gast dürfen nicht identisch sein."
+);
+
+return;
+
+}
+
+
+const homeRecord =
+teamRecord(
+age,
+home
+);
+
+const awayRecord =
+teamRecord(
+age,
+away
+);
+
+
+const game={
+
+id:
+$("editId").value
+||
+uid(),
+
+age:age,
+
+date:
+$("gameDate").value,
+
+time:
+$("gameTime").value,
+
+place:
+$("gamePlace")
+.value
+.trim(),
+
+home:home,
+
+away:away,
+
+homeClub:
+homeRecord.club,
+
+awayClub:
+awayRecord.club
+
+};
+
+
+const index =
+db.games.findIndex(
+entry =>
+entry.id === game.id
+);
+
+
+if(index >= 0){
+
+db.games[index] =
+game;
+
+}else{
+
+db.games.push(
+game
+);
+
+}
+
+
+persist();
+
+$("gameForm")
+.style.display =
+"none";
+
+renderAll();
+
+createGraphic();
+
+setStatus(
+"✓ Spiel gespeichert"
+);
+
+}
+
+
 function removeGame(id){
-  if(!confirm("Spiel löschen?"))return;
-  db.games=db.games.filter(g=>g.id!==id);
-  persist();renderAll();createGraphic();setStatus("✓ Spiel gelöscht");
+
+if(
+!confirm(
+"Spiel löschen?"
+)
+){
+
+return;
+
 }
-function editGame(id){showView("games");openGame(id)}
+
+
+db.games =
+db.games.filter(
+game =>
+game.id !== id
+);
+
+
+persist();
+
+renderAll();
+
+createGraphic();
+
+setStatus(
+"✓ Spiel gelöscht"
+);
+
+}
+
+
+function editGame(id){
+
+showView(
+"games"
+);
+
+openGame(id);
+
+}
+
+
 function formatDate(date){
-  return date?new Date(date+"T12:00").toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}):"–";
+
+if(!date){
+
+return "–";
+
 }
-function gameHTML(g){
-  const hc=g.homeClub||teamRecord(g.age,g.home).club;
-  const ac=g.awayClub||teamRecord(g.age,g.away).club;
-  return `<div class="game">
-    <div class="game-top">
-      <span class="tag">${esc(g.age)}-Jugend</span>
-      <div class="actions">
-        <button class="secondary" data-edit="${esc(g.id)}">✎</button>
-        <button class="danger" data-delete="${esc(g.id)}">🗑</button>
-      </div>
-    </div>
-    <div class="game-main">
-      <div class="teamname">${logoHTML(hc)}${esc(g.home)}</div>
-      <div class="vs">VS.</div>
-      <div class="teamname">${logoHTML(ac)}${esc(g.away)}</div>
-    </div>
-    <div class="muted">📅 ${formatDate(g.date)} · ⏰ ${esc(g.time||"–")} · 📍 ${esc(g.place||"–")}</div>
-  </div>`;
+
+
+return new Date(
+date+
+"T12:00"
+)
+.toLocaleDateString(
+"de-DE",
+{
+
+weekday:"short",
+
+day:"2-digit",
+
+month:"2-digit"
+
 }
+);
+
+}
+
+
+/* ========================================
+   SPIELKARTEN
+======================================== */
+
+
+function gameHTML(game){
+
+const homeClub =
+game.homeClub
+||
+teamRecord(
+game.age,
+game.home
+).club;
+
+
+const awayClub =
+game.awayClub
+||
+teamRecord(
+game.age,
+game.away
+).club;
+
+
+return`
+
+<div class="game">
+
+<div class="game-top">
+
+<span class="tag">
+
+${esc(game.age)}-Jugend
+
+</span>
+
+
+<div class="actions">
+
+<button
+class="secondary"
+data-edit="${esc(game.id)}">
+
+✎
+
+</button>
+
+
+<button
+class="danger"
+data-delete="${esc(game.id)}">
+
+🗑
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="game-main">
+
+
+<div class="teamname">
+
+${logoHTML(homeClub)}
+
+${esc(game.home)}
+
+</div>
+
+
+<div class="vs">
+
+VS.
+
+</div>
+
+
+<div class="teamname">
+
+${logoHTML(awayClub)}
+
+${esc(game.away)}
+
+</div>
+
+
+</div>
+
+
+<div class="muted">
+
+📅
+${formatDate(game.date)}
+
+·
+
+⏰
+${esc(game.time || "–")}
+
+·
+
+📍
+${esc(game.place || "–")}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
 function bindGameButtons(root){
-  root.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>editGame(b.dataset.edit));
-  root.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>removeGame(b.dataset.delete));
+
+root
+.querySelectorAll(
+"[data-edit]"
+)
+.forEach(
+button =>{
+
+button.onclick =
+()=>editGame(
+button.dataset.edit
+);
+
 }
+);
+
+
+root
+.querySelectorAll(
+"[data-delete]"
+)
+.forEach(
+button =>{
+
+button.onclick =
+()=>removeGame(
+button.dataset.delete
+);
+
+}
+);
+
+}
+
+
 function weekendGames(){
-  const f=$("dateFrom").value,t=$("dateTo").value;
-  return db.games.filter(g=>(!f||g.date>=f)&&(!t||g.date<=t))
-    .sort((a,b)=>(a.date||"").localeCompare(b.date||"")||(a.time||"").localeCompare(b.time||""));
+
+const from =
+$("dateFrom").value;
+
+const to =
+$("dateTo").value;
+
+
+return db.games
+
+.filter(
+game =>
+
+(
+!from
+||
+game.date >= from
+)
+
+&&
+
+(
+!to
+||
+game.date <= to
+)
+
+)
+
+.sort(
+(a,b)=>
+
+(a.date || "")
+.localeCompare(
+b.date || ""
+)
+
+||
+
+(a.time || "")
+.localeCompare(
+b.time || ""
+)
+
+);
+
 }
+
+
 function renderGames(){
-  const arr=[...db.games].sort((a,b)=>(a.date||"").localeCompare(b.date||""));
-  $("gamesList").innerHTML=arr.length?arr.map(gameHTML).join(""):'<div class="empty">Noch keine Spiele angelegt.</div>';
-  bindGameButtons($("gamesList"));
+
+const games =
+[...db.games]
+
+.sort(
+(a,b)=>
+
+(a.date || "")
+.localeCompare(
+b.date || ""
+)
+
+);
+
+
+$("gamesList").innerHTML =
+
+games.length
+
+?
+
+games
+.map(gameHTML)
+.join("")
+
+:
+
+'<div class="empty">Noch keine Spiele angelegt.</div>';
+
+
+bindGameButtons(
+$("gamesList")
+);
+
 }
+
+
 function renderHome(){
-  const arr=weekendGames();
-  $("gameCount").textContent=arr.length+" Spiel"+(arr.length===1?"":"e");
-  $("homeGames").innerHTML=arr.length?arr.map(gameHTML).join(""):'<div class="empty">Für dieses Wochenende sind noch keine Spiele angelegt.</div>';
-  bindGameButtons($("homeGames"));
+
+const games =
+weekendGames();
+
+
+$("gameCount")
+.textContent =
+
+games.length
++
+" Spiel"
++
+(
+games.length === 1
+?
+""
+:
+"e"
+);
+
+
+$("homeGames").innerHTML =
+
+games.length
+
+?
+
+games
+.map(gameHTML)
+.join("")
+
+:
+
+'<div class="empty">Für dieses Wochenende sind noch keine Spiele angelegt.</div>';
+
+
+bindGameButtons(
+$("homeGames")
+);
+
 }
+
+
+/* ========================================
+   VEREINSLISTE
+======================================== */
+
+
 function renderClubs(){
-  const usage={};
-  ["B","C","D","E","F"].forEach(age=>{
-    teamsForAge(age).forEach(t=>{
-      if(!usage[t.club])usage[t.club]=new Set();
-      usage[t.club].add(age);
-    });
-  });
-  const names=Object.keys(usage).sort((a,b)=>a.localeCompare(b,"de"));
-  $("clubCount").textContent=names.length+" Vereine";
-  $("clubList").innerHTML=names.map(name=>`
-    <div class="club">
-      ${logoHTML(name)}
-      <div class="clubtext">
-        <div class="clubname">${esc(name)}</div>
-        <div class="ages">${[...usage[name]].map(a=>a+"-Jugend").join(" · ")}</div>
-      </div>
-    </div>`).join("");
+
+const usage =
+{};
+
+
+["B","C","D","E","F"]
+.forEach(
+age =>{
+
+teamsForAge(age)
+.forEach(
+team =>{
+
+if(
+!usage[team.club]
+){
+
+usage[team.club] =
+new Set();
+
 }
+
+usage[team.club]
+.add(age);
+
+});
+
+}
+);
+
+
+const names =
+Object.keys(usage)
+
+.sort(
+(a,b)=>
+a.localeCompare(
+b,
+"de"
+)
+);
+
+
+$("clubCount")
+.textContent =
+
+names.length
++
+" Vereine";
+
+
+$("clubList")
+.innerHTML =
+
+names
+.map(
+name =>`
+
+<div class="club">
+
+${logoHTML(name)}
+
+<div class="clubtext">
+
+<div class="clubname">
+
+${esc(name)}
+
+</div>
+
+<div class="ages">
+
+${[...usage[name]]
+.map(
+age =>
+age+"-Jugend"
+)
+.join(" · ")}
+
+</div>
+
+</div>
+
+</div>
+
+`
+)
+.join("");
+
+}
+
+
+/* ========================================
+   MANUELL ERGÄNZEN
+======================================== */
+
+
 function addManual(){
-  const team=$("manualTeam").value.trim();
-  const club=$("manualClub").value.trim();
-  const age=$("manualAge").value;
-  if(!team||!club){alert("Bitte Mannschaft und Verein eingeben.");return}
-  if(!db.manual[age])db.manual[age]=[];
-  if(!db.manual[age].some(t=>t.team.toLowerCase()===team.toLowerCase())){
-    db.manual[age].push({team,club});
-  }
-  if(!CLUBS[club]&&!db.manualClubs[club])db.manualClubs[club]={logo:""};
-  $("manualTeam").value="";$("manualClub").value="";
-  persist();renderAll();setStatus("✓ Mannschaft ergänzt");
+
+const team =
+$("manualTeam")
+.value
+.trim();
+
+
+const club =
+$("manualClub")
+.value
+.trim();
+
+
+const age =
+$("manualAge").value;
+
+
+if(
+!team
+||
+!club
+){
+
+alert(
+"Bitte Mannschaft und Verein eingeben."
+);
+
+return;
+
 }
 
-$("newGame").onclick=()=>openGame();
-$("addDashboard").onclick=()=>{showView("games");openGame()};
-$("cancelGame").onclick=()=>$("gameForm").style.display="none";
-$("saveGame").onclick=saveGame;
-$("addManual").onclick=addManual;
-$("dateFrom").onchange=()=>{renderHome();createGraphic()};
-$("dateTo").onchange=()=>{renderHome();createGraphic()};
 
-$("saveDesign").onclick=()=>{
-  db.design.title=$("designTitle").value.trim()||"MATCHDAY";
-  db.design.subtitle=$("designSubtitle").value.trim()||"UNSER WOCHENENDE";
-  const file=$("background").files[0];
-  if(!file){persist();createGraphic();setStatus("✓ Design gespeichert");return}
-  const r=new FileReader();
-  r.onload=()=>{db.design.background=r.result;persist();createGraphic();setStatus("✓ Hintergrund gespeichert")};
-  r.readAsDataURL(file);
+if(
+!db.manual[age]
+){
+
+db.manual[age]=[];
+
+}
+
+
+if(
+!db.manual[age]
+.some(
+entry =>
+entry.team
+.toLowerCase()
+===
+team.toLowerCase()
+)
+){
+
+db.manual[age]
+.push({
+
+team:team,
+
+club:club
+
+});
+
+}
+
+
+if(
+!CLUBS[club]
+&&
+!db.manualClubs[club]
+){
+
+db.manualClubs[club] = {
+
+logo:""
+
 };
-$("removeBackground").onclick=()=>{db.design.background=null;persist();createGraphic();setStatus("✓ Hintergrund entfernt")};
 
-function roundRectPath(ctx,x,y,w,h,r){
-  const rr=Math.min(r,w/2,h/2);
-  ctx.beginPath();
-  ctx.moveTo(x+rr,y);ctx.lineTo(x+w-rr,y);ctx.quadraticCurveTo(x+w,y,x+w,y+rr);
-  ctx.lineTo(x+w,y+h-rr);ctx.quadraticCurveTo(x+w,y+h,x+w-rr,y+h);
-  ctx.lineTo(x+rr,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-rr);
-  ctx.lineTo(x,y+rr);ctx.quadraticCurveTo(x,y,x+rr,y);ctx.closePath();
 }
-function short(s){s=String(s||"");return s.length>28?s.slice(0,26)+"…":s}
-function loadImage(src){
-  return new Promise(resolve=>{
-    if(!src){resolve(null);return}
-    const im=new Image();
-    im.onload=()=>resolve(im);
-    im.onerror=()=>resolve(null);
-    im.src=src;
-  });
+
+
+$("manualTeam").value =
+"";
+
+$("manualClub").value =
+"";
+
+
+persist();
+
+renderAll();
+
+setStatus(
+"✓ Mannschaft ergänzt"
+);
+
 }
-function drawImageContain(ctx,img,x,y,w,h){
-  if(!img)return;
-  const s=Math.min(w/img.width,h/img.height);
-  const iw=img.width*s,ih=img.height*s;
-  ctx.drawImage(img,x+(w-iw)/2,y+(h-ih)/2,iw,ih);
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+
+$("newGame")
+.onclick =
+()=>openGame();
+
+
+$("addDashboard")
+.onclick =
+()=>{
+
+showView(
+"games"
+);
+
+openGame();
+
+};
+
+
+$("cancelGame")
+.onclick =
+()=>{
+
+$("gameForm")
+.style.display =
+"none";
+
+};
+
+
+$("saveGame")
+.onclick =
+saveGame;
+
+
+$("addManual")
+.onclick =
+addManual;
+
+
+$("dateFrom")
+.onchange =
+()=>{
+
+renderHome();
+
+createGraphic();
+
+};
+
+
+$("dateTo")
+.onchange =
+()=>{
+
+renderHome();
+
+createGraphic();
+
+};
+
+
+/* ========================================
+   DESIGN
+======================================== */
+
+
+$("saveDesign")
+.onclick =
+()=>{
+
+db.design.title =
+
+$("designTitle")
+.value
+.trim()
+
+||
+
+"MATCHDAY";
+
+
+db.design.subtitle =
+
+$("designSubtitle")
+.value
+.trim()
+
+||
+
+"UNSER WOCHENENDE";
+
+
+const file =
+$("background")
+.files[0];
+
+
+if(!file){
+
+persist();
+
+createGraphic();
+
+setStatus(
+"✓ Design gespeichert"
+);
+
+return;
+
 }
+
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+()=>{
+
+db.design.background =
+reader.result;
+
+persist();
+
+createGraphic();
+
+setStatus(
+"✓ Hintergrund gespeichert"
+);
+
+};
+
+
+reader.readAsDataURL(
+file
+);
+
+};
+
+
+$("removeBackground")
+.onclick =
+()=>{
+
+db.design.background =
+null;
+
+persist();
+
+createGraphic();
+
+setStatus(
+"✓ Hintergrund entfernt"
+);
+
+};
+
+
+/* ========================================
+   CANVAS
+======================================== */
+
+
+function roundRectPath(
+ctx,
+x,
+y,
+width,
+height,
+radius
+){
+
+const r =
+Math.min(
+radius,
+width/2,
+height/2
+);
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+x+r,
+y
+);
+
+ctx.lineTo(
+x+width-r,
+y
+);
+
+ctx.quadraticCurveTo(
+x+width,
+y,
+x+width,
+y+r
+);
+
+ctx.lineTo(
+x+width,
+y+height-r
+);
+
+ctx.quadraticCurveTo(
+x+width,
+y+height,
+x+width-r,
+y+height
+);
+
+ctx.lineTo(
+x+r,
+y+height
+);
+
+ctx.quadraticCurveTo(
+x,
+y+height,
+x,
+y+height-r
+);
+
+ctx.lineTo(
+x,
+y+r
+);
+
+ctx.quadraticCurveTo(
+x,
+y,
+x+r,
+y
+);
+
+ctx.closePath();
+
+}
+
+
+function shorten(text){
+
+text =
+String(
+text || ""
+);
+
+
+return(
+text.length > 28
+?
+text.slice(
+0,
+26
+)
++
+"…"
+:
+text
+);
+
+}
+
+
+function loadImage(source){
+
+return new Promise(
+resolve =>{
+
+
+if(!source){
+
+resolve(null);
+
+return;
+
+}
+
+
+const image =
+new Image();
+
+
+image.onload =
+()=>resolve(
+image
+);
+
+
+image.onerror =
+()=>resolve(
+null
+);
+
+
+image.src =
+source;
+
+
+}
+);
+
+}
+
+
+function drawImageContain(
+ctx,
+image,
+x,
+y,
+width,
+height
+){
+
+if(!image){
+
+return;
+
+}
+
+
+const scale =
+Math.min(
+
+width/image.width,
+
+height/image.height
+
+);
+
+
+const imageWidth =
+image.width
+*
+scale;
+
+
+const imageHeight =
+image.height
+*
+scale;
+
+
+ctx.drawImage(
+
+image,
+
+x
++
+(width-imageWidth)/2,
+
+y
++
+(height-imageHeight)/2,
+
+imageWidth,
+
+imageHeight
+
+);
+
+}
+
+
+/* ========================================
+   MATCHDAY GRAFIK
+======================================== */
+
+
 async function createGraphic(){
-  const canvas=$("preview"),ctx=canvas.getContext("2d"),W=canvas.width,H=canvas.height;
-  ctx.clearRect(0,0,W,H);
 
-  if(db.design.background){
-    const bg=await loadImage(db.design.background);
-    if(bg){
-      const s=Math.max(W/bg.width,H/bg.height),iw=bg.width*s,ih=bg.height*s;
-      ctx.drawImage(bg,(W-iw)/2,(H-ih)/2,iw,ih);
-      ctx.fillStyle="rgba(255,255,255,.78)";ctx.fillRect(0,0,W,H);
-    }
-  }else{
-    const gr=ctx.createLinearGradient(0,0,0,H);
-    gr.addColorStop(0,"#f8fbf7");gr.addColorStop(.38,"#dcefd5");gr.addColorStop(.74,"#8fca70");gr.addColorStop(1,"#173b19");
-    ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
-  }
+const canvas =
+$("preview");
 
-  ctx.textAlign="center";
-  ctx.fillStyle="#173b19";ctx.font="900 50px Arial";ctx.fillText("USV TU DRESDEN",W/2,70);
-  ctx.fillStyle="#2f8f24";ctx.font="900 92px Arial";ctx.fillText(db.design.title,W/2,150);
-  ctx.fillStyle="#173b19";ctx.font="700 30px Arial";ctx.fillText(db.design.subtitle,W/2,200);
 
-  const games=weekendGames().slice(0,6);
-  let y=245,lastDay="";
+const ctx =
+canvas.getContext(
+"2d"
+);
 
-  for(const g of games){
-    if(y>H-210)break;
-    const day=new Date(g.date+"T12:00").toLocaleDateString("de-DE",{weekday:"long"});
-    if(day!==lastDay){
-      ctx.fillStyle="#2f8f24";ctx.font="900 27px Arial";ctx.fillText(day.toUpperCase(),W/2,y);
-      y+=38;lastDay=day;
-    }
-    ctx.fillStyle="rgba(255,255,255,.94)";
-    roundRectPath(ctx,55,y,W-110,132,18);ctx.fill();
 
-    const hc=g.homeClub||teamRecord(g.age,g.home).club;
-    const ac=g.awayClub||teamRecord(g.age,g.away).club;
-    const [hi,ai]=await Promise.all([loadImage(getClub(hc).logo),loadImage(getClub(ac).logo)]);
+const width =
+canvas.width;
 
-    if(hi)drawImageContain(ctx,hi,78,y+39,72,72);
-    else{
-      ctx.fillStyle="#2f8f24";ctx.beginPath();ctx.arc(114,y+75,32,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle="#fff";ctx.font="900 13px Arial";ctx.fillText(initials(hc),114,y+80);
-    }
-    if(ai)drawImageContain(ctx,ai,W-150,y+39,72,72);
-    else{
-      ctx.fillStyle="#2f8f24";ctx.beginPath();ctx.arc(W-114,y+75,32,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle="#fff";ctx.font="900 13px Arial";ctx.fillText(initials(ac),W-114,y+80);
-    }
 
-    ctx.fillStyle="#173b19";ctx.font="900 21px Arial";ctx.fillText(g.age+"-JUGEND",W/2,y+27);
-    ctx.font="700 18px Arial";ctx.fillText(short(g.home),W/2-190,y+67);ctx.fillText(short(g.away),W/2+190,y+67);
-    ctx.fillStyle="#2f8f24";ctx.font="900 22px Arial";ctx.fillText("VS.",W/2,y+69);
-    ctx.fillStyle="#596159";ctx.font="600 16px Arial";ctx.fillText((g.time||"")+(g.place?"  ·  "+g.place:""),W/2,y+103);
-    y+=145;
-  }
+const height =
+canvas.height;
 
-  ctx.fillStyle="#173b19";ctx.font="700 16px Arial";
-  ctx.fillText("FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",W/2,H-22);
+
+ctx.clearRect(
+0,
+0,
+width,
+height
+);
+
+
+/* Hintergrund */
+
+
+if(
+db.design.background
+){
+
+const background =
+await loadImage(
+db.design.background
+);
+
+
+if(background){
+
+const scale =
+Math.max(
+
+width/background.width,
+
+height/background.height
+
+);
+
+
+const imageWidth =
+background.width
+*
+scale;
+
+
+const imageHeight =
+background.height
+*
+scale;
+
+
+ctx.drawImage(
+
+background,
+
+(width-imageWidth)/2,
+
+(height-imageHeight)/2,
+
+imageWidth,
+
+imageHeight
+
+);
+
+
+ctx.fillStyle =
+"rgba(255,255,255,.78)";
+
+
+ctx.fillRect(
+0,
+0,
+width,
+height
+);
+
 }
-$("makeGraphic").onclick=async()=>{await createGraphic();$("preview").scrollIntoView({behavior:"smooth",block:"center"});setStatus("✓ Matchday aktualisiert")};
-$("downloadImage").onclick=async()=>{
-  await createGraphic();
-  const a=document.createElement("a");a.download="USV-Matchday.png";a.href=$("preview").toDataURL("image/png");a.click();
+
+}else{
+
+
+const gradient =
+ctx.createLinearGradient(
+0,
+0,
+0,
+height
+);
+
+
+gradient.addColorStop(
+0,
+"#f8fbf7"
+);
+
+
+gradient.addColorStop(
+.38,
+"#dcefd5"
+);
+
+
+gradient.addColorStop(
+.74,
+"#8fca70"
+);
+
+
+gradient.addColorStop(
+1,
+"#173b19"
+);
+
+
+ctx.fillStyle =
+gradient;
+
+
+ctx.fillRect(
+0,
+0,
+width,
+height
+);
+
+}
+
+
+/* Überschrift */
+
+
+ctx.textAlign =
+"center";
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"900 50px Arial";
+
+
+ctx.fillText(
+"USV TU DRESDEN",
+width/2,
+70
+);
+
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.font =
+"900 92px Arial";
+
+
+ctx.fillText(
+db.design.title,
+width/2,
+150
+);
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"700 30px Arial";
+
+
+ctx.fillText(
+db.design.subtitle,
+width/2,
+200
+);
+
+
+/* Spiele */
+
+
+const games =
+weekendGames()
+.slice(
+0,
+6
+);
+
+
+let y =
+245;
+
+
+let lastDay =
+"";
+
+
+for(
+const game
+of games
+){
+
+
+if(
+y >
+height-210
+){
+
+break;
+
+}
+
+
+const day =
+
+new Date(
+game.date+
+"T12:00"
+)
+
+.toLocaleDateString(
+"de-DE",
+{
+
+weekday:"long"
+
+}
+);
+
+
+if(
+day !== lastDay
+){
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.font =
+"900 27px Arial";
+
+
+ctx.fillText(
+day.toUpperCase(),
+width/2,
+y
+);
+
+
+y +=
+38;
+
+
+lastDay =
+day;
+
+}
+
+
+/* Spielkarte */
+
+
+ctx.fillStyle =
+"rgba(255,255,255,.94)";
+
+
+roundRectPath(
+ctx,
+55,
+y,
+width-110,
+132,
+18
+);
+
+
+ctx.fill();
+
+
+const homeClub =
+
+game.homeClub
+
+||
+
+teamRecord(
+game.age,
+game.home
+).club;
+
+
+const awayClub =
+
+game.awayClub
+
+||
+
+teamRecord(
+game.age,
+game.away
+).club;
+
+
+const [
+homeImage,
+awayImage
+] =
+
+await Promise.all([
+
+loadImage(
+getClub(
+homeClub
+).logo
+),
+
+loadImage(
+getClub(
+awayClub
+).logo
+)
+
+]);
+
+
+/* Heimlogo */
+
+
+if(homeImage){
+
+drawImageContain(
+ctx,
+homeImage,
+78,
+y+39,
+72,
+72
+);
+
+}else{
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+114,
+y+75,
+32,
+0,
+Math.PI*2
+);
+
+
+ctx.fill();
+
+
+ctx.fillStyle =
+"#fff";
+
+
+ctx.font =
+"900 13px Arial";
+
+
+ctx.fillText(
+initials(
+homeClub
+),
+114,
+y+80
+);
+
+}
+
+
+/* Gastlogo */
+
+
+if(awayImage){
+
+drawImageContain(
+ctx,
+awayImage,
+width-150,
+y+39,
+72,
+72
+);
+
+}else{
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+width-114,
+y+75,
+32,
+0,
+Math.PI*2
+);
+
+
+ctx.fill();
+
+
+ctx.fillStyle =
+"#fff";
+
+
+ctx.font =
+"900 13px Arial";
+
+
+ctx.fillText(
+initials(
+awayClub
+),
+width-114,
+y+80
+);
+
+}
+
+
+/* Mannschaft */
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"900 21px Arial";
+
+
+ctx.fillText(
+game.age+
+"-JUGEND",
+width/2,
+y+27
+);
+
+
+ctx.font =
+"700 18px Arial";
+
+
+ctx.fillText(
+shorten(
+game.home
+),
+width/2-190,
+y+67
+);
+
+
+ctx.fillText(
+shorten(
+game.away
+),
+width/2+190,
+y+67
+);
+
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.font =
+"900 22px Arial";
+
+
+ctx.fillText(
+"VS.",
+width/2,
+y+69
+);
+
+
+ctx.fillStyle =
+"#596159";
+
+
+ctx.font =
+"600 16px Arial";
+
+
+ctx.fillText(
+
+(
+game.time || ""
+)
+
++
+
+(
+game.place
+?
+"  ·  "
++
+game.place
+:
+""
+),
+
+width/2,
+
+y+103
+
+);
+
+
+y +=
+145;
+
+}
+
+
+/* Fußzeile */
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"700 16px Arial";
+
+
+ctx.fillText(
+"FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",
+width/2,
+height-22
+);
+
+}
+
+
+/* ========================================
+   GRAFIK BUTTON
+======================================== */
+
+
+$("makeGraphic")
+.onclick =
+async()=>{
+
+await createGraphic();
+
+
+$("preview")
+.scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+
+setStatus(
+"✓ Matchday aktualisiert"
+);
+
 };
-$("shareImage").onclick=async()=>{
-  await createGraphic();
-  $("preview").toBlob(async blob=>{
-    if(!blob)return;
-    const file=new File([blob],"USV-Matchday.png",{type:"image/png"});
-    try{
-      if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]}))await navigator.share({files:[file],title:"USV Matchday"});
-      else $("downloadImage").click();
-    }catch(e){}
-  },"image/png");
+
+
+/* ========================================
+   PNG
+======================================== */
+
+
+$("downloadImage")
+.onclick =
+async()=>{
+
+await createGraphic();
+
+
+const link =
+document.createElement(
+"a"
+);
+
+
+link.download =
+"USV-Matchday.png";
+
+
+link.href =
+$("preview")
+.toDataURL(
+"image/png"
+);
+
+
+link.click();
+
 };
+
+
+/* ========================================
+   TEILEN
+======================================== */
+
+
+$("shareImage")
+.onclick =
+async()=>{
+
+await createGraphic();
+
+
+$("preview")
+.toBlob(
+async blob=>{
+
+
+if(!blob){
+
+return;
+
+}
+
+
+const file =
+new File(
+
+[blob],
+
+"USV-Matchday.png",
+
+{
+
+type:"image/png"
+
+}
+
+);
+
+
+try{
+
+
+if(
+
+navigator.share
+
+&&
+
+navigator.canShare
+
+&&
+
+navigator.canShare({
+
+files:[file]
+
+})
+
+){
+
+
+await navigator.share({
+
+files:[file],
+
+title:"USV Matchday"
+
+});
+
+
+}else{
+
+
+$("downloadImage")
+.click();
+
+
+}
+
+
+}catch(e){}
+
+
+},
+
+"image/png"
+
+);
+
+};
+
+
+/* ========================================
+   RENDER
+======================================== */
+
 
 function renderAll(){
-  renderGames();renderHome();renderClubs();
-  $("designTitle").value=db.design.title||"MATCHDAY";
-  $("designSubtitle").value=db.design.subtitle||"UNSER WOCHENENDE";
+
+renderGames();
+
+renderHome();
+
+renderClubs();
+
+
+$("designTitle").value =
+
+db.design.title
+
+||
+
+"MATCHDAY";
+
+
+$("designSubtitle").value =
+
+db.design.subtitle
+
+||
+
+"UNSER WOCHENENDE";
+
 }
-initDates();renderAll();createGraphic();persist();
-setStatus("● App bereit · B–F Vereinsstamm geladen");
+
+
+/* ========================================
+   START
+======================================== */
+
+
+initDates();
+
+renderAll();
+
+createGraphic();
+
+persist();
+
+
+setStatus(
+"● App bereit · B–F Vereinsstamm geladen"
+);
+
 </script>
+
 </body>
 </html>
