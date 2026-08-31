@@ -2882,7 +2882,14 @@ height
 }else{
 
 
-const gradient =
+/* ========================================
+   DYNAMISCHER MATCHDAY-HINTERGRUND
+======================================== */
+
+
+/* Grundfläche */
+
+const base =
 ctx.createLinearGradient(
 0,
 0,
@@ -2890,30 +2897,489 @@ ctx.createLinearGradient(
 height
 );
 
-
-gradient.addColorStop(
+base.addColorStop(
 0,
-"#f8fbf7"
+"#ffffff"
 );
 
-
-gradient.addColorStop(
-.38,
-"#dcefd5"
+base.addColorStop(
+0.36,
+"#edf3ea"
 );
 
-
-gradient.addColorStop(
-.74,
-"#8fca70"
+base.addColorStop(
+0.67,
+"#d2dfcc"
 );
 
-
-gradient.addColorStop(
+base.addColorStop(
 1,
-"#173b19"
+"#153718"
 );
 
+ctx.fillStyle =
+base;
+
+ctx.fillRect(
+0,
+0,
+width,
+height
+);
+
+
+/* ========================================
+   STADIONLICHT
+======================================== */
+
+const light =
+ctx.createRadialGradient(
+
+width/2,
+290,
+20,
+
+width/2,
+290,
+700
+
+);
+
+light.addColorStop(
+0,
+"rgba(255,255,255,1)"
+);
+
+light.addColorStop(
+0.45,
+"rgba(255,255,255,.65)"
+);
+
+light.addColorStop(
+1,
+"rgba(255,255,255,0)"
+);
+
+ctx.fillStyle =
+light;
+
+ctx.fillRect(
+0,
+0,
+width,
+760
+);
+
+
+/* ========================================
+   TRIBÜNEN LINKS
+======================================== */
+
+ctx.save();
+
+ctx.globalAlpha =
+0.10;
+
+ctx.fillStyle =
+"#173b19";
+
+ctx.beginPath();
+
+ctx.moveTo(
+0,
+510
+);
+
+ctx.lineTo(
+0,
+900
+);
+
+ctx.lineTo(
+360,
+770
+);
+
+ctx.lineTo(
+420,
+570
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.restore();
+
+
+/* ========================================
+   TRIBÜNEN RECHTS
+======================================== */
+
+ctx.save();
+
+ctx.globalAlpha =
+0.10;
+
+ctx.fillStyle =
+"#173b19";
+
+ctx.beginPath();
+
+ctx.moveTo(
+width,
+500
+);
+
+ctx.lineTo(
+width,
+900
+);
+
+ctx.lineTo(
+width-360,
+770
+);
+
+ctx.lineTo(
+width-420,
+570
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.restore();
+
+
+/* ========================================
+   RASEN
+======================================== */
+
+const grass =
+ctx.createLinearGradient(
+0,
+820,
+0,
+height
+);
+
+grass.addColorStop(
+0,
+"rgba(80,145,49,.20)"
+);
+
+grass.addColorStop(
+0.25,
+"#75aa54"
+);
+
+grass.addColorStop(
+0.55,
+"#315d29"
+);
+
+grass.addColorStop(
+1,
+"#102813"
+);
+
+ctx.fillStyle =
+grass;
+
+ctx.fillRect(
+0,
+820,
+width,
+height-820
+);
+
+
+/* ========================================
+   RASENSTRUKTUR
+======================================== */
+
+ctx.save();
+
+ctx.globalAlpha =
+0.16;
+
+for(
+let i=0;
+i<14;
+i++
+){
+
+ctx.fillStyle =
+i % 2 === 0
+?
+"#ffffff"
+:
+"#173b19";
+
+ctx.fillRect(
+
+i * (width/14),
+
+820,
+
+width/14,
+
+height-820
+
+);
+
+}
+
+ctx.restore();
+
+
+/* ========================================
+   MITTELLINIE / PERSPEKTIVE
+======================================== */
+
+ctx.save();
+
+ctx.strokeStyle =
+"rgba(255,255,255,.28)";
+
+ctx.lineWidth =
+4;
+
+ctx.beginPath();
+
+ctx.moveTo(
+width/2,
+835
+);
+
+ctx.lineTo(
+width/2,
+height
+);
+
+ctx.stroke();
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+width/2,
+835
+);
+
+ctx.lineTo(
+160,
+height
+);
+
+ctx.moveTo(
+width/2,
+835
+);
+
+ctx.lineTo(
+width-160,
+height
+);
+
+ctx.stroke();
+
+ctx.restore();
+
+
+/* ========================================
+   GRÜNE DYNAMIK-FLÄCHE LINKS
+======================================== */
+
+ctx.save();
+
+ctx.globalAlpha =
+0.14;
+
+ctx.fillStyle =
+"#2f8f24";
+
+ctx.beginPath();
+
+ctx.moveTo(
+0,
+300
+);
+
+ctx.lineTo(
+300,
+420
+);
+
+ctx.lineTo(
+100,
+760
+);
+
+ctx.lineTo(
+0,
+720
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.restore();
+
+
+/* ========================================
+   GRÜNE DYNAMIK-FLÄCHE RECHTS
+======================================== */
+
+ctx.save();
+
+ctx.globalAlpha =
+0.12;
+
+ctx.fillStyle =
+"#2f8f24";
+
+ctx.beginPath();
+
+ctx.moveTo(
+width,
+260
+);
+
+ctx.lineTo(
+width-300,
+430
+);
+
+ctx.lineTo(
+width-100,
+740
+);
+
+ctx.lineTo(
+width,
+690
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.restore();
+
+
+/* ========================================
+   LEICHTE PARTIKEL
+======================================== */
+
+ctx.save();
+
+ctx.globalAlpha =
+0.18;
+
+for(
+let i=0;
+i<60;
+i++
+){
+
+const x =
+Math.random()
+*
+width;
+
+const y =
+180
++
+Math.random()
+*
+690;
+
+const size =
+2
++
+Math.random()
+*
+7;
+
+ctx.fillStyle =
+Math.random() > .5
+?
+"#2f8f24"
+:
+"#ffffff";
+
+ctx.save();
+
+ctx.translate(
+x,
+y
+);
+
+ctx.rotate(
+Math.random()
+*
+Math.PI
+);
+
+ctx.fillRect(
+-size/2,
+-size/5,
+size,
+size/2.5
+);
+
+ctx.restore();
+
+}
+
+ctx.restore();
+
+
+/* ========================================
+   VIGNETTE
+======================================== */
+
+const vignette =
+ctx.createRadialGradient(
+
+width/2,
+height/2,
+300,
+
+width/2,
+height/2,
+900
+
+);
+
+vignette.addColorStop(
+0,
+"rgba(0,0,0,0)"
+);
+
+vignette.addColorStop(
+0.7,
+"rgba(0,0,0,.03)"
+);
+
+vignette.addColorStop(
+1,
+"rgba(0,0,0,.28)"
+);
+
+ctx.fillStyle =
+vignette;
+
+ctx.fillRect(
+0,
+0,
+width,
+height
+);
 
 ctx.fillStyle =
 gradient;
