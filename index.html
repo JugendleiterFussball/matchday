@@ -2,362 +2,665 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#2f8f24">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0,viewport-fit=cover"
+>
+
+<meta
+  name="theme-color"
+  content="#2f8f24"
+>
+
 <title>USV Matchday</title>
 
 <style>
+
 :root{
   --green:#2f8f24;
-  --green-dark:#173b19;
-  --green-light:#e9f5e5;
-  --bg:#f2f6f0;
+  --green2:#69b64a;
+  --dark:#173b19;
+  --light:#eaf5e6;
+  --bg:#f3f7f1;
   --card:#ffffff;
-  --border:#dce5d8;
+  --line:#dce6d9;
   --text:#172018;
-  --muted:#6c756b;
-  --red:#b63830;
+  --muted:#687267;
+  --red:#b63b32;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
-  background:linear-gradient(180deg,#f8fbf7 0%,#edf3ea 100%);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8fbf7,
+      #eef4eb
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:
+    var(--text);
 }
 
-button,input,select{font:inherit}
-button{cursor:pointer}
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
 
 .app{
-  max-width:1100px;
+  max-width:1080px;
   margin:auto;
   min-height:100vh;
 }
 
 header{
+
   position:sticky;
+
   top:0;
-  z-index:100;
-  padding:14px 14px 12px;
-  color:white;
-  background:linear-gradient(120deg,#142719,#2e7628 58%,#70b94d);
-  box-shadow:0 4px 18px rgba(0,0,0,.15);
+
+  z-index:20;
+
+  padding:14px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      120deg,
+      #142919,
+      #2f7829 58%,
+      #70b94d
+    );
+
+  box-shadow:
+    0 4px 18px
+    rgba(0,0,0,.15);
 }
 
 .brand{
+
   display:flex;
+
+  gap:11px;
+
   align-items:center;
-  gap:12px;
 }
 
-.usv-badge{
+.badge{
+
   width:50px;
+
   height:50px;
+
   border-radius:12px;
+
+  background:#fff;
+
+  color:var(--dark);
+
   display:grid;
+
   place-items:center;
-  background:white;
-  color:#173b19;
+
   text-align:center;
+
   font-size:10px;
-  line-height:1.05;
+
   font-weight:900;
-  border:2px solid #b8e49d;
+
+  line-height:1.05;
+
+  border:
+    2px solid
+    #b9e6a1;
 }
 
-.brand h1{
-  margin:0;
+h1{
+
   font-size:22px;
+
+  margin:0;
 }
 
-.brand-sub{
-  margin-top:3px;
+.sub{
+
   font-size:12px;
+
   opacity:.85;
+
+  margin-top:3px;
 }
 
 nav{
+
   display:flex;
-  gap:7px;
-  overflow-x:auto;
+
+  gap:6px;
+
+  overflow:auto;
+
   padding-top:10px;
 }
 
 nav button{
+
   border:0;
+
   border-radius:9px;
-  padding:9px 12px;
-  background:rgba(255,255,255,.16);
-  color:white;
+
+  padding:
+    9px
+    11px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .14
+    );
+
+  color:#fff;
+
   white-space:nowrap;
+
   font-size:12px;
 }
 
 nav button.active{
-  background:white;
-  color:var(--green);
+
+  background:#fff;
+
+  color:
+    var(--green);
+
   font-weight:900;
 }
 
-main{padding:14px}
+main{
+  padding:13px;
+}
 
-.view{display:none}
-.view.active{display:block}
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
+}
 
 .status{
-  margin-bottom:12px;
-  padding:9px 11px;
-  border-radius:10px;
-  background:var(--green-light);
+
+  padding:
+    8px
+    10px;
+
+  background:
+    var(--light);
+
+  border-radius:9px;
+
   color:#356232;
+
   font-size:11px;
+
   font-weight:800;
-}
 
-.stepbar{
-  display:flex;
-  gap:6px;
-  overflow-x:auto;
-  margin-bottom:14px;
-}
-
-.stepbar span{
-  padding:8px 11px;
-  border-radius:999px;
-  background:#e7f0e4;
-  color:#55704f;
-  white-space:nowrap;
-  font-size:11px;
-  font-weight:800;
-}
-
-.stepbar span.active{
-  background:var(--green);
-  color:white;
+  margin-bottom:12px;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
+
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--line);
+
   border-radius:16px;
+
   padding:15px;
-  margin-bottom:14px;
-  box-shadow:0 5px 20px rgba(30,70,30,.07);
+
+  margin-bottom:13px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(23,48,27,.05);
 }
 
-.card h2{
-  margin:0 0 11px;
+h2{
+
   font-size:19px;
+
+  margin:
+    0
+    0
+    10px;
 }
 
-.card h3{
-  margin:0 0 10px;
+h3{
+
   font-size:15px;
+
+  margin:
+    0
+    0
+    9px;
 }
 
 .grid{
+
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
   gap:10px;
 }
 
 .field label{
+
   display:block;
-  margin-bottom:5px;
-  color:var(--muted);
+
   font-size:11px;
+
   font-weight:800;
+
+  color:
+    var(--muted);
+
+  margin-bottom:5px;
 }
 
-input,select{
+input,
+select{
+
   width:100%;
-  padding:11px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:white;
-  color:var(--text);
-  outline:none;
-}
 
-input:focus,select:focus{
-  border-color:var(--green);
-  box-shadow:0 0 0 2px rgba(47,143,36,.12);
+  padding:11px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:10px;
+
+  background:#fff;
+
+  color:
+    var(--text);
 }
 
 .btn{
+
   border:0;
+
   border-radius:10px;
-  padding:11px 14px;
+
+  padding:
+    11px
+    14px;
+
   font-weight:900;
 }
 
-.btn.primary{
-  background:var(--green);
-  color:white;
+.primary{
+
+  background:
+    var(--green);
+
+  color:#fff;
 }
 
-.btn.secondary{
-  background:var(--green-light);
-  color:var(--green);
+.secondary{
+
+  background:
+    var(--light);
+
+  color:
+    var(--green);
 }
 
-.btn.danger{
+.danger{
+
   background:#fff0ef;
-  color:var(--red);
+
+  color:
+    var(--red);
 }
 
-.wide{width:100%}
+.wide{
+  width:100%;
+}
 
 .row{
+
   display:flex;
+
   align-items:center;
+
   gap:8px;
+
   flex-wrap:wrap;
 }
 
-.between{justify-content:space-between}
+.between{
+  justify-content:space-between;
+}
 
 .muted{
-  color:var(--muted);
+
   font-size:12px;
+
+  color:
+    var(--muted);
 }
 
 .tag{
-  display:inline-block;
-  padding:5px 8px;
+
+  background:
+    var(--light);
+
+  color:
+    var(--green);
+
+  padding:
+    5px
+    8px;
+
   border-radius:999px;
-  background:var(--green-light);
-  color:var(--green);
+
   font-size:10px;
+
   font-weight:900;
 }
 
 .game{
-  margin:8px 0;
-  padding:12px;
-  border:1px solid var(--border);
+
+  border:
+    1px solid
+    var(--line);
+
   border-radius:14px;
+
+  padding:11px;
+
+  margin:
+    8px
+    0;
+
   background:#fbfdfb;
 }
 
 .game-top{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
-  gap:8px;
-}
-
-.game-actions{
-  display:flex;
-  gap:5px;
-}
-
-.game-actions button{
-  border:0;
-  border-radius:8px;
-  padding:7px 9px;
-  font-size:11px;
 }
 
 .game-main{
+
   display:grid;
-  grid-template-columns:1fr 50px 1fr;
-  align-items:center;
+
+  grid-template-columns:
+    1fr
+    48px
+    1fr;
+
   gap:5px;
-  margin:10px 0;
+
+  align-items:center;
+
   text-align:center;
+
+  margin:
+    9px
+    0;
 }
 
-.team{
+.teamname{
+
   font-size:12px;
+
   font-weight:900;
 }
 
 .vs{
-  color:var(--green);
+
   font-weight:900;
+
+  color:
+    var(--green);
 }
 
-.club-logo{
-  width:52px;
-  height:52px;
-  object-fit:contain;
-  display:block;
-  margin:4px auto;
-}
+.logo{
 
-.club-grid{
+  width:50px;
+
+  height:50px;
+
+  border-radius:50%;
+
+  margin:
+    4px
+    auto;
+
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+
+  place-items:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--dark),
+      var(--green2)
+    );
+
+  color:#fff;
+
+  font-size:10px;
+
+  font-weight:900;
+
+  overflow:hidden;
+}
+
+.logo img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:contain;
+
+  background:#fff;
+}
+
+.actions{
+
+  display:flex;
+
+  gap:5px;
+}
+
+.actions button{
+
+  border:0;
+
+  border-radius:8px;
+
+  padding:
+    7px
+    9px;
+
+  font-size:11px;
+}
+
+.clublist{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
   gap:8px;
 }
 
 .club{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:8px;
-  border:1px solid var(--border);
+
+  border:
+    1px solid
+    var(--line);
+
   border-radius:12px;
-  background:#fff;
+
+  padding:10px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
 }
 
-.club .club-logo{
-  width:44px;
-  height:44px;
+.club .logo{
+
+  margin:0;
+
+  width:42px;
+
+  height:42px;
+
   flex:none;
 }
 
-.club-name{
+.clubtext{
   flex:1;
-  font-size:12px;
-  font-weight:800;
 }
 
-.club-delete{
-  border:0;
-  border-radius:8px;
-  padding:6px 8px;
-  background:#fff0ef;
-  color:var(--red);
+.clubname{
+
+  font-size:12px;
+
+  font-weight:900;
+}
+
+.ages{
+
+  font-size:10px;
+
+  color:
+    var(--muted);
+
+  margin-top:3px;
 }
 
 .empty{
-  padding:22px;
+
   text-align:center;
-  color:var(--muted);
+
+  padding:20px;
+
+  color:
+    var(--muted);
+
   font-size:13px;
 }
 
 .preview{
-  padding:9px;
+
+  padding:8px;
+
   border-radius:14px;
+
   background:#dfe5dc;
 }
 
 .preview canvas{
+
   display:block;
+
   width:100%;
+
   height:auto;
+
   border-radius:10px;
 }
 
+.note{
+
+  padding:10px;
+
+  border-radius:10px;
+
+  background:#f4f8f2;
+
+  color:#52604f;
+
+  font-size:11px;
+
+  margin-bottom:10px;
+}
+
 hr{
+
   border:0;
-  border-top:1px solid var(--border);
-  margin:14px 0;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  margin:
+    13px
+    0;
 }
 
 @media(max-width:650px){
-  main{padding:10px}
-  .grid{grid-template-columns:1fr}
-  .club-grid{grid-template-columns:1fr}
-  .card{padding:13px}
+
+  main{
+    padding:10px;
+  }
+
+  .grid,
+  .clublist{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:13px;
+  }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -366,1275 +669,2844 @@ hr{
 
 <header>
 
-  <div class="brand">
+<div class="brand">
 
-    <div class="usv-badge">
-      USV<br>TU<br>DRESDEN
-    </div>
+<div class="badge">
+USV<br>
+TU<br>
+DRESDEN
+</div>
 
-    <div>
-      <h1>USV MATCHDAY</h1>
-      <div class="brand-sub">Dein Wochenende. Deine Grafik.</div>
-    </div>
+<div>
 
-  </div>
+<h1>
+USV MATCHDAY
+</h1>
 
-  <nav>
-    <button class="active" data-view="dashboard">Dashboard</button>
-    <button data-view="games">Spiele</button>
-    <button data-view="clubs">Vereine & Logos</button>
-    <button data-view="design">Design</button>
-  </nav>
+<div class="sub">
+B- bis F-Jugend · Saison 2026/27
+</div>
+
+</div>
+
+</div>
+
+<nav>
+
+<button
+  class="active"
+  data-view="dashboard">
+Dashboard
+</button>
+
+<button
+  data-view="games">
+Spiele
+</button>
+
+<button
+  data-view="clubs">
+Vereine
+</button>
+
+<button
+  data-view="design">
+Design
+</button>
+
+</nav>
 
 </header>
 
 <main>
 
-<div id="status" class="status">
-  ● App wird gestartet …
+<div
+  id="status"
+  class="status">
+
+● App wird gestartet …
+
 </div>
 
-<div class="stepbar">
-  <span class="active">1 Wochenende</span>
-  <span>2 Spiele</span>
-  <span>3 Vorschau</span>
-  <span>4 PNG / Teilen</span>
-</div>
 
 <!-- DASHBOARD -->
 
-<section id="dashboard" class="view active">
+<section
+  id="dashboard"
+  class="view active">
 
-  <div class="card">
 
-    <h2>⚽ Matchday erstellen</h2>
+<div class="card">
 
-    <div class="grid">
+<h2>
+⚽ Wochenende
+</h2>
 
-      <div class="field">
-        <label>Wochenende von</label>
-        <input id="dateFrom" type="date">
-      </div>
+<div class="grid">
 
-      <div class="field">
-        <label>Wochenende bis</label>
-        <input id="dateTo" type="date">
-      </div>
+<div class="field">
 
-    </div>
+<label>
+Von
+</label>
 
-    <div style="height:10px"></div>
+<input
+  id="dateFrom"
+  type="date">
 
-    <button class="btn primary wide" id="dashboardAddGame">
-      ＋ Spiel hinzufügen
-    </button>
+</div>
 
-  </div>
+<div class="field">
 
-  <div class="card">
+<label>
+Bis
+</label>
 
-    <div class="row between">
-      <h2>Dieses Wochenende</h2>
-      <span id="gameCount" class="tag">0 Spiele</span>
-    </div>
+<input
+  id="dateTo"
+  type="date">
 
-    <div id="homeGames"></div>
+</div>
 
-    <button class="btn primary wide" id="createGraphic">
-      🖼️ MATCHDAY-BILD ERSTELLEN
-    </button>
+</div>
 
-  </div>
+<div style="height:10px"></div>
 
-  <div class="card">
+<button
+  id="addDashboard"
+  class="btn primary wide">
 
-    <h2>Vorschau</h2>
+＋ Spiel hinzufügen
 
-    <div class="preview">
-      <canvas id="preview" width="1080" height="1350"></canvas>
-    </div>
+</button>
 
-    <div class="row" style="margin-top:10px">
+</div>
 
-      <button class="btn secondary" id="downloadImage">
-        ⬇ Bild speichern
-      </button>
 
-      <button class="btn primary" id="shareImage">
-        ↗ Teilen
-      </button>
+<div class="card">
 
-    </div>
+<div class="row between">
 
-  </div>
+<h2>
+Spiele
+</h2>
+
+<span
+  id="gameCount"
+  class="tag">
+
+0 Spiele
+
+</span>
+
+</div>
+
+<div id="homeGames"></div>
+
+<button
+  id="makeGraphic"
+  class="btn primary wide">
+
+🖼️ MATCHDAY-BILD ERSTELLEN
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+Vorschau
+</h2>
+
+<div class="preview">
+
+<canvas
+  id="preview"
+  width="1080"
+  height="1350">
+</canvas>
+
+</div>
+
+<div
+  class="row"
+  style="margin-top:10px">
+
+<button
+  id="downloadImage"
+  class="btn secondary">
+
+⬇ PNG speichern
+
+</button>
+
+<button
+  id="shareImage"
+  class="btn primary">
+
+↗ Teilen
+
+</button>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- SPIELE -->
 
-<section id="games" class="view">
+<section
+  id="games"
+  class="view">
 
-  <div class="card">
+<div class="card">
 
-    <div class="row between">
+<div class="row between">
 
-      <h2>Spiele</h2>
+<h2>
+Spiele verwalten
+</h2>
 
-      <button class="btn primary" id="newGame">
-        ＋ Spiel
-      </button>
+<button
+  id="newGame"
+  class="btn primary">
 
-    </div>
+＋ Spiel
 
-    <div id="gameForm" style="display:none">
+</button>
 
-      <hr>
+</div>
 
-      <h3 id="formTitle">Spiel hinzufügen</h3>
 
-      <input type="hidden" id="editId">
+<div
+  id="gameForm"
+  style="display:none">
 
-      <div class="grid">
+<hr>
 
-        <div class="field">
-          <label>Mannschaft</label>
-          <select id="team"></select>
-        </div>
+<h3
+  id="formTitle">
 
-        <div class="field">
-          <label>Datum</label>
-          <input id="gameDate" type="date">
-        </div>
+Spiel hinzufügen
 
-        <div class="field">
-          <label>Uhrzeit</label>
-          <input id="gameTime" type="time">
-        </div>
+</h3>
 
-        <div class="field">
-          <label>Ort</label>
-          <input id="gamePlace" placeholder="z. B. Sportzentrum">
-        </div>
+<input
+  id="editId"
+  type="hidden">
 
-        <div class="field">
-          <label>Heim</label>
-          <select id="homeClub"></select>
-        </div>
 
-        <div class="field">
-          <label>Gast</label>
-          <select id="awayClub"></select>
-        </div>
+<div class="grid">
 
-      </div>
 
-      <div class="row" style="margin-top:10px">
+<div class="field">
 
-        <button class="btn primary" id="saveGame">
-          Speichern
-        </button>
+<label>
+USV-Mannschaft
+</label>
 
-        <button class="btn secondary" id="cancelGame">
-          Abbrechen
-        </button>
+<select
+  id="ageTeam">
+</select>
 
-      </div>
+</div>
 
-    </div>
 
-  </div>
+<div class="field">
 
-  <div class="card">
-    <div id="gamesList"></div>
-  </div>
+<label>
+Datum
+</label>
+
+<input
+  id="gameDate"
+  type="date">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Uhrzeit
+</label>
+
+<input
+  id="gameTime"
+  type="time">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Ort
+</label>
+
+<input
+  id="gamePlace"
+  placeholder="Sportplatz / Halle">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Heim
+</label>
+
+<select
+  id="homeTeam">
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Gast
+</label>
+
+<select
+  id="awayTeam">
+</select>
+
+</div>
+
+</div>
+
+
+<div
+  class="row"
+  style="margin-top:10px">
+
+<button
+  id="saveGame"
+  class="btn primary">
+
+Speichern
+
+</button>
+
+<button
+  id="cancelGame"
+  class="btn secondary">
+
+Abbrechen
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div id="gamesList"></div>
+
+</div>
 
 </section>
+
 
 <!-- VEREINE -->
 
-<section id="clubs" class="view">
+<section
+  id="clubs"
+  class="view">
 
-  <div class="card">
+<div class="card">
 
-    <h2>🏟️ Vereine & Logos</h2>
+<h2>
+🏟️ Vereinsstamm B–F
+</h2>
 
-    <p class="muted">
-      Vereine werden einmal gespeichert. Danach kannst du sie bei jedem Spiel auswählen.
-    </p>
+<div class="note">
 
-    <div class="grid">
+Die Mannschaften sind bereits
+nach Jugendbereich hinterlegt.
 
-      <div class="field">
-        <label>Vereinsname</label>
-        <input id="clubName" placeholder="z. B. Dresdner SC">
-      </div>
+Die Vereinswappen ergänzen wir
+anschließend zentral.
 
-      <div class="field">
-        <label>Logo PNG / JPG / WEBP</label>
-        <input id="clubLogo" type="file" accept="image/png,image/jpeg,image/webp">
-      </div>
+</div>
 
-    </div>
 
-    <div style="height:10px"></div>
+<div class="grid">
 
-    <button class="btn primary" id="addClub">
-      ＋ Verein speichern
-    </button>
+<div class="field">
 
-  </div>
+<label>
+Neue Mannschaft ergänzen
+</label>
 
-  <div class="card">
-    <div id="clubList" class="club-grid"></div>
-  </div>
+<input
+  id="manualName"
+  placeholder="z. B. Radeberger SV">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Jugend
+</label>
+
+<select
+  id="manualAge">
+
+<option value="B">
+B-Jugend
+</option>
+
+<option value="C">
+C-Jugend
+</option>
+
+<option value="D">
+D-Jugend
+</option>
+
+<option value="E">
+E-Jugend
+</option>
+
+<option value="F">
+F-Jugend
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div style="height:10px"></div>
+
+<button
+  id="addManualClub"
+  class="btn primary">
+
+＋ Ergänzen
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="row between">
+
+<h2>
+Alle Mannschaften
+</h2>
+
+<span
+  id="clubCount"
+  class="tag">
+</span>
+
+</div>
+
+<div
+  id="clubList"
+  class="clublist">
+</div>
+
+</div>
 
 </section>
 
+
 <!-- DESIGN -->
 
-<section id="design" class="view">
+<section
+  id="design"
+  class="view">
 
-  <div class="card">
+<div class="card">
 
-    <h2>🎨 Design / Vorlage</h2>
+<h2>
+🎨 Design
+</h2>
 
-    <p class="muted">
-      Lade hier euren Matchday-Hintergrund hoch. Die App legt anschließend die Spiele darüber.
-    </p>
 
-    <div class="field">
-      <label>Hintergrundbild</label>
-      <input id="background" type="file" accept="image/png,image/jpeg,image/webp">
-    </div>
+<div class="field">
 
-    <div style="height:10px"></div>
+<label>
+Eigener Hintergrund
+</label>
 
-    <div class="grid">
+<input
+  id="background"
+  type="file"
+  accept="image/png,image/jpeg,image/webp">
 
-      <div class="field">
-        <label>Überschrift</label>
-        <input id="designTitle" value="MATCHDAY">
-      </div>
+</div>
 
-      <div class="field">
-        <label>Unterzeile</label>
-        <input id="designSubtitle" value="UNSER WOCHENENDE">
-      </div>
+<div style="height:10px"></div>
 
-    </div>
+<div class="grid">
 
-    <div style="height:10px"></div>
+<div class="field">
 
-    <button class="btn primary" id="saveDesign">
-      Design speichern
-    </button>
+<label>
+Überschrift
+</label>
 
-    <button class="btn danger" id="removeBackground">
-      Hintergrund entfernen
-    </button>
+<input
+  id="designTitle"
+  value="MATCHDAY">
 
-  </div>
+</div>
+
+<div class="field">
+
+<label>
+Unterzeile
+</label>
+
+<input
+  id="designSubtitle"
+  value="UNSER WOCHENENDE">
+
+</div>
+
+</div>
+
+<div style="height:10px"></div>
+
+<button
+  id="saveDesign"
+  class="btn primary">
+
+Design speichern
+
+</button>
+
+<button
+  id="removeBackground"
+  class="btn danger">
+
+Hintergrund entfernen
+
+</button>
+
+</div>
 
 </section>
 
 </main>
+
 </div>
 
+
 <script>
+
 "use strict";
 
-const STORAGE_KEY = "USV_MATCHDAY_FINAL_2";
 
-const DEFAULT_TEAMS = [
-  "A-Jugend",
-  "B-Jugend",
-  "C-Jugend",
-  "D-Jugend",
-  "E-Jugend",
-  "F-Jugend",
-  "Fußballschule"
-];
+const KEY =
+  "USV_MATCHDAY_BF_2627_V2";
 
-const DEFAULT_CLUBS = [
-  {id:"usv",name:"USV TU Dresden",logo:""},
-  {id:"gittersee",name:"SG Gittersee",logo:""},
-  {id:"postsv",name:"Post SV Dresden",logo:""},
-  {id:"wacker",name:"FSG Wacker 90 Dresden-Leuben",logo:""},
-  {id:"serkowitzer",name:"Serkowitzer FSV 2",logo:""},
-  {id:"lok",name:"FSV Lokomotive Dresden",logo:""},
-  {id:"rotation",name:"TSV Rotation Dresden 2",logo:""},
-  {id:"racket",name:"Racket- und Ballsport Dresden 2",logo:""},
-  {id:"loebtau",name:"SpVgg. Dresden-Löbtau 4",logo:""},
-  {id:"fortuna",name:"1. FFC Fortuna Dresden 4",logo:""},
-  {id:"kickers",name:"FV Löbtauer Kickers 3",logo:""},
-  {id:"ullersdorf",name:"SG Ullersdorf",logo:""}
-];
+
+const USV =
+  "USV TU Dresden";
+
+
+/* =============================
+   VEREINSDATEN
+============================= */
+
+
+const PRESETS = {
+
+
+B:[
+
+"USV TU Dresden",
+
+"Dresdner SSV",
+
+"FC Dresden",
+
+"FSG Wacker 90 Dresden-Leuben",
+
+"Post SV Dresden",
+
+"SC Borea Dresden 3",
+
+"SG Bühlau 09 2",
+
+"SG Dölzschen",
+
+"SG Weixdorf 2",
+
+"SV Eintracht Strehlen",
+
+"SpG Neustadt / Trachenberge"
+
+],
+
+
+C:[
+
+"USV TU Dresden",
+
+"TSV Rotation Dresden 2",
+
+"SG Gittersee",
+
+"Serkowitzer FSV 2",
+
+"Racket- und Ballsport Dresden 2",
+
+"SG Bühlau 09 2",
+
+"SG Weißig 2",
+
+"VfB Hellerau-Klotzsche 2"
+
+],
+
+
+D:[
+
+"USV TU Dresden",
+
+"Serkowitzer FSV",
+
+"FSV Lokomotive Dresden",
+
+"SpVgg. Dresden-Löbtau 4",
+
+"1. FFC Fortuna Dresden 4",
+
+"FV Löbtauer Kickers 3",
+
+"SG Gittersee 2",
+
+"SG Ullersdorf"
+
+],
+
+
+E:[
+
+"USV TU Dresden",
+
+"FSG Wacker 90 Dresden-Leuben 3",
+
+"SG Weißig 2",
+
+"SV Eintracht Strehlen 2",
+
+"Serkowitzer FSV 2",
+
+"VfB Hellerau-Klotzsche 3",
+
+"FV Dresden Süd-West 3",
+
+"SG Gittersee 3"
+
+],
+
+
+F:[
+
+"USV TU Dresden",
+
+"SG Dresdner Verkehrsbetriebe",
+
+"TSV Reichenberg-Boxdorf 4"
+
+]
+
+
+};
+
+
+/* =============================
+   HILFSFUNKTIONEN
+============================= */
+
 
 function $(id){
-  return document.getElementById(id);
+
+return document.getElementById(id);
+
 }
 
-function createDatabase(){
-  return {
-    teams:[...DEFAULT_TEAMS],
-    clubs:DEFAULT_CLUBS.map(c=>({...c})),
-    games:[],
-    design:{
-      title:"MATCHDAY",
-      subtitle:"UNSER WOCHENENDE",
-      background:null
-    }
-  };
+
+function makeDatabase(){
+
+return{
+
+games:[],
+
+manual:{
+
+B:[],
+C:[],
+D:[],
+E:[],
+F:[]
+
+},
+
+logos:{},
+
+design:{
+
+title:"MATCHDAY",
+
+subtitle:"UNSER WOCHENENDE",
+
+background:null
+
 }
 
-let database;
+};
+
+}
+
+
+let db;
+
 
 try{
-  database=JSON.parse(localStorage.getItem(STORAGE_KEY));
-}catch(e){
-  database=null;
+
+db =
+JSON.parse(
+localStorage.getItem(KEY)
+)
+||
+makeDatabase();
+
+}catch(error){
+
+db =
+makeDatabase();
+
 }
 
-if(!database){
-  database=createDatabase();
+
+if(!db.games){
+
+db.games=[];
+
 }
 
-if(!Array.isArray(database.teams)){
-  database.teams=[...DEFAULT_TEAMS];
+
+if(!db.manual){
+
+db.manual={
+
+B:[],
+C:[],
+D:[],
+E:[],
+F:[]
+
+};
+
 }
 
-if(!Array.isArray(database.clubs)){
-  database.clubs=[];
+
+if(!db.logos){
+
+db.logos={};
+
 }
 
-if(!Array.isArray(database.games)){
-  database.games=[];
+
+if(!db.design){
+
+db.design={
+
+title:"MATCHDAY",
+
+subtitle:"UNSER WOCHENENDE",
+
+background:null
+
+};
+
 }
 
-if(!database.design){
-  database.design={
-    title:"MATCHDAY",
-    subtitle:"UNSER WOCHENENDE",
-    background:null
-  };
-}
 
-const existingIds=new Set(database.clubs.map(c=>c.id));
+function persist(){
 
-DEFAULT_CLUBS.forEach(club=>{
-  if(!existingIds.has(club.id)){
-    database.clubs.push({...club});
-  }
-});
+try{
 
-function saveDatabase(){
-  try{
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(database)
-    );
-  }catch(e){
-    setStatus("⚠️ Speichern nicht möglich.");
-  }
-}
+localStorage.setItem(
+KEY,
+JSON.stringify(db)
+);
 
-function setStatus(text){
-  $("status").textContent=text;
-}
-
-function escapeHTML(value){
-  return String(value??"").replace(
-    /[&<>"']/g,
-    c=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-    }[c])
-  );
-}
-
-function createId(prefix){
-  return prefix+"_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
-}
-
-function isoDate(date){
-  const d=new Date(
-    date.getTime()-date.getTimezoneOffset()*60000
-  );
-  return d.toISOString().slice(0,10);
-}
-
-function initializeDates(){
-  const today=new Date();
-  const day=today.getDay();
-  const difference=day===0?-6:1-day;
-
-  const monday=new Date(today);
-  monday.setDate(today.getDate()+difference);
-
-  const sunday=new Date(monday);
-  sunday.setDate(monday.getDate()+6);
-
-  $("dateFrom").value=isoDate(monday);
-  $("dateTo").value=isoDate(sunday);
-}
-
-/* NAVIGATION */
-
-function showView(view){
-  document.querySelectorAll(".view").forEach(el=>{
-    el.classList.remove("active");
-  });
-
-  const target=$(view);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  document.querySelectorAll("nav button").forEach(button=>{
-    button.classList.toggle(
-      "active",
-      button.dataset.view===view
-    );
-  });
-
-  renderAll();
-}
-
-document.querySelectorAll("nav button").forEach(button=>{
-  button.addEventListener("click",()=>{
-    showView(button.dataset.view);
-  });
-});
-
-/* VEREINE */
-
-function findClub(id){
-  return database.clubs.find(c=>c.id===id);
-}
-
-function initials(name){
-  return String(name||"V")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0,2)
-    .map(word=>word[0])
-    .join("")
-    .toUpperCase();
-}
-
-function createLogoHTML(club){
-  if(club?.logo){
-    return `
-      <img
-        class="club-logo"
-        src="${club.logo}"
-        alt=""
-      >
-    `;
-  }
-
-  return `
-    <div
-      class="club-logo"
-      style="
-        border-radius:50%;
-        background:linear-gradient(135deg,#173b19,#69b64a);
-        color:white;
-        display:grid;
-        place-items:center;
-        font-size:10px;
-        font-weight:900;
-      "
-    >
-      ${escapeHTML(initials(club?.name))}
-    </div>
-  `;
-}
-
-function fillSelects(){
-  $("team").innerHTML=database.teams.map(team=>{
-    return `<option value="${escapeHTML(team)}">${escapeHTML(team)}</option>`;
-  }).join("");
-
-  const clubs=database.clubs.map(club=>{
-    return `
-      <option value="${escapeHTML(club.id)}">
-        ${escapeHTML(club.name)}
-      </option>
-    `;
-  }).join("");
-
-  $("homeClub").innerHTML=clubs;
-  $("awayClub").innerHTML=clubs;
-}
-
-function renderClubs(){
-  if(!database.clubs.length){
-    $("clubList").innerHTML=
-      '<div class="empty">Noch keine Vereine vorhanden.</div>';
-    return;
-  }
-
-  $("clubList").innerHTML=database.clubs.map(club=>{
-    return `
-      <div class="club">
-
-        ${createLogoHTML(club)}
-
-        <div class="club-name">
-          ${escapeHTML(club.name)}
-        </div>
-
-        <button
-          class="club-delete"
-          data-delete-club="${escapeHTML(club.id)}"
-        >
-          ×
-        </button>
-
-      </div>
-    `;
-  }).join("");
-
-  document.querySelectorAll("[data-delete-club]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      deleteClub(button.dataset.deleteClub);
-    });
-  });
-}
-
-function addClub(){
-  const name=$("clubName").value.trim();
-  const file=$("clubLogo").files[0];
-
-  if(!name){
-    alert("Bitte Vereinsnamen eingeben.");
-    return;
-  }
-
-  if(database.clubs.some(c=>c.name.toLowerCase()===name.toLowerCase())){
-    alert("Dieser Verein ist bereits vorhanden.");
-    return;
-  }
-
-  if(!file){
-    alert("Bitte ein Logo auswählen.");
-    return;
-  }
-
-  if(file.size>2*1024*1024){
-    alert("Das Logo darf maximal 2 MB groß sein.");
-    return;
-  }
-
-  const reader=new FileReader();
-
-  reader.onload=()=>{
-    database.clubs.push({
-      id:createId("club"),
-      name:name,
-      logo:reader.result
-    });
-
-    saveDatabase();
-
-    $("clubName").value="";
-    $("clubLogo").value="";
-
-    renderAll();
-
-    setStatus("✓ Verein und Logo gespeichert");
-  };
-
-  reader.readAsDataURL(file);
-}
-
-function deleteClub(id){
-  const used=database.games.some(game=>{
-    return game.home===id || game.away===id;
-  });
-
-  if(used){
-    alert("Dieser Verein wird noch in einem Spiel verwendet.");
-    return;
-  }
-
-  if(!confirm("Verein wirklich löschen?")){
-    return;
-  }
-
-  database.clubs=database.clubs.filter(c=>c.id!==id);
-
-  saveDatabase();
-  renderAll();
-
-  setStatus("✓ Verein gelöscht");
-}
-
-$("addClub").addEventListener("click",addClub);
-
-/* SPIELE */
-
-function openGameForm(id=null){
-  fillSelects();
-
-  $("gameForm").style.display="block";
-  $("editId").value=id||"";
-
-  if(id){
-    const game=database.games.find(g=>g.id===id);
-
-    if(!game){
-      return;
-    }
-
-    $("formTitle").textContent="Spiel bearbeiten";
-    $("team").value=game.team;
-    $("gameDate").value=game.date;
-    $("gameTime").value=game.time;
-    $("gamePlace").value=game.place;
-    $("homeClub").value=game.home;
-    $("awayClub").value=game.away;
-
-  }else{
-    $("formTitle").textContent="Spiel hinzufügen";
-
-    $("gameDate").value=$("dateFrom").value;
-    $("gameTime").value="10:00";
-    $("gamePlace").value="";
-
-    if(database.clubs.length>=2){
-      $("homeClub").value=database.clubs[0].id;
-      $("awayClub").value=database.clubs[1].id;
-    }
-  }
-}
-
-function closeGameForm(){
-  $("gameForm").style.display="none";
-}
-
-function saveGame(){
-  const home=$("homeClub").value;
-  const away=$("awayClub").value;
-
-  if(!home||!away){
-    alert("Bitte Heim- und Gastverein auswählen.");
-    return;
-  }
-
-  if(home===away){
-    alert("Heim- und Gastverein dürfen nicht identisch sein.");
-    return;
-  }
-
-  if(!$("gameDate").value){
-    alert("Bitte ein Datum auswählen.");
-    return;
-  }
-
-  const game={
-    id:$("editId").value||createId("game"),
-    team:$("team").value,
-    date:$("gameDate").value,
-    time:$("gameTime").value,
-    place:$("gamePlace").value.trim(),
-    home:home,
-    away:away
-  };
-
-  const index=database.games.findIndex(g=>g.id===game.id);
-
-  if(index>=0){
-    database.games[index]=game;
-  }else{
-    database.games.push(game);
-  }
-
-  saveDatabase();
-  closeGameForm();
-  renderAll();
-  createGraphic();
-
-  setStatus("✓ Spiel gespeichert");
-}
-
-function editGame(id){
-  showView("games");
-  openGameForm(id);
-}
-
-function deleteGame(id){
-  if(!confirm("Spiel wirklich löschen?")){
-    return;
-  }
-
-  database.games=database.games.filter(g=>g.id!==id);
-
-  saveDatabase();
-  renderAll();
-  createGraphic();
-
-  setStatus("✓ Spiel gelöscht");
-}
-
-function formatDate(date){
-  if(!date){
-    return "–";
-  }
-
-  return new Date(date+"T12:00").toLocaleDateString(
-    "de-DE",
-    {
-      weekday:"short",
-      day:"2-digit",
-      month:"2-digit"
-    }
-  );
-}
-
-function gameHTML(game){
-  const home=findClub(game.home);
-  const away=findClub(game.away);
-
-  return `
-    <div class="game">
-
-      <div class="game-top">
-
-        <span class="tag">
-          ${escapeHTML(game.team)}
-        </span>
-
-        <div class="game-actions">
-
-          <button
-            class="btn secondary"
-            data-edit-game="${escapeHTML(game.id)}"
-          >
-            ✎
-          </button>
-
-          <button
-            class="btn danger"
-            data-delete-game="${escapeHTML(game.id)}"
-          >
-            🗑
-          </button>
-
-        </div>
-
-      </div>
-
-      <div class="game-main">
-
-        <div class="team">
-          ${createLogoHTML(home)}
-          ${escapeHTML(home?.name||"Heim")}
-        </div>
-
-        <div class="vs">
-          VS.
-        </div>
-
-        <div class="team">
-          ${createLogoHTML(away)}
-          ${escapeHTML(away?.name||"Gast")}
-        </div>
-
-      </div>
-
-      <div class="muted">
-        📅 ${formatDate(game.date)}
-        ·
-        ⏰ ${escapeHTML(game.time||"–")}
-        ·
-        📍 ${escapeHTML(game.place||"–")}
-      </div>
-
-    </div>
-  `;
-}
-
-function bindGameButtons(container){
-  container.querySelectorAll("[data-edit-game]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      editGame(button.dataset.editGame);
-    });
-  });
-
-  container.querySelectorAll("[data-delete-game]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      deleteGame(button.dataset.deleteGame);
-    });
-  });
-}
-
-function renderGames(){
-  const games=[...database.games].sort((a,b)=>{
-    return (a.date||"").localeCompare(b.date||"")
-      || (a.time||"").localeCompare(b.time||"");
-  });
-
-  if(!games.length){
-    $("gamesList").innerHTML=
-      '<div class="empty">Noch keine Spiele angelegt.</div>';
-    return;
-  }
-
-  $("gamesList").innerHTML=games.map(gameHTML).join("");
-
-  bindGameButtons($("gamesList"));
-}
-
-$("newGame").addEventListener("click",()=>{
-  openGameForm();
-});
-
-$("dashboardAddGame").addEventListener("click",()=>{
-  showView("games");
-  openGameForm();
-});
-
-$("saveGame").addEventListener("click",saveGame);
-$("cancelGame").addEventListener("click",closeGameForm);
-
-/* WOCHENENDE */
-
-function getWeekendGames(){
-  const from=$("dateFrom").value;
-  const to=$("dateTo").value;
-
-  return database.games
-    .filter(game=>{
-      return (!from||game.date>=from)
-        && (!to||game.date<=to);
-    })
-    .sort((a,b)=>{
-      return (a.date||"").localeCompare(b.date||"")
-        || (a.time||"").localeCompare(b.time||"");
-    });
-}
-
-function renderHome(){
-  const games=getWeekendGames();
-
-  $("gameCount").textContent=
-    games.length+" Spiel"+(games.length===1?"":"e");
-
-  if(!games.length){
-    $("homeGames").innerHTML=
-      '<div class="empty">Für diesen Zeitraum sind noch keine Spiele angelegt.</div>';
-    return;
-  }
-
-  $("homeGames").innerHTML=games.map(gameHTML).join("");
-
-  bindGameButtons($("homeGames"));
-}
-
-$("dateFrom").addEventListener("change",()=>{
-  renderHome();
-  createGraphic();
-});
-
-$("dateTo").addEventListener("change",()=>{
-  renderHome();
-  createGraphic();
-});
-
-/* DESIGN */
-
-function saveDesign(){
-  database.design.title=
-    $("designTitle").value.trim()||"MATCHDAY";
-
-  database.design.subtitle=
-    $("designSubtitle").value.trim()||"UNSER WOCHENENDE";
-
-  const file=$("background").files[0];
-
-  if(!file){
-    saveDatabase();
-    createGraphic();
-    setStatus("✓ Design gespeichert");
-    return;
-  }
-
-  if(file.size>5*1024*1024){
-    alert("Das Hintergrundbild darf maximal 5 MB groß sein.");
-    return;
-  }
-
-  const reader=new FileReader();
-
-  reader.onload=()=>{
-    database.design.background=reader.result;
-
-    saveDatabase();
-    createGraphic();
-
-    setStatus("✓ Design und Hintergrund gespeichert");
-  };
-
-  reader.readAsDataURL(file);
-}
-
-$("saveDesign").addEventListener("click",saveDesign);
-
-$("removeBackground").addEventListener("click",()=>{
-  database.design.background=null;
-
-  saveDatabase();
-  createGraphic();
-
-  setStatus("✓ Hintergrund entfernt");
-});
-
-/* CANVAS */
-
-function roundRect(ctx,x,y,w,h,r){
-  ctx.beginPath();
-
-  if(typeof ctx.roundRect==="function"){
-    ctx.roundRect(x,y,w,h,r);
-    return;
-  }
-
-  const radius=Math.min(r,w/2,h/2);
-
-  ctx.moveTo(x+radius,y);
-  ctx.lineTo(x+w-radius,y);
-  ctx.quadraticCurveTo(x+w,y,x+w,y+radius);
-  ctx.lineTo(x+w,y+h-radius);
-  ctx.quadraticCurveTo(x+w,y+h,x+w-radius,y+h);
-  ctx.lineTo(x+radius,y+h);
-  ctx.quadraticCurveTo(x,y+h,x,y+h-radius);
-  ctx.lineTo(x,y+radius);
-  ctx.quadraticCurveTo(x,y,x+radius,y);
-}
-
-function drawCover(ctx,image,W,H){
-  const scale=Math.max(
-    W/image.width,
-    H/image.height
-  );
-
-  const width=image.width*scale;
-  const height=image.height*scale;
-
-  ctx.drawImage(
-    image,
-    (W-width)/2,
-    (H-height)/2,
-    width,
-    height
-  );
-}
-
-function shorten(text){
-  text=String(text||"");
-
-  if(text.length<=25){
-    return text;
-  }
-
-  return text.slice(0,23)+"…";
-}
-
-function drawCanvasLogo(ctx,source,x,y,size){
-  if(!source){
-    ctx.strokeStyle="#2f8f24";
-    ctx.lineWidth=3;
-    ctx.beginPath();
-    ctx.arc(
-      x+size/2,
-      y+size/2,
-      size/2-3,
-      0,
-      Math.PI*2
-    );
-    ctx.stroke();
-    return;
-  }
-
-  const image=new Image();
-
-  image.onload=()=>{
-    ctx.drawImage(
-      image,
-      x,
-      y,
-      size,
-      size
-    );
-  };
-
-  image.src=source;
-}
-
-function drawGraphicContent(ctx,W,H){
-  if(!database.design.background){
-    const gradient=ctx.createLinearGradient(0,0,0,H);
-
-    gradient.addColorStop(0,"#f8fbf7");
-    gradient.addColorStop(.35,"#dcefd5");
-    gradient.addColorStop(.72,"#8fca70");
-    gradient.addColorStop(1,"#173b19");
-
-    ctx.fillStyle=gradient;
-    ctx.fillRect(0,0,W,H);
-  }
-
-  ctx.textAlign="center";
-
-  ctx.fillStyle="#173b19";
-  ctx.font="900 50px Arial";
-  ctx.fillText("USV TU DRESDEN",W/2,70);
-
-  ctx.fillStyle="#2f8f24";
-  ctx.font="900 92px Arial";
-  ctx.fillText(database.design.title,W/2,150);
-
-  ctx.fillStyle="#173b19";
-  ctx.font="700 30px Arial";
-  ctx.fillText(database.design.subtitle,W/2,200);
-
-  const games=getWeekendGames().slice(0,6);
-
-  let y=240;
-  let lastDay="";
-
-  games.forEach(game=>{
-    if(y>H-220){
-      return;
-    }
-
-    const day=new Date(
-      game.date+"T12:00"
-    ).toLocaleDateString(
-      "de-DE",
-      {weekday:"long"}
-    );
-
-    if(day!==lastDay){
-      ctx.fillStyle="#2f8f24";
-      ctx.font="900 27px Arial";
-      ctx.fillText(day.toUpperCase(),W/2,y);
-
-      y+=40;
-      lastDay=day;
-    }
-
-    ctx.fillStyle="rgba(255,255,255,.93)";
-
-    roundRect(
-      ctx,
-      55,
-      y,
-      W-110,
-      135,
-      18
-    );
-
-    ctx.fill();
-
-    ctx.fillStyle="#173b19";
-    ctx.font="900 21px Arial";
-    ctx.fillText(game.team,W/2,y+28);
-
-    const home=findClub(game.home);
-    const away=findClub(game.away);
-
-    drawCanvasLogo(
-      ctx,
-      home?.logo,
-      W/2-300,
-      y+48,
-      62
-    );
-
-    drawCanvasLogo(
-      ctx,
-      away?.logo,
-      W/2+238,
-      y+48,
-      62
-    );
-
-    ctx.fillStyle="#173b19";
-    ctx.font="700 18px Arial";
-
-    ctx.fillText(
-      shorten(home?.name||"Heim"),
-      W/2-190,
-      y+75
-    );
-
-    ctx.fillText(
-      shorten(away?.name||"Gast"),
-      W/2+190,
-      y+75
-    );
-
-    ctx.fillStyle="#2f8f24";
-    ctx.font="900 21px Arial";
-    ctx.fillText("VS.",W/2,y+78);
-
-    ctx.fillStyle="#596159";
-    ctx.font="600 16px Arial";
-
-    ctx.fillText(
-      (game.time||"")
-      +(game.place?"  ·  "+game.place:""),
-      W/2,
-      y+108
-    );
-
-    y+=148;
-  });
-
-  ctx.fillStyle="#173b19";
-  ctx.font="700 16px Arial";
-
-  ctx.fillText(
-    "FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",
-    W/2,
-    H-22
-  );
-}
-
-function createGraphic(){
-  const canvas=$("preview");
-  const ctx=canvas.getContext("2d");
-
-  const W=canvas.width;
-  const H=canvas.height;
-
-  ctx.clearRect(0,0,W,H);
-
-  if(database.design.background){
-    const image=new Image();
-
-    image.onload=()=>{
-      drawCover(ctx,image,W,H);
-
-      ctx.fillStyle="rgba(255,255,255,.78)";
-      ctx.fillRect(0,0,W,H);
-
-      drawGraphicContent(ctx,W,H);
-    };
-
-    image.onerror=()=>{
-      database.design.background=null;
-      drawGraphicContent(ctx,W,H);
-    };
-
-    image.src=database.design.background;
-
-  }else{
-    drawGraphicContent(ctx,W,H);
-  }
-}
-
-$("createGraphic").addEventListener("click",()=>{
-  createGraphic();
-
-  $("preview").scrollIntoView({
-    behavior:"smooth",
-    block:"center"
-  });
-
-  setStatus("✓ Matchday-Vorschau aktualisiert");
-});
-
-/* DOWNLOAD */
-
-$("downloadImage").addEventListener("click",()=>{
-  createGraphic();
-
-  setTimeout(()=>{
-    const link=document.createElement("a");
-
-    link.download="USV-Matchday.png";
-    link.href=$("preview").toDataURL("image/png");
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setStatus("✓ PNG wurde erstellt");
-  },600);
-});
-
-/* TEILEN */
-
-$("shareImage").addEventListener("click",()=>{
-  createGraphic();
-
-  setTimeout(()=>{
-    $("preview").toBlob(async blob=>{
-      if(!blob){
-        alert("Bild konnte nicht erstellt werden.");
-        return;
-      }
-
-      const file=new File(
-        [blob],
-        "USV-Matchday.png",
-        {type:"image/png"}
-      );
-
-      try{
-        if(
-          navigator.share &&
-          navigator.canShare &&
-          navigator.canShare({files:[file]})
-        ){
-          await navigator.share({
-            files:[file],
-            title:"USV Matchday"
-          });
-        }else{
-          $("downloadImage").click();
-        }
-      }catch(error){
-        /* Teilen wurde abgebrochen */
-      }
-    },"image/png");
-  },600);
-});
-
-/* RENDER */
-
-function renderAll(){
-  fillSelects();
-  renderClubs();
-  renderGames();
-  renderHome();
-
-  $("designTitle").value=
-    database.design.title||"MATCHDAY";
-
-  $("designSubtitle").value=
-    database.design.subtitle||"UNSER WOCHENENDE";
-}
-
-/* START */
-
-initializeDates();
-renderAll();
-createGraphic();
-saveDatabase();
+}catch(error){
 
 setStatus(
-  "● App bereit · "+
-  database.clubs.length+
-  " Vereine geladen"
+"⚠️ Speichern nicht möglich"
+);
+
+}
+
+}
+
+
+function setStatus(text){
+
+$("status").textContent =
+text;
+
+}
+
+
+function escapeHTML(value){
+
+return String(
+value ?? ""
+)
+.replace(
+/[&<>"']/g,
+character =>({
+
+"&":"&amp;",
+
+"<":"&lt;",
+
+">":"&gt;",
+
+'"':"&quot;",
+
+"'":"&#39;"
+
+}[character])
+
+);
+
+}
+
+
+function createId(){
+
+return(
+"g_"
++
+Date.now()
++
+"_"
++
+Math.random()
+.toString(36)
+.slice(2,8)
+);
+
+}
+
+
+function ageLabel(age){
+
+return age+"-Jugend";
+
+}
+
+
+function teamsForAge(age){
+
+return[
+...new Set([
+
+...(PRESETS[age] || []),
+
+...(db.manual[age] || [])
+
+])
+
+];
+
+}
+
+
+function allEntries(){
+
+const map =
+new Map();
+
+
+["B","C","D","E","F"]
+.forEach(age=>{
+
+teamsForAge(age)
+.forEach(name=>{
+
+if(
+!map.has(name)
+){
+
+map.set(
+name,
+new Set()
+);
+
+}
+
+map
+.get(name)
+.add(age);
+
+});
+
+});
+
+
+return[
+...map.entries()
+]
+.map(
+([name,ages])=>({
+
+name:name,
+
+ages:[...ages]
+
+})
+)
+.sort(
+(a,b)=>
+a.name.localeCompare(
+b.name,
+"de"
+)
+);
+
+}
+
+
+function initials(name){
+
+return String(name)
+
+.split(/\s+/)
+
+.filter(Boolean)
+
+.slice(0,2)
+
+.map(
+word =>
+word[0]
+)
+
+.join("")
+
+.toUpperCase();
+
+}
+
+
+function logoHTML(name){
+
+const source =
+db.logos[name];
+
+
+if(source){
+
+return`
+
+<div class="logo">
+
+<img
+src="${source}"
+alt="">
+
+</div>
+
+`;
+
+}
+
+
+return`
+
+<div class="logo">
+
+${escapeHTML(
+initials(name)
+)}
+
+</div>
+
+`;
+
+}
+
+
+function isoDate(date){
+
+const shifted =
+new Date(
+date.getTime()
+-
+date.getTimezoneOffset()
+*
+60000
+);
+
+return shifted
+.toISOString()
+.slice(0,10);
+
+}
+
+
+function initializeDates(){
+
+const today =
+new Date();
+
+
+const day =
+today.getDay();
+
+
+const difference =
+day === 0
+?
+-6
+:
+1-day;
+
+
+const monday =
+new Date(today);
+
+
+monday.setDate(
+today.getDate()
++
+difference
+);
+
+
+const sunday =
+new Date(monday);
+
+
+sunday.setDate(
+monday.getDate()
++
+6
+);
+
+
+$("dateFrom").value =
+isoDate(monday);
+
+
+$("dateTo").value =
+isoDate(sunday);
+
+}
+
+
+/* =============================
+   NAVIGATION
+============================= */
+
+
+function showView(view){
+
+document
+.querySelectorAll(
+".view"
+)
+.forEach(
+element =>
+element.classList.remove(
+"active"
+)
+);
+
+
+$(view)
+.classList.add(
+"active"
+);
+
+
+document
+.querySelectorAll(
+"nav button"
+)
+.forEach(
+button =>
+button.classList.toggle(
+"active",
+button.dataset.view === view
+)
+);
+
+
+renderAll();
+
+}
+
+
+document
+.querySelectorAll(
+"nav button"
+)
+.forEach(
+button =>{
+
+button.addEventListener(
+"click",
+()=>showView(
+button.dataset.view
+)
+);
+
+}
+);
+
+
+/* =============================
+   AUSWAHLLISTEN
+============================= */
+
+
+function fillAgeSelect(){
+
+$("ageTeam").innerHTML =
+
+["B","C","D","E","F"]
+
+.map(
+age =>`
+
+<option value="${age}">
+
+${age}-Jugend
+
+</option>
+
+`
+)
+
+.join("");
+
+}
+
+
+function fillTeamSelects(
+age,
+homeValue="",
+awayValue=""
+){
+
+const teams =
+teamsForAge(age);
+
+
+const options =
+teams
+.map(
+name =>`
+
+<option
+value="${escapeHTML(name)}">
+
+${escapeHTML(name)}
+
+</option>
+
+`
+)
+.join("");
+
+
+$("homeTeam").innerHTML =
+options;
+
+
+$("awayTeam").innerHTML =
+options;
+
+
+if(
+homeValue
+&&
+teams.includes(homeValue)
+){
+
+$("homeTeam").value =
+homeValue;
+
+}else{
+
+$("homeTeam").value =
+USV;
+
+}
+
+
+if(
+awayValue
+&&
+teams.includes(awayValue)
+){
+
+$("awayTeam").value =
+awayValue;
+
+}else{
+
+const opponent =
+teams.find(
+name =>
+name !== USV
+);
+
+
+if(opponent){
+
+$("awayTeam").value =
+opponent;
+
+}
+
+}
+
+}
+
+
+$("ageTeam")
+.addEventListener(
+"change",
+()=>{
+
+fillTeamSelects(
+$("ageTeam").value
+);
+
+}
+);
+
+
+/* =============================
+   SPIELFORMULAR
+============================= */
+
+
+function openGame(id=null){
+
+fillAgeSelect();
+
+
+$("gameForm")
+.style.display =
+"block";
+
+
+$("editId").value =
+id || "";
+
+
+if(id){
+
+const game =
+db.games.find(
+entry =>
+entry.id === id
+);
+
+
+if(!game){
+
+return;
+
+}
+
+
+$("formTitle")
+.textContent =
+"Spiel bearbeiten";
+
+
+$("ageTeam").value =
+game.age;
+
+
+fillTeamSelects(
+game.age,
+game.home,
+game.away
+);
+
+
+$("gameDate").value =
+game.date;
+
+
+$("gameTime").value =
+game.time;
+
+
+$("gamePlace").value =
+game.place || "";
+
+
+}else{
+
+
+$("formTitle")
+.textContent =
+"Spiel hinzufügen";
+
+
+$("ageTeam").value =
+"B";
+
+
+fillTeamSelects(
+"B"
+);
+
+
+$("gameDate").value =
+$("dateFrom").value;
+
+
+$("gameTime").value =
+"10:00";
+
+
+$("gamePlace").value =
+"";
+
+}
+
+}
+
+
+function saveGame(){
+
+const game={
+
+id:
+$("editId").value
+||
+createId(),
+
+age:
+$("ageTeam").value,
+
+date:
+$("gameDate").value,
+
+time:
+$("gameTime").value,
+
+place:
+$("gamePlace")
+.value
+.trim(),
+
+home:
+$("homeTeam").value,
+
+away:
+$("awayTeam").value
+
+};
+
+
+if(!game.date){
+
+alert(
+"Bitte Datum auswählen."
+);
+
+return;
+
+}
+
+
+if(
+game.home === game.away
+){
+
+alert(
+"Heim und Gast dürfen nicht identisch sein."
+);
+
+return;
+
+}
+
+
+const index =
+db.games.findIndex(
+entry =>
+entry.id === game.id
+);
+
+
+if(index >= 0){
+
+db.games[index] =
+game;
+
+}else{
+
+db.games.push(
+game
+);
+
+}
+
+
+persist();
+
+
+$("gameForm")
+.style.display =
+"none";
+
+
+renderAll();
+
+createGraphic();
+
+
+setStatus(
+"✓ Spiel gespeichert"
+);
+
+}
+
+
+function removeGame(id){
+
+if(
+!confirm(
+"Spiel löschen?"
+)
+){
+
+return;
+
+}
+
+
+db.games =
+db.games.filter(
+game =>
+game.id !== id
+);
+
+
+persist();
+
+renderAll();
+
+createGraphic();
+
+}
+
+
+function editGame(id){
+
+showView(
+"games"
+);
+
+openGame(id);
+
+}
+
+
+function formatDate(date){
+
+if(!date){
+
+return "–";
+
+}
+
+
+return new Date(
+date+"T12:00"
+)
+.toLocaleDateString(
+"de-DE",
+{
+
+weekday:"short",
+
+day:"2-digit",
+
+month:"2-digit"
+
+}
+);
+
+}
+
+
+/* =============================
+   SPIELANZEIGE
+============================= */
+
+
+function gameHTML(game){
+
+return`
+
+<div class="game">
+
+<div class="game-top">
+
+<span class="tag">
+
+${game.age}-Jugend
+
+</span>
+
+
+<div class="actions">
+
+<button
+class="secondary"
+data-edit="${game.id}">
+
+✎
+
+</button>
+
+
+<button
+class="danger"
+data-delete="${game.id}">
+
+🗑
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="game-main">
+
+
+<div class="teamname">
+
+${logoHTML(
+game.home
+)}
+
+${escapeHTML(
+game.home
+)}
+
+</div>
+
+
+<div class="vs">
+
+VS.
+
+</div>
+
+
+<div class="teamname">
+
+${logoHTML(
+game.away
+)}
+
+${escapeHTML(
+game.away
+)}
+
+</div>
+
+
+</div>
+
+
+<div class="muted">
+
+📅
+${formatDate(
+game.date
+)}
+
+·
+
+⏰
+${escapeHTML(
+game.time || "–"
+)}
+
+·
+
+📍
+${escapeHTML(
+game.place || "–"
+)}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function bindGameButtons(root){
+
+root
+.querySelectorAll(
+"[data-edit]"
+)
+.forEach(
+button =>{
+
+button.addEventListener(
+"click",
+()=>editGame(
+button.dataset.edit
+)
+);
+
+}
+);
+
+
+root
+.querySelectorAll(
+"[data-delete]"
+)
+.forEach(
+button =>{
+
+button.addEventListener(
+"click",
+()=>removeGame(
+button.dataset.delete
+)
+);
+
+}
+);
+
+}
+
+
+function weekendGames(){
+
+const from =
+$("dateFrom").value;
+
+
+const to =
+$("dateTo").value;
+
+
+return db.games
+
+.filter(
+game =>
+
+(
+!from
+||
+game.date >= from
+)
+
+&&
+
+(
+!to
+||
+game.date <= to
+)
+
+)
+
+.sort(
+(a,b)=>
+
+(a.date || "")
+.localeCompare(
+b.date || ""
+)
+
+||
+
+(a.time || "")
+.localeCompare(
+b.time || ""
+)
+
+);
+
+}
+
+
+function renderGames(){
+
+const games =
+[...db.games]
+.sort(
+(a,b)=>
+
+(a.date || "")
+.localeCompare(
+b.date || ""
+)
+
+);
+
+
+if(
+games.length === 0
+){
+
+$("gamesList")
+.innerHTML =
+
+'<div class="empty">Noch keine Spiele angelegt.</div>';
+
+return;
+
+}
+
+
+$("gamesList")
+.innerHTML =
+games
+.map(gameHTML)
+.join("");
+
+
+bindGameButtons(
+$("gamesList")
+);
+
+}
+
+
+function renderHome(){
+
+const games =
+weekendGames();
+
+
+$("gameCount")
+.textContent =
+
+games.length
++
+" Spiel"
++
+(
+games.length === 1
+?
+""
+:
+"e"
+);
+
+
+if(
+games.length === 0
+){
+
+$("homeGames")
+.innerHTML =
+
+'<div class="empty">Für dieses Wochenende sind noch keine Spiele angelegt.</div>';
+
+return;
+
+}
+
+
+$("homeGames")
+.innerHTML =
+
+games
+.map(gameHTML)
+.join("");
+
+
+bindGameButtons(
+$("homeGames")
+);
+
+}
+
+
+/* =============================
+   VEREINSLISTE
+============================= */
+
+
+function renderClubs(){
+
+const entries =
+allEntries();
+
+
+$("clubCount")
+.textContent =
+
+entries.length
++
+" Einträge";
+
+
+$("clubList")
+.innerHTML =
+
+entries
+.map(
+entry =>`
+
+<div class="club">
+
+${logoHTML(
+entry.name
+)}
+
+<div class="clubtext">
+
+<div class="clubname">
+
+${escapeHTML(
+entry.name
+)}
+
+</div>
+
+<div class="ages">
+
+${entry.ages
+.map(ageLabel)
+.join(" · ")}
+
+</div>
+
+</div>
+
+</div>
+
+`
+)
+.join("");
+
+}
+
+
+function addManualTeam(){
+
+const name =
+$("manualName")
+.value
+.trim();
+
+
+const age =
+$("manualAge").value;
+
+
+if(!name){
+
+return;
+
+}
+
+
+if(!db.manual[age]){
+
+db.manual[age]=[];
+
+}
+
+
+if(
+!teamsForAge(age)
+.includes(name)
+){
+
+db.manual[age]
+.push(name);
+
+}
+
+
+$("manualName").value =
+"";
+
+
+persist();
+
+renderAll();
+
+
+setStatus(
+"✓ Mannschaft ergänzt"
+);
+
+}
+
+
+/* =============================
+   BUTTONS
+============================= */
+
+
+$("newGame")
+.addEventListener(
+"click",
+()=>openGame()
+);
+
+
+$("addDashboard")
+.addEventListener(
+"click",
+()=>{
+
+showView(
+"games"
+);
+
+openGame();
+
+}
+);
+
+
+$("cancelGame")
+.addEventListener(
+"click",
+()=>{
+
+$("gameForm")
+.style.display =
+"none";
+
+}
+);
+
+
+$("saveGame")
+.addEventListener(
+"click",
+saveGame
+);
+
+
+$("addManualClub")
+.addEventListener(
+"click",
+addManualTeam
+);
+
+
+$("dateFrom")
+.addEventListener(
+"change",
+()=>{
+
+renderHome();
+
+createGraphic();
+
+}
+);
+
+
+$("dateTo")
+.addEventListener(
+"change",
+()=>{
+
+renderHome();
+
+createGraphic();
+
+}
+);
+
+
+/* =============================
+   DESIGN
+============================= */
+
+
+$("saveDesign")
+.addEventListener(
+"click",
+()=>{
+
+
+db.design.title =
+
+$("designTitle")
+.value
+.trim()
+
+||
+
+"MATCHDAY";
+
+
+db.design.subtitle =
+
+$("designSubtitle")
+.value
+.trim()
+
+||
+
+"UNSER WOCHENENDE";
+
+
+const file =
+$("background")
+.files[0];
+
+
+if(!file){
+
+persist();
+
+createGraphic();
+
+setStatus(
+"✓ Design gespeichert"
+);
+
+return;
+
+}
+
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+()=>{
+
+db.design.background =
+reader.result;
+
+
+persist();
+
+createGraphic();
+
+
+setStatus(
+"✓ Hintergrund gespeichert"
+);
+
+};
+
+
+reader.readAsDataURL(
+file
+);
+
+
+}
+);
+
+
+$("removeBackground")
+.addEventListener(
+"click",
+()=>{
+
+
+db.design.background =
+null;
+
+
+persist();
+
+createGraphic();
+
+
+setStatus(
+"✓ Hintergrund entfernt"
+);
+
+
+}
+);
+
+
+/* =============================
+   GRAFIK
+============================= */
+
+
+function roundedRect(
+ctx,
+x,
+y,
+width,
+height,
+radius
+){
+
+ctx.beginPath();
+
+
+if(
+typeof ctx.roundRect ===
+"function"
+){
+
+ctx.roundRect(
+x,
+y,
+width,
+height,
+radius
+);
+
+}else{
+
+ctx.rect(
+x,
+y,
+width,
+height
+);
+
+}
+
+}
+
+
+function shorten(text){
+
+text =
+String(
+text || ""
+);
+
+
+return(
+text.length > 26
+?
+text.slice(
+0,
+24
+)
++
+"…"
+:
+text
+);
+
+}
+
+
+function drawGraphicContent(
+ctx,
+width,
+height
+){
+
+if(
+!db.design.background
+){
+
+const gradient =
+ctx.createLinearGradient(
+0,
+0,
+0,
+height
+);
+
+
+gradient.addColorStop(
+0,
+"#f8fbf7"
+);
+
+
+gradient.addColorStop(
+.38,
+"#dcefd5"
+);
+
+
+gradient.addColorStop(
+.74,
+"#8fca70"
+);
+
+
+gradient.addColorStop(
+1,
+"#173b19"
+);
+
+
+ctx.fillStyle =
+gradient;
+
+
+ctx.fillRect(
+0,
+0,
+width,
+height
+);
+
+}
+
+
+ctx.textAlign =
+"center";
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"900 50px Arial";
+
+
+ctx.fillText(
+"USV TU DRESDEN",
+width/2,
+70
+);
+
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.font =
+"900 92px Arial";
+
+
+ctx.fillText(
+db.design.title,
+width/2,
+150
+);
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"700 30px Arial";
+
+
+ctx.fillText(
+db.design.subtitle,
+width/2,
+200
+);
+
+
+const games =
+weekendGames()
+.slice(
+0,
+6
+);
+
+
+let y =
+245;
+
+
+let lastDay =
+"";
+
+
+games.forEach(
+game =>{
+
+
+if(
+y >
+height-205
+){
+
+return;
+
+}
+
+
+const day =
+
+new Date(
+game.date+
+"T12:00"
+)
+.toLocaleDateString(
+"de-DE",
+{
+
+weekday:"long"
+
+}
+);
+
+
+if(
+day !== lastDay
+){
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.font =
+"900 27px Arial";
+
+
+ctx.fillText(
+day.toUpperCase(),
+width/2,
+y
+);
+
+
+y +=
+38;
+
+
+lastDay =
+day;
+
+}
+
+
+ctx.fillStyle =
+"rgba(255,255,255,.93)";
+
+
+roundedRect(
+ctx,
+55,
+y,
+width-110,
+132,
+18
+);
+
+
+ctx.fill();
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"900 21px Arial";
+
+
+ctx.fillText(
+game.age+
+"-JUGEND",
+width/2,
+y+27
+);
+
+
+ctx.font =
+"700 18px Arial";
+
+
+ctx.fillText(
+shorten(
+game.home
+),
+width/2-205,
+y+68
+);
+
+
+ctx.fillText(
+shorten(
+game.away
+),
+width/2+205,
+y+68
+);
+
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.font =
+"900 22px Arial";
+
+
+ctx.fillText(
+"VS.",
+width/2,
+y+69
+);
+
+
+ctx.fillStyle =
+"#596159";
+
+
+ctx.font =
+"600 16px Arial";
+
+
+ctx.fillText(
+
+(
+game.time || ""
+)
+
++
+
+(
+game.place
+?
+"  ·  "
++
+game.place
+:
+""
+),
+
+width/2,
+
+y+103
+
+);
+
+
+y +=
+145;
+
+
+}
+);
+
+
+ctx.fillStyle =
+"#173b19";
+
+
+ctx.font =
+"700 16px Arial";
+
+
+ctx.fillText(
+"FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",
+width/2,
+height-22
+);
+
+}
+
+
+function createGraphic(){
+
+const canvas =
+$("preview");
+
+
+const ctx =
+canvas.getContext(
+"2d"
+);
+
+
+const width =
+canvas.width;
+
+
+const height =
+canvas.height;
+
+
+ctx.clearRect(
+0,
+0,
+width,
+height
+);
+
+
+if(
+db.design.background
+){
+
+const image =
+new Image();
+
+
+image.onload =
+()=>{
+
+
+const scale =
+Math.max(
+
+width/image.width,
+
+height/image.height
+
+);
+
+
+const imageWidth =
+image.width
+*
+scale;
+
+
+const imageHeight =
+image.height
+*
+scale;
+
+
+ctx.drawImage(
+
+image,
+
+(width-imageWidth)/2,
+
+(height-imageHeight)/2,
+
+imageWidth,
+
+imageHeight
+
+);
+
+
+ctx.fillStyle =
+"rgba(255,255,255,.78)";
+
+
+ctx.fillRect(
+0,
+0,
+width,
+height
+);
+
+
+drawGraphicContent(
+ctx,
+width,
+height
+);
+
+
+};
+
+
+image.src =
+db.design.background;
+
+
+}else{
+
+
+drawGraphicContent(
+ctx,
+width,
+height
+);
+
+
+}
+
+}
+
+
+/* =============================
+   BILD ERSTELLEN
+============================= */
+
+
+$("makeGraphic")
+.addEventListener(
+"click",
+()=>{
+
+
+createGraphic();
+
+
+$("preview")
+.scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+
+setStatus(
+"✓ Matchday aktualisiert"
+);
+
+
+}
+);
+
+
+/* =============================
+   DOWNLOAD
+============================= */
+
+
+$("downloadImage")
+.addEventListener(
+"click",
+()=>{
+
+
+createGraphic();
+
+
+setTimeout(
+()=>{
+
+
+const link =
+document.createElement(
+"a"
+);
+
+
+link.download =
+"USV-Matchday.png";
+
+
+link.href =
+$("preview")
+.toDataURL(
+"image/png"
+);
+
+
+link.click();
+
+
+},
+300
+);
+
+
+}
+);
+
+
+/* =============================
+   TEILEN
+============================= */
+
+
+$("shareImage")
+.addEventListener(
+"click",
+()=>{
+
+
+createGraphic();
+
+
+setTimeout(
+()=>{
+
+
+$("preview")
+.toBlob(
+async blob=>{
+
+
+if(!blob){
+
+return;
+
+}
+
+
+const file =
+new File(
+
+[blob],
+
+"USV-Matchday.png",
+
+{
+
+type:
+"image/png"
+
+}
+
+);
+
+
+try{
+
+
+if(
+
+navigator.share
+
+&&
+
+navigator.canShare
+
+&&
+
+navigator.canShare({
+
+files:[file]
+
+})
+
+){
+
+
+await navigator.share({
+
+files:[file],
+
+title:
+"USV Matchday"
+
+});
+
+
+}else{
+
+
+$("downloadImage")
+.click();
+
+
+}
+
+
+}catch(error){
+
+}
+
+
+},
+
+"image/png"
+
+);
+
+
+},
+350
+);
+
+
+}
+);
+
+
+/* =============================
+   RENDER
+============================= */
+
+
+function renderAll(){
+
+renderGames();
+
+renderHome();
+
+renderClubs();
+
+
+$("designTitle").value =
+
+db.design.title
+||
+"MATCHDAY";
+
+
+$("designSubtitle").value =
+
+db.design.subtitle
+||
+"UNSER WOCHENENDE";
+
+}
+
+
+/* =============================
+   START
+============================= */
+
+
+initializeDates();
+
+renderAll();
+
+createGraphic();
+
+persist();
+
+
+setStatus(
+
+"● App bereit · "
++
+allEntries().length
++
+" Mannschaften im Vereinsstamm"
+
 );
 
 </script>
