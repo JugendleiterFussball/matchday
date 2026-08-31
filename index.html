@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#2f8f24">
+
 <title>USV Matchday</title>
 
 <style>
@@ -12,29 +13,38 @@
   --green2:#6fba50;
   --dark:#173b19;
   --light:#eaf5e6;
-  --card:#fff;
+  --card:#ffffff;
   --line:#dce6d9;
   --text:#172018;
   --muted:#687267;
-  --red:#b63b32
+  --red:#b63b32;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
   background:linear-gradient(180deg,#f8fbf7,#eef4eb);
   font-family:Arial,Helvetica,sans-serif;
-  color:var(--text)
+  color:var(--text);
 }
 
-button,input,select{font:inherit}
-button{cursor:pointer}
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
 
 .app{
   max-width:1080px;
   margin:auto;
-  min-height:100vh
+  min-height:100vh;
 }
 
 header{
@@ -43,14 +53,19 @@ header{
   z-index:20;
   padding:14px;
   color:#fff;
-  background:linear-gradient(120deg,#142919,#2f7829 58%,#70b94d);
-  box-shadow:0 4px 18px #0002
+  background:linear-gradient(
+    120deg,
+    #142919,
+    #2f7829 58%,
+    #70b94d
+  );
+  box-shadow:0 4px 18px rgba(0,0,0,.15);
 }
 
 .brand{
   display:flex;
   gap:11px;
-  align-items:center
+  align-items:center;
 }
 
 .badge{
@@ -62,54 +77,61 @@ header{
   place-items:center;
   border:2px solid #b9e6a1;
   overflow:hidden;
-  padding:4px
+  padding:4px;
 }
 
 .badge img{
   width:100%;
   height:100%;
   object-fit:contain;
-  display:block
+  display:block;
 }
 
 h1{
   font-size:22px;
-  margin:0
+  margin:0;
 }
 
 .sub{
   font-size:12px;
   opacity:.85;
-  margin-top:3px
+  margin-top:3px;
 }
 
 nav{
   display:flex;
   gap:6px;
   overflow:auto;
-  padding-top:10px
+  padding-top:10px;
 }
 
 nav button{
   border:0;
   border-radius:9px;
   padding:9px 11px;
-  background:#ffffff24;
+  background:rgba(255,255,255,.14);
   color:#fff;
   white-space:nowrap;
-  font-size:12px
+  font-size:12px;
 }
 
 nav button.active{
   background:#fff;
   color:var(--green);
-  font-weight:900
+  font-weight:900;
 }
 
-main{padding:13px}
+main{
+  padding:13px;
+}
 
-.view{display:none}
-.view.active{display:block}
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
+}
 
 .status{
   padding:8px 10px;
@@ -118,7 +140,7 @@ main{padding:13px}
   color:#356232;
   font-size:11px;
   font-weight:800;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
 .card{
@@ -127,23 +149,23 @@ main{padding:13px}
   border-radius:16px;
   padding:15px;
   margin-bottom:13px;
-  box-shadow:0 5px 20px #17301b0d
+  box-shadow:0 5px 20px rgba(23,48,27,.05);
 }
 
 h2{
   font-size:19px;
-  margin:0 0 10px
+  margin:0 0 10px;
 }
 
 h3{
   font-size:15px;
-  margin:0 0 9px
+  margin:0 0 9px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px
+  gap:10px;
 }
 
 .field label{
@@ -151,54 +173,59 @@ h3{
   font-size:11px;
   font-weight:800;
   color:var(--muted);
-  margin-bottom:5px
+  margin-bottom:5px;
 }
 
-input,select{
+input,
+select{
   width:100%;
   padding:11px;
   border:1px solid var(--line);
   border-radius:10px;
   background:#fff;
-  color:var(--text)
+  color:var(--text);
 }
 
 .btn{
   border:0;
   border-radius:10px;
   padding:11px 14px;
-  font-weight:900
+  font-weight:900;
 }
 
 .primary{
   background:var(--green);
-  color:#fff
+  color:#fff;
 }
 
 .secondary{
   background:var(--light);
-  color:var(--green)
+  color:var(--green);
 }
 
 .danger{
   background:#fff0ef;
-  color:var(--red)
+  color:var(--red);
 }
 
-.wide{width:100%}
+.wide{
+  width:100%;
+}
 
 .row{
   display:flex;
   align-items:center;
   gap:8px;
-  flex-wrap:wrap
+  flex-wrap:wrap;
 }
 
-.between{justify-content:space-between}
+.between{
+  justify-content:space-between;
+}
 
 .muted{
   font-size:12px;
-  color:var(--muted)
+  color:var(--muted);
 }
 
 .tag{
@@ -207,7 +234,7 @@ input,select{
   padding:5px 8px;
   border-radius:999px;
   font-size:10px;
-  font-weight:900
+  font-weight:900;
 }
 
 .game{
@@ -215,13 +242,13 @@ input,select{
   border-radius:14px;
   padding:11px;
   margin:8px 0;
-  background:#fbfdfb
+  background:#fbfdfb;
 }
 
 .game-top{
   display:flex;
   justify-content:space-between;
-  align-items:center
+  align-items:center;
 }
 
 .game-main{
@@ -230,31 +257,31 @@ input,select{
   gap:5px;
   align-items:center;
   text-align:center;
-  margin:9px 0
+  margin:9px 0;
 }
 
 .teamname{
   font-size:12px;
-  font-weight:900
+  font-weight:900;
 }
 
 .vs{
   font-weight:900;
-  color:var(--green)
+  color:var(--green);
 }
 
 .logo-wrap{
   width:52px;
   height:52px;
   margin:4px auto;
-  position:relative
+  position:relative;
 }
 
 .logo-img{
   width:52px;
   height:52px;
   object-fit:contain;
-  display:block
+  display:block;
 }
 
 .logo-fallback{
@@ -263,28 +290,32 @@ input,select{
   border-radius:50%;
   display:grid;
   place-items:center;
-  background:linear-gradient(135deg,var(--dark),var(--green2));
+  background:linear-gradient(
+    135deg,
+    var(--dark),
+    var(--green2)
+  );
   color:#fff;
   font-size:10px;
-  font-weight:900
+  font-weight:900;
 }
 
 .actions{
   display:flex;
-  gap:5px
+  gap:5px;
 }
 
 .actions button{
   border:0;
   border-radius:8px;
   padding:7px 9px;
-  font-size:11px
+  font-size:11px;
 }
 
 .clublist{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:8px
+  gap:8px;
 }
 
 .club{
@@ -293,52 +324,54 @@ input,select{
   padding:10px;
   display:flex;
   align-items:center;
-  gap:9px
+  gap:9px;
 }
 
 .club .logo-wrap{
   margin:0;
   width:42px;
   height:42px;
-  flex:none
+  flex:none;
 }
 
 .club .logo-img{
   width:42px;
-  height:42px
+  height:42px;
 }
 
-.clubtext{flex:1}
+.clubtext{
+  flex:1;
+}
 
 .clubname{
   font-size:12px;
-  font-weight:900
+  font-weight:900;
 }
 
 .ages{
   font-size:10px;
   color:var(--muted);
-  margin-top:3px
+  margin-top:3px;
 }
 
 .empty{
   text-align:center;
   padding:20px;
   color:var(--muted);
-  font-size:13px
+  font-size:13px;
 }
 
 .preview{
   padding:8px;
   border-radius:14px;
-  background:#dfe5dc
+  background:#dfe5dc;
 }
 
 .preview canvas{
   display:block;
   width:100%;
   height:auto;
-  border-radius:10px
+  border-radius:10px;
 }
 
 .note{
@@ -347,28 +380,33 @@ input,select{
   background:#f4f8f2;
   color:#52604f;
   font-size:11px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
 hr{
   border:0;
   border-top:1px solid var(--line);
-  margin:13px 0
+  margin:13px 0;
 }
+
+
+/* ========================================
+   FESTIVAL
+======================================== */
 
 .festival-box{
   margin-top:10px;
   padding:12px;
   border-radius:12px;
   background:#f4f8f2;
-  border:1px solid var(--line)
+  border:1px solid var(--line);
 }
 
 .participants{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:7px;
-  margin-top:7px
+  margin-top:7px;
 }
 
 .participant-option{
@@ -380,25 +418,25 @@ hr{
   background:#fff;
   border:1px solid var(--line);
   font-size:12px;
-  font-weight:700
+  font-weight:700;
 }
 
 .participant-option input{
   width:auto;
-  margin:0
+  margin:0;
 }
 
 .festival-participants{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:8px;
-  margin:12px 0
+  margin:12px 0;
 }
 
 .festival-person{
   text-align:center;
   font-size:10px;
-  font-weight:800
+  font-weight:800;
 }
 
 .festival-label{
@@ -406,7 +444,7 @@ hr{
   color:var(--green);
   font-size:11px;
   font-weight:900;
-  margin-top:4px
+  margin-top:4px;
 }
 
 .add-team-box{
@@ -414,25 +452,48 @@ hr{
   padding:12px;
   background:#fff;
   border:1px dashed #9fbd98;
-  border-radius:12px
+  border-radius:12px;
 }
 
 .add-team-title{
   font-size:12px;
   font-weight:900;
   color:var(--green);
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 
+
+/* ========================================
+   MOBILE
+======================================== */
+
 @media(max-width:650px){
-  main{padding:10px}
-  .grid,.clublist{grid-template-columns:1fr}
-  .participants{grid-template-columns:1fr}
-  .festival-participants{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .card{padding:13px}
+
+  main{
+    padding:10px;
+  }
+
+  .grid,
+  .clublist{
+    grid-template-columns:1fr;
+  }
+
+  .participants{
+    grid-template-columns:1fr;
+  }
+
+  .festival-participants{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .card{
+    padding:13px;
+  }
 }
+
 </style>
 </head>
+
 
 <body>
 
@@ -443,89 +504,184 @@ hr{
 <div class="brand">
 
 <div class="badge">
-<img src="logos/usv-tu-dresden.png" alt="USV TU Dresden">
+
+<img
+  src="logos/usv-tu-dresden.png"
+  alt="USV TU Dresden">
+
 </div>
 
 <div>
-<h1>USV MATCHDAY</h1>
-<div class="sub">B- bis F-Jugend · Saison 2026/27</div>
+
+<h1>
+USV MATCHDAY
+</h1>
+
+<div class="sub">
+B- bis F-Jugend · Saison 2026/27
 </div>
 
 </div>
+
+</div>
+
 
 <nav>
-<button class="active" data-view="dashboard">Dashboard</button>
-<button data-view="games">Spiele</button>
-<button data-view="clubs">Vereine</button>
-<button data-view="design">Design</button>
+
+<button
+  class="active"
+  data-view="dashboard">
+Dashboard
+</button>
+
+<button
+  data-view="games">
+Spiele
+</button>
+
+<button
+  data-view="clubs">
+Vereine
+</button>
+
+<button
+  data-view="design">
+Design
+</button>
+
 </nav>
 
 </header>
 
+
 <main>
 
-<div id="status" class="status">
+<div
+  id="status"
+  class="status">
 ● App wird gestartet …
 </div>
 
-<section id="dashboard" class="view active">
+
+<!-- ======================================
+     DASHBOARD
+======================================= -->
+
+<section
+  id="dashboard"
+  class="view active">
+
 
 <div class="card">
 
-<h2>⚽ Wochenende</h2>
+<h2>
+⚽ Wochenende
+</h2>
+
 
 <div class="grid">
 
 <div class="field">
-<label>Von</label>
-<input id="dateFrom" type="date">
+
+<label>
+Von
+</label>
+
+<input
+  id="dateFrom"
+  type="date">
+
 </div>
+
 
 <div class="field">
-<label>Bis</label>
-<input id="dateTo" type="date">
+
+<label>
+Bis
+</label>
+
+<input
+  id="dateTo"
+  type="date">
+
 </div>
 
 </div>
+
 
 <div style="height:10px"></div>
 
-<button id="addDashboard" class="btn primary wide">
+
+<button
+  id="addDashboard"
+  class="btn primary wide">
 ＋ Spiel / Festival hinzufügen
 </button>
 
 </div>
 
+
 <div class="card">
 
 <div class="row between">
-<h2>Wochenende</h2>
-<span id="gameCount" class="tag">0 Termine</span>
+
+<h2>
+Wochenende
+</h2>
+
+<span
+  id="gameCount"
+  class="tag">
+0 Termine
+</span>
+
 </div>
+
 
 <div id="homeGames"></div>
 
-<button id="makeGraphic" class="btn primary wide">
+
+<button
+  id="makeGraphic"
+  class="btn primary wide">
 🖼️ MATCHDAY-BILD ERSTELLEN
 </button>
 
 </div>
 
+
 <div class="card">
 
-<h2>Vorschau</h2>
+<h2>
+Vorschau
+</h2>
+
 
 <div class="preview">
-<canvas id="preview" width="1080" height="1350"></canvas>
+
+<canvas
+  id="preview"
+  width="1080"
+  height="1350">
+</canvas>
+
 </div>
 
-<div class="row" style="margin-top:10px">
 
-<button id="downloadImage" class="btn secondary">
+<div
+  class="row"
+  style="margin-top:10px">
+
+<button
+  id="downloadImage"
+  class="btn secondary">
 ⬇ PNG speichern
 </button>
 
-<button id="shareImage" class="btn primary">
+
+<button
+  id="shareImage"
+  class="btn primary">
 ↗ Teilen
 </button>
 
@@ -535,90 +691,197 @@ hr{
 
 </section>
 
-<section id="games" class="view">
+
+<!-- ======================================
+     TERMINE
+======================================= -->
+
+<section
+  id="games"
+  class="view">
 
 <div class="card">
 
+
 <div class="row between">
 
-<h2>Termine verwalten</h2>
+<h2>
+Termine verwalten
+</h2>
 
-<button id="newGame" class="btn primary">
+
+<button
+  id="newGame"
+  class="btn primary">
 ＋ Termin
 </button>
 
 </div>
 
-<div id="gameForm" style="display:none">
+
+<div
+  id="gameForm"
+  style="display:none">
 
 <hr>
 
-<h3 id="formTitle">
+
+<h3
+  id="formTitle">
 Termin hinzufügen
 </h3>
 
-<input id="editId" type="hidden">
+
+<input
+  id="editId"
+  type="hidden">
+
 
 <div class="grid">
 
-<div class="field">
-<label>USV-Mannschaft</label>
-<select id="ageTeam"></select>
-</div>
 
 <div class="field">
-<label>Datum</label>
-<input id="gameDate" type="date">
+
+<label>
+USV-Mannschaft
+</label>
+
+<select
+  id="ageTeam">
+</select>
+
 </div>
+
 
 <div class="field">
-<label>Uhrzeit</label>
-<input id="gameTime" type="time">
+
+<label>
+Datum
+</label>
+
+<input
+  id="gameDate"
+  type="date">
+
 </div>
+
 
 <div class="field">
-<label>Ort</label>
-<input id="gamePlace" placeholder="Sportplatz / Halle">
+
+<label>
+Uhrzeit
+</label>
+
+<input
+  id="gameTime"
+  type="time">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Ort
+</label>
+
+<input
+  id="gamePlace"
+  placeholder="Sportplatz / Halle">
+
 </div>
 
 </div>
+
+
+<!-- ======================================
+     NORMALES SPIEL B-C-D
+======================================= -->
 
 <div id="normalGameFields">
 
-<div class="grid" style="margin-top:10px">
+
+<div
+  class="grid"
+  style="margin-top:10px">
+
 
 <div class="field">
-<label>Heim</label>
-<select id="homeTeam"></select>
+
+<label>
+Heim
+</label>
+
+<select
+  id="homeTeam">
+</select>
+
 </div>
+
 
 <div class="field">
-<label>Gast</label>
-<select id="awayTeam"></select>
-</div>
+
+<label>
+Gast
+</label>
+
+<select
+  id="awayTeam">
+</select>
 
 </div>
 
 </div>
 
-<div id="festivalFields" class="festival-box" style="display:none">
+</div>
 
-<h3>⚽ Festival</h3>
+
+<!-- ======================================
+     FESTIVAL E-F
+======================================= -->
+
+<div
+  id="festivalFields"
+  class="festival-box"
+  style="display:none">
+
+
+<h3>
+⚽ Festival
+</h3>
+
 
 <div class="field">
-<label>Veranstalter</label>
-<select id="festivalOrganizer"></select>
+
+<label>
+Veranstalter
+</label>
+
+<select
+  id="festivalOrganizer">
+</select>
+
 </div>
+
 
 <div style="height:10px"></div>
 
+
 <div class="field">
 
-<label>Teilnehmer</label>
+<label>
+Teilnehmer
+</label>
 
-<div id="festivalParticipants" class="participants"></div>
+<div
+  id="festivalParticipants"
+  class="participants">
+</div>
 
 </div>
+
+
+<!-- WEITERE MANNSCHAFT -->
 
 <div class="add-team-box">
 
@@ -626,21 +889,40 @@ Termin hinzufügen
 ＋ Weitere Festival-Mannschaft
 </div>
 
+
 <div class="grid">
 
-<div class="field">
-<label>Mannschaft</label>
-<input id="festivalNewTeam" placeholder="z. B. Radebeuler BC 6">
-</div>
 
 <div class="field">
-<label>Verein / Logo</label>
-<select id="festivalNewClub"></select>
+
+<label>
+Mannschaft
+</label>
+
+<input
+  id="festivalNewTeam"
+  placeholder="z. B. Radebeuler BC 6">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Verein / Logo
+</label>
+
+<select
+  id="festivalNewClub">
+</select>
+
 </div>
 
 </div>
+
 
 <div style="height:8px"></div>
+
 
 <button
   id="festivalAddTeam"
@@ -653,13 +935,22 @@ Termin hinzufügen
 
 </div>
 
-<div class="row" style="margin-top:10px">
 
-<button id="saveGame" class="btn primary">
+<div
+  class="row"
+  style="margin-top:10px">
+
+
+<button
+  id="saveGame"
+  class="btn primary">
 Speichern
 </button>
 
-<button id="cancelGame" class="btn secondary">
+
+<button
+  id="cancelGame"
+  class="btn secondary">
 Abbrechen
 </button>
 
@@ -669,90 +960,163 @@ Abbrechen
 
 </div>
 
+
 <div class="card">
+
 <div id="gamesList"></div>
+
 </div>
 
 </section>
 
-<section id="clubs" class="view">
+
+<!-- ======================================
+     VEREINE
+======================================= -->
+
+<section
+  id="clubs"
+  class="view">
+
 
 <div class="card">
 
-<h2>🏟️ Vereinsstamm B–F</h2>
+<h2>
+🏟️ Vereinsstamm B–F
+</h2>
+
 
 <div class="note">
+
 B–D werden als klassische Spiele verwaltet.
 E und F werden automatisch als Festival angelegt.
 Weitere Festival-Mannschaften können direkt beim Festival ergänzt werden.
+
 </div>
+
 
 <div class="grid">
 
+
 <div class="field">
-<label>Neue Mannschaft ergänzen</label>
-<input id="manualTeam" placeholder="z. B. Radeberger SV 2">
+
+<label>
+Neue Mannschaft ergänzen
+</label>
+
+<input
+  id="manualTeam"
+  placeholder="z. B. Radeberger SV 2">
+
 </div>
 
+
 <div class="field">
-<label>Verein</label>
-<input id="manualClub" placeholder="z. B. Radeberger SV">
+
+<label>
+Verein
+</label>
+
+<input
+  id="manualClub"
+  placeholder="z. B. Radeberger SV">
+
 </div>
 
+
 <div class="field">
 
-<label>Jugend</label>
+<label>
+Jugend
+</label>
 
 <select id="manualAge">
-<option value="B">B-Jugend</option>
-<option value="C">C-Jugend</option>
-<option value="D">D-Jugend</option>
-<option value="E">E-Jugend</option>
-<option value="F">F-Jugend</option>
+
+<option value="B">
+B-Jugend
+</option>
+
+<option value="C">
+C-Jugend
+</option>
+
+<option value="D">
+D-Jugend
+</option>
+
+<option value="E">
+E-Jugend
+</option>
+
+<option value="F">
+F-Jugend
+</option>
+
 </select>
 
 </div>
 
 </div>
 
+
 <div style="height:10px"></div>
 
-<button id="addManual" class="btn primary">
+
+<button
+  id="addManual"
+  class="btn primary">
 ＋ Ergänzen
 </button>
 
 </div>
 
+
 <div class="card">
 
 <div class="row between">
 
-<h2>Alle Vereine</h2>
+<h2>
+Alle Vereine
+</h2>
 
-<span id="clubCount" class="tag"></span>
+<span
+  id="clubCount"
+  class="tag">
+</span>
 
 </div>
 
-<div id="clubList" class="clublist"></div>
+
+<div
+  id="clubList"
+  class="clublist">
+</div>
 
 </div>
 
 </section>
 
-<section id="design" class="view">
+
+<!-- ======================================
+     DESIGN
+======================================= -->
+
+<section
+  id="design"
+  class="view">
 
 <div class="card">
 
-<h2>🎨 Design</h2>
+<h2>
+🎨 Design
+</h2>
 
-<div class="note">
-Standardmäßig wird <b>logos/matchday-background.png</b> verwendet.
-Ein eigener Hintergrund kann ihn vorübergehend ersetzen.
-</div>
 
 <div class="field">
 
-<label>Eigener Hintergrund</label>
+<label>
+Eigener Hintergrund
+</label>
 
 <input
   id="background"
@@ -761,30 +1125,55 @@ Ein eigener Hintergrund kann ihn vorübergehend ersetzen.
 
 </div>
 
+
 <div style="height:10px"></div>
+
 
 <div class="grid">
 
-<div class="field">
-<label>Überschrift</label>
-<input id="designTitle" value="MATCHDAY">
-</div>
 
 <div class="field">
-<label>Unterzeile</label>
-<input id="designSubtitle" value="UNSER WOCHENENDE">
+
+<label>
+Überschrift
+</label>
+
+<input
+  id="designTitle"
+  value="MATCHDAY">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Unterzeile
+</label>
+
+<input
+  id="designSubtitle"
+  value="UNSER WOCHENENDE">
+
 </div>
 
 </div>
+
 
 <div style="height:10px"></div>
 
-<button id="saveDesign" class="btn primary">
+
+<button
+  id="saveDesign"
+  class="btn primary">
 Design speichern
 </button>
 
-<button id="removeBackground" class="btn danger">
-Eigenen Hintergrund entfernen
+
+<button
+  id="removeBackground"
+  class="btn danger">
+Hintergrund entfernen
 </button>
 
 </div>
@@ -795,126 +1184,141 @@ Eigenen Hintergrund entfernen
 
 </div>
 
+
 <script>
 
 "use strict";
 
-const KEY="USV_MATCHDAY_BF_2627_FESTIVAL_2";
 
-const DEFAULT_BACKGROUND=
+const KEY =
+"USV_MATCHDAY_BF_2627_FESTIVAL_2";
+
+
+const DEFAULT_BACKGROUND =
 "logos/matchday-background.png";
+
+
+/* ========================================
+   VEREINE
+======================================== */
 
 
 const CLUBS={
 
 "USV TU Dresden":{
-logo:"logos/usv-tu-dresden.png"
+  logo:"logos/usv-tu-dresden.png"
 },
 
 "Dresdner SSV":{
-logo:"logos/dresdner-ssv.png"
+  logo:"logos/dresdner-ssv.png"
 },
 
 "FC Dresden":{
-logo:"logos/fc-dresden.png"
+  logo:"logos/fc-dresden.png"
 },
 
 "FSG Wacker 90 Dresden-Leuben":{
-logo:"logos/wacker-90-dresden-leuben.png"
+  logo:"logos/wacker-90-dresden-leuben.png"
 },
 
 "Post SV Dresden":{
-logo:"logos/post-sv-dresden.png"
+  logo:"logos/post-sv-dresden.png"
 },
 
 "SC Borea Dresden":{
-logo:"logos/sc-borea-dresden.png"
+  logo:"logos/sc-borea-dresden.png"
 },
 
 "SG Bühlau 09":{
-logo:"logos/sg-buehlau-09.png"
+  logo:"logos/sg-buehlau-09.png"
 },
 
 "SG Dölzschen":{
-logo:"logos/sg-doelzschen.png"
+  logo:"logos/sg-doelzschen.png"
 },
 
 "SG Weixdorf":{
-logo:"logos/sg-weixdorf.png"
+  logo:"logos/sg-weixdorf.png"
 },
 
 "SV Eintracht Strehlen":{
-logo:"logos/sv-eintracht-strehlen.png"
+  logo:"logos/sv-eintracht-strehlen.png"
 },
 
 "SpG Neustadt / Trachenberge":{
-logo:"logos/spg-neustadt-trachenberge.png"
+  logo:"logos/spg-neustadt-trachenberge.png"
 },
 
 "TSV Rotation Dresden":{
-logo:"logos/tsv-rotation-dresden.png"
+  logo:"logos/tsv-rotation-dresden.png"
 },
 
 "SG Gittersee":{
-logo:"logos/sg-gittersee.png"
+  logo:"logos/sg-gittersee.png"
 },
 
 "Serkowitzer FSV":{
-logo:"logos/serkowitzer-fsv.png"
+  logo:"logos/serkowitzer-fsv.png"
 },
 
 "Racket- und Ballsport Dresden":{
-logo:"logos/racket-ballsport-dresden.png"
+  logo:"logos/racket-ballsport-dresden.png"
 },
 
 "SG Weißig":{
-logo:"logos/sg-weissig.png"
+  logo:"logos/sg-weissig.png"
 },
 
 "VfB Hellerau-Klotzsche":{
-logo:"logos/vfb-hellerau-klotzsche.png"
+  logo:"logos/vfb-hellerau-klotzsche.png"
 },
 
 "FSV Lokomotive Dresden":{
-logo:"logos/fsv-lokomotive-dresden.png"
+  logo:"logos/fsv-lokomotive-dresden.png"
 },
 
 "SpVgg. Dresden-Löbtau":{
-logo:"logos/spvgg-dresden-loebtau.png"
+  logo:"logos/spvgg-dresden-loebtau.png"
 },
 
 "1. FFC Fortuna Dresden":{
-logo:"logos/fortuna-dresden.png"
+  logo:"logos/fortuna-dresden.png"
 },
 
 "FV Löbtauer Kickers":{
-logo:"logos/loebtauer-kickers.png"
+  logo:"logos/loebtauer-kickers.png"
 },
 
 "SG Ullersdorf":{
-logo:"logos/sg-ullersdorf.png"
+  logo:"logos/sg-ullersdorf.png"
 },
 
 "FV Dresden Süd-West":{
-logo:"logos/fv-dresden-sued-west.png"
+  logo:"logos/fv-dresden-sued-west.png"
 },
 
 "SG Dresdner Verkehrsbetriebe":{
-logo:"logos/sg-dresdner-verkehrsbetriebe.png"
+  logo:"logos/sg-dresdner-verkehrsbetriebe.png"
 },
 
 "TSV Reichenberg-Boxdorf":{
-logo:"logos/tsv-reichenberg-boxdorf.png"
+  logo:"logos/tsv-reichenberg-boxdorf.png"
 },
 
 "Radebeuler BC 08":{
-logo:"logos/radebeuler-bc-08.png"
+  logo:"logos/radebeuler-bc-08.png"
 }
 
 };
 
 
+/* ========================================
+   MANNSCHAFTEN
+======================================== */
+
+
 const TEAMS={
+
 
 B:[
 
@@ -932,6 +1336,7 @@ B:[
 
 ],
 
+
 C:[
 
 {team:"USV TU Dresden",club:"USV TU Dresden"},
@@ -945,6 +1350,7 @@ C:[
 
 ],
 
+
 D:[
 
 {team:"USV TU Dresden",club:"USV TU Dresden"},
@@ -957,6 +1363,7 @@ D:[
 {team:"SG Ullersdorf",club:"SG Ullersdorf"}
 
 ],
+
 
 E:[
 
@@ -972,6 +1379,7 @@ E:[
 
 ],
 
+
 F:[
 
 {team:"USV TU Dresden",club:"USV TU Dresden"},
@@ -983,10 +1391,13 @@ F:[
 };
 
 
+/* ========================================
+   GRUNDLAGE
+======================================== */
+
+
 function $(id){
-
-return document.getElementById(id);
-
+  return document.getElementById(id);
 }
 
 
@@ -997,19 +1408,19 @@ return{
 games:[],
 
 manual:{
-B:[],
-C:[],
-D:[],
-E:[],
-F:[]
+  B:[],
+  C:[],
+  D:[],
+  E:[],
+  F:[]
 },
 
 manualClubs:{},
 
 design:{
-title:"MATCHDAY",
-subtitle:"UNSER WOCHENENDE",
-background:null
+  title:"MATCHDAY",
+  subtitle:"UNSER WOCHENENDE",
+  background:null
 }
 
 };
@@ -1022,50 +1433,47 @@ let db;
 
 try{
 
-db=
+db =
 JSON.parse(
-localStorage.getItem(KEY)
+  localStorage.getItem(KEY)
 )
 ||
 makeDB();
 
 }catch(e){
 
-db=
+db =
 makeDB();
 
 }
 
 
 if(!db.games){
-db.games=[];
+  db.games=[];
 }
-
 
 if(!db.manual){
 
 db.manual={
-B:[],
-C:[],
-D:[],
-E:[],
-F:[]
+  B:[],
+  C:[],
+  D:[],
+  E:[],
+  F:[]
 };
 
 }
 
-
 if(!db.manualClubs){
-db.manualClubs={};
+  db.manualClubs={};
 }
-
 
 if(!db.design){
 
 db.design={
-title:"MATCHDAY",
-subtitle:"UNSER WOCHENENDE",
-background:null
+  title:"MATCHDAY",
+  subtitle:"UNSER WOCHENENDE",
+  background:null
 };
 
 }
@@ -1076,14 +1484,14 @@ function persist(){
 try{
 
 localStorage.setItem(
-KEY,
-JSON.stringify(db)
+  KEY,
+  JSON.stringify(db)
 );
 
 }catch(e){
 
 setStatus(
-"⚠️ Speichern nicht möglich"
+  "⚠️ Speichern nicht möglich"
 );
 
 }
@@ -1093,7 +1501,7 @@ setStatus(
 
 function setStatus(text){
 
-$("status").textContent=
+$("status").textContent =
 text;
 
 }
@@ -1102,20 +1510,19 @@ text;
 function esc(value){
 
 return String(
-value ?? ""
+  value ?? ""
 )
 .replace(
-/[&<>"']/g,
-character=>({
+  /[&<>"']/g,
+  character =>({
 
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#39;"
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
 
-}[character])
-
+  }[character])
 );
 
 }
@@ -1124,15 +1531,15 @@ character=>({
 function uid(){
 
 return(
-"g_"
-+
-Date.now()
-+
-"_"
-+
-Math.random()
-.toString(36)
-.slice(2,8)
+  "g_"
+  +
+  Date.now()
+  +
+  "_"
+  +
+  Math.random()
+  .toString(36)
+  .slice(2,8)
 );
 
 }
@@ -1140,13 +1547,13 @@ Math.random()
 
 function isoDate(date){
 
-const shifted=
+const shifted =
 new Date(
-date.getTime()
--
-date.getTimezoneOffset()
-*
-60000
+  date.getTime()
+  -
+  date.getTimezoneOffset()
+  *
+  60000
 );
 
 return shifted
@@ -1158,41 +1565,41 @@ return shifted
 
 function initDates(){
 
-const today=
+const today =
 new Date();
 
-const day=
+const day =
 today.getDay();
 
-const difference=
-day===0
+const difference =
+day === 0
 ?
 -6
 :
 1-day;
 
-const monday=
+const monday =
 new Date(today);
 
 monday.setDate(
-today.getDate()
-+
-difference
+  today.getDate()
+  +
+  difference
 );
 
-const sunday=
+const sunday =
 new Date(monday);
 
 sunday.setDate(
-monday.getDate()
-+
-6
+  monday.getDate()
+  +
+  6
 );
 
-$("dateFrom").value=
+$("dateFrom").value =
 isoDate(monday);
 
-$("dateTo").value=
+$("dateTo").value =
 isoDate(sunday);
 
 }
@@ -1201,13 +1608,13 @@ isoDate(sunday);
 function initials(name){
 
 return String(
-name || "?"
+  name || "?"
 )
 .split(/\s+/)
 .filter(Boolean)
 .slice(0,2)
 .map(
-word=>word[0]
+  word => word[0]
 )
 .join("")
 .toUpperCase();
@@ -1215,14 +1622,14 @@ word=>word[0]
 }
 
 
-function getClub(name){
+function getClub(clubName){
 
 return(
-CLUBS[name]
-||
-db.manualClubs[name]
-||
-{logo:""}
+  CLUBS[clubName]
+  ||
+  db.manualClubs[clubName]
+  ||
+  {logo:""}
 );
 
 }
@@ -1231,36 +1638,26 @@ db.manualClubs[name]
 function teamsForAge(age){
 
 return[
-
-...(TEAMS[age] || []),
-
-...(db.manual[age] || [])
-
+  ...(TEAMS[age] || []),
+  ...(db.manual[age] || [])
 ];
 
 }
 
 
-function teamRecord(
-age,
-teamName
-){
+function teamRecord(age,teamName){
 
 return(
-
-teamsForAge(age)
-.find(
-team=>
-team.team===teamName
-)
-
-||
-
-{
-team:teamName,
-club:teamName
-}
-
+  teamsForAge(age)
+  .find(
+    team =>
+    team.team === teamName
+  )
+  ||
+  {
+    team:teamName,
+    club:teamName
+  }
 );
 
 }
@@ -1269,22 +1666,27 @@ club:teamName
 function isFestivalAge(age){
 
 return(
-age==="E"
-||
-age==="F"
+  age === "E"
+  ||
+  age === "F"
 );
 
 }
 
 
+/* ========================================
+   LOGOS
+======================================== */
+
+
 function logoHTML(clubName){
 
-const club=
+const club =
 getClub(clubName);
 
-const fallback=
+const fallback =
 esc(
-initials(clubName)
+  initials(clubName)
 );
 
 
@@ -1295,9 +1697,7 @@ return`
 <div class="logo-wrap">
 
 <div class="logo-fallback">
-
 ${fallback}
-
 </div>
 
 </div>
@@ -1312,17 +1712,15 @@ return`
 <div class="logo-wrap">
 
 <div class="logo-fallback">
-
 ${fallback}
-
 </div>
 
 <img
-class="logo-img"
-src="${esc(club.logo)}"
-alt=""
-onload="this.previousElementSibling.style.display='none'"
-onerror="this.style.display='none'">
+  class="logo-img"
+  src="${esc(club.logo)}"
+  alt=""
+  onload="this.previousElementSibling.style.display='none'"
+  onerror="this.style.display='none'">
 
 </div>
 
@@ -1331,19 +1729,22 @@ onerror="this.style.display='none'">
 }
 
 
+/* ========================================
+   ALTERSKLASSE
+======================================== */
+
+
 function fillAgeSelect(){
 
-$("ageTeam").innerHTML=
+$("ageTeam").innerHTML =
 
 ["B","C","D","E","F"]
 
 .map(
-age=>`
+  age =>`
 
 <option value="${age}">
-
 ${age}-Jugend
-
 </option>
 
 `
@@ -1354,25 +1755,28 @@ ${age}-Jugend
 }
 
 
+/* ========================================
+   NORMALE SPIELE
+======================================== */
+
+
 function fillTeamSelects(
-age,
-homeValue="",
-awayValue=""
+  age,
+  homeValue="",
+  awayValue=""
 ){
 
-const teams=
+const teams =
 teamsForAge(age);
 
 
-const options=
+const options =
 teams
 .map(
-team=>`
+  team =>`
 
 <option value="${esc(team.team)}">
-
 ${esc(team.team)}
-
 </option>
 
 `
@@ -1380,58 +1784,56 @@ ${esc(team.team)}
 .join("");
 
 
-$("homeTeam").innerHTML=
+$("homeTeam").innerHTML =
 options;
 
-
-$("awayTeam").innerHTML=
+$("awayTeam").innerHTML =
 options;
 
 
 if(
-homeValue
-&&
-teams.some(
-team=>
-team.team===homeValue
-)
+  homeValue
+  &&
+  teams.some(
+    team =>
+    team.team === homeValue
+  )
 ){
 
-$("homeTeam").value=
+$("homeTeam").value =
 homeValue;
 
 }else{
 
-$("homeTeam").value=
+$("homeTeam").value =
 "USV TU Dresden";
 
 }
 
 
 if(
-awayValue
-&&
-teams.some(
-team=>
-team.team===awayValue
-)
+  awayValue
+  &&
+  teams.some(
+    team =>
+    team.team === awayValue
+  )
 ){
 
-$("awayTeam").value=
+$("awayTeam").value =
 awayValue;
 
 }else{
 
-const opponent=
+const opponent =
 teams.find(
-team=>
-team.team!=="USV TU Dresden"
+  team =>
+  team.team !== "USV TU Dresden"
 );
-
 
 if(opponent){
 
-$("awayTeam").value=
+$("awayTeam").value =
 opponent.team;
 
 }
@@ -1441,7 +1843,43 @@ opponent.team;
 }
 
 
-function allClubs(){
+/* ========================================
+   FESTIVAL-VEREINSLISTE
+======================================== */
+
+
+function fillFestivalClubSelect(){
+
+const clubs =
+Object.keys(CLBUSafe())
+.sort(
+  (a,b) =>
+  a.localeCompare(
+    b,
+    "de"
+  )
+);
+
+
+$("festivalNewClub")
+.innerHTML =
+
+clubs
+.map(
+  club =>`
+
+<option value="${esc(club)}">
+${esc(club)}
+</option>
+
+`
+)
+.join("");
+
+}
+
+
+function CLBUSafe(){
 
 return{
 
@@ -1454,61 +1892,30 @@ return{
 }
 
 
-function fillFestivalClubSelect(){
-
-const clubs=
-Object.keys(
-allClubs()
-)
-.sort(
-(a,b)=>
-a.localeCompare(
-b,
-"de"
-)
-);
-
-
-$("festivalNewClub").innerHTML=
-
-clubs
-.map(
-club=>`
-
-<option value="${esc(club)}">
-
-${esc(club)}
-
-</option>
-
-`
-)
-.join("");
-
-}
+/* ========================================
+   FESTIVAL
+======================================== */
 
 
 function fillFestivalFields(
-age,
-organizer="",
-selected=[]
+  age,
+  organizer="",
+  selected=[]
 ){
 
-const teams=
+const teams =
 teamsForAge(age);
 
 
 $("festivalOrganizer")
-.innerHTML=
+.innerHTML =
 
 teams
 .map(
-team=>`
+  team =>`
 
 <option value="${esc(team.team)}">
-
 ${esc(team.team)}
-
 </option>
 
 `
@@ -1517,40 +1924,40 @@ ${esc(team.team)}
 
 
 if(
-organizer
-&&
-teams.some(
-team=>
-team.team===organizer
-)
+  organizer
+  &&
+  teams.some(
+    team =>
+    team.team === organizer
+  )
 ){
 
-$("festivalOrganizer").value=
+$("festivalOrganizer").value =
 organizer;
 
 }
 
 
 $("festivalParticipants")
-.innerHTML=
+.innerHTML =
 
 teams
 .map(
-team=>{
+  team =>{
 
-const checked=
+const checked =
 
 selected.length
 
 ?
 
 selected.includes(
-team.team
+  team.team
 )
 
 :
 
-team.team==="USV TU Dresden";
+team.team === "USV TU Dresden";
 
 
 return`
@@ -1558,9 +1965,9 @@ return`
 <label class="participant-option">
 
 <input
-type="checkbox"
-value="${esc(team.team)}"
-${checked ? "checked" : ""}>
+  type="checkbox"
+  value="${esc(team.team)}"
+  ${checked ? "checked" : ""}>
 
 <span>
 ${esc(team.team)}
@@ -1580,26 +1987,32 @@ fillFestivalClubSelect();
 }
 
 
+/* ========================================
+   WEITERE FESTIVAL-MANNSCHAFT
+======================================== */
+
+
 function addFestivalTeam(){
 
-const age=
+const age =
 $("ageTeam").value;
 
 
-const teamName=
+const teamName =
 $("festivalNewTeam")
 .value
 .trim();
 
 
-const clubName=
-$("festivalNewClub").value;
+const clubName =
+$("festivalNewClub")
+.value;
 
 
 if(!teamName){
 
 alert(
-"Bitte einen Mannschaftsnamen eingeben."
+  "Bitte einen Mannschaftsnamen eingeben."
 );
 
 return;
@@ -1609,21 +2022,20 @@ return;
 
 if(!db.manual[age]){
 
-db.manual[age]=[];
+db.manual[age] = [];
 
 }
 
 
-const exists=
-
+const exists =
 teamsForAge(age)
 .some(
-entry=>
-entry.team
-.toLowerCase()
-===
-teamName
-.toLowerCase()
+  entry =>
+  entry.team
+  .toLowerCase()
+  ===
+  teamName
+  .toLowerCase()
 );
 
 
@@ -1644,87 +2056,88 @@ club:clubName
 persist();
 
 
-const selected=
+const selected =
 
 [
 ...$("festivalParticipants")
 .querySelectorAll(
-'input[type="checkbox"]:checked'
+  'input[type="checkbox"]:checked'
 )
 ]
 .map(
-input=>
-input.value
+  input =>
+  input.value
 );
 
 
 if(
-!selected.includes(
-teamName
-)
+  !selected.includes(
+    teamName
+  )
 ){
 
 selected.push(
-teamName
+  teamName
 );
 
 }
 
 
-const organizer=
+const organizer =
 $("festivalOrganizer").value;
 
 
 fillFestivalFields(
-
-age,
-
-organizer,
-
-selected
-
+  age,
+  organizer,
+  selected
 );
 
 
-$("festivalNewTeam").value=
+$("festivalNewTeam").value =
 "";
 
 
 setStatus(
-"✓ Mannschaft zur Festival-Auswahl hinzugefügt"
+  "✓ Mannschaft zur Festival-Auswahl hinzugefügt"
 );
 
 }
 
 
+/* ========================================
+   FORMULAR-MODUS
+======================================== */
+
+
 function updateFormMode(){
 
-const age=
+const age =
 $("ageTeam").value;
 
 
 if(
-isFestivalAge(age)
+  isFestivalAge(age)
 ){
 
 $("normalGameFields")
-.style.display=
+.style.display =
 "none";
 
 
 $("festivalFields")
-.style.display=
+.style.display =
 "block";
 
 
 $("formTitle")
-.textContent=
+.textContent =
 age+
 "-Jugend · Festival";
 
 
 fillFestivalFields(
-age
+  age
 );
 
 
@@ -1732,23 +2145,23 @@ age
 
 
 $("normalGameFields")
-.style.display=
+.style.display =
 "block";
 
 
 $("festivalFields")
-.style.display=
+.style.display =
 "none";
 
 
 $("formTitle")
-.textContent=
+.textContent =
 age+
 "-Jugend · Spiel";
 
 
 fillTeamSelects(
-age
+  age
 );
 
 }
@@ -1758,48 +2171,53 @@ age
 
 $("ageTeam")
 .addEventListener(
-"change",
-updateFormMode
+  "change",
+  updateFormMode
 );
 
 
 $("festivalAddTeam")
 .addEventListener(
-"click",
-addFestivalTeam
+  "click",
+  addFestivalTeam
 );
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
 
 
 function showView(view){
 
 document
 .querySelectorAll(
-".view"
+  ".view"
 )
 .forEach(
-element=>
-element.classList.remove(
-"active"
-)
+  element =>
+  element.classList.remove(
+    "active"
+  )
 );
 
 
 $(view)
 .classList.add(
-"active"
+  "active"
 );
 
 
 document
 .querySelectorAll(
-"nav button"
+  "nav button"
 )
 .forEach(
-button=>
-button.classList.toggle(
-"active",
-button.dataset.view===view
-)
+  button =>
+  button.classList.toggle(
+    "active",
+    button.dataset.view === view
+  )
 );
 
 
@@ -1810,18 +2228,23 @@ renderAll();
 
 document
 .querySelectorAll(
-"nav button"
+  "nav button"
 )
 .forEach(
-button=>{
+  button =>{
 
-button.onclick=
+button.onclick =
 ()=>showView(
-button.dataset.view
+  button.dataset.view
 );
 
 }
 );
+
+
+/* ========================================
+   FORMULAR ÖFFNEN
+======================================== */
 
 
 function openGame(id=null){
@@ -1830,82 +2253,82 @@ fillAgeSelect();
 
 
 $("gameForm")
-.style.display=
+.style.display =
 "block";
 
 
-$("editId").value=
+$("editId").value =
 id || "";
 
 
 if(id){
 
-const game=
+const game =
 db.games.find(
-entry=>
-entry.id===id
+  entry =>
+  entry.id === id
 );
 
 
 if(!game){
-return;
+  return;
 }
 
 
-$("ageTeam").value=
+$("ageTeam").value =
 game.age;
 
 
-$("gameDate").value=
+$("gameDate").value =
 game.date;
 
 
-$("gameTime").value=
+$("gameTime").value =
 game.time;
 
 
-$("gamePlace").value=
+$("gamePlace").value =
 game.place || "";
 
 
 if(
-game.type==="festival"
-||
-isFestivalAge(
-game.age
-)
+  game.type === "festival"
+  ||
+  isFestivalAge(
+    game.age
+  )
 ){
 
 $("normalGameFields")
-.style.display=
+.style.display =
 "none";
 
 
 $("festivalFields")
-.style.display=
+.style.display =
 "block";
 
 
 $("formTitle")
-.textContent=
+.textContent =
 game.age+
 "-Jugend · Festival";
 
 
 fillFestivalFields(
 
-game.age,
+  game.age,
 
-game.organizer,
+  game.organizer,
 
-game.participants || []
+  game.participants || []
 
 );
 
 
 if(game.organizer){
 
-$("festivalOrganizer").value=
+$("festivalOrganizer").value =
 game.organizer;
 
 }
@@ -1915,28 +2338,28 @@ game.organizer;
 
 
 $("normalGameFields")
-.style.display=
+.style.display =
 "block";
 
 
 $("festivalFields")
-.style.display=
+.style.display =
 "none";
 
 
 $("formTitle")
-.textContent=
+.textContent =
 game.age+
 "-Jugend · Spiel";
 
 
 fillTeamSelects(
 
-game.age,
+  game.age,
 
-game.home,
+  game.home,
 
-game.away
+  game.away
 
 );
 
@@ -1946,19 +2369,19 @@ game.away
 }else{
 
 
-$("ageTeam").value=
+$("ageTeam").value =
 "B";
 
 
-$("gameDate").value=
+$("gameDate").value =
 $("dateFrom").value;
 
 
-$("gameTime").value=
+$("gameTime").value =
 "10:00";
 
 
-$("gamePlace").value=
+$("gamePlace").value =
 "";
 
 
@@ -1969,18 +2392,23 @@ updateFormMode();
 }
 
 
+/* ========================================
+   SPEICHERN
+======================================== */
+
+
 function saveGame(){
 
-const age=
+const age =
 $("ageTeam").value;
 
 
 if(
-!$("gameDate").value
+  !$("gameDate").value
 ){
 
 alert(
-"Bitte Datum auswählen."
+  "Bitte Datum auswählen."
 );
 
 return;
@@ -1988,34 +2416,39 @@ return;
 }
 
 
+/* ========================================
+   FESTIVAL SPEICHERN
+======================================== */
+
+
 if(
-isFestivalAge(age)
+  isFestivalAge(age)
 ){
 
-const organizer=
+const organizer =
 $("festivalOrganizer").value;
 
 
-const participants=
+const participants =
 
 [
 ...$("festivalParticipants")
 .querySelectorAll(
-'input[type="checkbox"]:checked'
+  'input[type="checkbox"]:checked'
 )
 ]
 .map(
-input=>
-input.value
+  input =>
+  input.value
 );
 
 
 if(
-participants.length<2
+  participants.length < 2
 ){
 
 alert(
-"Bitte mindestens zwei Teilnehmer auswählen."
+  "Bitte mindestens zwei Teilnehmer auswählen."
 );
 
 return;
@@ -2024,13 +2457,13 @@ return;
 
 
 if(
-!participants.includes(
-"USV TU Dresden"
-)
+  !participants.includes(
+    "USV TU Dresden"
+  )
 ){
 
 alert(
-"USV TU Dresden muss als Teilnehmer ausgewählt sein."
+  "USV TU Dresden muss als Teilnehmer ausgewählt sein."
 );
 
 return;
@@ -2067,44 +2500,49 @@ participants:participants
 };
 
 
-const index=
+const index =
 db.games.findIndex(
-entry=>
-entry.id===festival.id
+  entry =>
+  entry.id === festival.id
 );
 
 
-if(index>=0){
+if(index >= 0){
 
-db.games[index]=
+db.games[index] =
 festival;
 
 }else{
 
 db.games.push(
-festival
+  festival
 );
 
 }
 
 
+/* ========================================
+   NORMALES SPIEL SPEICHERN
+======================================== */
+
+
 }else{
 
 
-const home=
+const home =
 $("homeTeam").value;
 
 
-const away=
+const away =
 $("awayTeam").value;
 
 
 if(
-home===away
+  home === away
 ){
 
 alert(
-"Heim und Gast dürfen nicht identisch sein."
+  "Heim und Gast dürfen nicht identisch sein."
 );
 
 return;
@@ -2112,17 +2550,17 @@ return;
 }
 
 
-const homeRecord=
+const homeRecord =
 teamRecord(
-age,
-home
+  age,
+  home
 );
 
 
-const awayRecord=
+const awayRecord =
 teamRecord(
-age,
-away
+  age,
+  away
 );
 
 
@@ -2161,22 +2599,22 @@ awayRecord.club
 };
 
 
-const index=
+const index =
 db.games.findIndex(
-entry=>
-entry.id===game.id
+  entry =>
+  entry.id === game.id
 );
 
 
-if(index>=0){
+if(index >= 0){
 
-db.games[index]=
+db.games[index] =
 game;
 
 }else{
 
 db.games.push(
-game
+  game
 );
 
 }
@@ -2188,7 +2626,7 @@ persist();
 
 
 $("gameForm")
-.style.display=
+.style.display =
 "none";
 
 
@@ -2198,29 +2636,32 @@ createGraphic();
 
 
 setStatus(
-"✓ Termin gespeichert"
+  "✓ Termin gespeichert"
 );
 
 }
 
 
+/* ========================================
+   LÖSCHEN / BEARBEITEN
+======================================== */
+
+
 function removeGame(id){
 
 if(
-!confirm(
-"Termin löschen?"
-)
+  !confirm(
+    "Termin löschen?"
+  )
 ){
-
-return;
-
+  return;
 }
 
 
-db.games=
+db.games =
 db.games.filter(
-game=>
-game.id!==id
+  game =>
+  game.id !== id
 );
 
 
@@ -2236,14 +2677,19 @@ createGraphic();
 function editGame(id){
 
 showView(
-"games"
+  "games"
 );
 
 openGame(
-id
+  id
 );
 
 }
+
+
+/* ========================================
+   DATUM
+======================================== */
 
 
 function formatDate(date){
@@ -2256,46 +2702,45 @@ return "–";
 
 
 return new Date(
-date+
-"T12:00"
+  date+
+  "T12:00"
 )
 .toLocaleDateString(
-"de-DE",
-{
+  "de-DE",
+  {
 
-weekday:"short",
-day:"2-digit",
-month:"2-digit"
+    weekday:"short",
+    day:"2-digit",
+    month:"2-digit"
 
-}
+  }
 );
 
 }
 
 
+/* ========================================
+   NORMALES SPIEL HTML
+======================================== */
+
+
 function normalGameHTML(game){
 
-const homeClub=
-
+const homeClub =
 game.homeClub
-
 ||
-
 teamRecord(
-game.age,
-game.home
+  game.age,
+  game.home
 ).club;
 
 
-const awayClub=
-
+const awayClub =
 game.awayClub
-
 ||
-
 teamRecord(
-game.age,
-game.away
+  game.age,
+  game.away
 ).club;
 
 
@@ -2306,22 +2751,20 @@ return`
 <div class="game-top">
 
 <span class="tag">
-
 ${esc(game.age)}-Jugend
-
 </span>
 
 <div class="actions">
 
 <button
-class="secondary"
-data-edit="${esc(game.id)}">
+  class="secondary"
+  data-edit="${esc(game.id)}">
 ✎
 </button>
 
 <button
-class="danger"
-data-delete="${esc(game.id)}">
+  class="danger"
+  data-delete="${esc(game.id)}">
 🗑
 </button>
 
@@ -2329,29 +2772,42 @@ data-delete="${esc(game.id)}">
 
 </div>
 
+
 <div class="game-main">
+
 
 <div class="teamname">
 
-${logoHTML(homeClub)}
+${logoHTML(
+  homeClub
+)}
 
-${esc(game.home)}
+${esc(
+  game.home
+)}
 
 </div>
+
 
 <div class="vs">
 VS.
 </div>
 
+
 <div class="teamname">
 
-${logoHTML(awayClub)}
+${logoHTML(
+  awayClub
+)}
 
-${esc(game.away)}
+${esc(
+  game.away
+)}
 
 </div>
 
 </div>
+
 
 <div class="muted">
 
@@ -2370,9 +2826,14 @@ ${esc(game.away)}
 }
 
 
+/* ========================================
+   FESTIVAL HTML
+======================================== */
+
+
 function festivalHTML(game){
 
-const participants=
+const participants =
 game.participants || [];
 
 
@@ -2394,17 +2855,18 @@ FESTIVAL
 
 </div>
 
+
 <div class="actions">
 
 <button
-class="secondary"
-data-edit="${esc(game.id)}">
+  class="secondary"
+  data-edit="${esc(game.id)}">
 ✎
 </button>
 
 <button
-class="danger"
-data-delete="${esc(game.id)}">
+  class="danger"
+  data-delete="${esc(game.id)}">
 🗑
 </button>
 
@@ -2412,25 +2874,28 @@ data-delete="${esc(game.id)}">
 
 </div>
 
+
 <div class="festival-label">
 
 Veranstalter:
 ${esc(
-game.organizer || "–"
+  game.organizer || "–"
 )}
 
 </div>
 
+
 <div class="festival-participants">
+
 
 ${participants
 .map(
-name=>{
+  name =>{
 
-const club=
+const club =
 teamRecord(
-game.age,
-name
+  game.age,
+  name
 ).club;
 
 
@@ -2438,9 +2903,13 @@ return`
 
 <div class="festival-person">
 
-${logoHTML(club)}
+${logoHTML(
+  club
+)}
 
-${esc(name)}
+${esc(
+  name
+)}
 
 </div>
 
@@ -2450,7 +2919,9 @@ ${esc(name)}
 )
 .join("")}
 
+
 </div>
+
 
 <div class="muted">
 
@@ -2469,21 +2940,26 @@ ${esc(name)}
 }
 
 
+/* ========================================
+   GEMEINSAME KARTE
+======================================== */
+
+
 function gameHTML(game){
 
 if(
-game.type==="festival"
+  game.type === "festival"
 ){
 
 return festivalHTML(
-game
+  game
 );
 
 }
 
 
 return normalGameHTML(
-game
+  game
 );
 
 }
@@ -2493,14 +2969,14 @@ function bindGameButtons(root){
 
 root
 .querySelectorAll(
-"[data-edit]"
+  "[data-edit]"
 )
 .forEach(
-button=>{
+  button =>{
 
-button.onclick=
+button.onclick =
 ()=>editGame(
-button.dataset.edit
+  button.dataset.edit
 );
 
 }
@@ -2509,90 +2985,117 @@ button.dataset.edit
 
 root
 .querySelectorAll(
-"[data-delete]"
+  "[data-delete]"
 )
 .forEach(
-button=>{
+  button =>{
 
-button.onclick=
+button.onclick =
 ()=>removeGame(
-button.dataset.delete
+  button.dataset.delete
 );
 
 }
 );
 
 }
+
+
+/* ========================================
+   WOCHENENDE
+======================================== */
 
 
 function weekendGames(){
 
-const from=
+const from =
 $("dateFrom").value;
 
 
-const to=
+const to =
 $("dateTo").value;
 
 
 return db.games
 
 .filter(
-game=>
+  game =>
 
-(
-!from
-||
-game.date>=from
-)
+  (
+    !from
+    ||
+    game.date >= from
+  )
 
-&&
+  &&
 
-(
-!to
-||
-game.date<=to
-)
+  (
+    !to
+    ||
+    game.date <= to
+  )
 
 )
 
 .sort(
-(a,b)=>
+  (a,b) =>{
 
-(a.date || "")
-.localeCompare(
-b.date || ""
-)
+  const dateCompare =
+  (a.date || "")
+  .localeCompare(
+    b.date || ""
+  );
 
-||
+  if(dateCompare){
+    return dateCompare;
+  }
 
-(a.time || "")
-.localeCompare(
-b.time || ""
-)
+  const ageOrder =
+  ["A","B","C","D","E","F","G"];
+
+  const ageCompare =
+  ageOrder.indexOf(a.age)
+  -
+  ageOrder.indexOf(b.age);
+
+  if(ageCompare){
+    return ageCompare;
+  }
+
+  return
+  (a.time || "")
+  .localeCompare(
+    b.time || ""
+  );
+
+  }
 
 );
 
 }
 
 
+/* ========================================
+   RENDER
+======================================== */
+
+
 function renderGames(){
 
-const games=
+const games =
 [...db.games]
 
 .sort(
-(a,b)=>
+  (a,b) =>
 
-(a.date || "")
-.localeCompare(
-b.date || ""
-)
-
+  (a.date || "")
+  .localeCompare(
+    b.date || ""
+  )
 );
 
 
-$("gamesList").innerHTML=
+$("gamesList").innerHTML =
 
 games.length
 
@@ -2608,7 +3111,7 @@ games
 
 
 bindGameButtons(
-$("gamesList")
+  $("gamesList")
 );
 
 }
@@ -2616,27 +3119,27 @@ $("gamesList")
 
 function renderHome(){
 
-const games=
+const games =
 weekendGames();
 
 
 $("gameCount")
-.textContent=
+.textContent =
 
 games.length
 +
 " Termin"
 +
 (
-games.length===1
-?
-""
-:
-"e"
+  games.length === 1
+  ?
+  ""
+  :
+  "e"
 );
 
 
-$("homeGames").innerHTML=
+$("homeGames").innerHTML =
 
 games.length
 
@@ -2652,10 +3155,15 @@ games
 
 
 bindGameButtons(
-$("homeGames")
+  $("homeGames")
 );
 
 }
+
+
+/* ========================================
+   VEREINE
+======================================== */
 
 
 function renderClubs(){
@@ -2665,21 +3173,20 @@ const usage={};
 
 ["B","C","D","E","F"]
 .forEach(
-age=>{
+  age =>{
 
 teamsForAge(age)
 .forEach(
-team=>{
+  team =>{
 
 if(
-!usage[team.club]
+  !usage[team.club]
 ){
 
-usage[team.club]=
+usage[team.club] =
 new Set();
 
 }
-
 
 usage[team.club]
 .add(age);
@@ -2690,20 +3197,20 @@ usage[team.club]
 );
 
 
-const names=
+const names =
 Object.keys(usage)
 
 .sort(
-(a,b)=>
-a.localeCompare(
-b,
-"de"
-)
+  (a,b) =>
+  a.localeCompare(
+    b,
+    "de"
+  )
 );
 
 
 $("clubCount")
-.textContent=
+.textContent =
 
 names.length
 +
@@ -2711,28 +3218,34 @@ names.length
 
 
 $("clubList")
-.innerHTML=
+.innerHTML =
 
 names
 .map(
-name=>`
+  name =>`
 
 <div class="club">
 
-${logoHTML(name)}
+${logoHTML(
+  name
+)}
 
 <div class="clubtext">
 
 <div class="clubname">
-${esc(name)}
+
+${esc(
+  name
+)}
+
 </div>
 
 <div class="ages">
 
 ${[...usage[name]]
 .map(
-age=>
-age+"-Jugend"
+  age =>
+  age+"-Jugend"
 )
 .join(" · ")}
 
@@ -2749,32 +3262,37 @@ age+"-Jugend"
 }
 
 
+/* ========================================
+   MANUELL
+======================================== */
+
+
 function addManual(){
 
-const team=
+const team =
 $("manualTeam")
 .value
 .trim();
 
 
-const club=
+const club =
 $("manualClub")
 .value
 .trim();
 
 
-const age=
+const age =
 $("manualAge").value;
 
 
 if(
-!team
-||
-!club
+  !team
+  ||
+  !club
 ){
 
 alert(
-"Bitte Mannschaft und Verein eingeben."
+  "Bitte Mannschaft und Verein eingeben."
 );
 
 return;
@@ -2783,7 +3301,7 @@ return;
 
 
 if(
-!db.manual[age]
+  !db.manual[age]
 ){
 
 db.manual[age]=[];
@@ -2792,23 +3310,22 @@ db.manual[age]=[];
 
 
 if(
-!db.manual[age]
-.some(
-entry=>
-entry.team
-.toLowerCase()
-===
-team
-.toLowerCase()
-)
+  !db.manual[age]
+  .some(
+    entry =>
+    entry.team
+    .toLowerCase()
+    ===
+    team.toLowerCase()
+  )
 ){
 
 db.manual[age]
 .push({
 
-team:team,
+  team:team,
 
-club:club
+  club:club
 
 });
 
@@ -2816,23 +3333,23 @@ club:club
 
 
 if(
-!CLUBS[club]
-&&
-!db.manualClubs[club]
+  !CLUBS[club]
+  &&
+  !db.manualClubs[club]
 ){
 
 db.manualClubs[club]={
-logo:""
+  logo:""
 };
 
 }
 
 
-$("manualTeam").value=
+$("manualTeam").value =
 "";
 
 
-$("manualClub").value=
+$("manualClub").value =
 "";
 
 
@@ -2843,17 +3360,22 @@ renderAll();
 }
 
 
+/* ========================================
+   BUTTONS
+======================================== */
+
+
 $("newGame")
-.onclick=
+.onclick =
 ()=>openGame();
 
 
 $("addDashboard")
-.onclick=
+.onclick =
 ()=>{
 
 showView(
-"games"
+  "games"
 );
 
 openGame();
@@ -2862,28 +3384,28 @@ openGame();
 
 
 $("cancelGame")
-.onclick=
+.onclick =
 ()=>{
 
 $("gameForm")
-.style.display=
+.style.display =
 "none";
 
 };
 
 
 $("saveGame")
-.onclick=
+.onclick =
 saveGame;
 
 
 $("addManual")
-.onclick=
+.onclick =
 addManual;
 
 
 $("dateFrom")
-.onchange=
+.onchange =
 ()=>{
 
 renderHome();
@@ -2894,7 +3416,7 @@ createGraphic();
 
 
 $("dateTo")
-.onchange=
+.onchange =
 ()=>{
 
 renderHome();
@@ -2904,11 +3426,16 @@ createGraphic();
 };
 
 
+/* ========================================
+   DESIGN
+======================================== */
+
+
 $("saveDesign")
-.onclick=
+.onclick =
 ()=>{
 
-db.design.title=
+db.design.title =
 
 $("designTitle")
 .value
@@ -2919,7 +3446,7 @@ $("designTitle")
 "MATCHDAY";
 
 
-db.design.subtitle=
+db.design.subtitle =
 
 $("designSubtitle")
 .value
@@ -2930,7 +3457,7 @@ $("designSubtitle")
 "UNSER WOCHENENDE";
 
 
-const file=
+const file =
 $("background")
 .files[0];
 
@@ -2942,7 +3469,7 @@ persist();
 createGraphic();
 
 setStatus(
-"✓ Design gespeichert"
+  "✓ Design gespeichert"
 );
 
 return;
@@ -2950,39 +3477,41 @@ return;
 }
 
 
-const reader=
+const reader =
 new FileReader();
 
 
-reader.onload=
+reader.onload =
 ()=>{
 
-db.design.background=
+db.design.background =
 reader.result;
+
 
 persist();
 
 createGraphic();
 
+
 setStatus(
-"✓ Hintergrund gespeichert"
+  "✓ Hintergrund gespeichert"
 );
 
 };
 
 
 reader.readAsDataURL(
-file
+  file
 );
 
 };
 
 
 $("removeBackground")
-.onclick=
+.onclick =
 ()=>{
 
-db.design.background=
+db.design.background =
 null;
 
 persist();
@@ -2990,93 +3519,88 @@ persist();
 createGraphic();
 
 setStatus(
-"✓ Standard-Hintergrund aktiv"
+  "✓ Hintergrund entfernt"
 );
 
 };
 
 
+/* ========================================
+   CANVAS-HILFEN
+======================================== */
+
+
 function roundRectPath(
-ctx,
-x,
-y,
-width,
-height,
-radius
+  ctx,
+  x,
+  y,
+  width,
+  height,
+  radius
 ){
 
-const r=
+const r =
 Math.min(
-radius,
-width/2,
-height/2
+  radius,
+  width/2,
+  height/2
 );
 
 
 ctx.beginPath();
 
-
 ctx.moveTo(
-x+r,
-y
+  x+r,
+  y
 );
-
 
 ctx.lineTo(
-x+width-r,
-y
+  x+width-r,
+  y
 );
-
 
 ctx.quadraticCurveTo(
-x+width,
-y,
-x+width,
-y+r
+  x+width,
+  y,
+  x+width,
+  y+r
 );
-
 
 ctx.lineTo(
-x+width,
-y+height-r
+  x+width,
+  y+height-r
 );
-
 
 ctx.quadraticCurveTo(
-x+width,
-y+height,
-x+width-r,
-y+height
+  x+width,
+  y+height,
+  x+width-r,
+  y+height
 );
-
 
 ctx.lineTo(
-x+r,
-y+height
+  x+r,
+  y+height
 );
-
 
 ctx.quadraticCurveTo(
-x,
-y+height,
-x,
-y+height-r
+  x,
+  y+height,
+  x,
+  y+height-r
 );
-
 
 ctx.lineTo(
-x,
-y+r
+  x,
+  y+r
 );
-
 
 ctx.quadraticCurveTo(
-x,
-y,
-x+r,
-y
+  x,
+  y,
+  x+r,
+  y
 );
-
 
 ctx.closePath();
 
@@ -3084,31 +3608,31 @@ ctx.closePath();
 
 
 function shorten(
-text,
-length=25
+  text,
+  length=25
 ){
 
-text=
+text =
 String(
-text || ""
+  text || ""
 );
 
 
 return(
-text.length>length
+  text.length > length
 
-?
+  ?
 
-text.slice(
-0,
-length-1
-)
-+
-"…"
+  text.slice(
+    0,
+    length-1
+  )
+  +
+  "…"
 
-:
+  :
 
-text
+  text
 );
 
 }
@@ -3117,7 +3641,7 @@ text
 function loadImage(source){
 
 return new Promise(
-resolve=>{
+  resolve =>{
 
 if(!source){
 
@@ -3128,23 +3652,23 @@ return;
 }
 
 
-const image=
+const image =
 new Image();
 
 
-image.onload=
+image.onload =
 ()=>resolve(
-image
+  image
 );
 
 
-image.onerror=
+image.onerror =
 ()=>resolve(
-null
+  null
 );
 
 
-image.src=
+image.src =
 source;
 
 }
@@ -3154,173 +3678,1128 @@ source;
 
 
 function drawImageContain(
-ctx,
-image,
-x,
-y,
-width,
-height
+  ctx,
+  image,
+  x,
+  y,
+  width,
+  height
 ){
 
 if(!image){
-
-return;
-
+  return;
 }
 
 
-const scale=
+const scale =
 Math.min(
 
-width/image.width,
+  width/image.width,
 
-height/image.height
+  height/image.height
 
 );
 
 
-const imageWidth=
-image.width*scale;
+const imageWidth =
+image.width
+*
+scale;
 
 
-const imageHeight=
-image.height*scale;
+const imageHeight =
+image.height
+*
+scale;
 
 
 ctx.drawImage(
 
-image,
+  image,
 
-x+
-(width-imageWidth)/2,
+  x
+  +
+  (width-imageWidth)/2,
 
-y+
-(height-imageHeight)/2,
+  y
+  +
+  (height-imageHeight)/2,
 
-imageWidth,
+  imageWidth,
 
-imageHeight
+  imageHeight
 
 );
 
 }
 
 
-function drawFallbackBackground(
-ctx,
-width,
-height
+/* ========================================
+   DYNAMISCHER HINTERGRUND
+======================================== */
+
+
+function drawGeneratedBackground(
+  ctx,
+  width,
+  height
 ){
 
-const gradient=
+
+/* ========================================
+   HELLE GRUNDFLÄCHE
+======================================== */
+
+
+const base =
 ctx.createLinearGradient(
-0,
-0,
-0,
-height
+  0,
+  0,
+  0,
+  height
 );
 
 
-gradient.addColorStop(
-0,
-"#ffffff"
+base.addColorStop(
+  0,
+  "#ffffff"
+);
+
+base.addColorStop(
+  .28,
+  "#f5f7f3"
+);
+
+base.addColorStop(
+  .53,
+  "#e6eee1"
+);
+
+base.addColorStop(
+  .68,
+  "#c9dbc1"
+);
+
+base.addColorStop(
+  1,
+  "#102714"
 );
 
 
-gradient.addColorStop(
-.55,
-"#e6eee1"
-);
-
-
-gradient.addColorStop(
-1,
-"#173b19"
-);
-
-
-ctx.fillStyle=
-gradient;
+ctx.fillStyle =
+base;
 
 
 ctx.fillRect(
-0,
-0,
-width,
-height
-);
-
-}
-
-
-async function createGraphic(){
-
-const canvas=
-$("preview");
-
-
-const ctx=
-canvas.getContext(
-"2d"
-);
-
-
-const width=
-canvas.width;
-
-
-const height=
-canvas.height;
-
-
-ctx.clearRect(
-0,
-0,
-width,
-height
+  0,
+  0,
+  width,
+  height
 );
 
 
 /* ========================================
-   FESTER GIT-HINTERGRUND
+   HIMMEL / STADIONGLOW
 ======================================== */
 
 
-const backgroundSource=
+const skyGlow =
+ctx.createRadialGradient(
 
+  width/2,
+  330,
+  30,
+
+  width/2,
+  330,
+  720
+
+);
+
+
+skyGlow.addColorStop(
+  0,
+  "rgba(255,255,255,1)"
+);
+
+skyGlow.addColorStop(
+  .35,
+  "rgba(255,255,255,.88)"
+);
+
+skyGlow.addColorStop(
+  .7,
+  "rgba(235,246,229,.28)"
+);
+
+skyGlow.addColorStop(
+  1,
+  "rgba(255,255,255,0)"
+);
+
+
+ctx.fillStyle =
+skyGlow;
+
+
+ctx.fillRect(
+  0,
+  0,
+  width,
+  850
+);
+
+
+/* ========================================
+   FLUTLICHT LINKS
+======================================== */
+
+
+ctx.save();
+
+ctx.translate(
+  108,
+  275
+);
+
+ctx.rotate(
+  -.13
+);
+
+
+ctx.fillStyle =
+"rgba(29,66,31,.26)";
+
+
+ctx.fillRect(
+  -8,
+  -100,
+  16,
+  290
+);
+
+
+ctx.fillStyle =
+"rgba(25,55,27,.72)";
+
+
+roundRectPath(
+  ctx,
+  -75,
+  -125,
+  150,
+  48,
+  8
+);
+
+ctx.fill();
+
+
+for(
+  let i=0;
+  i<5;
+  i++
+){
+
+ctx.fillStyle =
+"rgba(255,255,220,.88)";
+
+
+ctx.beginPath();
+
+ctx.arc(
+  -50+i*25,
+  -101,
+  6,
+  0,
+  Math.PI*2
+);
+
+ctx.fill();
+
+}
+
+ctx.restore();
+
+
+/* ========================================
+   FLUTLICHT RECHTS
+======================================== */
+
+
+ctx.save();
+
+ctx.translate(
+  width-108,
+  275
+);
+
+ctx.rotate(
+  .13
+);
+
+
+ctx.fillStyle =
+"rgba(29,66,31,.26)";
+
+
+ctx.fillRect(
+  -8,
+  -100,
+  16,
+  290
+);
+
+
+ctx.fillStyle =
+"rgba(25,55,27,.72)";
+
+
+roundRectPath(
+  ctx,
+  -75,
+  -125,
+  150,
+  48,
+  8
+);
+
+ctx.fill();
+
+
+for(
+  let i=0;
+  i<5;
+  i++
+){
+
+ctx.fillStyle =
+"rgba(255,255,220,.88)";
+
+
+ctx.beginPath();
+
+ctx.arc(
+  -50+i*25,
+  -101,
+  6,
+  0,
+  Math.PI*2
+);
+
+ctx.fill();
+
+}
+
+ctx.restore();
+
+
+/* ========================================
+   LICHTSTRAHLEN
+======================================== */
+
+
+ctx.save();
+
+ctx.globalCompositeOperation =
+"screen";
+
+
+const beamLeft =
+ctx.createLinearGradient(
+  0,
+  180,
+  500,
+  820
+);
+
+
+beamLeft.addColorStop(
+  0,
+  "rgba(255,255,230,.22)"
+);
+
+beamLeft.addColorStop(
+  1,
+  "rgba(255,255,255,0)"
+);
+
+
+ctx.fillStyle =
+beamLeft;
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+  35,
+  170
+);
+
+ctx.lineTo(
+  175,
+  170
+);
+
+ctx.lineTo(
+  590,
+  850
+);
+
+ctx.lineTo(
+  340,
+  850
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+
+const beamRight =
+ctx.createLinearGradient(
+  width,
+  180,
+  width-500,
+  820
+);
+
+
+beamRight.addColorStop(
+  0,
+  "rgba(255,255,230,.22)"
+);
+
+beamRight.addColorStop(
+  1,
+  "rgba(255,255,255,0)"
+);
+
+
+ctx.fillStyle =
+beamRight;
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+  width-175,
+  170
+);
+
+ctx.lineTo(
+  width-35,
+  170
+);
+
+ctx.lineTo(
+  width-340,
+  850
+);
+
+ctx.lineTo(
+  width-590,
+  850
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+
+ctx.restore();
+
+
+/* ========================================
+   TRIBÜNEN LINKS
+======================================== */
+
+
+ctx.save();
+
+
+ctx.fillStyle =
+"rgba(21,48,24,.13)";
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+  0,
+  500
+);
+
+ctx.lineTo(
+  0,
+  875
+);
+
+ctx.lineTo(
+  360,
+  785
+);
+
+ctx.lineTo(
+  430,
+  555
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+
+ctx.fillStyle =
+"rgba(10,25,12,.09)";
+
+
+for(
+  let i=0;
+  i<8;
+  i++
+){
+
+ctx.fillRect(
+  0,
+  560+i*32,
+  350-i*20,
+  12
+);
+
+}
+
+
+ctx.restore();
+
+
+/* ========================================
+   TRIBÜNEN RECHTS
+======================================== */
+
+
+ctx.save();
+
+
+ctx.fillStyle =
+"rgba(21,48,24,.13)";
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+  width,
+  500
+);
+
+ctx.lineTo(
+  width,
+  875
+);
+
+ctx.lineTo(
+  width-360,
+  785
+);
+
+ctx.lineTo(
+  width-430,
+  555
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+
+ctx.fillStyle =
+"rgba(10,25,12,.09)";
+
+
+for(
+  let i=0;
+  i<8;
+  i++
+){
+
+ctx.fillRect(
+  width-(350-i*20),
+  560+i*32,
+  350-i*20,
+  12
+);
+
+}
+
+
+ctx.restore();
+
+
+/* ========================================
+   GRÜNER PINSELSTRICH LINKS
+======================================== */
+
+
+ctx.save();
+
+ctx.globalAlpha =
+.14;
+
+ctx.fillStyle =
+"#2d7d24";
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+  0,
+  330
+);
+
+ctx.lineTo(
+  310,
+  405
+);
+
+ctx.lineTo(
+  230,
+  460
+);
+
+ctx.lineTo(
+  370,
+  500
+);
+
+ctx.lineTo(
+  125,
+  535
+);
+
+ctx.lineTo(
+  250,
+  585
+);
+
+ctx.lineTo(
+  0,
+  620
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.restore();
+
+
+/* ========================================
+   GRÜNER PINSELSTRICH RECHTS
+======================================== */
+
+
+ctx.save();
+
+ctx.globalAlpha =
+.12;
+
+ctx.fillStyle =
+"#2d7d24";
+
+
+ctx.beginPath();
+
+ctx.moveTo(
+  width,
+  310
+);
+
+ctx.lineTo(
+  width-285,
+  405
+);
+
+ctx.lineTo(
+  width-210,
+  455
+);
+
+ctx.lineTo(
+  width-360,
+  510
+);
+
+ctx.lineTo(
+  width-125,
+  545
+);
+
+ctx.lineTo(
+  width-260,
+  600
+);
+
+ctx.lineTo(
+  width,
+  630
+);
+
+ctx.closePath();
+
+ctx.fill();
+
+ctx.restore();
+
+
+/* ========================================
+   DIAGONALE DYNAMIK
+======================================== */
+
+
+ctx.save();
+
+ctx.globalAlpha =
+.055;
+
+ctx.strokeStyle =
+"#173b19";
+
+ctx.lineWidth =
+24;
+
+
+for(
+  let i=-4;
+  i<10;
+  i++
+){
+
+ctx.beginPath();
+
+ctx.moveTo(
+  i*150,
+  330
+);
+
+ctx.lineTo(
+  i*150+420,
+  720
+);
+
+ctx.stroke();
+
+}
+
+
+ctx.restore();
+
+
+/* ========================================
+   RASEN
+======================================== */
+
+
+const grass =
+ctx.createLinearGradient(
+  0,
+  800,
+  0,
+  height
+);
+
+
+grass.addColorStop(
+  0,
+  "rgba(123,174,83,.12)"
+);
+
+grass.addColorStop(
+  .10,
+  "#8ebd69"
+);
+
+grass.addColorStop(
+  .28,
+  "#5d8d46"
+);
+
+grass.addColorStop(
+  .55,
+  "#335f2c"
+);
+
+grass.addColorStop(
+  .78,
+  "#1f4722"
+);
+
+grass.addColorStop(
+  1,
+  "#102513"
+);
+
+
+ctx.fillStyle =
+grass;
+
+
+ctx.fillRect(
+  0,
+  800,
+  width,
+  height-800
+);
+
+
+/* ========================================
+   RASENSTREIFEN
+======================================== */
+
+
+ctx.save();
+
+ctx.globalAlpha =
+.07;
+
+
+for(
+  let i=0;
+  i<14;
+  i++
+){
+
+ctx.fillStyle =
+i % 2 === 0
+?
+"#ffffff"
+:
+"#061508";
+
+
+ctx.fillRect(
+  i*(width/14),
+  800,
+  width/14,
+  height-800
+);
+
+}
+
+
+ctx.restore();
+
+
+/* ========================================
+   SPIELFELD PERSPEKTIVE
+======================================== */
+
+
+ctx.save();
+
+ctx.strokeStyle =
+"rgba(255,255,255,.34)";
+
+ctx.lineWidth =
+3;
+
+
+/* Seitenlinien */
+
+ctx.beginPath();
+
+ctx.moveTo(
+  width/2-120,
+  800
+);
+
+ctx.lineTo(
+  70,
+  height
+);
+
+
+ctx.moveTo(
+  width/2+120,
+  800
+);
+
+ctx.lineTo(
+  width-70,
+  height
+);
+
+ctx.stroke();
+
+
+/* Mittellinie */
+
+ctx.beginPath();
+
+ctx.moveTo(
+  width/2,
+  800
+);
+
+ctx.lineTo(
+  width/2,
+  height
+);
+
+ctx.stroke();
+
+
+/* Mittelkreis */
+
+ctx.beginPath();
+
+ctx.ellipse(
+  width/2,
+  1020,
+  155,
+  55,
+  0,
+  0,
+  Math.PI*2
+);
+
+ctx.stroke();
+
+
+ctx.restore();
+
+
+/* ========================================
+   PARTIKEL
+======================================== */
+
+
+ctx.save();
+
+
+const particles = [
+
+[58,285,8],
+[140,390,5],
+[214,255,4],
+[295,520,7],
+[382,330,4],
+[470,270,5],
+[570,410,7],
+[665,285,5],
+[755,530,6],
+[845,350,4],
+[945,270,7],
+[1012,460,5],
+[90,690,5],
+[185,610,7],
+[305,735,4],
+[715,680,6],
+[900,650,5],
+[1015,720,7]
+
+];
+
+
+for(
+  let i=0;
+  i<particles.length;
+  i++
+){
+
+const p =
+particles[i];
+
+
+ctx.save();
+
+ctx.translate(
+  p[0],
+  p[1]
+);
+
+ctx.rotate(
+  (i*.71)
+);
+
+
+ctx.fillStyle =
+i % 3 === 0
+?
+"rgba(47,143,36,.34)"
+:
+"rgba(23,59,25,.18)";
+
+
+ctx.fillRect(
+  -p[2]/2,
+  -2,
+  p[2]*2,
+  4
+);
+
+
+ctx.restore();
+
+}
+
+
+ctx.restore();
+
+
+/* ========================================
+   DUNKLE BODEN-VIGNETTE
+======================================== */
+
+
+const bottomShade =
+ctx.createLinearGradient(
+  0,
+  980,
+  0,
+  height
+);
+
+
+bottomShade.addColorStop(
+  0,
+  "rgba(0,0,0,0)"
+);
+
+bottomShade.addColorStop(
+  1,
+  "rgba(0,0,0,.30)"
+);
+
+
+ctx.fillStyle =
+bottomShade;
+
+
+ctx.fillRect(
+  0,
+  900,
+  width,
+  height-900
+);
+
+
+/* ========================================
+   RAND-VIGNETTE
+======================================== */
+
+
+const vignette =
+ctx.createRadialGradient(
+
+  width/2,
+  height/2,
+  300,
+
+  width/2,
+  height/2,
+  930
+
+);
+
+
+vignette.addColorStop(
+  0,
+  "rgba(0,0,0,0)"
+);
+
+vignette.addColorStop(
+  .72,
+  "rgba(0,0,0,.02)"
+);
+
+vignette.addColorStop(
+  1,
+  "rgba(0,0,0,.28)"
+);
+
+
+ctx.fillStyle =
+vignette;
+
+
+ctx.fillRect(
+  0,
+  0,
+  width,
+  height
+);
+
+}
+
+
+/* ========================================
+   MATCHDAY-GRAFIK
+======================================== */
+
+
+async function createGraphic(){
+
+const canvas =
+$("preview");
+
+
+const ctx =
+canvas.getContext(
+  "2d"
+);
+
+
+const width =
+canvas.width;
+
+
+const height =
+canvas.height;
+
+
+ctx.clearRect(
+  0,
+  0,
+  width,
+  height
+);
+
+
+/* ========================================
+   HINTERGRUND
+======================================== */
+
+
+const backgroundSource =
 db.design.background
-
 ||
-
 DEFAULT_BACKGROUND;
 
 
-const background=
-
+const background =
 await loadImage(
-backgroundSource
+  backgroundSource
 );
 
 
 if(background){
 
-const scale=
+const scale =
 Math.max(
 
-width/background.width,
+  width/background.width,
 
-height/background.height
+  height/background.height
 
 );
 
 
-const imageWidth=
+const imageWidth =
 background.width
 *
 scale;
 
 
-const imageHeight=
+const imageHeight =
 background.height
 *
 scale;
@@ -3328,106 +4807,100 @@ scale;
 
 ctx.drawImage(
 
-background,
+  background,
 
-(width-imageWidth)/2,
+  (width-imageWidth)/2,
 
-(height-imageHeight)/2,
+  (height-imageHeight)/2,
 
-imageWidth,
+  imageWidth,
 
-imageHeight
+  imageHeight
 
 );
 
 
-/*
-Sehr leichter Schleier.
-Dadurch bleibt das Hintergrundbild kräftig sichtbar.
-*/
-
-ctx.fillStyle=
+ctx.fillStyle =
 "rgba(255,255,255,.05)";
 
 
 ctx.fillRect(
-0,
-0,
-width,
-height
+  0,
+  0,
+  width,
+  height
 );
 
 
 }else{
 
 
-drawFallbackBackground(
-ctx,
-width,
-height
+drawGeneratedBackground(
+  ctx,
+  width,
+  height
 );
 
 }
 
 
 /* ========================================
-   KOPF
+   KOPFZEILE
 ======================================== */
 
 
-ctx.textAlign=
+ctx.textAlign =
 "center";
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#285f22";
 
 
-ctx.font=
+ctx.font =
 "900 24px Arial";
 
 
 ctx.fillText(
-"GEMEINSAM · LEIDENSCHAFT · USV",
-width/2,
-42
+  "GEMEINSAM · LEIDENSCHAFT · USV",
+  width/2,
+  42
 );
 
 
-ctx.strokeStyle=
+/* Linien neben Motto */
+
+
+ctx.strokeStyle =
 "#285f22";
 
 
-ctx.lineWidth=
+ctx.lineWidth =
 3;
 
 
 ctx.beginPath();
 
-
 ctx.moveTo(
-70,
-35
+  70,
+  35
 );
 
-
 ctx.lineTo(
-255,
-35
+  255,
+  35
 );
 
 
 ctx.moveTo(
-width-255,
-35
+  width-255,
+  35
 );
-
 
 ctx.lineTo(
-width-70,
-35
+  width-70,
+  35
 );
-
 
 ctx.stroke();
 
@@ -3437,135 +4910,129 @@ ctx.stroke();
 ======================================== */
 
 
-ctx.font=
+ctx.font =
 "900 92px Arial";
 
 
-const matchText=
+const matchText =
 "MATCH";
 
 
-const dayText=
+const dayText =
 "DAY";
 
 
-const matchWidth=
+const matchWidth =
 ctx.measureText(
-matchText
+  matchText
 ).width;
 
 
-const dayWidth=
+const dayWidth =
 ctx.measureText(
-dayText
+  dayText
 ).width;
 
 
-const startX=
+const startX =
 
 (
-width
--
-matchWidth
--
-dayWidth
+  width
+  -
+  matchWidth
+  -
+  dayWidth
 )
 
 /2;
 
 
-ctx.textAlign=
+ctx.textAlign =
 "left";
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#111111";
 
 
 ctx.fillText(
-matchText,
-startX,
-135
+  matchText,
+  startX,
+  135
 );
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#2f7c25";
 
 
 ctx.fillText(
-dayText,
-startX+matchWidth,
-135
+  dayText,
+  startX+matchWidth,
+  135
 );
 
 
-ctx.textAlign=
+ctx.textAlign =
 "center";
 
 
 /* ========================================
-   UNTERZEILE
+   UNTERZEILE ALS GRÜNES BAND
 ======================================== */
 
 
-ctx.fillStyle=
+ctx.save();
+
+
+ctx.fillStyle =
 "rgba(40,107,32,.94)";
 
 
 ctx.beginPath();
 
-
 ctx.moveTo(
-265,
-156
+  265,
+  156
 );
-
 
 ctx.lineTo(
-815,
-151
+  815,
+  151
 );
-
 
 ctx.lineTo(
-845,
-187
+  845,
+  187
 );
-
 
 ctx.lineTo(
-250,
-190
+  250,
+  190
 );
-
 
 ctx.closePath();
-
 
 ctx.fill();
 
 
-ctx.fillStyle=
+ctx.restore();
+
+
+ctx.fillStyle =
 "#ffffff";
 
 
-ctx.font=
+ctx.font =
 "900 23px Arial";
 
 
 ctx.fillText(
-
-db.design.subtitle
-
-||
-
-"UNSER WOCHENENDE",
-
-width/2,
-
-179
-
+  db.design.subtitle
+  ||
+  "UNSER WOCHENENDE",
+  width/2,
+  179
 );
 
 
@@ -3574,31 +5041,31 @@ width/2,
 ======================================== */
 
 
-const games=
+const games =
 weekendGames()
 .slice(
-0,
-6
+  0,
+  6
 );
 
 
-let y=
+let y =
 220;
 
 
-let lastDay=
+let lastDay =
 "";
 
 
 for(
-const game
-of games
+  const game
+  of games
 ){
 
 
 if(
-y>
-height-190
+  y >
+  height-190
 ){
 
 break;
@@ -3606,51 +5073,68 @@ break;
 }
 
 
-const day=
+/* ========================================
+   TAG
+======================================== */
 
+
+const day =
 new Date(
-game.date+
-"T12:00"
+  game.date+
+  "T12:00"
 )
-
 .toLocaleDateString(
-"de-DE",
-{
+  "de-DE",
+  {
 
-weekday:"long",
+    weekday:"long",
+    day:"2-digit",
+    month:"2-digit"
 
-day:"2-digit",
-
-month:"2-digit"
-
-}
+  }
 );
 
 
 if(
-day!==lastDay
+  day !== lastDay
 ){
 
-ctx.fillStyle=
-"#2f7c25";
+if(lastDay){
+  y += 18;
+}
 
+ctx.fillStyle =
+"rgba(255,255,255,.92)";
 
-ctx.font=
-"900 21px Arial";
+roundRectPath(
+  ctx,
+  width/2-230,
+  y-30,
+  460,
+  42,
+  14
+);
 
+ctx.fill();
+
+ctx.fillStyle =
+"#245f1e";
+
+ctx.font =
+"900 26px Arial";
 
 ctx.fillText(
-day.toUpperCase(),
-width/2,
-y
+  day.toUpperCase(),
+  width/2,
+  y
 );
 
 
-y+=
-28;
+y +=
+50;
 
 
-lastDay=
+lastDay =
 day;
 
 }
@@ -3662,39 +5146,41 @@ day;
 
 
 if(
-game.type==="festival"
+  game.type === "festival"
 ){
 
-const boxHeight=
-205;
+const boxHeight =
+225;
 
+
+/* Schatten */
 
 ctx.save();
 
 
-ctx.shadowColor=
+ctx.shadowColor =
 "rgba(0,0,0,.18)";
 
 
-ctx.shadowBlur=
+ctx.shadowBlur =
 20;
 
 
-ctx.shadowOffsetY=
+ctx.shadowOffsetY =
 7;
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "rgba(255,255,255,.95)";
 
 
 roundRectPath(
-ctx,
-55,
-y,
-width-110,
-boxHeight,
-18
+  ctx,
+  55,
+  y,
+  width-110,
+  boxHeight,
+  18
 );
 
 
@@ -3704,166 +5190,161 @@ ctx.fill();
 ctx.restore();
 
 
-ctx.fillStyle=
+/* grüner Akzent oben */
+
+ctx.fillStyle =
 "#2f7c25";
 
 
 roundRectPath(
-ctx,
-55,
-y,
-width-110,
-7,
-4
+  ctx,
+  55,
+  y,
+  width-110,
+  7,
+  4
 );
 
 
 ctx.fill();
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#173b19";
 
 
-ctx.font=
+ctx.font =
 "900 19px Arial";
 
 
 ctx.fillText(
-game.age+
-"-JUGEND · FESTIVAL",
-width/2,
-y+28
+  game.age+
+  "-JUGEND · FESTIVAL",
+  width/2,
+  y+28
 );
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#2f7c25";
 
 
-ctx.font=
-"700 14px Arial";
+ctx.font =
+"800 18px Arial";
 
 
 ctx.fillText(
-"VERANSTALTER · "+
-shorten(
-game.organizer,
-30
-),
-width/2,
-y+50
+  "VERANSTALTER · "+
+  shorten(
+    game.organizer,
+    30
+  ),
+  width/2,
+  y+50
 );
 
 
-const participants=
+/* ========================================
+   FESTIVAL-TEILNEHMER
+======================================== */
+
+
+const participants =
 (game.participants || [])
 .slice(
-0,
-6
+  0,
+  6
 );
 
 
-let positions=[];
+let festivalPositions=[];
 
 
 if(
-participants.length<=4
+  participants.length <= 4
 ){
 
-const gap=
+const gap =
 190;
 
 
-const start=
+const start =
 width/2
 -
 ((participants.length-1)*gap)/2;
 
 
-positions=
+festivalPositions =
+participants.map(
+  (_,index) =>({
 
-participants
-.map(
-(_,index)=>({
+    x:start+
+    index*gap,
 
-x:
-start+
-index*gap,
+    y:y+96
 
-y:
-y+96
-
-})
+  })
 );
-
 
 }else{
 
 
-positions=
+festivalPositions =
+participants.map(
+  (_,index) =>({
 
-participants
-.map(
-(_,index)=>({
+    x:
+    width/2
+    -
+    210
+    +
+    (index%3)*210,
 
-x:
-width/2
--
-210
-+
-(index%3)*210,
+    y:
+    y+82
+    +
+    Math.floor(index/3)*67
 
-y:
-y+82
-+
-Math.floor(index/3)*67
-
-})
+  })
 );
 
 }
 
 
 for(
-let i=0;
-i<participants.length;
-i++
+  let i=0;
+  i<participants.length;
+  i++
 ){
 
-const teamName=
+const teamName =
 participants[i];
 
 
-const club=
+const club =
 teamRecord(
-game.age,
-teamName
+  game.age,
+  teamName
 ).club;
 
 
-const image=
+const image =
 await loadImage(
-getClub(
-club
-).logo
+  getClub(
+    club
+  ).logo
 );
 
 
-const position=
-positions[i];
+const position =
+festivalPositions[i];
 
 
-const logoSize=
-
-participants.length>4
-
+const logoSize =
+participants.length > 4
 ?
-
 46
-
 :
-
 60;
 
 
@@ -3871,25 +5352,24 @@ if(image){
 
 drawImageContain(
 
-ctx,
+  ctx,
 
-image,
+  image,
 
-position.x-logoSize/2,
+  position.x-logoSize/2,
 
-position.y-logoSize/2,
+  position.y-logoSize/2,
 
-logoSize,
+  logoSize,
 
-logoSize
+  logoSize
 
 );
-
 
 }else{
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#2f8f24";
 
 
@@ -3898,15 +5378,15 @@ ctx.beginPath();
 
 ctx.arc(
 
-position.x,
+  position.x,
 
-position.y,
+  position.y,
 
-logoSize/2,
+  logoSize/2,
 
-0,
+  0,
 
-Math.PI*2
+  Math.PI*2
 
 );
 
@@ -3914,99 +5394,98 @@ Math.PI*2
 ctx.fill();
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#ffffff";
 
 
-ctx.font=
+ctx.font =
 "900 10px Arial";
 
 
 ctx.fillText(
 
-initials(
-club
-),
+  initials(
+    club
+  ),
 
-position.x,
+  position.x,
 
-position.y+4
+  position.y+4
 
 );
 
 }
 
 
-ctx.fillStyle=
+/* Name */
+
+ctx.fillStyle =
 "#172018";
 
 
-ctx.font=
-
-participants.length>4
-
+ctx.font =
+participants.length > 4
 ?
-
-"700 10px Arial"
-
+"800 14px Arial"
 :
-
-"700 11px Arial";
+"900 16px Arial";
 
 
 ctx.fillText(
 
-shorten(
-teamName,
-participants.length>4
-?
-16
-:
-18
-),
+  shorten(
+    teamName,
+    participants.length > 4
+    ?
+    16
+    :
+    18
+  ),
 
-position.x,
+  position.x,
 
-position.y+
-logoSize/2+
-16
+  position.y+
+  logoSize/2+
+  16
 
 );
 
 }
 
 
-ctx.fillStyle=
+/* Festival Info */
+
+ctx.fillStyle =
 "#596159";
 
 
-ctx.font=
-"600 14px Arial";
+ctx.font =
+"800 20px Arial";
 
 
 ctx.fillText(
 
-(game.time || "")
+  (game.time || "")
 
-+
+  +
 
-(
-game.place
-?
-"  ·  "+
-game.place
-:
-""
-),
+  (
+    game.place
+    ?
+    "  ·  "+
+    game.place
+    :
+    ""
+  ),
 
-width/2,
+  width/2,
 
-y+184
+  y+184
 
 );
 
 
-y+=
+y +=
 boxHeight+13;
 
 
@@ -4016,40 +5495,40 @@ continue;
 
 
 /* ========================================
-   NORMALES SPIEL
+   NORMALES SPIEL B-C-D
 ======================================== */
 
 
-const boxHeight=
-132;
+const boxHeight =
+150;
 
 
 ctx.save();
 
 
-ctx.shadowColor=
+ctx.shadowColor =
 "rgba(0,0,0,.18)";
 
 
-ctx.shadowBlur=
+ctx.shadowBlur =
 20;
 
 
-ctx.shadowOffsetY=
+ctx.shadowOffsetY =
 7;
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "rgba(255,255,255,.95)";
 
 
 roundRectPath(
-ctx,
-55,
-y,
-width-110,
-boxHeight,
-18
+  ctx,
+  55,
+  y,
+  width-110,
+  boxHeight,
+  18
 );
 
 
@@ -4059,79 +5538,107 @@ ctx.fill();
 ctx.restore();
 
 
-ctx.fillStyle=
+/* grüner Akzent */
+
+ctx.fillStyle =
 "#2f7c25";
 
 
 roundRectPath(
-ctx,
-55,
-y,
-width-110,
-7,
-4
+  ctx,
+  55,
+  y,
+  width-110,
+  7,
+  4
 );
 
 
 ctx.fill();
 
 
-const homeClub=
+const homeClub =
 
 game.homeClub
 
 ||
 
 teamRecord(
-game.age,
-game.home
+  game.age,
+  game.home
 ).club;
 
 
-const awayClub=
+const awayClub =
 
 game.awayClub
 
 ||
 
 teamRecord(
-game.age,
-game.away
+  game.age,
+  game.away
 ).club;
 
 
 const [
-homeImage,
-awayImage
-]=
+  homeImage,
+  awayImage
+] =
 
 await Promise.all([
 
-loadImage(
-getClub(
-homeClub
-).logo
-),
+  loadImage(
+    getClub(
+      homeClub
+    ).logo
+  ),
 
-loadImage(
-getClub(
-awayClub
-).logo
-)
+  loadImage(
+    getClub(
+      awayClub
+    ).logo
+  )
 
 ]);
+
+
+/* ========================================
+   LOGOS
+======================================== */
 
 
 if(homeImage){
 
 drawImageContain(
-ctx,
-homeImage,
-76,
-y+37,
-74,
-74
+  ctx,
+  homeImage,
+  76,
+  y+37,
+  74,
+  74
 );
+
+}else{
+
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+  113,
+  y+74,
+  31,
+  0,
+  Math.PI*2
+);
+
+
+ctx.fill();
 
 }
 
@@ -4139,115 +5646,156 @@ y+37,
 if(awayImage){
 
 drawImageContain(
-ctx,
-awayImage,
-width-150,
-y+37,
-74,
-74
+  ctx,
+  awayImage,
+  width-150,
+  y+37,
+  74,
+  74
 );
+
+}else{
+
+
+ctx.fillStyle =
+"#2f8f24";
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+  width-113,
+  y+74,
+  31,
+  0,
+  Math.PI*2
+);
+
+
+ctx.fill();
 
 }
 
 
-ctx.fillStyle=
+/* ========================================
+   ALTERSKLASSE
+======================================== */
+
+
+ctx.fillStyle =
 "#173b19";
 
 
-ctx.font=
+ctx.font =
 "900 19px Arial";
 
 
 ctx.fillText(
-game.age+
-"-JUGEND",
-width/2,
-y+28
+  game.age+
+  "-JUGEND",
+  width/2,
+  y+28
 );
 
 
-ctx.fillStyle=
+/* ========================================
+   TEAMNAMEN
+======================================== */
+
+
+ctx.fillStyle =
 "#172018";
 
 
-ctx.font=
-"700 17px Arial";
+ctx.font =
+"900 24px Arial";
 
 
 ctx.fillText(
 
-shorten(
-game.home,
-24
-),
+  shorten(
+    game.home,
+    24
+  ),
 
-width/2-190,
+  width/2-190,
 
-y+68
+  y+68
 
 );
 
 
 ctx.fillText(
 
-shorten(
-game.away,
-24
-),
+  shorten(
+    game.away,
+    24
+  ),
 
-width/2+190,
+  width/2+190,
 
-y+68
+  y+68
 
 );
 
 
-ctx.fillStyle=
+/* ========================================
+   VS
+======================================== */
+
+
+ctx.fillStyle =
 "#2f7c25";
 
 
-ctx.font=
+ctx.font =
 "900 25px Arial";
 
 
 ctx.fillText(
-"VS.",
-width/2,
-y+70
+  "VS.",
+  width/2,
+  y+70
 );
 
 
-ctx.fillStyle=
+/* ========================================
+   INFO
+======================================== */
+
+
+ctx.fillStyle =
 "#596159";
 
 
-ctx.font=
-"600 15px Arial";
+ctx.font =
+"800 22px Arial";
 
 
 ctx.fillText(
 
-(game.time || "")
+  (game.time || "")
 
-+
+  +
 
-(
-game.place
-?
-"  ·  "+
-game.place
-:
-""
-),
+  (
+    game.place
+    ?
+    "  ·  "+
+    game.place
+    :
+    ""
+  ),
 
-width/2,
+  width/2,
 
-y+104
+  y+104
 
 );
 
 
-y+=
+y +=
 boxHeight+13;
 
 }
@@ -4259,21 +5807,21 @@ boxHeight+13;
 
 
 if(
-games.length===0
+  games.length === 0
 ){
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#173b19";
 
 
-ctx.font=
+ctx.font =
 "700 25px Arial";
 
 
 ctx.fillText(
-"NOCH KEINE TERMINE FÜR DIESES WOCHENENDE",
-width/2,
-420
+  "NOCH KEINE TERMINE FÜR DIESES WOCHENENDE",
+  width/2,
+  420
 );
 
 }
@@ -4284,26 +5832,28 @@ width/2,
 ======================================== */
 
 
-ctx.fillStyle=
+ctx.fillStyle =
 "#ffffff";
 
 
-ctx.font=
+ctx.font =
 "900 26px Arial";
 
 
 ctx.fillText(
-"#NURDERUSV",
-width/2,
-height-35
+  "#NURDERUSV",
+  width/2,
+  height-35
 );
 
 
-ctx.strokeStyle=
+/* Linien */
+
+ctx.strokeStyle =
 "rgba(111,186,80,.75)";
 
 
-ctx.lineWidth=
+ctx.lineWidth =
 3;
 
 
@@ -4311,26 +5861,24 @@ ctx.beginPath();
 
 
 ctx.moveTo(
-100,
-height-43
+  100,
+  height-43
 );
 
-
 ctx.lineTo(
-365,
-height-43
+  365,
+  height-43
 );
 
 
 ctx.moveTo(
-width-365,
-height-43
+  width-365,
+  height-43
 );
 
-
 ctx.lineTo(
-width-100,
-height-43
+  width-100,
+  height-43
 );
 
 
@@ -4339,8 +5887,13 @@ ctx.stroke();
 }
 
 
+/* ========================================
+   GRAFIK
+======================================== */
+
+
 $("makeGraphic")
-.onclick=
+.onclick =
 async()=>{
 
 await createGraphic();
@@ -4349,41 +5902,46 @@ await createGraphic();
 $("preview")
 .scrollIntoView({
 
-behavior:"smooth",
+  behavior:"smooth",
 
-block:"center"
+  block:"center"
 
 });
 
 
 setStatus(
-"✓ Matchday aktualisiert"
+  "✓ Matchday aktualisiert"
 );
 
 };
 
 
+/* ========================================
+   DOWNLOAD
+======================================== */
+
+
 $("downloadImage")
-.onclick=
+.onclick =
 async()=>{
 
 await createGraphic();
 
 
-const link=
+const link =
 document.createElement(
-"a"
+  "a"
 );
 
 
-link.download=
+link.download =
 "USV-Matchday.png";
 
 
-link.href=
+link.href =
 $("preview")
 .toDataURL(
-"image/png"
+  "image/png"
 );
 
 
@@ -4392,8 +5950,13 @@ link.click();
 };
 
 
+/* ========================================
+   TEILEN
+======================================== */
+
+
 $("shareImage")
-.onclick=
+.onclick =
 async()=>{
 
 await createGraphic();
@@ -4401,23 +5964,23 @@ await createGraphic();
 
 $("preview")
 .toBlob(
-async blob=>{
+  async blob =>{
 
 if(!blob){
-return;
+  return;
 }
 
 
-const file=
+const file =
 new File(
 
-[blob],
+  [blob],
 
-"USV-Matchday.png",
+  "USV-Matchday.png",
 
-{
-type:"image/png"
-}
+  {
+    type:"image/png"
+  }
 
 );
 
@@ -4427,22 +5990,22 @@ try{
 
 if(
 
-navigator.share
-&&
-navigator.canShare
-&&
-navigator.canShare({
-files:[file]
-})
+  navigator.share
+  &&
+  navigator.canShare
+  &&
+  navigator.canShare({
+    files:[file]
+  })
 
 ){
 
 
 await navigator.share({
 
-files:[file],
+  files:[file],
 
-title:"USV Matchday"
+  title:"USV Matchday"
 
 });
 
@@ -4469,6 +6032,11 @@ $("downloadImage")
 };
 
 
+/* ========================================
+   RENDER
+======================================== */
+
+
 function renderAll(){
 
 renderGames();
@@ -4478,7 +6046,7 @@ renderHome();
 renderClubs();
 
 
-$("designTitle").value=
+$("designTitle").value =
 
 db.design.title
 
@@ -4487,7 +6055,7 @@ db.design.title
 "MATCHDAY";
 
 
-$("designSubtitle").value=
+$("designSubtitle").value =
 
 db.design.subtitle
 
@@ -4496,6 +6064,11 @@ db.design.subtitle
 "UNSER WOCHENENDE";
 
 }
+
+
+/* ========================================
+   START
+======================================== */
 
 
 initDates();
@@ -4508,7 +6081,7 @@ persist();
 
 
 setStatus(
-"● App bereit · B–D Spielmodus · E–F Festivalmodus"
+  "● App bereit · B–D Spielmodus · E–F Festivalmodus"
 );
 
 </script>
