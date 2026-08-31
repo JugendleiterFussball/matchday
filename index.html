@@ -1,444 +1,832 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <meta name="theme-color" content="#2f8f24">
+
 <title>USV Matchday</title>
 
 <style>
+
 :root{
-  --green:#2f8f24;
-  --green2:#63b33c;
-  --dark:#172018;
-  --text:#172018;
-  --bg:#f3f6f1;
-  --card:#fff;
-  --muted:#6f786f;
-  --border:#dfe6dc;
+    --green:#2f8f24;
+    --green-dark:#173b19;
+    --green-light:#e9f5e5;
+    --bg:#f2f6f0;
+    --card:#ffffff;
+    --border:#dce5d8;
+    --text:#172018;
+    --muted:#6c756b;
+    --red:#b63830;
 }
 
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(180deg,#f7faf5 0%,#edf3ea 100%);
-  color:var(--text)
+    margin:0;
+    background:
+        linear-gradient(
+            180deg,
+            #f8fbf7 0%,
+            #edf3ea 100%
+        );
+    color:var(--text);
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
-button,input,select{font:inherit}
-button{cursor:pointer}
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
 
 .app{
-  max-width:1100px;
-  margin:auto;
-  min-height:100vh
+    max-width:1100px;
+    margin:auto;
+    min-height:100vh;
 }
+
+/* HEADER */
 
 header{
-  background:linear-gradient(115deg,#142719 0%,#2d7028 52%,#70b94d 100%);
-  color:white;
-  padding:18px 16px 22px;
-  position:sticky;
-  top:0;
-  z-index:5
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    padding:
+        14px
+        14px
+        12px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            120deg,
+            #142719,
+            #2e7628 58%,
+            #70b94d
+        );
+
+    box-shadow:
+        0 4px 18px
+        rgba(0,0,0,.15);
 }
 
-.header-row{
-  display:flex;
-  align-items:center;
-  gap:12px
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.club-badge{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:#fff;
-  color:#173b19;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-  font-size:11px;
-  text-align:center;
-  border:2px solid #b8e49e
+.usv-badge{
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+    display:grid;
+    place-items:center;
+
+    background:white;
+
+    color:#173b19;
+
+    text-align:center;
+
+    font-size:10px;
+    line-height:1.05;
+
+    font-weight:900;
+
+    border:
+        2px solid
+        #b8e49d;
 }
 
-h1{font-size:22px;margin:0}
+.brand h1{
+    margin:0;
 
-.sub{
-  font-size:12px;
-  opacity:.85;
-  margin-top:3px
+    font-size:22px;
+}
+
+.brand-sub{
+    margin-top:3px;
+
+    font-size:12px;
+
+    opacity:.85;
 }
 
 nav{
-  display:flex;
-  gap:7px;
-  overflow:auto;
-  padding:10px 10px 0
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-top:10px;
 }
 
 nav button{
-  border:0;
-  background:rgba(255,255,255,.14);
-  color:#fff;
-  border-radius:9px;
-  padding:9px 11px;
-  white-space:nowrap;
-  font-size:12px
+
+    border:0;
+
+    border-radius:9px;
+
+    padding:
+        9px
+        12px;
+
+    background:
+        rgba(255,255,255,.16);
+
+    color:white;
+
+    white-space:nowrap;
+
+    font-size:12px;
 }
 
 nav button.active{
-  background:#fff;
-  color:var(--green);
-  font-weight:800
+
+    background:white;
+
+    color:var(--green);
+
+    font-weight:900;
 }
 
-main{padding:16px}
+/* MAIN */
 
-.view{display:none}
-.view.active{display:block}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:15px;
-  margin-bottom:14px;
-  box-shadow:0 5px 20px rgba(20,50,20,.07)
+main{
+    padding:14px;
 }
 
-h2{
-  font-size:19px;
-  margin:0 0 12px
+.view{
+    display:none;
 }
 
-h3{
-  font-size:15px;
-  margin:0 0 9px
+.view.active{
+    display:block;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px
+/* STATUS */
+
+.status{
+
+    margin-bottom:12px;
+
+    padding:
+        9px
+        11px;
+
+    border-radius:10px;
+
+    background:
+        var(--green-light);
+
+    color:
+        #356232;
+
+    font-size:11px;
+
+    font-weight:800;
 }
 
-.field label{
-  display:block;
-  font-size:11px;
-  font-weight:700;
-  color:var(--muted);
-  margin:0 0 5px
-}
-
-input,select{
-  width:100%;
-  padding:11px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:#fff;
-  color:var(--text)
-}
-
-.btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 14px;
-  font-weight:800
-}
-
-.primary{
-  background:var(--green);
-  color:#fff
-}
-
-.secondary{
-  background:#edf5ea;
-  color:var(--green)
-}
-
-.danger{
-  background:#fff0ef;
-  color:#b33b30
-}
-
-.wide{width:100%}
-
-.row{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap
-}
-
-.muted{
-  color:var(--muted);
-  font-size:12px
-}
-
-.game{
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:12px;
-  margin:9px 0;
-  background:#fbfcfa
-}
-
-.game-top{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  align-items:center
-}
-
-.badge{
-  display:inline-block;
-  background:#e8f5e3;
-  color:var(--green);
-  border-radius:999px;
-  padding:5px 8px;
-  font-size:10px;
-  font-weight:800
-}
-
-.game-main{
-  display:grid;
-  grid-template-columns:1fr 44px 1fr;
-  align-items:center;
-  text-align:center;
-  gap:5px;
-  margin:10px 0
-}
-
-.team{
-  font-weight:800;
-  font-size:13px
-}
-
-.logo{
-  width:52px;
-  height:52px;
-  object-fit:contain;
-  display:block;
-  margin:4px auto
-}
-
-.vs{
-  font-weight:900;
-  color:var(--green)
-}
-
-.actions{
-  display:flex;
-  gap:6px
-}
-
-.actions button{
-  padding:7px 9px;
-  border:0;
-  border-radius:8px;
-  font-size:11px
-}
-
-.logo-list{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px
-}
-
-.club{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:8px
-}
-
-.club img{
-  width:42px;
-  height:42px;
-  object-fit:contain
-}
-
-.club .name{
-  font-weight:700;
-  font-size:12px;
-  flex:1
-}
-
-.preview-wrap{
-  background:#ddd;
-  border-radius:14px;
-  padding:10px;
-  text-align:center
-}
-
-canvas{
-  max-width:100%;
-  height:auto;
-  border-radius:10px;
-  display:block;
-  margin:auto
-}
-
-.empty{
-  padding:22px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px
-}
-
-hr{
-  border:0;
-  border-top:1px solid var(--border);
-  margin:14px 0
-}
-
-.small{font-size:11px}
-
-@media(max-width:650px){
-  .grid{grid-template-columns:1fr}
-  .logo-list{grid-template-columns:1fr}
-  main{padding:12px}
-}
+/* STEPS */
 
 .stepbar{
-  display:flex;
-  gap:7px;
-  overflow:auto;
-  margin:0 0 14px
+
+    display:flex;
+
+    gap:6px;
+
+    overflow-x:auto;
+
+    margin-bottom:14px;
 }
 
 .stepbar span{
-  white-space:nowrap;
-  padding:8px 11px;
-  border-radius:999px;
-  background:#e9f2e5;
-  color:#50704d;
-  font-size:11px;
-  font-weight:800
+
+    padding:
+        8px
+        11px;
+
+    border-radius:999px;
+
+    background:
+        #e7f0e4;
+
+    color:
+        #55704f;
+
+    white-space:nowrap;
+
+    font-size:11px;
+
+    font-weight:800;
 }
 
 .stepbar span.active{
-  background:#2d8f28;
-  color:#fff
+
+    background:
+        var(--green);
+
+    color:white;
 }
+
+/* CARDS */
+
+.card{
+
+    background:
+        var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:16px;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(30,70,30,.07);
+}
+
+.card h2{
+
+    margin:
+        0
+        0
+        11px;
+
+    font-size:19px;
+}
+
+.card h3{
+
+    margin:
+        0
+        0
+        10px;
+
+    font-size:15px;
+}
+
+/* GRID */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap:10px;
+}
+
+.field label{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+input,
+select{
+
+    width:100%;
+
+    padding:11px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:10px;
+
+    background:white;
+
+    color:var(--text);
+
+    outline:none;
+}
+
+input:focus,
+select:focus{
+
+    border-color:
+        var(--green);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(47,143,36,.12);
+}
+
+/* BUTTONS */
+
+.btn{
+
+    border:0;
+
+    border-radius:10px;
+
+    padding:
+        11px
+        14px;
+
+    font-weight:900;
+}
+
+.btn.primary{
+
+    background:
+        var(--green);
+
+    color:white;
+}
+
+.btn.secondary{
+
+    background:
+        var(--green-light);
+
+    color:var(--green);
+}
+
+.btn.danger{
+
+    background:
+        #fff0ef;
+
+    color:
+        var(--red);
+}
+
+.wide{
+    width:100%;
+}
+
+.row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+}
+
+.between{
+    justify-content:space-between;
+}
+
+.muted{
+
+    color:
+        var(--muted);
+
+    font-size:12px;
+}
+
+/* TAG */
+
+.tag{
+
+    display:inline-block;
+
+    padding:
+        5px
+        8px;
+
+    border-radius:999px;
+
+    background:
+        var(--green-light);
+
+    color:
+        var(--green);
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+/* GAME */
+
+.game{
+
+    margin:
+        8px
+        0;
+
+    padding:12px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:14px;
+
+    background:#fbfdfb;
+}
+
+.game-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.game-actions{
+
+    display:flex;
+
+    gap:5px;
+}
+
+.game-actions button{
+
+    border:0;
+
+    border-radius:8px;
+
+    padding:
+        7px
+        9px;
+
+    font-size:11px;
+}
+
+.game-main{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        50px
+        1fr;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin:
+        10px
+        0;
+
+    text-align:center;
+}
+
+.team{
+
+    font-size:12px;
+
+    font-weight:900;
+}
+
+.vs{
+
+    color:
+        var(--green);
+
+    font-weight:900;
+}
+
+.club-logo{
+
+    width:52px;
+
+    height:52px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:
+        4px
+        auto;
+}
+
+/* CLUBS */
+
+.club-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap:8px;
+}
+
+.club{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:12px;
+
+    background:#fff;
+}
+
+.club .club-logo{
+
+    width:44px;
+
+    height:44px;
+
+    flex:none;
+}
+
+.club-name{
+
+    flex:1;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+.club-delete{
+
+    border:0;
+
+    border-radius:8px;
+
+    padding:6px 8px;
+
+    background:#fff0ef;
+
+    color:var(--red);
+}
+
+/* EMPTY */
+
+.empty{
+
+    padding:22px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+/* PREVIEW */
+
+.preview{
+
+    padding:9px;
+
+    border-radius:14px;
+
+    background:#dfe5dc;
+}
+
+.preview canvas{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    border-radius:10px;
+}
+
+/* HR */
+
+hr{
+
+    border:0;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    margin:
+        14px
+        0;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    main{
+        padding:10px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .club-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:13px;
+    }
+
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
+
 <header>
 
-  <div class="header-row">
+    <div class="brand">
 
-    <div class="club-badge">
-      USV<br>
-      TU<br>
-      DRESDEN
+        <div class="usv-badge">
+            USV<br>
+            TU<br>
+            DRESDEN
+        </div>
+
+        <div>
+
+            <h1>
+                USV MATCHDAY
+            </h1>
+
+            <div class="brand-sub">
+                Dein Wochenende. Deine Grafik.
+            </div>
+
+        </div>
+
     </div>
 
-    <div>
-      <h1>USV MATCHDAY</h1>
-      <div class="sub">Dein Wochenende. Deine Grafik.</div>
-    </div>
 
-  </div>
+    <nav>
 
-  <nav id="nav">
+        <button
+            class="active"
+            data-view="dashboard">
 
-    <button data-view="home" class="active">
-      Dashboard
-    </button>
+            Dashboard
 
-    <button data-view="games">
-      Spiele
-    </button>
+        </button>
 
-    <button data-view="clubs">
-      Vereine & Logos
-    </button>
 
-    <button data-view="design">
-      Design
-    </button>
+        <button
+            data-view="games">
 
-  </nav>
+            Spiele
+
+        </button>
+
+
+        <button
+            data-view="clubs">
+
+            Vereine & Logos
+
+        </button>
+
+
+        <button
+            data-view="design">
+
+            Design
+
+        </button>
+
+    </nav>
 
 </header>
 
 
 <main>
 
-<div id="appStatus"
-     class="muted"
-     style="margin:0 0 8px">
-  ● App bereit
+
+<div
+    id="status"
+    class="status">
+
+    ● App wird gestartet …
+
 </div>
+
 
 <div class="stepbar">
 
-  <span class="active">
-    1 Wochenende
-  </span>
+    <span class="active">
+        1 Wochenende
+    </span>
 
-  <span>
-    2 Spiele
-  </span>
+    <span>
+        2 Spiele
+    </span>
 
-  <span>
-    3 Vorschau
-  </span>
+    <span>
+        3 Vorschau
+    </span>
 
-  <span>
-    4 PNG / Teilen
-  </span>
+    <span>
+        4 PNG / Teilen
+    </span>
 
 </div>
 
 
+
+<!-- ===================== -->
 <!-- DASHBOARD -->
+<!-- ===================== -->
 
-<section id="home" class="view active">
+<section
+    id="dashboard"
+    class="view active">
 
-  <div class="card">
+
+<div class="card">
 
     <h2>
-      ⚽ Matchday erstellen
+        ⚽ Matchday erstellen
     </h2>
+
 
     <div class="grid">
 
-      <div class="field">
 
-        <label>
-          Von
-        </label>
+        <div class="field">
 
-        <input
-          id="dateFrom"
-          type="date">
+            <label>
+                Wochenende von
+            </label>
 
-      </div>
+            <input
+                id="dateFrom"
+                type="date">
+
+        </div>
 
 
-      <div class="field">
+        <div class="field">
 
-        <label>
-          Bis
-        </label>
+            <label>
+                Wochenende bis
+            </label>
 
-        <input
-          id="dateTo"
-          type="date">
+            <input
+                id="dateTo"
+                type="date">
 
-      </div>
+        </div>
+
 
     </div>
 
@@ -447,278 +835,334 @@ hr{
 
 
     <button
-      class="btn primary wide"
-      onclick="go('games');openGameForm()">
+        class="btn primary wide"
+        id="dashboardAddGame">
 
-      ＋ Spiel hinzufügen
+        ＋ Spiel hinzufügen
 
     </button>
 
-  </div>
+
+</div>
 
 
-  <div class="card">
 
-    <h2>
-      Dieses Wochenende
-    </h2>
+<div class="card">
+
+    <div class="row between">
+
+        <h2>
+            Dieses Wochenende
+        </h2>
+
+        <span
+            id="gameCount"
+            class="tag">
+
+            0 Spiele
+
+        </span>
+
+    </div>
+
 
     <div id="homeGames"></div>
 
 
     <button
-      class="btn primary wide"
-      onclick="makeGraphic()">
+        class="btn primary wide"
+        id="createGraphic">
 
-      🖼️ MATCHDAY-BILD ERSTELLEN
+        🖼️ MATCHDAY-BILD ERSTELLEN
 
     </button>
 
-  </div>
+</div>
 
 
-  <div class="card">
+
+<div class="card">
 
     <h2>
-      Vorschau
+        Vorschau
     </h2>
 
-    <div class="preview-wrap">
 
-      <canvas
-        id="preview"
-        width="1080"
-        height="1350">
-      </canvas>
+    <div class="preview">
 
-    </div>
-
-
-    <div
-      class="row"
-      style="margin-top:10px">
-
-      <button
-        class="btn secondary"
-        onclick="downloadGraphic()">
-
-        ⬇ Bild speichern
-
-      </button>
-
-
-      <button
-        class="btn primary"
-        onclick="shareGraphic()">
-
-        ↗ Teilen
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SPIELE -->
-
-<section id="games" class="view">
-
-  <div class="card">
-
-    <div
-      class="row"
-      style="justify-content:space-between">
-
-      <h2>
-        Spiele
-      </h2>
-
-      <button
-        class="btn primary"
-        onclick="openGameForm()">
-
-        ＋ Spiel
-
-      </button>
+        <canvas
+            id="preview"
+            width="1080"
+            height="1350">
+        </canvas>
 
     </div>
 
 
     <div
-      id="gameForm"
-      style="display:none">
-
-      <hr>
-
-      <h3 id="formTitle">
-        Spiel hinzufügen
-      </h3>
-
-      <input
-        type="hidden"
-        id="editId">
-
-
-      <div class="grid">
-
-
-        <div class="field">
-
-          <label>
-            Mannschaft
-          </label>
-
-          <select id="team"></select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Datum
-          </label>
-
-          <input
-            id="gdate"
-            type="date">
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Uhrzeit
-          </label>
-
-          <input
-            id="gtime"
-            type="time">
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Ort
-          </label>
-
-          <input
-            id="place"
-            placeholder="Sportplatz">
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Heim
-          </label>
-
-          <select id="home"></select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Gast
-          </label>
-
-          <select id="away"></select>
-
-        </div>
-
-      </div>
-
-
-      <div
         class="row"
         style="margin-top:10px">
 
-        <button
-          class="btn primary"
-          onclick="saveGame()">
 
-          Speichern
+        <button
+            class="btn secondary"
+            id="downloadImage">
+
+            ⬇ Bild speichern
 
         </button>
 
 
         <button
-          class="btn secondary"
-          onclick="closeGameForm()">
+            class="btn primary"
+            id="shareImage">
 
-          Abbrechen
+            ↗ Teilen
 
         </button>
 
-      </div>
 
     </div>
 
-  </div>
+</div>
 
-
-  <div class="card">
-
-    <div id="gamesList"></div>
-
-  </div>
 
 </section>
 
 
+
+<!-- ===================== -->
+<!-- SPIELE -->
+<!-- ===================== -->
+
+<section
+    id="games"
+    class="view">
+
+
+<div class="card">
+
+
+    <div
+        class="row between">
+
+        <h2>
+            Spiele
+        </h2>
+
+
+        <button
+            class="btn primary"
+            id="newGame">
+
+            ＋ Spiel
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="gameForm"
+        style="display:none">
+
+
+        <hr>
+
+
+        <h3
+            id="formTitle">
+
+            Spiel hinzufügen
+
+        </h3>
+
+
+        <input
+            type="hidden"
+            id="editId">
+
+
+        <div class="grid">
+
+
+            <div class="field">
+
+                <label>
+                    Mannschaft
+                </label>
+
+                <select
+                    id="team">
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Datum
+                </label>
+
+                <input
+                    id="gameDate"
+                    type="date">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Uhrzeit
+                </label>
+
+                <input
+                    id="gameTime"
+                    type="time">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Ort
+                </label>
+
+                <input
+                    id="gamePlace"
+                    placeholder="z. B. Sportzentrum">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Heim
+                </label>
+
+                <select
+                    id="homeClub">
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Gast
+                </label>
+
+                <select
+                    id="awayClub">
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="row"
+            style="margin-top:10px">
+
+
+            <button
+                class="btn primary"
+                id="saveGame">
+
+                Speichern
+
+            </button>
+
+
+            <button
+                class="btn secondary"
+                id="cancelGame">
+
+                Abbrechen
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<div class="card">
+
+    <div id="gamesList"></div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ===================== -->
 <!-- VEREINE -->
+<!-- ===================== -->
 
-<section id="clubs" class="view">
+<section
+    id="clubs"
+    class="view">
 
-  <div class="card">
+
+<div class="card">
 
     <h2>
-      Vereine & Logos
+        🏟️ Vereine & Logos
     </h2>
 
+
     <p class="muted">
-      Einmal hinterlegen – danach stehen sie bei jedem Spiel zur Auswahl.
+
+        Vereine werden einmal gespeichert.
+        Danach kannst du sie bei jedem Spiel auswählen.
+
     </p>
 
 
     <div class="grid">
 
 
-      <div class="field">
+        <div class="field">
 
-        <label>
-          Vereinsname
-        </label>
+            <label>
+                Vereinsname
+            </label>
 
-        <input
-          id="clubName"
-          placeholder="z. B. Dresdner SC">
+            <input
+                id="clubName"
+                placeholder="z. B. Dresdner SC">
 
-      </div>
+        </div>
 
 
-      <div class="field">
+        <div class="field">
 
-        <label>
-          Logo PNG/JPG
-        </label>
+            <label>
+                Logo PNG / JPG / WEBP
+            </label>
 
-        <input
-          id="clubLogo"
-          type="file"
-          accept="image/png,image/jpeg,image/webp">
+            <input
+                id="clubLogo"
+                type="file"
+                accept="image/png,image/jpeg,image/webp">
 
-      </div>
+        </div>
+
 
     </div>
 
@@ -727,54 +1171,71 @@ hr{
 
 
     <button
-      class="btn primary"
-      onclick="addClub()">
+        class="btn primary"
+        id="addClub">
 
-      ＋ Verein speichern
+        ＋ Verein speichern
 
     </button>
 
-  </div>
+
+</div>
 
 
-  <div class="card">
+
+<div class="card">
 
     <div
-      id="clubList"
-      class="logo-list">
+        id="clubList"
+        class="club-grid">
+
     </div>
 
-  </div>
+</div>
+
 
 </section>
 
 
+
+<!-- ===================== -->
 <!-- DESIGN -->
+<!-- ===================== -->
 
-<section id="design" class="view">
+<section
+    id="design"
+    class="view">
 
-  <div class="card">
+
+<div class="card">
+
 
     <h2>
-      🎨 Design / Vorlage
+        🎨 Design / Vorlage
     </h2>
 
+
     <p class="muted">
-      Hier lädst du später euren fertigen USV-Hintergrund hoch.
-      Die Spiele werden automatisch darüber gelegt.
+
+        Lade hier euren fertigen
+        Matchday-Hintergrund hoch.
+
+        Die App legt anschließend
+        automatisch die Spiele und Logos darüber.
+
     </p>
 
 
     <div class="field">
 
-      <label>
-        Hintergrundbild PNG/JPG
-      </label>
+        <label>
+            Hintergrundbild
+        </label>
 
-      <input
-        id="bgFile"
-        type="file"
-        accept="image/png,image/jpeg,image/webp">
+        <input
+            id="background"
+            type="file"
+            accept="image/png,image/jpeg,image/webp">
 
     </div>
 
@@ -785,30 +1246,31 @@ hr{
     <div class="grid">
 
 
-      <div class="field">
+        <div class="field">
 
-        <label>
-          Überschrift
-        </label>
+            <label>
+                Überschrift
+            </label>
 
-        <input
-          id="title"
-          value="MATCHDAY">
+            <input
+                id="designTitle"
+                value="MATCHDAY">
 
-      </div>
+        </div>
 
 
-      <div class="field">
+        <div class="field">
 
-        <label>
-          Unterzeile
-        </label>
+            <label>
+                Unterzeile
+            </label>
 
-        <input
-          id="subtitle"
-          value="UNSER WOCHENENDE">
+            <input
+                id="designSubtitle"
+                value="UNSER WOCHENENDE">
 
-      </div>
+        </div>
+
 
     </div>
 
@@ -817,23 +1279,25 @@ hr{
 
 
     <button
-      class="btn primary"
-      onclick="saveDesign()">
+        class="btn primary"
+        id="saveDesign">
 
-      Design speichern
+        Design speichern
 
     </button>
 
 
     <button
-      class="btn danger"
-      onclick="removeBg()">
+        class="btn danger"
+        id="removeBackground">
 
-      Hintergrund entfernen
+        Hintergrund entfernen
 
     </button>
 
-  </div>
+
+</div>
+
 
 </section>
 
@@ -843,1476 +1307,2400 @@ hr{
 </div>
 
 
+
 <script>
 
-const KEY='usv_matchday_v6';
+"use strict";
 
 
-const SEED_CLUBS=[
-  {
-    "id":"usv-tu-dresden",
-    "name":"USV TU Dresden",
-    "logo":""
-  },
-  {
-    "id":"sg-gittersee",
-    "name":"SG Gittersee",
-    "logo":"https://www.sg-gittersee.de/joomla_16/images/phocagallery/SGG/LOGO/Logo-single-gelb-schwarz.png"
-  },
-  {
-    "id":"post-sv-dresden",
-    "name":"Post SV Dresden",
-    "logo":"https://media.tag24.de/951x634/a/b/ab8g8brnd6ck9rufao8rkgab0jhcv8td.jpg"
-  },
-  {
-    "id":"fsg-wacker-90-dresden-leuben",
-    "name":"FSG Wacker 90 Dresden-Leuben",
-    "logo":"https://www.sg-buehlau.de/app/uploads/2020/08/FSG-Wacker-90-Dresden-Leuben.png"
-  },
-  {
-    "id":"serkowitzer-fsv-2",
-    "name":"Serkowitzer FSV 2",
-    "logo":"https://serkowitzer-fsv.de/wordpress/wp-content/uploads/2024/07/cropped-Logo_SerkoFSV.webp"
-  },
-  {
-    "id":"sv-eintracht-strehlen-2",
-    "name":"SV Eintracht Strehlen 2 - Kinderfestival",
-    "logo":"https://www.eintrachtstrehlen.de/sportfrei/wp-content/uploads/2020/02/Logo-2048x2046.png"
-  },
-  {
-    "id":"fsv-lokomotive-dresden",
-    "name":"FSV Lokomotive Dresden",
-    "logo":""
-  },
-  {
-    "id":"tsv-rotation-dresden-2",
-    "name":"TSV Rotation Dresden 2",
-    "logo":""
-  },
-  {
-    "id":"racket-ballsport-dresden-2",
-    "name":"Racket- und Ballsport Dresden 2",
-    "logo":""
-  },
-  {
-    "id":"spvgg-dresden-loebtau-4",
-    "name":"SpVgg. Dresden-Löbtau 4",
-    "logo":""
-  },
-  {
-    "id":"ffc-fortuna-dresden-4",
-    "name":"1. FFC Fortuna Dresden 4",
-    "logo":""
-  },
-  {
-    "id":"fv-loebtauer-kickers-3",
-    "name":"FV Löbtauer Kickers 3",
-    "logo":""
-  },
-  {
-    "id":"sg-ullersdorf",
-    "name":"SG Ullersdorf",
-    "logo":""
-  }
+/* ========================================
+   DATEN
+======================================== */
+
+
+const STORAGE_KEY =
+    "USV_MATCHDAY_FINAL_1";
+
+
+const DEFAULT_TEAMS = [
+
+    "A-Jugend",
+    "B-Jugend",
+    "C-Jugend",
+    "D-Jugend",
+    "E-Jugend",
+    "F-Jugend",
+    "Fußballschule"
+
 ];
 
 
-let db=JSON.parse(
-  localStorage.getItem(KEY)||'null'
-)||{
+const DEFAULT_CLUBS = [
 
-  teams:[
-    'A-Jugend',
-    'B-Jugend',
-    'C-Jugend',
-    'D-Jugend',
-    'E-Jugend',
-    'F-Jugend',
-    'Fußballschule'
-  ],
+    {
+        id:"usv",
+        name:"USV TU Dresden",
+        logo:""
+    },
 
-  clubs:SEED_CLUBS,
+    {
+        id:"gittersee",
+        name:"SG Gittersee",
+        logo:""
+    },
 
-  games:[],
+    {
+        id:"postsv",
+        name:"Post SV Dresden",
+        logo:""
+    },
 
-  design:{
-    title:'MATCHDAY',
-    subtitle:'UNSER WOCHENENDE',
-    bg:null
-  }
+    {
+        id:"wacker",
+        name:"FSG Wacker 90 Dresden-Leuben",
+        logo:""
+    },
 
-};
+    {
+        id:"serkowitzer",
+        name:"Serkowitzer FSV 2",
+        logo:""
+    },
+
+    {
+        id:"lok",
+        name:"FSV Lokomotive Dresden",
+        logo:""
+    },
+
+    {
+        id:"rotation",
+        name:"TSV Rotation Dresden 2",
+        logo:""
+    },
+
+    {
+        id:"racket",
+        name:"Racket- und Ballsport Dresden 2",
+        logo:""
+    },
+
+    {
+        id:"loebtau",
+        name:"SpVgg. Dresden-Löbtau 4",
+        logo:""
+    },
+
+    {
+        id:"fortuna",
+        name:"1. FFC Fortuna Dresden 4",
+        logo:""
+    },
+
+    {
+        id:"kickers",
+        name:"FV Löbtauer Kickers 3",
+        logo:""
+    },
+
+    {
+        id:"ullersdorf",
+        name:"SG Ullersdorf",
+        logo:""
+    }
+
+];
+
+
+function createDatabase(){
+
+    return {
+
+        teams:
+            DEFAULT_TEAMS.slice(),
+
+        clubs:
+            DEFAULT_CLUBS.map(
+                club => ({
+                    ...club
+                })
+            ),
+
+        games:[],
+
+        design:{
+
+            title:
+                "MATCHDAY",
+
+            subtitle:
+                "UNSER WOCHENENDE",
+
+            background:null
+
+        }
+
+    };
+
+}
+
+
+let database;
+
+
+try{
+
+    database =
+        JSON.parse(
+            localStorage.getItem(
+                STORAGE_KEY
+            )
+        );
+
+}catch(error){
+
+    database = null;
+
+}
 
 
 if(
-  !Array.isArray(db.clubs)
-  ||
-  db.clubs.length===0
+    !database ||
+    typeof database !== "object"
 ){
-  db.clubs=SEED_CLUBS;
-}
-else{
 
-  const have=
+    database =
+        createDatabase();
+
+}
+
+
+if(
+    !Array.isArray(
+        database.teams
+    )
+){
+
+    database.teams =
+        DEFAULT_TEAMS.slice();
+
+}
+
+
+if(
+    !Array.isArray(
+        database.clubs
+    )
+){
+
+    database.clubs = [];
+
+}
+
+
+if(
+    !Array.isArray(
+        database.games
+    )
+){
+
+    database.games = [];
+
+}
+
+
+if(
+    !database.design
+){
+
+    database.design = {
+
+        title:"MATCHDAY",
+
+        subtitle:"UNSER WOCHENENDE",
+
+        background:null
+
+    };
+
+}
+
+
+/* fehlende Standardvereine ergänzen */
+
+const existingClubIds =
     new Set(
-      db.clubs.map(c=>c.id)
+        database.clubs.map(
+            club => club.id
+        )
     );
 
-  SEED_CLUBS.forEach(c=>{
 
-    if(!have.has(c.id))
-      db.clubs.push(c);
+DEFAULT_CLUBS.forEach(
+    club => {
 
-  });
+        if(
+            !existingClubIds.has(
+                club.id
+            )
+        ){
 
-}
+            database.clubs.push(
+                {...club}
+            );
+
+        }
+
+    }
+);
 
 
-function persist(){
-
-  try{
-
-    localStorage.setItem(
-      KEY,
-      JSON.stringify(db)
-    );
-
-  }
-
-  catch(e){
-
-    console.warn(
-      'Speichern im lokalen Dateimodus nicht verfügbar:',
-      e
-    );
-
-  }
-
-}
+/* ========================================
+   HILFSFUNKTIONEN
+======================================== */
 
 
 function $(id){
 
-  return document.getElementById(id);
+    return document.getElementById(id);
 
 }
 
 
-function go(view){
+function escapeHTML(value){
 
-  document
-    .querySelectorAll('.view')
-    .forEach(x=>
-      x.classList.remove('active')
+    return String(
+        value ?? ""
+    ).replace(
+        /[&<>"']/g,
+        character => ({
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+        }[character])
     );
 
-  $(view).classList.add('active');
+}
 
-  document
-    .querySelectorAll('nav button')
-    .forEach(x=>
-      x.classList.toggle(
-        'active',
-        x.dataset.view===view
-      )
+
+function saveDatabase(){
+
+    try{
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(database)
+        );
+
+    }catch(error){
+
+        setStatus(
+            "⚠️ Browser-Speicher ist voll."
+        );
+
+    }
+
+}
+
+
+function setStatus(text){
+
+    $("status").textContent =
+        text;
+
+}
+
+
+function createId(prefix){
+
+    return (
+        prefix +
+        "_" +
+        Date.now() +
+        "_" +
+        Math.random()
+            .toString(36)
+            .substring(2,8)
     );
 
-  render();
+}
+
+
+function isoDate(date){
+
+    const d =
+        new Date(
+            date.getTime()
+            -
+            date.getTimezoneOffset()
+            *60000
+        );
+
+    return d
+        .toISOString()
+        .substring(
+            0,
+            10
+        );
+
+}
+
+
+/* ========================================
+   WOCHENENDE
+======================================== */
+
+
+function initializeDates(){
+
+    const today =
+        new Date();
+
+    const day =
+        today.getDay();
+
+    const difference =
+        day === 0
+            ? -6
+            : 1 - day;
+
+    const monday =
+        new Date(today);
+
+    monday.setDate(
+        today.getDate()
+        +
+        difference
+    );
+
+
+    const sunday =
+        new Date(monday);
+
+    sunday.setDate(
+        monday.getDate()
+        +
+        6
+    );
+
+
+    $("dateFrom").value =
+        isoDate(
+            monday
+        );
+
+
+    $("dateTo").value =
+        isoDate(
+            sunday
+        );
+
+}
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+
+function showView(view){
+
+    document
+        .querySelectorAll(".view")
+        .forEach(
+            element =>
+                element.classList.remove(
+                    "active"
+                )
+        );
+
+
+    const target =
+        $(view);
+
+
+    if(target){
+
+        target.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            "nav button"
+        )
+        .forEach(
+            button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.view
+                    ===
+                    view
+                );
+
+            }
+        );
+
+
+    renderAll();
 
 }
 
 
 document
-  .querySelectorAll('nav button')
-  .forEach(
-    b=>
-      b.onclick=()=>
-        go(b.dataset.view)
-  );
+    .querySelectorAll(
+        "nav button"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () =>
+                    showView(
+                        button.dataset.view
+                    )
+            );
+
+        }
+    );
 
 
-function initDates(){
-
-  const now=new Date();
-
-  const day=now.getDay();
-
-  const diff=
-    day===0
-      ?-6
-      :1-day;
-
-  const mon=
-    new Date(now);
-
-  mon.setDate(
-    now.getDate()+diff
-  );
-
-  const sun=
-    new Date(mon);
-
-  sun.setDate(
-    mon.getDate()+6
-  );
-
-  $('dateFrom').value=
-    iso(mon);
-
-  $('dateTo').value=
-    iso(sun);
-
-}
+/* ========================================
+   VEREINE
+======================================== */
 
 
-function iso(d){
+function findClub(id){
 
-  return new Date(
-    d.getTime()
-    -
-    d.getTimezoneOffset()*60000
-  )
-  .toISOString()
-  .slice(0,10);
-
-}
-
-
-function clubById(id){
-
-  return db.clubs.find(
-    c=>c.id===id
-  );
-
-}
-
-
-function fillSelects(){
-
-  $('team').innerHTML=
-    db.teams
-      .map(
-        t=>
-          `<option>${esc(t)}</option>`
-      )
-      .join('');
-
-  const opts=
-    db.clubs
-      .map(
-        c=>
-          `<option value="${c.id}">
-            ${esc(c.name)}
-          </option>`
-      )
-      .join('');
-
-  $('home').innerHTML=opts;
-
-  $('away').innerHTML=opts;
-
-}
-
-
-function esc(s){
-
-  return String(s)
-    .replace(
-      /[&<>"']/g,
-      m=>({
-
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
-
-      }[m])
+    return database.clubs.find(
+        club =>
+            club.id === id
     );
 
 }
 
 
-function openGameForm(id=null){
+function initials(name){
 
-  fillSelects();
+    return name
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0,2)
+        .map(
+            word =>
+                word.charAt(0)
+        )
+        .join("")
+        .toUpperCase();
 
-  $('gameForm').style.display=
-    'block';
-
-  $('editId').value=
-    id||'';
-
-  $('formTitle').textContent=
-    id
-      ?'Spiel bearbeiten'
-      :'Spiel hinzufügen';
+}
 
 
-  if(id){
+function createLogoHTML(club){
 
-    const g=
-      db.games.find(
-        x=>x.id===id
-      );
+    if(
+        club &&
+        club.logo
+    ){
 
-    $('team').value=g.team;
-    $('gdate').value=g.date;
-    $('gtime').value=g.time;
-    $('place').value=g.place;
-    $('home').value=g.home;
-    $('away').value=g.away;
+        return `
+            <img
+                class="club-logo"
+                src="${club.logo}"
+                alt=""
+                onerror="
+                    this.style.display='none';
+                    this.nextElementSibling.style.display='grid';
+                "
+            >
 
-  }
-
-  else{
-
-    $('gdate').value=
-      $('dateFrom').value
-      ||
-      iso(new Date());
-
-    $('gtime').value='10:00';
-
-    $('place').value='';
-
-    if(db.clubs.length>=2){
-
-      $('home').value=
-        db.clubs[0].id;
-
-      $('away').value=
-        db.clubs[1].id;
+            <div
+                class="club-logo"
+                style="
+                    display:none;
+                    border-radius:50%;
+                    background:#2f8f24;
+                    color:#fff;
+                    place-items:center;
+                    font-size:10px;
+                    font-weight:900;
+                "
+            >
+                ${escapeHTML(
+                    initials(
+                        club.name
+                    )
+                )}
+            </div>
+        `;
 
     }
 
-  }
+
+    return `
+        <div
+            class="club-logo"
+            style="
+                border-radius:50%;
+                background:
+                    linear-gradient(
+                        135deg,
+                        #173b19,
+                        #69b64a
+                    );
+                color:#fff;
+                display:grid;
+                place-items:center;
+                font-size:10px;
+                font-weight:900;
+            "
+        >
+            ${escapeHTML(
+                initials(
+                    club?.name ||
+                    "Verein"
+                )
+            )}
+        </div>
+    `;
 
 }
 
 
-function closeGameForm(){
-
-  $('gameForm').style.display=
-    'none';
-
-}
-
-
-function saveGame(){
-
-  if(
-    !$('home').value
-    ||
-    !$('away').value
-  ){
-
-    alert(
-      'Bitte mindestens Heim- und Gastverein anlegen.'
-    );
-
-    return;
-
-  }
-
-
-  const g={
-
-    id:
-      $('editId').value
-      ||
-      crypto.randomUUID(),
-
-    team:
-      $('team').value,
-
-    date:
-      $('gdate').value,
-
-    time:
-      $('gtime').value,
-
-    place:
-      $('place').value,
-
-    home:
-      $('home').value,
-
-    away:
-      $('away').value
-
-  };
-
-
-  const i=
-    db.games.findIndex(
-      x=>x.id===g.id
-    );
-
-
-  if(i>=0)
-    db.games[i]=g;
-
-  else
-    db.games.push(g);
-
-
-  persist();
-
-  closeGameForm();
-
-  render();
-
-}
-
-
-function deleteGame(id){
-
-  if(
-    confirm('Spiel löschen?')
-  ){
-
-    db.games=
-      db.games.filter(
-        g=>g.id!==id
-      );
-
-    persist();
-
-    render();
-
-  }
-
-}
-
-
-function gameHtml(g){
-
-  const h=
-    clubById(g.home);
-
-  const a=
-    clubById(g.away);
-
-
-  return `
-
-  <div class="game">
-
-    <div class="game-top">
-
-      <span class="badge">
-        ${esc(g.team)}
-      </span>
-
-      <div class="actions">
-
-        <button
-          onclick="openGameForm('${g.id}')">
-
-          ✎
-
-        </button>
-
-        <button
-          onclick="deleteGame('${g.id}')">
-
-          🗑
-
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="game-main">
-
-      <div class="team">
-
-        ${logoHtml(h)}
-
-        ${esc(h?.name||'Heim')}
-
-      </div>
-
-
-      <div class="vs">
-        VS.
-      </div>
-
-
-      <div class="team">
-
-        ${logoHtml(a)}
-
-        ${esc(a?.name||'Gast')}
-
-      </div>
-
-    </div>
-
-
-    <div class="muted">
-
-      📅 ${formatDate(g.date)}
-      ·
-      ⏰ ${g.time||'–'}
-      ·
-      📍 ${esc(g.place||'–')}
-
-    </div>
-
-  </div>
-
-  `;
-
-}
-
-
-function logoHtml(c){
-
-  return c?.logo
-
-    ?
-
-    `<img
-      class="logo"
-      src="${c.logo}"
-      onerror="
-        this.replaceWith(
-          Object.assign(
-            document.createElement('div'),
-            {
-              className:'logo',
-              textContent:'WAPPEN'
-            }
-          )
-        )
-      ">`
-
-    :
-
-    `<div
-      class="logo"
-      style="
-        display:grid;
-        place-items:center;
-        border:1px solid #ddd;
-        border-radius:50%;
-        font-size:9px">
-
-      LOGO
-
-    </div>`;
-
-}
-
-
-function formatDate(s){
-
-  if(!s)
-    return '–';
-
-  return new Date(
-    s+'T12:00'
-  ).toLocaleDateString(
-    'de-DE',
-    {
-      day:'2-digit',
-      month:'2-digit',
-      year:'numeric'
-    }
-  );
-
-}
-
-
-function render(){
-
-  fillSelects();
-
-  renderGames();
-
-  renderClubs();
-
-  renderHome();
-
-}
-
-
-function renderGames(){
-
-  $('gamesList').innerHTML=
-
-    db.games.length
-
-      ?
-
-      db.games
-        .slice()
-        .sort(
-          (a,b)=>
-            a.date.localeCompare(b.date)
-            ||
-            a.time.localeCompare(b.time)
-        )
-        .map(gameHtml)
-        .join('')
-
-      :
-
-      '<div class="empty">Noch keine Spiele angelegt.</div>';
+function fillClubSelects(){
+
+    const options =
+        database.clubs
+            .map(
+                club => `
+                    <option
+                        value="${escapeHTML(
+                            club.id
+                        )}"
+                    >
+                        ${escapeHTML(
+                            club.name
+                        )}
+                    </option>
+                `
+            )
+            .join("");
+
+
+    $("homeClub").innerHTML =
+        options;
+
+    $("awayClub").innerHTML =
+        options;
+
+
+    $("team").innerHTML =
+        database.teams
+            .map(
+                team => `
+                    <option>
+                        ${escapeHTML(
+                            team
+                        )}
+                    </option>
+                `
+            )
+            .join("");
 
 }
 
 
 function renderClubs(){
 
-  $('clubList').innerHTML=
+    const list =
+        $("clubList");
 
-    db.clubs.length
 
-      ?
+    if(
+        database.clubs.length === 0
+    ){
 
-      db.clubs
-        .map(
-          c=>
-
-          `<div class="club">
-
-            ${
-              c.logo
-                ?
-                `<img src="${c.logo}">`
-                :
-                '<div class="logo">?</div>'
-            }
-
-            <div class="name">
-              ${esc(c.name)}
+        list.innerHTML =
+            `
+            <div class="empty">
+                Noch keine Vereine vorhanden.
             </div>
+            `;
 
-            <button
-              class="btn danger"
-              onclick="deleteClub('${c.id}')">
+        return;
 
-              ×
-
-            </button>
-
-          </div>`
-
-        )
-        .join('')
-
-      :
-
-      '<div class="empty">
-        Noch keine Vereine/Logos hinterlegt.
-       </div>';
-
-}
+    }
 
 
-function deleteClub(id){
+    list.innerHTML =
+        database.clubs
+            .map(
+                club => `
 
-  if(
-    db.games.some(
-      g=>
-        g.home===id
-        ||
-        g.away===id
-    )
-  ){
+                    <div class="club">
 
-    alert(
-      'Der Verein wird noch in einem Spiel verwendet.'
-    );
+                        ${createLogoHTML(
+                            club
+                        )}
 
-    return;
+                        <div
+                            class="club-name"
+                        >
+                            ${escapeHTML(
+                                club.name
+                            )}
+                        </div>
 
-  }
+                        <button
+                            class="club-delete"
+                            onclick="
+                                deleteClub(
+                                    '${club.id}'
+                                )
+                            "
+                        >
+                            ×
+                        </button>
 
+                    </div>
 
-  db.clubs=
-    db.clubs.filter(
-      c=>c.id!==id
-    );
-
-  persist();
-
-  render();
+                `
+            )
+            .join("");
 
 }
 
 
 function addClub(){
 
-  const name=
-    $('clubName').value.trim();
+    const name =
+        $("clubName")
+            .value
+            .trim();
 
-  const file=
-    $('clubLogo').files[0];
+    const file =
+        $("clubLogo")
+            .files[0];
 
 
-  if(!name||!file){
+    if(!name){
 
-    alert(
-      'Bitte Vereinsname und Logo auswählen.'
+        alert(
+            "Bitte einen Vereinsnamen eingeben."
+        );
+
+        return;
+
+    }
+
+
+    if(!file){
+
+        alert(
+            "Bitte ein Logo auswählen."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        database.clubs.some(
+            club =>
+                club.name
+                    .toLowerCase()
+                ===
+                name.toLowerCase()
+        )
+    ){
+
+        alert(
+            "Dieser Verein ist bereits vorhanden."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        file.size >
+        2 * 1024 * 1024
+    ){
+
+        alert(
+            "Das Logo darf maximal 2 MB groß sein."
+        );
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(){
+
+            database.clubs.push({
+
+                id:
+                    createId(
+                        "club"
+                    ),
+
+                name:
+                    name,
+
+                logo:
+                    reader.result
+
+            });
+
+
+            saveDatabase();
+
+
+            $("clubName")
+                .value = "";
+
+            $("clubLogo")
+                .value = "";
+
+
+            renderAll();
+
+
+            setStatus(
+                "✓ Verein und Logo gespeichert"
+            );
+
+        };
+
+
+    reader.readAsDataURL(
+        file
     );
-
-    return;
-
-  }
-
-
-  const r=
-    new FileReader();
-
-
-  r.onload=()=>{
-
-    db.clubs.push({
-
-      id:
-        crypto.randomUUID(),
-
-      name,
-
-      logo:
-        r.result
-
-    });
-
-
-    persist();
-
-    $('clubName').value='';
-
-    $('clubLogo').value='';
-
-    render();
-
-  };
-
-
-  r.readAsDataURL(file);
 
 }
 
 
-function renderHomeClubs(){
+$("addClub")
+    .addEventListener(
+        "click",
+        addClub
+    );
 
-  const a=
-    db.clubs.slice(0,8);
 
-  $('homeClubs').innerHTML=
-    a
-      .map(
-        c=>
+function deleteClub(id){
 
-        `<div class="club">
+    const used =
+        database.games.some(
+            game =>
+                game.home === id
+                ||
+                game.away === id
+        );
 
-          ${
-            c.logo
 
-              ?
+    if(used){
 
-              `<img
-                src="${c.logo}"
-                onerror="
-                  this.style.display='none'
-                ">`
+        alert(
+            "Dieser Verein wird noch in einem Spiel verwendet."
+        );
 
-              :
+        return;
 
-              `<div
-                class="logo"
-                style="
-                  width:42px;
-                  height:42px;
-                  border-radius:50%;
-                  display:grid;
-                  place-items:center;
-                  background:#e9f3e5;
-                  color:#2d8f28;
-                  font-weight:900">
+    }
 
-                USV
 
-              </div>`
-          }
+    if(
+        !confirm(
+            "Verein wirklich löschen?"
+        )
+    ){
 
-          <div class="clubname">
-            ${esc(c.name)}
-          </div>
+        return;
 
-        </div>`
+    }
 
-      )
-      .join('');
+
+    database.clubs =
+        database.clubs.filter(
+            club =>
+                club.id !== id
+        );
+
+
+    saveDatabase();
+
+    renderAll();
+
+    setStatus(
+        "✓ Verein gelöscht"
+    );
+
+}
+
+
+/* ========================================
+   SPIELE
+======================================== */
+
+
+function openGameForm(id = null){
+
+    fillClubSelects();
+
+
+    $("gameForm")
+        .style.display =
+            "block";
+
+
+    $("editId").value =
+        id || "";
+
+
+    if(id){
+
+        const game =
+            database.games.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if(!game){
+            return;
+        }
+
+
+        $("formTitle")
+            .textContent =
+                "Spiel bearbeiten";
+
+
+        $("team").value =
+            game.team;
+
+        $("gameDate").value =
+            game.date;
+
+        $("gameTime").value =
+            game.time;
+
+        $("gamePlace").value =
+            game.place;
+
+        $("homeClub").value =
+            game.home;
+
+        $("awayClub").value =
+            game.away;
+
+
+    }else{
+
+        $("formTitle")
+            .textContent =
+                "Spiel hinzufügen";
+
+
+        $("gameDate").value =
+            $("dateFrom").value;
+
+
+        $("gameTime").value =
+            "10:00";
+
+
+        $("gamePlace").value =
+            "";
+
+
+        if(
+            database.clubs.length >= 2
+        ){
+
+            $("homeClub").value =
+                database.clubs[0].id;
+
+            $("awayClub").value =
+                database.clubs[1].id;
+
+        }
+
+    }
+
+}
+
+
+function closeGameForm(){
+
+    $("gameForm")
+        .style.display =
+            "none";
+
+}
+
+
+function saveGame(){
+
+    const home =
+        $("homeClub").value;
+
+    const away =
+        $("awayClub").value;
+
+
+    if(!home || !away){
+
+        alert(
+            "Bitte Heim- und Gastverein auswählen."
+        );
+
+        return;
+
+    }
+
+
+    if(home === away){
+
+        alert(
+            "Heim- und Gastverein dürfen nicht identisch sein."
+        );
+
+        return;
+
+    }
+
+
+    const game = {
+
+        id:
+            $("editId").value
+            ||
+            createId(
+                "game"
+            ),
+
+        team:
+            $("team").value,
+
+        date:
+            $("gameDate").value,
+
+        time:
+            $("gameTime").value,
+
+        place:
+            $("gamePlace")
+                .value
+                .trim(),
+
+        home:
+            home,
+
+        away:
+            away
+
+    };
+
+
+    const index =
+        database.games.findIndex(
+            item =>
+                item.id === game.id
+        );
+
+
+    if(index >= 0){
+
+        database.games[index] =
+            game;
+
+    }else{
+
+        database.games.push(
+            game
+        );
+
+    }
+
+
+    saveDatabase();
+
+    closeGameForm();
+
+    renderAll();
+
+    createGraphic();
+
+
+    setStatus(
+        "✓ Spiel gespeichert"
+    );
+
+}
+
+
+function editGame(id){
+
+    showView(
+        "games"
+    );
+
+    openGameForm(
+        id
+    );
+
+}
+
+
+function deleteGame(id){
+
+    if(
+        !confirm(
+            "Spiel wirklich löschen?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    database.games =
+        database.games.filter(
+            game =>
+                game.id !== id
+        );
+
+
+    saveDatabase();
+
+    renderAll();
+
+    createGraphic();
+
+
+    setStatus(
+        "✓ Spiel gelöscht"
+    );
+
+}
+
+
+function formatDate(date){
+
+    if(!date){
+        return "–";
+    }
+
+
+    return new Date(
+        date + "T12:00"
+    ).toLocaleDateString(
+        "de-DE",
+        {
+            weekday:"short",
+            day:"2-digit",
+            month:"2-digit"
+        }
+    );
+
+}
+
+
+function gameHTML(game){
+
+    const home =
+        findClub(
+            game.home
+        );
+
+    const away =
+        findClub(
+            game.away
+        );
+
+
+    return `
+
+        <div class="game">
+
+
+            <div class="game-top">
+
+                <span class="tag">
+                    ${escapeHTML(
+                        game.team
+                    )}
+                </span>
+
+
+                <div class="game-actions">
+
+                    <button
+                        class="btn secondary"
+                        onclick="
+                            editGame(
+                                '${game.id}'
+                            )
+                        "
+                    >
+                        ✎
+                    </button>
+
+
+                    <button
+                        class="btn danger"
+                        onclick="
+                            deleteGame(
+                                '${game.id}'
+                            )
+                        "
+                    >
+                        🗑
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="game-main">
+
+
+                <div class="team">
+
+                    ${createLogoHTML(
+                        home
+                    )}
+
+                    ${escapeHTML(
+                        home?.name ||
+                        "Heim"
+                    )}
+
+                </div>
+
+
+                <div class="vs">
+                    VS.
+                </div>
+
+
+                <div class="team">
+
+                    ${createLogoHTML(
+                        away
+                    )}
+
+                    ${escapeHTML(
+                        away?.name ||
+                        "Gast"
+                    )}
+
+                </div>
+
+
+            </div>
+
+
+            <div class="muted">
+
+                📅
+                ${formatDate(
+                    game.date
+                )}
+
+                &nbsp; · &nbsp;
+
+                ⏰
+                ${escapeHTML(
+                    game.time ||
+                    "–"
+                )}
+
+                &nbsp; · &nbsp;
+
+                📍
+                ${escapeHTML(
+                    game.place ||
+                    "–"
+                )}
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+function renderGames(){
+
+    const list =
+        $("gamesList");
+
+
+    const games =
+        database.games
+            .slice()
+            .sort(
+                (a,b) =>
+                    (
+                        a.date || ""
+                    ).localeCompare(
+                        b.date || ""
+                    )
+                    ||
+                    (
+                        a.time || ""
+                    ).localeCompare(
+                        b.time || ""
+                    )
+            );
+
+
+    if(
+        games.length === 0
+    ){
+
+        list.innerHTML =
+            `
+            <div class="empty">
+                Noch keine Spiele angelegt.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        games
+            .map(
+                gameHTML
+            )
+            .join("");
+
+}
+
+
+$("newGame")
+    .addEventListener(
+        "click",
+        () =>
+            openGameForm()
+    );
+
+
+$("dashboardAddGame")
+    .addEventListener(
+        "click",
+        function(){
+
+            showView(
+                "games"
+            );
+
+            openGameForm();
+
+        }
+    );
+
+
+$("saveGame")
+    .addEventListener(
+        "click",
+        saveGame
+    );
+
+
+$("cancelGame")
+    .addEventListener(
+        "click",
+        closeGameForm
+    );
+
+
+/* ========================================
+   WOCHENEND-SPIELE
+======================================== */
+
+
+function getWeekendGames(){
+
+    const from =
+        $("dateFrom").value;
+
+    const to =
+        $("dateTo").value;
+
+
+    return database.games
+        .filter(
+            game =>
+
+                (!from ||
+                    game.date >= from)
+
+                &&
+
+                (!to ||
+                    game.date <= to)
+        )
+        .sort(
+            (a,b) =>
+
+                (
+                    a.date || ""
+                ).localeCompare(
+                    b.date || ""
+                )
+
+                ||
+
+                (
+                    a.time || ""
+                ).localeCompare(
+                    b.time || ""
+                )
+        );
 
 }
 
 
 function renderHome(){
 
-  const from=
-    $('dateFrom').value;
-
-  const to=
-    $('dateTo').value;
+    const games =
+        getWeekendGames();
 
 
-  const arr=
-    db.games
-      .filter(
-        g=>
-          (!from||g.date>=from)
-          &&
-          (!to||g.date<=to)
-      )
-      .sort(
-        (a,b)=>
-          a.date.localeCompare(b.date)
-          ||
-          a.time.localeCompare(b.time)
-      );
+    $("gameCount")
+        .textContent =
+            games.length
+            +
+            " Spiel"
+            +
+            (
+                games.length === 1
+                    ? ""
+                    : "e"
+            );
 
 
-  $('homeGames').innerHTML=
+    if(
+        games.length === 0
+    ){
 
-    arr.length
+        $("homeGames")
+            .innerHTML =
+                `
+                <div class="empty">
 
-      ?
+                    Für diesen Zeitraum
+                    sind noch keine Spiele
+                    angelegt.
 
-      arr.map(gameHtml).join('')
+                </div>
+                `;
 
-      :
+        return;
 
-      `<div class="empty">
-        Für den gewählten Zeitraum
-        sind noch keine Spiele angelegt.
-       </div>`;
+    }
+
+
+    $("homeGames")
+        .innerHTML =
+            games
+                .map(
+                    gameHTML
+                )
+                .join("");
 
 }
 
 
-$('dateFrom').onchange=
-  renderHome;
+$("dateFrom")
+    .addEventListener(
+        "change",
+        function(){
 
-$('dateTo').onchange=
-  renderHome;
+            renderHome();
+
+            createGraphic();
+
+        }
+    );
+
+
+$("dateTo")
+    .addEventListener(
+        "change",
+        function(){
+
+            renderHome();
+
+            createGraphic();
+
+        }
+    );
+
+
+/* ========================================
+   DESIGN
+======================================== */
+
+
+$("saveDesign")
+    .addEventListener(
+        "click",
+        saveDesign
+    );
 
 
 function saveDesign(){
 
-  db.design.title=
-    $('title').value
-    ||
-    'MATCHDAY';
-
-  db.design.subtitle=
-    $('subtitle').value
-    ||
-    'UNSER WOCHENENDE';
+    database.design.title =
+        $("designTitle")
+            .value
+            .trim()
+        ||
+        "MATCHDAY";
 
 
-  const file=
-    $('bgFile').files[0];
+    database.design.subtitle =
+        $("designSubtitle")
+            .value
+            .trim()
+        ||
+        "UNSER WOCHENENDE";
 
 
-  if(!file){
-
-    persist();
-
-    makeGraphic();
-
-    return;
-
-  }
+    const file =
+        $("background")
+            .files[0];
 
 
-  const r=
-    new FileReader();
+    if(!file){
+
+        saveDatabase();
+
+        createGraphic();
+
+        setStatus(
+            "✓ Design gespeichert"
+        );
+
+        return;
+
+    }
 
 
-  r.onload=()=>{
+    if(
+        file.size >
+        5 * 1024 * 1024
+    ){
 
-    db.design.bg=
-      r.result;
+        alert(
+            "Das Hintergrundbild darf maximal 5 MB groß sein."
+        );
 
-    persist();
+        return;
 
-    makeGraphic();
+    }
 
-    alert(
-      'Design gespeichert.'
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(){
+
+            database.design.background =
+                reader.result;
+
+
+            saveDatabase();
+
+            createGraphic();
+
+
+            setStatus(
+                "✓ Design und Hintergrund gespeichert"
+            );
+
+        };
+
+
+    reader.readAsDataURL(
+        file
     );
-
-  };
-
-
-  r.readAsDataURL(file);
 
 }
 
 
-function removeBg(){
+$("removeBackground")
+    .addEventListener(
+        "click",
+        function(){
 
-  db.design.bg=null;
+            database.design.background =
+                null;
 
-  persist();
 
-  makeGraphic();
+            saveDatabase();
 
-  alert(
-    'Hintergrund entfernt.'
-  );
+            createGraphic();
 
-}
 
-
-function makeGraphic(){
-
-  const c=
-    $('preview');
-
-  const ctx=
-    c.getContext('2d');
-
-  const W=
-    c.width;
-
-  const H=
-    c.height;
-
-
-  ctx.clearRect(
-    0,
-    0,
-    W,
-    H
-  );
-
-
-  if(db.design.bg){
-
-    const im=
-      new Image();
-
-    im.onload=()=>{
-
-      drawGraphic(
-        ctx,
-        W,
-        H,
-        im
-      );
-
-    };
-
-    im.src=
-      db.design.bg;
-
-  }
-
-  else{
-
-    drawGraphic(
-      ctx,
-      W,
-      H,
-      null
-    );
-
-  }
-
-}
-
-
-function drawGraphic(
-  ctx,
-  W,
-  H,
-  bg
-){
-
-  if(bg){
-
-    ctx.drawImage(
-      bg,
-      0,
-      0,
-      W,
-      H
-    );
-
-    ctx.fillStyle=
-      'rgba(255,255,255,.78)';
-
-    ctx.fillRect(
-      0,
-      0,
-      W,
-      H
-    );
-
-  }
-
-  else{
-
-    let g=
-      ctx.createLinearGradient(
-        0,
-        0,
-        0,
-        H
-      );
-
-    g.addColorStop(
-      0,
-      '#f7fbf4'
-    );
-
-    g.addColorStop(
-      .34,
-      '#dcefd5'
-    );
-
-    g.addColorStop(
-      .66,
-      '#7fba5d'
-    );
-
-    g.addColorStop(
-      1,
-      '#183b1d'
-    );
-
-    ctx.fillStyle=g;
-
-    ctx.fillRect(
-      0,
-      0,
-      W,
-      H
-    );
-
-  }
-
-
-  ctx.fillStyle=
-    '#173b19';
-
-  ctx.textAlign=
-    'center';
-
-  ctx.font=
-    '900 58px Arial';
-
-  ctx.fillText(
-    'USV TU DRESDEN',
-    W/2,
-    82
-  );
-
-
-  ctx.fillStyle=
-    '#2f8f24';
-
-  ctx.font=
-    '900 104px Arial';
-
-  ctx.fillText(
-    db.design.title,
-    W/2,
-    178
-  );
-
-
-  ctx.fillStyle=
-    '#173b19';
-
-  ctx.font=
-    '700 38px Arial';
-
-  ctx.fillText(
-    db.design.subtitle,
-    W/2,
-    230
-  );
-
-
-  const from=
-    $('dateFrom').value;
-
-  const to=
-    $('dateTo').value;
-
-
-  const games=
-    db.games
-      .filter(
-        g=>
-          (!from||g.date>=from)
-          &&
-          (!to||g.date<=to)
-      )
-      .sort(
-        (a,b)=>
-          a.date.localeCompare(b.date)
-          ||
-          a.time.localeCompare(b.time)
-      );
-
-
-  let y=285;
-
-  let last='';
-
-
-  games
-    .slice(0,6)
-    .forEach(
-      g=>{
-
-        if(y>1230)
-          return;
-
-
-        const day=
-          new Date(
-            g.date+'T12:00'
-          )
-          .toLocaleDateString(
-            'de-DE',
-            {
-              weekday:'long'
-            }
-          );
-
-
-        if(day!==last){
-
-          ctx.fillStyle=
-            '#2f8f24';
-
-          ctx.font=
-            '900 30px Arial';
-
-          ctx.fillText(
-            day.toUpperCase(),
-            W/2,
-            y
-          );
-
-          y+=48;
-
-          last=day;
+            setStatus(
+                "✓ Hintergrund entfernt"
+            );
 
         }
-
-
-        ctx.fillStyle=
-          'rgba(255,255,255,.88)';
-
-        roundRect(
-          ctx,
-          60,
-          y,
-          W-120,
-          145,
-          18
-        );
-
-        ctx.fill();
-
-
-        ctx.fillStyle=
-          '#173b19';
-
-        ctx.font=
-          '900 24px Arial';
-
-        ctx.fillText(
-          g.team,
-          W/2,
-          y+31
-        );
-
-
-        const h=
-          clubById(g.home);
-
-        const a=
-          clubById(g.away);
-
-
-        drawLogo(
-          ctx,
-          h?.logo,
-          W/2-270,
-          y+75,
-          70
-        );
-
-
-        drawLogo(
-          ctx,
-          a?.logo,
-          W/2+200,
-          y+75,
-          70
-        );
-
-
-        ctx.fillStyle=
-          '#173b19';
-
-        ctx.font=
-          '700 23px Arial';
-
-
-        ctx.fillText(
-          h?.name||'Heim',
-          W/2-180,
-          y+94
-        );
-
-
-        ctx.fillText(
-          a?.name||'Gast',
-          W/2+180,
-          y+94
-        );
-
-
-        ctx.fillStyle=
-          '#2f8f24';
-
-        ctx.font=
-          '900 26px Arial';
-
-
-        ctx.fillText(
-          'VS.',
-          W/2,
-          y+96
-        );
-
-
-        ctx.fillStyle=
-          '#586258';
-
-        ctx.font=
-          '600 18px Arial';
-
-
-        ctx.fillText(
-          `${g.time||''}  ·  ${g.place||''}`,
-          W/2,
-          y+126
-        );
-
-
-        y+=162;
-
-      }
     );
 
 
-  ctx.fillStyle=
-    '#173b19';
+/* ========================================
+   GRAFIK
+======================================== */
 
-  ctx.font=
-    '700 20px Arial';
 
-  ctx.fillText(
-    'FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.',
-    W/2,
-    H-28
-  );
+function createGraphic(){
+
+    const canvas =
+        $("preview");
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    const W =
+        canvas.width;
+
+    const H =
+        canvas.height;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+
+    if(
+        database.design.background
+    ){
+
+        const image =
+            new Image();
+
+
+        image.onload =
+            function(){
+
+                drawBackground(
+                    ctx,
+                    image,
+                    W,
+                    H
+                );
+
+                drawGraphicContent(
+                    ctx,
+                    W,
+                    H
+                );
+
+            };
+
+
+        image.onerror =
+            function(){
+
+                drawGraphicContent(
+                    ctx,
+                    W,
+                    H
+                );
+
+            };
+
+
+        image.src =
+            database.design.background;
+
+
+    }else{
+
+        drawGraphicContent(
+            ctx,
+            W,
+            H
+        );
+
+    }
+
+}
+
+
+function drawBackground(
+    ctx,
+    image,
+    W,
+    H
+){
+
+    const scale =
+        Math.max(
+            W / image.width,
+            H / image.height
+        );
+
+
+    const width =
+        image.width * scale;
+
+    const height =
+        image.height * scale;
+
+
+    ctx.drawImage(
+
+        image,
+
+        (W - width) / 2,
+
+        (H - height) / 2,
+
+        width,
+
+        height
+
+    );
+
+
+    ctx.fillStyle =
+        "rgba(255,255,255,.78)";
+
+
+    ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+}
+
+
+function drawGraphicContent(
+    ctx,
+    W,
+    H
+){
+
+    if(
+        !database.design.background
+    ){
+
+        const gradient =
+            ctx.createLinearGradient(
+                0,
+                0,
+                0,
+                H
+            );
+
+
+        gradient.addColorStop(
+            0,
+            "#f8fbf7"
+        );
+
+        gradient.addColorStop(
+            .35,
+            "#dcefd5"
+        );
+
+        gradient.addColorStop(
+            .72,
+            "#8fca70"
+        );
+
+        gradient.addColorStop(
+            1,
+            "#173b19"
+        );
+
+
+        ctx.fillStyle =
+            gradient;
+
+
+        ctx.fillRect(
+            0,
+            0,
+            W,
+            H
+        );
+
+    }
+
+
+    /* Überschrift */
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.fillStyle =
+        "#173b19";
+
+
+    ctx.font =
+        "900 50px Arial";
+
+
+    ctx.fillText(
+        "USV TU DRESDEN",
+        W / 2,
+        70
+    );
+
+
+    ctx.fillStyle =
+        "#2f8f24";
+
+
+    ctx.font =
+        "900 92px Arial";
+
+
+    ctx.fillText(
+        database.design.title,
+        W / 2,
+        150
+    );
+
+
+    ctx.fillStyle =
+        "#173b19";
+
+
+    ctx.font =
+        "700 30px Arial";
+
+
+    ctx.fillText(
+        database.design.subtitle,
+        W / 2,
+        200
+    );
+
+
+    const games =
+        getWeekendGames()
+            .slice(
+                0,
+                6
+            );
+
+
+    let y = 240;
+
+    let lastDay = "";
+
+
+    games.forEach(
+        game => {
+
+
+            if(
+                y > H - 220
+            ){
+
+                return;
+
+            }
+
+
+            const day =
+                new Date(
+                    game.date +
+                    "T12:00"
+                )
+                .toLocaleDateString(
+                    "de-DE",
+                    {
+                        weekday:
+                            "long"
+                    }
+                );
+
+
+            if(
+                day !== lastDay
+            ){
+
+                ctx.fillStyle =
+                    "#2f8f24";
+
+
+                ctx.font =
+                    "900 27px Arial";
+
+
+                ctx.fillText(
+                    day.toUpperCase(),
+                    W / 2,
+                    y
+                );
+
+
+                y += 40;
+
+                lastDay =
+                    day;
+
+            }
+
+
+            /* Spielkarte */
+
+            ctx.fillStyle =
+                "rgba(255,255,255,.93)";
+
+
+            roundRect(
+                ctx,
+                55,
+                y,
+                W - 110,
+                135,
+                18
+            );
+
+
+            ctx.fill();
+
+
+            ctx.fillStyle =
+                "#173b19";
+
+
+            ctx.font =
+                "900 21px Arial";
+
+
+            ctx.fillText(
+                game.team,
+                W / 2,
+                y + 28
+            );
+
+
+            const home =
+                findClub(
+                    game.home
+                );
+
+
+            const away =
+                findClub(
+                    game.away
+                );
+
+
+            /* Logos */
+
+            drawCanvasLogo(
+                ctx,
+                home?.logo,
+                W / 2 - 300,
+                y + 48,
+                62
+            );
+
+
+            drawCanvasLogo(
+                ctx,
+                away?.logo,
+                W / 2 + 238,
+                y + 48,
+                62
+            );
+
+
+            /* Mannschaftsnamen */
+
+            ctx.fillStyle =
+                "#173b19";
+
+
+            ctx.font =
+                "700 18px Arial";
+
+
+            ctx.fillText(
+                shorten(
+                    home?.name ||
+                    "Heim"
+                ),
+                W / 2 - 190,
+                y + 75
+            );
+
+
+            ctx.fillText(
+                shorten(
+                    away?.name ||
+                    "Gast"
+                ),
+                W / 2 + 190,
+                y + 75
+            );
+
+
+            /* VS */
+
+            ctx.fillStyle =
+                "#2f8f24";
+
+
+            ctx.font =
+                "900 21px Arial";
+
+
+            ctx.fillText(
+                "VS.",
+                W / 2,
+                y + 78
+            );
+
+
+            /* Uhrzeit / Ort */
+
+            ctx.fillStyle =
+                "#596159";
+
+
+            ctx.font =
+                "600 16px Arial";
+
+
+            ctx.fillText(
+
+                (
+                    game.time ||
+                    ""
+                )
+                +
+                (
+                    game.place
+                        ? "  ·  " +
+                          game.place
+                        : ""
+                ),
+
+                W / 2,
+
+                y + 108
+
+            );
+
+
+            y += 148;
+
+        }
+    );
+
+
+    /* Fußzeile */
+
+    ctx.fillStyle =
+        "#173b19";
+
+
+    ctx.font =
+        "700 16px Arial";
+
+
+    ctx.fillText(
+        "FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",
+        W / 2,
+        H - 22
+    );
+
+}
+
+
+function shorten(text){
+
+    text =
+        String(
+            text
+        );
+
+
+    if(
+        text.length <= 25
+    ){
+
+        return text;
+
+    }
+
+
+    return (
+        text.substring(
+            0,
+            23
+        )
+        +
+        "…"
+    );
 
 }
 
 
 function roundRect(
-  ctx,
-  x,
-  y,
-  w,
-  h,
-  r
-){
-
-  ctx.beginPath();
-
-  ctx.roundRect(
+    ctx,
     x,
     y,
-    w,
-    h,
-    r
-  );
-
-}
-
-
-function drawLogo(
-  ctx,
-  src,
-  x,
-  y,
-  size
+    width,
+    height,
+    radius
 ){
-
-  if(!src){
-
-    ctx.strokeStyle=
-      '#2f8f24';
-
-    ctx.lineWidth=3;
 
     ctx.beginPath();
 
-    ctx.arc(
-      x+size/2,
-      y+size/2,
-      size/2-3,
-      0,
-      Math.PI*2
+    ctx.roundRect(
+        x,
+        y,
+        width,
+        height,
+        radius
     );
 
-    ctx.stroke();
-
-    return;
-
-  }
+}
 
 
-  const im=
-    new Image();
+function drawCanvasLogo(
+    ctx,
+    source,
+    x,
+    y,
+    size
+){
+
+    if(!source){
+
+        ctx.strokeStyle =
+            "#2f8f24";
 
 
-  im.onload=()=>
-    ctx.drawImage(
-      im,
-      x,
-      y,
-      size,
-      size
+        ctx.lineWidth =
+            3;
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+
+            x + size / 2,
+
+            y + size / 2,
+
+            size / 2 - 3,
+
+            0,
+
+            Math.PI * 2
+
+        );
+
+
+        ctx.stroke();
+
+
+        return;
+
+    }
+
+
+    const image =
+        new Image();
+
+
+    image.onload =
+        function(){
+
+            ctx.drawImage(
+                image,
+                x,
+                y,
+                size,
+                size
+            );
+
+        };
+
+
+    image.src =
+        source;
+
+}
+
+
+/* ========================================
+   DOWNLOAD
+======================================== */
+
+
+$("downloadImage")
+    .addEventListener(
+        "click",
+        function(){
+
+            createGraphic();
+
+
+            setTimeout(
+                function(){
+
+                    const link =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    link.download =
+                        "USV-Matchday.png";
+
+
+                    link.href =
+                        $("preview")
+                            .toDataURL(
+                                "image/png"
+                            );
+
+
+                    link.click();
+
+
+                    setStatus(
+                        "✓ PNG wurde erstellt"
+                    );
+
+                },
+                500
+            );
+
+        }
     );
 
 
-  im.src=src;
+/* ========================================
+   TEILEN
+======================================== */
+
+
+$("shareImage")
+    .addEventListener(
+        "click",
+        async function(){
+
+            createGraphic();
+
+
+            setTimeout(
+                async function(){
+
+                    const blob =
+                        await new Promise(
+                            resolve =>
+
+                                $("preview")
+                                    .toBlob(
+                                        resolve,
+                                        "image/png"
+                                    )
+                        );
+
+
+                    if(!blob){
+
+                        alert(
+                            "Bild konnte nicht erstellt werden."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const file =
+                        new File(
+                            [
+                                blob
+                            ],
+
+                            "USV-Matchday.png",
+
+                            {
+                                type:
+                                    "image/png"
+                            }
+                        );
+
+
+                    try{
+
+
+                        if(
+                            navigator.share
+                            &&
+                            navigator.canShare
+                            &&
+                            navigator.canShare(
+                                {
+                                    files:
+                                        [file]
+                                }
+                            )
+                        ){
+
+                            await navigator.share({
+
+                                files:
+                                    [file],
+
+                                title:
+                                    "USV Matchday"
+
+                            });
+
+
+                        }else{
+
+                            $("downloadImage")
+                                .click();
+
+                        }
+
+
+                    }catch(error){
+
+                        /* Nutzer hat Teilen abgebrochen */
+
+                    }
+
+                },
+                500
+            );
+
+        }
+    );
+
+
+/* ========================================
+   ALLES RENDERN
+======================================== */
+
+
+function renderAll(){
+
+    fillClubSelects();
+
+    renderClubs();
+
+    renderGames();
+
+    renderHome();
+
+
+    $("designTitle")
+        .value =
+            database.design.title;
+
+
+    $("designSubtitle")
+        .value =
+            database.design.subtitle;
 
 }
 
 
-function downloadGraphic(){
-
-  makeGraphic();
-
-
-  setTimeout(
-    ()=>{
-
-      const a=
-        document.createElement('a');
-
-      a.href=
-        $('preview').toDataURL(
-          'image/png'
-        );
-
-      a.download=
-        'USV-Matchday.png';
-
-      a.click();
-
-    },
-    300
-  );
-
-}
+/* ========================================
+   START
+======================================== */
 
 
-async function shareGraphic(){
+initializeDates();
 
-  makeGraphic();
+renderAll();
 
-
-  setTimeout(
-    async()=>{
-
-      const blob=
-        await new Promise(
-          r=>
-            $('preview')
-              .toBlob(
-                r,
-                'image/png'
-              )
-        );
+createGraphic();
 
 
-      const file=
-        new File(
-          [blob],
-          'USV-Matchday.png',
-          {
-            type:'image/png'
-          }
-        );
-
-
-      if(
-        navigator.share
-        &&
-        navigator.canShare?.({
-          files:[file]
-        })
-      ){
-
-        await navigator.share({
-
-          files:[file],
-
-          title:
-            'USV Matchday'
-
-        });
-
-      }
-
-      else{
-
-        downloadGraphic();
-
-      }
-
-    },
-    400
-  );
-
-}
-
-
-initDates();
-
-render();
-
-makeGraphic();
-
-if($('appStatus'))
-  $('appStatus').textContent=
-    '● App bereit · '
+setStatus(
+    "● App bereit · "
     +
-    db.clubs.length
+    database.clubs.length
     +
-    ' Vereine geladen';
+    " Vereine geladen"
+);
+
+
+/* Button für Grafik */
+
+$("createGraphic")
+    .addEventListener(
+        "click",
+        function(){
+
+            createGraphic();
+
+            document
+                .getElementById(
+                    "preview"
+                )
+                .scrollIntoView({
+                    behavior:"smooth"
+                });
+
+            setStatus(
+                "✓ Matchday-Vorschau aktualisiert"
+            );
+
+        }
+    );
+
 
 </script>
 
