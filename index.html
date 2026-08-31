@@ -11,11 +11,11 @@
   --bg:#f3f6f1;--card:#fff;--muted:#6f786f;--border:#dfe6dc;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#f7faf5 0%,#edf3ea 100%);color:var(--text)}
 button,input,select{font:inherit}
 button{cursor:pointer}
 .app{max-width:1100px;margin:auto;min-height:100vh}
-header{background:linear-gradient(135deg,#173b19,#4b9f2e);color:white;padding:18px 16px 22px;position:sticky;top:0;z-index:5}
+header{background:linear-gradient(115deg,#142719 0%,#2d7028 52%,#70b94d 100%);color:white;padding:18px 16px 22px;position:sticky;top:0;z-index:5}
 .header-row{display:flex;align-items:center;gap:12px}
 .club-badge{width:48px;height:48px;border-radius:12px;background:#fff;color:#173b19;display:grid;place-items:center;font-weight:900;font-size:11px;text-align:center;border:2px solid #b8e49e}
 h1{font-size:22px;margin:0}.sub{font-size:12px;opacity:.85;margin-top:3px}
@@ -24,7 +24,7 @@ nav button{border:0;background:rgba(255,255,255,.14);color:#fff;border-radius:9p
 nav button.active{background:#fff;color:var(--green);font-weight:800}
 main{padding:16px}
 .view{display:none}.view.active{display:block}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:15px;margin-bottom:14px;box-shadow:0 3px 14px rgba(0,0,0,.04)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:15px;margin-bottom:14px;box-shadow:0 5px 20px rgba(20,50,20,.07)}
 h2{font-size:19px;margin:0 0 12px}h3{font-size:15px;margin:0 0 9px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .field label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin:0 0 5px}
@@ -50,6 +50,10 @@ canvas{max-width:100%;height:auto;border-radius:10px;display:block;margin:auto}
 hr{border:0;border-top:1px solid var(--border);margin:14px 0}
 .small{font-size:11px}
 @media(max-width:650px){.grid{grid-template-columns:1fr}.logo-list{grid-template-columns:1fr}main{padding:12px}}
+
+.stepbar{display:flex;gap:7px;overflow:auto;margin:0 0 14px}
+.stepbar span{white-space:nowrap;padding:8px 11px;border-radius:999px;background:#e9f2e5;color:#50704d;font-size:11px;font-weight:800}
+.stepbar span.active{background:#2d8f28;color:#fff}
 </style>
 </head>
 <body>
@@ -68,6 +72,13 @@ hr{border:0;border-top:1px solid var(--border);margin:14px 0}
 </header>
 
 <main>
+<div class="stepbar">
+  <span class="active">1 Wochenende</span>
+  <span>2 Spiele</span>
+  <span>3 Vorschau</span>
+  <span>4 PNG / Teilen</span>
+</div>
+
 <section id="home" class="view active">
   <div class="card">
     <h2>⚽ Matchday erstellen</h2>
@@ -253,7 +264,7 @@ function makeGraphic(){
 }
 function drawGraphic(ctx,W,H,bg){
   if(bg){ctx.drawImage(bg,0,0,W,H);ctx.fillStyle='rgba(255,255,255,.78)';ctx.fillRect(0,0,W,H)}
-  else{let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#eef6eb');g.addColorStop(1,'#cfe6c5');ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  else{let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f7fbf4');g.addColorStop(.34,'#dcefd5');g.addColorStop(.66,'#7fba5d');g.addColorStop(1,'#183b1d');ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
   ctx.fillStyle='#173b19';ctx.textAlign='center';ctx.font='900 58px Arial';ctx.fillText('USV TU DRESDEN',W/2,82);
   ctx.fillStyle='#2f8f24';ctx.font='900 104px Arial';ctx.fillText(db.design.title,W/2,178);
   ctx.fillStyle='#173b19';ctx.font='700 38px Arial';ctx.fillText(db.design.subtitle,W/2,230);
