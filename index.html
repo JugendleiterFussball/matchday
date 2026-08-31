@@ -2,3705 +2,1640 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#2f8f24">
-
 <title>USV Matchday</title>
 
 <style>
-
 :root{
-    --green:#2f8f24;
-    --green-dark:#173b19;
-    --green-light:#e9f5e5;
-    --bg:#f2f6f0;
-    --card:#ffffff;
-    --border:#dce5d8;
-    --text:#172018;
-    --muted:#6c756b;
-    --red:#b63830;
+  --green:#2f8f24;
+  --green-dark:#173b19;
+  --green-light:#e9f5e5;
+  --bg:#f2f6f0;
+  --card:#ffffff;
+  --border:#dce5d8;
+  --text:#172018;
+  --muted:#6c756b;
+  --red:#b63830;
 }
 
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-    margin:0;
-    background:
-        linear-gradient(
-            180deg,
-            #f8fbf7 0%,
-            #edf3ea 100%
-        );
-    color:var(--text);
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+  margin:0;
+  background:linear-gradient(180deg,#f8fbf7 0%,#edf3ea 100%);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-button,
-input,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+button,input,select{font:inherit}
+button{cursor:pointer}
 
 .app{
-    max-width:1100px;
-    margin:auto;
-    min-height:100vh;
+  max-width:1100px;
+  margin:auto;
+  min-height:100vh;
 }
 
-/* HEADER */
-
 header{
-    position:sticky;
-    top:0;
-    z-index:100;
-
-    padding:
-        14px
-        14px
-        12px;
-
-    color:white;
-
-    background:
-        linear-gradient(
-            120deg,
-            #142719,
-            #2e7628 58%,
-            #70b94d
-        );
-
-    box-shadow:
-        0 4px 18px
-        rgba(0,0,0,.15);
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:14px 14px 12px;
+  color:white;
+  background:linear-gradient(120deg,#142719,#2e7628 58%,#70b94d);
+  box-shadow:0 4px 18px rgba(0,0,0,.15);
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .usv-badge{
-    width:50px;
-    height:50px;
-
-    border-radius:12px;
-
-    display:grid;
-    place-items:center;
-
-    background:white;
-
-    color:#173b19;
-
-    text-align:center;
-
-    font-size:10px;
-    line-height:1.05;
-
-    font-weight:900;
-
-    border:
-        2px solid
-        #b8e49d;
+  width:50px;
+  height:50px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:white;
+  color:#173b19;
+  text-align:center;
+  font-size:10px;
+  line-height:1.05;
+  font-weight:900;
+  border:2px solid #b8e49d;
 }
 
 .brand h1{
-    margin:0;
-
-    font-size:22px;
+  margin:0;
+  font-size:22px;
 }
 
 .brand-sub{
-    margin-top:3px;
-
-    font-size:12px;
-
-    opacity:.85;
+  margin-top:3px;
+  font-size:12px;
+  opacity:.85;
 }
 
 nav{
-    display:flex;
-
-    gap:7px;
-
-    overflow-x:auto;
-
-    padding-top:10px;
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding-top:10px;
 }
 
 nav button{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:
-        9px
-        12px;
-
-    background:
-        rgba(255,255,255,.16);
-
-    color:white;
-
-    white-space:nowrap;
-
-    font-size:12px;
+  border:0;
+  border-radius:9px;
+  padding:9px 12px;
+  background:rgba(255,255,255,.16);
+  color:white;
+  white-space:nowrap;
+  font-size:12px;
 }
 
 nav button.active{
-
-    background:white;
-
-    color:var(--green);
-
-    font-weight:900;
+  background:white;
+  color:var(--green);
+  font-weight:900;
 }
 
-/* MAIN */
+main{padding:14px}
 
-main{
-    padding:14px;
-}
-
-.view{
-    display:none;
-}
-
-.view.active{
-    display:block;
-}
-
-/* STATUS */
+.view{display:none}
+.view.active{display:block}
 
 .status{
-
-    margin-bottom:12px;
-
-    padding:
-        9px
-        11px;
-
-    border-radius:10px;
-
-    background:
-        var(--green-light);
-
-    color:
-        #356232;
-
-    font-size:11px;
-
-    font-weight:800;
+  margin-bottom:12px;
+  padding:9px 11px;
+  border-radius:10px;
+  background:var(--green-light);
+  color:#356232;
+  font-size:11px;
+  font-weight:800;
 }
 
-/* STEPS */
-
 .stepbar{
-
-    display:flex;
-
-    gap:6px;
-
-    overflow-x:auto;
-
-    margin-bottom:14px;
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  margin-bottom:14px;
 }
 
 .stepbar span{
-
-    padding:
-        8px
-        11px;
-
-    border-radius:999px;
-
-    background:
-        #e7f0e4;
-
-    color:
-        #55704f;
-
-    white-space:nowrap;
-
-    font-size:11px;
-
-    font-weight:800;
+  padding:8px 11px;
+  border-radius:999px;
+  background:#e7f0e4;
+  color:#55704f;
+  white-space:nowrap;
+  font-size:11px;
+  font-weight:800;
 }
 
 .stepbar span.active{
-
-    background:
-        var(--green);
-
-    color:white;
+  background:var(--green);
+  color:white;
 }
 
-/* CARDS */
-
 .card{
-
-    background:
-        var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:16px;
-
-    padding:15px;
-
-    margin-bottom:14px;
-
-    box-shadow:
-        0 5px 20px
-        rgba(30,70,30,.07);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:14px;
+  box-shadow:0 5px 20px rgba(30,70,30,.07);
 }
 
 .card h2{
-
-    margin:
-        0
-        0
-        11px;
-
-    font-size:19px;
+  margin:0 0 11px;
+  font-size:19px;
 }
 
 .card h3{
-
-    margin:
-        0
-        0
-        10px;
-
-    font-size:15px;
+  margin:0 0 10px;
+  font-size:15px;
 }
 
-/* GRID */
-
 .grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-
-    gap:10px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
 }
 
 .field label{
-
-    display:block;
-
-    margin-bottom:5px;
-
-    color:var(--muted);
-
-    font-size:11px;
-
-    font-weight:800;
+  display:block;
+  margin-bottom:5px;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:800;
 }
 
-input,
-select{
-
-    width:100%;
-
-    padding:11px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:10px;
-
-    background:white;
-
-    color:var(--text);
-
-    outline:none;
+input,select{
+  width:100%;
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:white;
+  color:var(--text);
+  outline:none;
 }
 
-input:focus,
-select:focus{
-
-    border-color:
-        var(--green);
-
-    box-shadow:
-        0 0 0 2px
-        rgba(47,143,36,.12);
+input:focus,select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 2px rgba(47,143,36,.12);
 }
-
-/* BUTTONS */
 
 .btn{
-
-    border:0;
-
-    border-radius:10px;
-
-    padding:
-        11px
-        14px;
-
-    font-weight:900;
+  border:0;
+  border-radius:10px;
+  padding:11px 14px;
+  font-weight:900;
 }
 
 .btn.primary{
-
-    background:
-        var(--green);
-
-    color:white;
+  background:var(--green);
+  color:white;
 }
 
 .btn.secondary{
-
-    background:
-        var(--green-light);
-
-    color:var(--green);
+  background:var(--green-light);
+  color:var(--green);
 }
 
 .btn.danger{
-
-    background:
-        #fff0ef;
-
-    color:
-        var(--red);
+  background:#fff0ef;
+  color:var(--red);
 }
 
-.wide{
-    width:100%;
-}
+.wide{width:100%}
 
 .row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    flex-wrap:wrap;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
-.between{
-    justify-content:space-between;
-}
+.between{justify-content:space-between}
 
 .muted{
-
-    color:
-        var(--muted);
-
-    font-size:12px;
+  color:var(--muted);
+  font-size:12px;
 }
-
-/* TAG */
 
 .tag{
-
-    display:inline-block;
-
-    padding:
-        5px
-        8px;
-
-    border-radius:999px;
-
-    background:
-        var(--green-light);
-
-    color:
-        var(--green);
-
-    font-size:10px;
-
-    font-weight:900;
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:999px;
+  background:var(--green-light);
+  color:var(--green);
+  font-size:10px;
+  font-weight:900;
 }
 
-/* GAME */
-
 .game{
-
-    margin:
-        8px
-        0;
-
-    padding:12px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:14px;
-
-    background:#fbfdfb;
+  margin:8px 0;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fbfdfb;
 }
 
 .game-top{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
 }
 
 .game-actions{
-
-    display:flex;
-
-    gap:5px;
+  display:flex;
+  gap:5px;
 }
 
 .game-actions button{
-
-    border:0;
-
-    border-radius:8px;
-
-    padding:
-        7px
-        9px;
-
-    font-size:11px;
+  border:0;
+  border-radius:8px;
+  padding:7px 9px;
+  font-size:11px;
 }
 
 .game-main{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        50px
-        1fr;
-
-    align-items:center;
-
-    gap:5px;
-
-    margin:
-        10px
-        0;
-
-    text-align:center;
+  display:grid;
+  grid-template-columns:1fr 50px 1fr;
+  align-items:center;
+  gap:5px;
+  margin:10px 0;
+  text-align:center;
 }
 
 .team{
-
-    font-size:12px;
-
-    font-weight:900;
+  font-size:12px;
+  font-weight:900;
 }
 
 .vs{
-
-    color:
-        var(--green);
-
-    font-weight:900;
+  color:var(--green);
+  font-weight:900;
 }
 
 .club-logo{
-
-    width:52px;
-
-    height:52px;
-
-    object-fit:contain;
-
-    display:block;
-
-    margin:
-        4px
-        auto;
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  display:block;
+  margin:4px auto;
 }
 
-/* CLUBS */
-
 .club-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-
-    gap:8px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
 }
 
 .club{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:8px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:12px;
-
-    background:#fff;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
 }
 
 .club .club-logo{
-
-    width:44px;
-
-    height:44px;
-
-    flex:none;
+  width:44px;
+  height:44px;
+  flex:none;
 }
 
 .club-name{
-
-    flex:1;
-
-    font-size:12px;
-
-    font-weight:800;
+  flex:1;
+  font-size:12px;
+  font-weight:800;
 }
 
 .club-delete{
-
-    border:0;
-
-    border-radius:8px;
-
-    padding:6px 8px;
-
-    background:#fff0ef;
-
-    color:var(--red);
+  border:0;
+  border-radius:8px;
+  padding:6px 8px;
+  background:#fff0ef;
+  color:var(--red);
 }
-
-/* EMPTY */
 
 .empty{
-
-    padding:22px;
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:13px;
+  padding:22px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
 }
 
-/* PREVIEW */
-
 .preview{
-
-    padding:9px;
-
-    border-radius:14px;
-
-    background:#dfe5dc;
+  padding:9px;
+  border-radius:14px;
+  background:#dfe5dc;
 }
 
 .preview canvas{
-
-    display:block;
-
-    width:100%;
-
-    height:auto;
-
-    border-radius:10px;
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:10px;
 }
-
-/* HR */
 
 hr{
-
-    border:0;
-
-    border-top:
-        1px solid
-        var(--border);
-
-    margin:
-        14px
-        0;
+  border:0;
+  border-top:1px solid var(--border);
+  margin:14px 0;
 }
-
-/* MOBILE */
 
 @media(max-width:650px){
-
-    main{
-        padding:10px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-    .club-grid{
-        grid-template-columns:1fr;
-    }
-
-    .card{
-        padding:13px;
-    }
-
+  main{padding:10px}
+  .grid{grid-template-columns:1fr}
+  .club-grid{grid-template-columns:1fr}
+  .card{padding:13px}
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-
 <header>
 
-    <div class="brand">
+  <div class="brand">
 
-        <div class="usv-badge">
-            USV<br>
-            TU<br>
-            DRESDEN
-        </div>
-
-        <div>
-
-            <h1>
-                USV MATCHDAY
-            </h1>
-
-            <div class="brand-sub">
-                Dein Wochenende. Deine Grafik.
-            </div>
-
-        </div>
-
+    <div class="usv-badge">
+      USV<br>TU<br>DRESDEN
     </div>
 
+    <div>
+      <h1>USV MATCHDAY</h1>
+      <div class="brand-sub">Dein Wochenende. Deine Grafik.</div>
+    </div>
 
-    <nav>
+  </div>
 
-        <button
-            class="active"
-            data-view="dashboard">
-
-            Dashboard
-
-        </button>
-
-
-        <button
-            data-view="games">
-
-            Spiele
-
-        </button>
-
-
-        <button
-            data-view="clubs">
-
-            Vereine & Logos
-
-        </button>
-
-
-        <button
-            data-view="design">
-
-            Design
-
-        </button>
-
-    </nav>
+  <nav>
+    <button class="active" data-view="dashboard">Dashboard</button>
+    <button data-view="games">Spiele</button>
+    <button data-view="clubs">Vereine & Logos</button>
+    <button data-view="design">Design</button>
+  </nav>
 
 </header>
 
-
 <main>
 
-
-<div
-    id="status"
-    class="status">
-
-    ● App wird gestartet …
-
+<div id="status" class="status">
+  ● App wird gestartet …
 </div>
-
 
 <div class="stepbar">
-
-    <span class="active">
-        1 Wochenende
-    </span>
-
-    <span>
-        2 Spiele
-    </span>
-
-    <span>
-        3 Vorschau
-    </span>
-
-    <span>
-        4 PNG / Teilen
-    </span>
-
+  <span class="active">1 Wochenende</span>
+  <span>2 Spiele</span>
+  <span>3 Vorschau</span>
+  <span>4 PNG / Teilen</span>
 </div>
 
-
-
-<!-- ===================== -->
 <!-- DASHBOARD -->
-<!-- ===================== -->
 
-<section
-    id="dashboard"
-    class="view active">
+<section id="dashboard" class="view active">
 
+  <div class="card">
 
-<div class="card">
-
-    <h2>
-        ⚽ Matchday erstellen
-    </h2>
-
+    <h2>⚽ Matchday erstellen</h2>
 
     <div class="grid">
 
+      <div class="field">
+        <label>Wochenende von</label>
+        <input id="dateFrom" type="date">
+      </div>
 
-        <div class="field">
-
-            <label>
-                Wochenende von
-            </label>
-
-            <input
-                id="dateFrom"
-                type="date">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Wochenende bis
-            </label>
-
-            <input
-                id="dateTo"
-                type="date">
-
-        </div>
-
+      <div class="field">
+        <label>Wochenende bis</label>
+        <input id="dateTo" type="date">
+      </div>
 
     </div>
-
 
     <div style="height:10px"></div>
 
-
-    <button
-        class="btn primary wide"
-        id="dashboardAddGame">
-
-        ＋ Spiel hinzufügen
-
+    <button class="btn primary wide" id="dashboardAddGame">
+      ＋ Spiel hinzufügen
     </button>
 
+  </div>
 
-</div>
-
-
-
-<div class="card">
+  <div class="card">
 
     <div class="row between">
-
-        <h2>
-            Dieses Wochenende
-        </h2>
-
-        <span
-            id="gameCount"
-            class="tag">
-
-            0 Spiele
-
-        </span>
-
+      <h2>Dieses Wochenende</h2>
+      <span id="gameCount" class="tag">0 Spiele</span>
     </div>
-
 
     <div id="homeGames"></div>
 
-
-    <button
-        class="btn primary wide"
-        id="createGraphic">
-
-        🖼️ MATCHDAY-BILD ERSTELLEN
-
+    <button class="btn primary wide" id="createGraphic">
+      🖼️ MATCHDAY-BILD ERSTELLEN
     </button>
 
-</div>
+  </div>
 
+  <div class="card">
 
-
-<div class="card">
-
-    <h2>
-        Vorschau
-    </h2>
-
+    <h2>Vorschau</h2>
 
     <div class="preview">
+      <canvas id="preview" width="1080" height="1350"></canvas>
+    </div>
 
-        <canvas
-            id="preview"
-            width="1080"
-            height="1350">
-        </canvas>
+    <div class="row" style="margin-top:10px">
+
+      <button class="btn secondary" id="downloadImage">
+        ⬇ Bild speichern
+      </button>
+
+      <button class="btn primary" id="shareImage">
+        ↗ Teilen
+      </button>
 
     </div>
 
-
-    <div
-        class="row"
-        style="margin-top:10px">
-
-
-        <button
-            class="btn secondary"
-            id="downloadImage">
-
-            ⬇ Bild speichern
-
-        </button>
-
-
-        <button
-            class="btn primary"
-            id="shareImage">
-
-            ↗ Teilen
-
-        </button>
-
-
-    </div>
-
-</div>
-
+  </div>
 
 </section>
 
-
-
-<!-- ===================== -->
 <!-- SPIELE -->
-<!-- ===================== -->
 
-<section
-    id="games"
-    class="view">
+<section id="games" class="view">
 
+  <div class="card">
 
-<div class="card">
+    <div class="row between">
 
+      <h2>Spiele</h2>
 
-    <div
-        class="row between">
+      <button class="btn primary" id="newGame">
+        ＋ Spiel
+      </button>
 
-        <h2>
-            Spiele
-        </h2>
+    </div>
 
+    <div id="gameForm" style="display:none">
 
-        <button
-            class="btn primary"
-            id="newGame">
+      <hr>
 
-            ＋ Spiel
+      <h3 id="formTitle">Spiel hinzufügen</h3>
 
+      <input type="hidden" id="editId">
+
+      <div class="grid">
+
+        <div class="field">
+          <label>Mannschaft</label>
+          <select id="team"></select>
+        </div>
+
+        <div class="field">
+          <label>Datum</label>
+          <input id="gameDate" type="date">
+        </div>
+
+        <div class="field">
+          <label>Uhrzeit</label>
+          <input id="gameTime" type="time">
+        </div>
+
+        <div class="field">
+          <label>Ort</label>
+          <input id="gamePlace" placeholder="z. B. Sportzentrum">
+        </div>
+
+        <div class="field">
+          <label>Heim</label>
+          <select id="homeClub"></select>
+        </div>
+
+        <div class="field">
+          <label>Gast</label>
+          <select id="awayClub"></select>
+        </div>
+
+      </div>
+
+      <div class="row" style="margin-top:10px">
+
+        <button class="btn primary" id="saveGame">
+          Speichern
         </button>
 
-    </div>
+        <button class="btn secondary" id="cancelGame">
+          Abbrechen
+        </button>
 
-
-    <div
-        id="gameForm"
-        style="display:none">
-
-
-        <hr>
-
-
-        <h3
-            id="formTitle">
-
-            Spiel hinzufügen
-
-        </h3>
-
-
-        <input
-            type="hidden"
-            id="editId">
-
-
-        <div class="grid">
-
-
-            <div class="field">
-
-                <label>
-                    Mannschaft
-                </label>
-
-                <select
-                    id="team">
-                </select>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Datum
-                </label>
-
-                <input
-                    id="gameDate"
-                    type="date">
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Uhrzeit
-                </label>
-
-                <input
-                    id="gameTime"
-                    type="time">
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Ort
-                </label>
-
-                <input
-                    id="gamePlace"
-                    placeholder="z. B. Sportzentrum">
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Heim
-                </label>
-
-                <select
-                    id="homeClub">
-                </select>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Gast
-                </label>
-
-                <select
-                    id="awayClub">
-                </select>
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            class="row"
-            style="margin-top:10px">
-
-
-            <button
-                class="btn primary"
-                id="saveGame">
-
-                Speichern
-
-            </button>
-
-
-            <button
-                class="btn secondary"
-                id="cancelGame">
-
-                Abbrechen
-
-            </button>
-
-
-        </div>
-
+      </div>
 
     </div>
 
-</div>
+  </div>
 
-
-
-<div class="card">
-
+  <div class="card">
     <div id="gamesList"></div>
-
-</div>
-
+  </div>
 
 </section>
 
-
-
-<!-- ===================== -->
 <!-- VEREINE -->
-<!-- ===================== -->
 
-<section
-    id="clubs"
-    class="view">
+<section id="clubs" class="view">
 
+  <div class="card">
 
-<div class="card">
-
-    <h2>
-        🏟️ Vereine & Logos
-    </h2>
-
+    <h2>🏟️ Vereine & Logos</h2>
 
     <p class="muted">
-
-        Vereine werden einmal gespeichert.
-        Danach kannst du sie bei jedem Spiel auswählen.
-
+      Vereine werden einmal gespeichert. Danach kannst du sie bei jedem Spiel auswählen.
     </p>
-
 
     <div class="grid">
 
+      <div class="field">
+        <label>Vereinsname</label>
+        <input id="clubName" placeholder="z. B. Dresdner SC">
+      </div>
 
-        <div class="field">
-
-            <label>
-                Vereinsname
-            </label>
-
-            <input
-                id="clubName"
-                placeholder="z. B. Dresdner SC">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Logo PNG / JPG / WEBP
-            </label>
-
-            <input
-                id="clubLogo"
-                type="file"
-                accept="image/png,image/jpeg,image/webp">
-
-        </div>
-
+      <div class="field">
+        <label>Logo PNG / JPG / WEBP</label>
+        <input id="clubLogo" type="file" accept="image/png,image/jpeg,image/webp">
+      </div>
 
     </div>
-
 
     <div style="height:10px"></div>
 
-
-    <button
-        class="btn primary"
-        id="addClub">
-
-        ＋ Verein speichern
-
+    <button class="btn primary" id="addClub">
+      ＋ Verein speichern
     </button>
 
+  </div>
 
-</div>
-
-
-
-<div class="card">
-
-    <div
-        id="clubList"
-        class="club-grid">
-
-    </div>
-
-</div>
-
+  <div class="card">
+    <div id="clubList" class="club-grid"></div>
+  </div>
 
 </section>
 
-
-
-<!-- ===================== -->
 <!-- DESIGN -->
-<!-- ===================== -->
 
-<section
-    id="design"
-    class="view">
+<section id="design" class="view">
 
+  <div class="card">
 
-<div class="card">
-
-
-    <h2>
-        🎨 Design / Vorlage
-    </h2>
-
+    <h2>🎨 Design / Vorlage</h2>
 
     <p class="muted">
-
-        Lade hier euren fertigen
-        Matchday-Hintergrund hoch.
-
-        Die App legt anschließend
-        automatisch die Spiele und Logos darüber.
-
+      Lade hier euren Matchday-Hintergrund hoch. Die App legt anschließend die Spiele darüber.
     </p>
-
 
     <div class="field">
-
-        <label>
-            Hintergrundbild
-        </label>
-
-        <input
-            id="background"
-            type="file"
-            accept="image/png,image/jpeg,image/webp">
-
+      <label>Hintergrundbild</label>
+      <input id="background" type="file" accept="image/png,image/jpeg,image/webp">
     </div>
 
-
     <div style="height:10px"></div>
-
 
     <div class="grid">
 
+      <div class="field">
+        <label>Überschrift</label>
+        <input id="designTitle" value="MATCHDAY">
+      </div>
 
-        <div class="field">
-
-            <label>
-                Überschrift
-            </label>
-
-            <input
-                id="designTitle"
-                value="MATCHDAY">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Unterzeile
-            </label>
-
-            <input
-                id="designSubtitle"
-                value="UNSER WOCHENENDE">
-
-        </div>
-
+      <div class="field">
+        <label>Unterzeile</label>
+        <input id="designSubtitle" value="UNSER WOCHENENDE">
+      </div>
 
     </div>
 
-
     <div style="height:10px"></div>
 
-
-    <button
-        class="btn primary"
-        id="saveDesign">
-
-        Design speichern
-
+    <button class="btn primary" id="saveDesign">
+      Design speichern
     </button>
 
-
-    <button
-        class="btn danger"
-        id="removeBackground">
-
-        Hintergrund entfernen
-
+    <button class="btn danger" id="removeBackground">
+      Hintergrund entfernen
     </button>
 
-
-</div>
-
+  </div>
 
 </section>
 
-
 </main>
-
 </div>
 
-
-
 <script>
-
 "use strict";
 
-
-/* ========================================
-   DATEN
-======================================== */
-
-
-const STORAGE_KEY =
-    "USV_MATCHDAY_FINAL_1";
-
+const STORAGE_KEY = "USV_MATCHDAY_FINAL_2";
 
 const DEFAULT_TEAMS = [
-
-    "A-Jugend",
-    "B-Jugend",
-    "C-Jugend",
-    "D-Jugend",
-    "E-Jugend",
-    "F-Jugend",
-    "Fußballschule"
-
+  "A-Jugend",
+  "B-Jugend",
+  "C-Jugend",
+  "D-Jugend",
+  "E-Jugend",
+  "F-Jugend",
+  "Fußballschule"
 ];
-
 
 const DEFAULT_CLUBS = [
-
-    {
-        id:"usv",
-        name:"USV TU Dresden",
-        logo:""
-    },
-
-    {
-        id:"gittersee",
-        name:"SG Gittersee",
-        logo:""
-    },
-
-    {
-        id:"postsv",
-        name:"Post SV Dresden",
-        logo:""
-    },
-
-    {
-        id:"wacker",
-        name:"FSG Wacker 90 Dresden-Leuben",
-        logo:""
-    },
-
-    {
-        id:"serkowitzer",
-        name:"Serkowitzer FSV 2",
-        logo:""
-    },
-
-    {
-        id:"lok",
-        name:"FSV Lokomotive Dresden",
-        logo:""
-    },
-
-    {
-        id:"rotation",
-        name:"TSV Rotation Dresden 2",
-        logo:""
-    },
-
-    {
-        id:"racket",
-        name:"Racket- und Ballsport Dresden 2",
-        logo:""
-    },
-
-    {
-        id:"loebtau",
-        name:"SpVgg. Dresden-Löbtau 4",
-        logo:""
-    },
-
-    {
-        id:"fortuna",
-        name:"1. FFC Fortuna Dresden 4",
-        logo:""
-    },
-
-    {
-        id:"kickers",
-        name:"FV Löbtauer Kickers 3",
-        logo:""
-    },
-
-    {
-        id:"ullersdorf",
-        name:"SG Ullersdorf",
-        logo:""
-    }
-
+  {id:"usv",name:"USV TU Dresden",logo:""},
+  {id:"gittersee",name:"SG Gittersee",logo:""},
+  {id:"postsv",name:"Post SV Dresden",logo:""},
+  {id:"wacker",name:"FSG Wacker 90 Dresden-Leuben",logo:""},
+  {id:"serkowitzer",name:"Serkowitzer FSV 2",logo:""},
+  {id:"lok",name:"FSV Lokomotive Dresden",logo:""},
+  {id:"rotation",name:"TSV Rotation Dresden 2",logo:""},
+  {id:"racket",name:"Racket- und Ballsport Dresden 2",logo:""},
+  {id:"loebtau",name:"SpVgg. Dresden-Löbtau 4",logo:""},
+  {id:"fortuna",name:"1. FFC Fortuna Dresden 4",logo:""},
+  {id:"kickers",name:"FV Löbtauer Kickers 3",logo:""},
+  {id:"ullersdorf",name:"SG Ullersdorf",logo:""}
 ];
 
-
-function createDatabase(){
-
-    return {
-
-        teams:
-            DEFAULT_TEAMS.slice(),
-
-        clubs:
-            DEFAULT_CLUBS.map(
-                club => ({
-                    ...club
-                })
-            ),
-
-        games:[],
-
-        design:{
-
-            title:
-                "MATCHDAY",
-
-            subtitle:
-                "UNSER WOCHENENDE",
-
-            background:null
-
-        }
-
-    };
-
+function $(id){
+  return document.getElementById(id);
 }
 
+function createDatabase(){
+  return {
+    teams:[...DEFAULT_TEAMS],
+    clubs:DEFAULT_CLUBS.map(c=>({...c})),
+    games:[],
+    design:{
+      title:"MATCHDAY",
+      subtitle:"UNSER WOCHENENDE",
+      background:null
+    }
+  };
+}
 
 let database;
 
-
 try{
-
-    database =
-        JSON.parse(
-            localStorage.getItem(
-                STORAGE_KEY
-            )
-        );
-
-}catch(error){
-
-    database = null;
-
+  database=JSON.parse(localStorage.getItem(STORAGE_KEY));
+}catch(e){
+  database=null;
 }
 
-
-if(
-    !database ||
-    typeof database !== "object"
-){
-
-    database =
-        createDatabase();
-
+if(!database){
+  database=createDatabase();
 }
 
-
-if(
-    !Array.isArray(
-        database.teams
-    )
-){
-
-    database.teams =
-        DEFAULT_TEAMS.slice();
-
+if(!Array.isArray(database.teams)){
+  database.teams=[...DEFAULT_TEAMS];
 }
 
-
-if(
-    !Array.isArray(
-        database.clubs
-    )
-){
-
-    database.clubs = [];
-
+if(!Array.isArray(database.clubs)){
+  database.clubs=[];
 }
 
-
-if(
-    !Array.isArray(
-        database.games
-    )
-){
-
-    database.games = [];
-
+if(!Array.isArray(database.games)){
+  database.games=[];
 }
 
-
-if(
-    !database.design
-){
-
-    database.design = {
-
-        title:"MATCHDAY",
-
-        subtitle:"UNSER WOCHENENDE",
-
-        background:null
-
-    };
-
+if(!database.design){
+  database.design={
+    title:"MATCHDAY",
+    subtitle:"UNSER WOCHENENDE",
+    background:null
+  };
 }
 
+const existingIds=new Set(database.clubs.map(c=>c.id));
 
-/* fehlende Standardvereine ergänzen */
-
-const existingClubIds =
-    new Set(
-        database.clubs.map(
-            club => club.id
-        )
-    );
-
-
-DEFAULT_CLUBS.forEach(
-    club => {
-
-        if(
-            !existingClubIds.has(
-                club.id
-            )
-        ){
-
-            database.clubs.push(
-                {...club}
-            );
-
-        }
-
-    }
-);
-
-
-/* ========================================
-   HILFSFUNKTIONEN
-======================================== */
-
-
-function $(id){
-
-    return document.getElementById(id);
-
-}
-
-
-function escapeHTML(value){
-
-    return String(
-        value ?? ""
-    ).replace(
-        /[&<>"']/g,
-        character => ({
-            "&":"&amp;",
-            "<":"&lt;",
-            ">":"&gt;",
-            '"':"&quot;",
-            "'":"&#039;"
-        }[character])
-    );
-
-}
-
+DEFAULT_CLUBS.forEach(club=>{
+  if(!existingIds.has(club.id)){
+    database.clubs.push({...club});
+  }
+});
 
 function saveDatabase(){
-
-    try{
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(database)
-        );
-
-    }catch(error){
-
-        setStatus(
-            "⚠️ Browser-Speicher ist voll."
-        );
-
-    }
-
+  try{
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(database)
+    );
+  }catch(e){
+    setStatus("⚠️ Speichern nicht möglich.");
+  }
 }
-
 
 function setStatus(text){
-
-    $("status").textContent =
-        text;
-
+  $("status").textContent=text;
 }
 
+function escapeHTML(value){
+  return String(value??"").replace(
+    /[&<>"']/g,
+    c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[c])
+  );
+}
 
 function createId(prefix){
-
-    return (
-        prefix +
-        "_" +
-        Date.now() +
-        "_" +
-        Math.random()
-            .toString(36)
-            .substring(2,8)
-    );
-
+  return prefix+"_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
 }
-
 
 function isoDate(date){
-
-    const d =
-        new Date(
-            date.getTime()
-            -
-            date.getTimezoneOffset()
-            *60000
-        );
-
-    return d
-        .toISOString()
-        .substring(
-            0,
-            10
-        );
-
+  const d=new Date(
+    date.getTime()-date.getTimezoneOffset()*60000
+  );
+  return d.toISOString().slice(0,10);
 }
-
-
-/* ========================================
-   WOCHENENDE
-======================================== */
-
 
 function initializeDates(){
+  const today=new Date();
+  const day=today.getDay();
+  const difference=day===0?-6:1-day;
 
-    const today =
-        new Date();
+  const monday=new Date(today);
+  monday.setDate(today.getDate()+difference);
 
-    const day =
-        today.getDay();
+  const sunday=new Date(monday);
+  sunday.setDate(monday.getDate()+6);
 
-    const difference =
-        day === 0
-            ? -6
-            : 1 - day;
-
-    const monday =
-        new Date(today);
-
-    monday.setDate(
-        today.getDate()
-        +
-        difference
-    );
-
-
-    const sunday =
-        new Date(monday);
-
-    sunday.setDate(
-        monday.getDate()
-        +
-        6
-    );
-
-
-    $("dateFrom").value =
-        isoDate(
-            monday
-        );
-
-
-    $("dateTo").value =
-        isoDate(
-            sunday
-        );
-
+  $("dateFrom").value=isoDate(monday);
+  $("dateTo").value=isoDate(sunday);
 }
 
-
-/* ========================================
-   NAVIGATION
-======================================== */
-
+/* NAVIGATION */
 
 function showView(view){
+  document.querySelectorAll(".view").forEach(el=>{
+    el.classList.remove("active");
+  });
 
-    document
-        .querySelectorAll(".view")
-        .forEach(
-            element =>
-                element.classList.remove(
-                    "active"
-                )
-        );
+  const target=$(view);
 
+  if(target){
+    target.classList.add("active");
+  }
 
-    const target =
-        $(view);
+  document.querySelectorAll("nav button").forEach(button=>{
+    button.classList.toggle(
+      "active",
+      button.dataset.view===view
+    );
+  });
 
-
-    if(target){
-
-        target.classList.add(
-            "active"
-        );
-
-    }
-
-
-    document
-        .querySelectorAll(
-            "nav button"
-        )
-        .forEach(
-            button => {
-
-                button.classList.toggle(
-                    "active",
-                    button.dataset.view
-                    ===
-                    view
-                );
-
-            }
-        );
-
-
-    renderAll();
-
+  renderAll();
 }
 
+document.querySelectorAll("nav button").forEach(button=>{
+  button.addEventListener("click",()=>{
+    showView(button.dataset.view);
+  });
+});
 
-document
-    .querySelectorAll(
-        "nav button"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () =>
-                    showView(
-                        button.dataset.view
-                    )
-            );
-
-        }
-    );
-
-
-/* ========================================
-   VEREINE
-======================================== */
-
+/* VEREINE */
 
 function findClub(id){
-
-    return database.clubs.find(
-        club =>
-            club.id === id
-    );
-
+  return database.clubs.find(c=>c.id===id);
 }
-
 
 function initials(name){
-
-    return name
-        .split(/\s+/)
-        .filter(Boolean)
-        .slice(0,2)
-        .map(
-            word =>
-                word.charAt(0)
-        )
-        .join("")
-        .toUpperCase();
-
+  return String(name||"V")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0,2)
+    .map(word=>word[0])
+    .join("")
+    .toUpperCase();
 }
-
 
 function createLogoHTML(club){
-
-    if(
-        club &&
-        club.logo
-    ){
-
-        return `
-            <img
-                class="club-logo"
-                src="${club.logo}"
-                alt=""
-                onerror="
-                    this.style.display='none';
-                    this.nextElementSibling.style.display='grid';
-                "
-            >
-
-            <div
-                class="club-logo"
-                style="
-                    display:none;
-                    border-radius:50%;
-                    background:#2f8f24;
-                    color:#fff;
-                    place-items:center;
-                    font-size:10px;
-                    font-weight:900;
-                "
-            >
-                ${escapeHTML(
-                    initials(
-                        club.name
-                    )
-                )}
-            </div>
-        `;
-
-    }
-
-
+  if(club?.logo){
     return `
-        <div
-            class="club-logo"
-            style="
-                border-radius:50%;
-                background:
-                    linear-gradient(
-                        135deg,
-                        #173b19,
-                        #69b64a
-                    );
-                color:#fff;
-                display:grid;
-                place-items:center;
-                font-size:10px;
-                font-weight:900;
-            "
-        >
-            ${escapeHTML(
-                initials(
-                    club?.name ||
-                    "Verein"
-                )
-            )}
-        </div>
+      <img
+        class="club-logo"
+        src="${club.logo}"
+        alt=""
+      >
     `;
+  }
 
+  return `
+    <div
+      class="club-logo"
+      style="
+        border-radius:50%;
+        background:linear-gradient(135deg,#173b19,#69b64a);
+        color:white;
+        display:grid;
+        place-items:center;
+        font-size:10px;
+        font-weight:900;
+      "
+    >
+      ${escapeHTML(initials(club?.name))}
+    </div>
+  `;
 }
 
+function fillSelects(){
+  $("team").innerHTML=database.teams.map(team=>{
+    return `<option value="${escapeHTML(team)}">${escapeHTML(team)}</option>`;
+  }).join("");
 
-function fillClubSelects(){
+  const clubs=database.clubs.map(club=>{
+    return `
+      <option value="${escapeHTML(club.id)}">
+        ${escapeHTML(club.name)}
+      </option>
+    `;
+  }).join("");
 
-    const options =
-        database.clubs
-            .map(
-                club => `
-                    <option
-                        value="${escapeHTML(
-                            club.id
-                        )}"
-                    >
-                        ${escapeHTML(
-                            club.name
-                        )}
-                    </option>
-                `
-            )
-            .join("");
-
-
-    $("homeClub").innerHTML =
-        options;
-
-    $("awayClub").innerHTML =
-        options;
-
-
-    $("team").innerHTML =
-        database.teams
-            .map(
-                team => `
-                    <option>
-                        ${escapeHTML(
-                            team
-                        )}
-                    </option>
-                `
-            )
-            .join("");
-
+  $("homeClub").innerHTML=clubs;
+  $("awayClub").innerHTML=clubs;
 }
-
 
 function renderClubs(){
+  if(!database.clubs.length){
+    $("clubList").innerHTML=
+      '<div class="empty">Noch keine Vereine vorhanden.</div>';
+    return;
+  }
 
-    const list =
-        $("clubList");
+  $("clubList").innerHTML=database.clubs.map(club=>{
+    return `
+      <div class="club">
 
+        ${createLogoHTML(club)}
 
-    if(
-        database.clubs.length === 0
-    ){
+        <div class="club-name">
+          ${escapeHTML(club.name)}
+        </div>
 
-        list.innerHTML =
-            `
-            <div class="empty">
-                Noch keine Vereine vorhanden.
-            </div>
-            `;
+        <button
+          class="club-delete"
+          data-delete-club="${escapeHTML(club.id)}"
+        >
+          ×
+        </button>
 
-        return;
+      </div>
+    `;
+  }).join("");
 
-    }
-
-
-    list.innerHTML =
-        database.clubs
-            .map(
-                club => `
-
-                    <div class="club">
-
-                        ${createLogoHTML(
-                            club
-                        )}
-
-                        <div
-                            class="club-name"
-                        >
-                            ${escapeHTML(
-                                club.name
-                            )}
-                        </div>
-
-                        <button
-                            class="club-delete"
-                            onclick="
-                                deleteClub(
-                                    '${club.id}'
-                                )
-                            "
-                        >
-                            ×
-                        </button>
-
-                    </div>
-
-                `
-            )
-            .join("");
-
+  document.querySelectorAll("[data-delete-club]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      deleteClub(button.dataset.deleteClub);
+    });
+  });
 }
-
 
 function addClub(){
+  const name=$("clubName").value.trim();
+  const file=$("clubLogo").files[0];
 
-    const name =
-        $("clubName")
-            .value
-            .trim();
+  if(!name){
+    alert("Bitte Vereinsnamen eingeben.");
+    return;
+  }
 
-    const file =
-        $("clubLogo")
-            .files[0];
+  if(database.clubs.some(c=>c.name.toLowerCase()===name.toLowerCase())){
+    alert("Dieser Verein ist bereits vorhanden.");
+    return;
+  }
 
+  if(!file){
+    alert("Bitte ein Logo auswählen.");
+    return;
+  }
 
-    if(!name){
+  if(file.size>2*1024*1024){
+    alert("Das Logo darf maximal 2 MB groß sein.");
+    return;
+  }
 
-        alert(
-            "Bitte einen Vereinsnamen eingeben."
-        );
+  const reader=new FileReader();
 
-        return;
+  reader.onload=()=>{
+    database.clubs.push({
+      id:createId("club"),
+      name:name,
+      logo:reader.result
+    });
 
-    }
+    saveDatabase();
 
+    $("clubName").value="";
+    $("clubLogo").value="";
 
-    if(!file){
+    renderAll();
 
-        alert(
-            "Bitte ein Logo auswählen."
-        );
+    setStatus("✓ Verein und Logo gespeichert");
+  };
 
-        return;
-
-    }
-
-
-    if(
-        database.clubs.some(
-            club =>
-                club.name
-                    .toLowerCase()
-                ===
-                name.toLowerCase()
-        )
-    ){
-
-        alert(
-            "Dieser Verein ist bereits vorhanden."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        file.size >
-        2 * 1024 * 1024
-    ){
-
-        alert(
-            "Das Logo darf maximal 2 MB groß sein."
-        );
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function(){
-
-            database.clubs.push({
-
-                id:
-                    createId(
-                        "club"
-                    ),
-
-                name:
-                    name,
-
-                logo:
-                    reader.result
-
-            });
-
-
-            saveDatabase();
-
-
-            $("clubName")
-                .value = "";
-
-            $("clubLogo")
-                .value = "";
-
-
-            renderAll();
-
-
-            setStatus(
-                "✓ Verein und Logo gespeichert"
-            );
-
-        };
-
-
-    reader.readAsDataURL(
-        file
-    );
-
+  reader.readAsDataURL(file);
 }
-
-
-$("addClub")
-    .addEventListener(
-        "click",
-        addClub
-    );
-
 
 function deleteClub(id){
+  const used=database.games.some(game=>{
+    return game.home===id || game.away===id;
+  });
 
-    const used =
-        database.games.some(
-            game =>
-                game.home === id
-                ||
-                game.away === id
-        );
+  if(used){
+    alert("Dieser Verein wird noch in einem Spiel verwendet.");
+    return;
+  }
 
+  if(!confirm("Verein wirklich löschen?")){
+    return;
+  }
 
-    if(used){
+  database.clubs=database.clubs.filter(c=>c.id!==id);
 
-        alert(
-            "Dieser Verein wird noch in einem Spiel verwendet."
-        );
+  saveDatabase();
+  renderAll();
 
-        return;
-
-    }
-
-
-    if(
-        !confirm(
-            "Verein wirklich löschen?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    database.clubs =
-        database.clubs.filter(
-            club =>
-                club.id !== id
-        );
-
-
-    saveDatabase();
-
-    renderAll();
-
-    setStatus(
-        "✓ Verein gelöscht"
-    );
-
+  setStatus("✓ Verein gelöscht");
 }
 
+$("addClub").addEventListener("click",addClub);
 
-/* ========================================
-   SPIELE
-======================================== */
+/* SPIELE */
 
+function openGameForm(id=null){
+  fillSelects();
 
-function openGameForm(id = null){
+  $("gameForm").style.display="block";
+  $("editId").value=id||"";
 
-    fillClubSelects();
+  if(id){
+    const game=database.games.find(g=>g.id===id);
 
-
-    $("gameForm")
-        .style.display =
-            "block";
-
-
-    $("editId").value =
-        id || "";
-
-
-    if(id){
-
-        const game =
-            database.games.find(
-                item =>
-                    item.id === id
-            );
-
-
-        if(!game){
-            return;
-        }
-
-
-        $("formTitle")
-            .textContent =
-                "Spiel bearbeiten";
-
-
-        $("team").value =
-            game.team;
-
-        $("gameDate").value =
-            game.date;
-
-        $("gameTime").value =
-            game.time;
-
-        $("gamePlace").value =
-            game.place;
-
-        $("homeClub").value =
-            game.home;
-
-        $("awayClub").value =
-            game.away;
-
-
-    }else{
-
-        $("formTitle")
-            .textContent =
-                "Spiel hinzufügen";
-
-
-        $("gameDate").value =
-            $("dateFrom").value;
-
-
-        $("gameTime").value =
-            "10:00";
-
-
-        $("gamePlace").value =
-            "";
-
-
-        if(
-            database.clubs.length >= 2
-        ){
-
-            $("homeClub").value =
-                database.clubs[0].id;
-
-            $("awayClub").value =
-                database.clubs[1].id;
-
-        }
-
+    if(!game){
+      return;
     }
 
-}
+    $("formTitle").textContent="Spiel bearbeiten";
+    $("team").value=game.team;
+    $("gameDate").value=game.date;
+    $("gameTime").value=game.time;
+    $("gamePlace").value=game.place;
+    $("homeClub").value=game.home;
+    $("awayClub").value=game.away;
 
+  }else{
+    $("formTitle").textContent="Spiel hinzufügen";
+
+    $("gameDate").value=$("dateFrom").value;
+    $("gameTime").value="10:00";
+    $("gamePlace").value="";
+
+    if(database.clubs.length>=2){
+      $("homeClub").value=database.clubs[0].id;
+      $("awayClub").value=database.clubs[1].id;
+    }
+  }
+}
 
 function closeGameForm(){
-
-    $("gameForm")
-        .style.display =
-            "none";
-
+  $("gameForm").style.display="none";
 }
-
 
 function saveGame(){
+  const home=$("homeClub").value;
+  const away=$("awayClub").value;
 
-    const home =
-        $("homeClub").value;
+  if(!home||!away){
+    alert("Bitte Heim- und Gastverein auswählen.");
+    return;
+  }
 
-    const away =
-        $("awayClub").value;
+  if(home===away){
+    alert("Heim- und Gastverein dürfen nicht identisch sein.");
+    return;
+  }
 
+  if(!$("gameDate").value){
+    alert("Bitte ein Datum auswählen.");
+    return;
+  }
 
-    if(!home || !away){
+  const game={
+    id:$("editId").value||createId("game"),
+    team:$("team").value,
+    date:$("gameDate").value,
+    time:$("gameTime").value,
+    place:$("gamePlace").value.trim(),
+    home:home,
+    away:away
+  };
 
-        alert(
-            "Bitte Heim- und Gastverein auswählen."
-        );
+  const index=database.games.findIndex(g=>g.id===game.id);
 
-        return;
+  if(index>=0){
+    database.games[index]=game;
+  }else{
+    database.games.push(game);
+  }
 
-    }
+  saveDatabase();
+  closeGameForm();
+  renderAll();
+  createGraphic();
 
-
-    if(home === away){
-
-        alert(
-            "Heim- und Gastverein dürfen nicht identisch sein."
-        );
-
-        return;
-
-    }
-
-
-    const game = {
-
-        id:
-            $("editId").value
-            ||
-            createId(
-                "game"
-            ),
-
-        team:
-            $("team").value,
-
-        date:
-            $("gameDate").value,
-
-        time:
-            $("gameTime").value,
-
-        place:
-            $("gamePlace")
-                .value
-                .trim(),
-
-        home:
-            home,
-
-        away:
-            away
-
-    };
-
-
-    const index =
-        database.games.findIndex(
-            item =>
-                item.id === game.id
-        );
-
-
-    if(index >= 0){
-
-        database.games[index] =
-            game;
-
-    }else{
-
-        database.games.push(
-            game
-        );
-
-    }
-
-
-    saveDatabase();
-
-    closeGameForm();
-
-    renderAll();
-
-    createGraphic();
-
-
-    setStatus(
-        "✓ Spiel gespeichert"
-    );
-
+  setStatus("✓ Spiel gespeichert");
 }
-
 
 function editGame(id){
-
-    showView(
-        "games"
-    );
-
-    openGameForm(
-        id
-    );
-
+  showView("games");
+  openGameForm(id);
 }
-
 
 function deleteGame(id){
+  if(!confirm("Spiel wirklich löschen?")){
+    return;
+  }
 
-    if(
-        !confirm(
-            "Spiel wirklich löschen?"
-        )
-    ){
+  database.games=database.games.filter(g=>g.id!==id);
 
-        return;
+  saveDatabase();
+  renderAll();
+  createGraphic();
 
-    }
-
-
-    database.games =
-        database.games.filter(
-            game =>
-                game.id !== id
-        );
-
-
-    saveDatabase();
-
-    renderAll();
-
-    createGraphic();
-
-
-    setStatus(
-        "✓ Spiel gelöscht"
-    );
-
+  setStatus("✓ Spiel gelöscht");
 }
-
 
 function formatDate(date){
+  if(!date){
+    return "–";
+  }
 
-    if(!date){
-        return "–";
+  return new Date(date+"T12:00").toLocaleDateString(
+    "de-DE",
+    {
+      weekday:"short",
+      day:"2-digit",
+      month:"2-digit"
     }
-
-
-    return new Date(
-        date + "T12:00"
-    ).toLocaleDateString(
-        "de-DE",
-        {
-            weekday:"short",
-            day:"2-digit",
-            month:"2-digit"
-        }
-    );
-
+  );
 }
 
-
 function gameHTML(game){
+  const home=findClub(game.home);
+  const away=findClub(game.away);
 
-    const home =
-        findClub(
-            game.home
-        );
+  return `
+    <div class="game">
 
-    const away =
-        findClub(
-            game.away
-        );
+      <div class="game-top">
 
+        <span class="tag">
+          ${escapeHTML(game.team)}
+        </span>
 
-    return `
+        <div class="game-actions">
 
-        <div class="game">
+          <button
+            class="btn secondary"
+            data-edit-game="${escapeHTML(game.id)}"
+          >
+            ✎
+          </button>
 
-
-            <div class="game-top">
-
-                <span class="tag">
-                    ${escapeHTML(
-                        game.team
-                    )}
-                </span>
-
-
-                <div class="game-actions">
-
-                    <button
-                        class="btn secondary"
-                        onclick="
-                            editGame(
-                                '${game.id}'
-                            )
-                        "
-                    >
-                        ✎
-                    </button>
-
-
-                    <button
-                        class="btn danger"
-                        onclick="
-                            deleteGame(
-                                '${game.id}'
-                            )
-                        "
-                    >
-                        🗑
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="game-main">
-
-
-                <div class="team">
-
-                    ${createLogoHTML(
-                        home
-                    )}
-
-                    ${escapeHTML(
-                        home?.name ||
-                        "Heim"
-                    )}
-
-                </div>
-
-
-                <div class="vs">
-                    VS.
-                </div>
-
-
-                <div class="team">
-
-                    ${createLogoHTML(
-                        away
-                    )}
-
-                    ${escapeHTML(
-                        away?.name ||
-                        "Gast"
-                    )}
-
-                </div>
-
-
-            </div>
-
-
-            <div class="muted">
-
-                📅
-                ${formatDate(
-                    game.date
-                )}
-
-                &nbsp; · &nbsp;
-
-                ⏰
-                ${escapeHTML(
-                    game.time ||
-                    "–"
-                )}
-
-                &nbsp; · &nbsp;
-
-                📍
-                ${escapeHTML(
-                    game.place ||
-                    "–"
-                )}
-
-            </div>
-
+          <button
+            class="btn danger"
+            data-delete-game="${escapeHTML(game.id)}"
+          >
+            🗑
+          </button>
 
         </div>
 
-    `;
+      </div>
 
+      <div class="game-main">
+
+        <div class="team">
+          ${createLogoHTML(home)}
+          ${escapeHTML(home?.name||"Heim")}
+        </div>
+
+        <div class="vs">
+          VS.
+        </div>
+
+        <div class="team">
+          ${createLogoHTML(away)}
+          ${escapeHTML(away?.name||"Gast")}
+        </div>
+
+      </div>
+
+      <div class="muted">
+        📅 ${formatDate(game.date)}
+        ·
+        ⏰ ${escapeHTML(game.time||"–")}
+        ·
+        📍 ${escapeHTML(game.place||"–")}
+      </div>
+
+    </div>
+  `;
 }
 
+function bindGameButtons(container){
+  container.querySelectorAll("[data-edit-game]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      editGame(button.dataset.editGame);
+    });
+  });
+
+  container.querySelectorAll("[data-delete-game]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      deleteGame(button.dataset.deleteGame);
+    });
+  });
+}
 
 function renderGames(){
+  const games=[...database.games].sort((a,b)=>{
+    return (a.date||"").localeCompare(b.date||"")
+      || (a.time||"").localeCompare(b.time||"");
+  });
 
-    const list =
-        $("gamesList");
+  if(!games.length){
+    $("gamesList").innerHTML=
+      '<div class="empty">Noch keine Spiele angelegt.</div>';
+    return;
+  }
 
+  $("gamesList").innerHTML=games.map(gameHTML).join("");
 
-    const games =
-        database.games
-            .slice()
-            .sort(
-                (a,b) =>
-                    (
-                        a.date || ""
-                    ).localeCompare(
-                        b.date || ""
-                    )
-                    ||
-                    (
-                        a.time || ""
-                    ).localeCompare(
-                        b.time || ""
-                    )
-            );
-
-
-    if(
-        games.length === 0
-    ){
-
-        list.innerHTML =
-            `
-            <div class="empty">
-                Noch keine Spiele angelegt.
-            </div>
-            `;
-
-        return;
-
-    }
-
-
-    list.innerHTML =
-        games
-            .map(
-                gameHTML
-            )
-            .join("");
-
+  bindGameButtons($("gamesList"));
 }
 
+$("newGame").addEventListener("click",()=>{
+  openGameForm();
+});
 
-$("newGame")
-    .addEventListener(
-        "click",
-        () =>
-            openGameForm()
-    );
+$("dashboardAddGame").addEventListener("click",()=>{
+  showView("games");
+  openGameForm();
+});
 
+$("saveGame").addEventListener("click",saveGame);
+$("cancelGame").addEventListener("click",closeGameForm);
 
-$("dashboardAddGame")
-    .addEventListener(
-        "click",
-        function(){
-
-            showView(
-                "games"
-            );
-
-            openGameForm();
-
-        }
-    );
-
-
-$("saveGame")
-    .addEventListener(
-        "click",
-        saveGame
-    );
-
-
-$("cancelGame")
-    .addEventListener(
-        "click",
-        closeGameForm
-    );
-
-
-/* ========================================
-   WOCHENEND-SPIELE
-======================================== */
-
+/* WOCHENENDE */
 
 function getWeekendGames(){
+  const from=$("dateFrom").value;
+  const to=$("dateTo").value;
 
-    const from =
-        $("dateFrom").value;
-
-    const to =
-        $("dateTo").value;
-
-
-    return database.games
-        .filter(
-            game =>
-
-                (!from ||
-                    game.date >= from)
-
-                &&
-
-                (!to ||
-                    game.date <= to)
-        )
-        .sort(
-            (a,b) =>
-
-                (
-                    a.date || ""
-                ).localeCompare(
-                    b.date || ""
-                )
-
-                ||
-
-                (
-                    a.time || ""
-                ).localeCompare(
-                    b.time || ""
-                )
-        );
-
+  return database.games
+    .filter(game=>{
+      return (!from||game.date>=from)
+        && (!to||game.date<=to);
+    })
+    .sort((a,b)=>{
+      return (a.date||"").localeCompare(b.date||"")
+        || (a.time||"").localeCompare(b.time||"");
+    });
 }
-
 
 function renderHome(){
+  const games=getWeekendGames();
 
-    const games =
-        getWeekendGames();
+  $("gameCount").textContent=
+    games.length+" Spiel"+(games.length===1?"":"e");
 
+  if(!games.length){
+    $("homeGames").innerHTML=
+      '<div class="empty">Für diesen Zeitraum sind noch keine Spiele angelegt.</div>';
+    return;
+  }
 
-    $("gameCount")
-        .textContent =
-            games.length
-            +
-            " Spiel"
-            +
-            (
-                games.length === 1
-                    ? ""
-                    : "e"
-            );
+  $("homeGames").innerHTML=games.map(gameHTML).join("");
 
-
-    if(
-        games.length === 0
-    ){
-
-        $("homeGames")
-            .innerHTML =
-                `
-                <div class="empty">
-
-                    Für diesen Zeitraum
-                    sind noch keine Spiele
-                    angelegt.
-
-                </div>
-                `;
-
-        return;
-
-    }
-
-
-    $("homeGames")
-        .innerHTML =
-            games
-                .map(
-                    gameHTML
-                )
-                .join("");
-
+  bindGameButtons($("homeGames"));
 }
 
+$("dateFrom").addEventListener("change",()=>{
+  renderHome();
+  createGraphic();
+});
 
-$("dateFrom")
-    .addEventListener(
-        "change",
-        function(){
+$("dateTo").addEventListener("change",()=>{
+  renderHome();
+  createGraphic();
+});
 
-            renderHome();
-
-            createGraphic();
-
-        }
-    );
-
-
-$("dateTo")
-    .addEventListener(
-        "change",
-        function(){
-
-            renderHome();
-
-            createGraphic();
-
-        }
-    );
-
-
-/* ========================================
-   DESIGN
-======================================== */
-
-
-$("saveDesign")
-    .addEventListener(
-        "click",
-        saveDesign
-    );
-
+/* DESIGN */
 
 function saveDesign(){
+  database.design.title=
+    $("designTitle").value.trim()||"MATCHDAY";
 
-    database.design.title =
-        $("designTitle")
-            .value
-            .trim()
-        ||
-        "MATCHDAY";
+  database.design.subtitle=
+    $("designSubtitle").value.trim()||"UNSER WOCHENENDE";
 
+  const file=$("background").files[0];
 
-    database.design.subtitle =
-        $("designSubtitle")
-            .value
-            .trim()
-        ||
-        "UNSER WOCHENENDE";
+  if(!file){
+    saveDatabase();
+    createGraphic();
+    setStatus("✓ Design gespeichert");
+    return;
+  }
 
+  if(file.size>5*1024*1024){
+    alert("Das Hintergrundbild darf maximal 5 MB groß sein.");
+    return;
+  }
 
-    const file =
-        $("background")
-            .files[0];
+  const reader=new FileReader();
 
+  reader.onload=()=>{
+    database.design.background=reader.result;
 
-    if(!file){
+    saveDatabase();
+    createGraphic();
 
-        saveDatabase();
+    setStatus("✓ Design und Hintergrund gespeichert");
+  };
 
-        createGraphic();
-
-        setStatus(
-            "✓ Design gespeichert"
-        );
-
-        return;
-
-    }
-
-
-    if(
-        file.size >
-        5 * 1024 * 1024
-    ){
-
-        alert(
-            "Das Hintergrundbild darf maximal 5 MB groß sein."
-        );
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function(){
-
-            database.design.background =
-                reader.result;
-
-
-            saveDatabase();
-
-            createGraphic();
-
-
-            setStatus(
-                "✓ Design und Hintergrund gespeichert"
-            );
-
-        };
-
-
-    reader.readAsDataURL(
-        file
-    );
-
+  reader.readAsDataURL(file);
 }
 
+$("saveDesign").addEventListener("click",saveDesign);
 
-$("removeBackground")
-    .addEventListener(
-        "click",
-        function(){
+$("removeBackground").addEventListener("click",()=>{
+  database.design.background=null;
 
-            database.design.background =
-                null;
+  saveDatabase();
+  createGraphic();
 
+  setStatus("✓ Hintergrund entfernt");
+});
 
-            saveDatabase();
+/* CANVAS */
 
-            createGraphic();
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
 
+  if(typeof ctx.roundRect==="function"){
+    ctx.roundRect(x,y,w,h,r);
+    return;
+  }
 
-            setStatus(
-                "✓ Hintergrund entfernt"
-            );
+  const radius=Math.min(r,w/2,h/2);
 
-        }
-    );
-
-
-/* ========================================
-   GRAFIK
-======================================== */
-
-
-function createGraphic(){
-
-    const canvas =
-        $("preview");
-
-    const ctx =
-        canvas.getContext(
-            "2d"
-        );
-
-
-    const W =
-        canvas.width;
-
-    const H =
-        canvas.height;
-
-
-    ctx.clearRect(
-        0,
-        0,
-        W,
-        H
-    );
-
-
-    if(
-        database.design.background
-    ){
-
-        const image =
-            new Image();
-
-
-        image.onload =
-            function(){
-
-                drawBackground(
-                    ctx,
-                    image,
-                    W,
-                    H
-                );
-
-                drawGraphicContent(
-                    ctx,
-                    W,
-                    H
-                );
-
-            };
-
-
-        image.onerror =
-            function(){
-
-                drawGraphicContent(
-                    ctx,
-                    W,
-                    H
-                );
-
-            };
-
-
-        image.src =
-            database.design.background;
-
-
-    }else{
-
-        drawGraphicContent(
-            ctx,
-            W,
-            H
-        );
-
-    }
-
+  ctx.moveTo(x+radius,y);
+  ctx.lineTo(x+w-radius,y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+radius);
+  ctx.lineTo(x+w,y+h-radius);
+  ctx.quadraticCurveTo(x+w,y+h,x+w-radius,y+h);
+  ctx.lineTo(x+radius,y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-radius);
+  ctx.lineTo(x,y+radius);
+  ctx.quadraticCurveTo(x,y,x+radius,y);
 }
 
+function drawCover(ctx,image,W,H){
+  const scale=Math.max(
+    W/image.width,
+    H/image.height
+  );
 
-function drawBackground(
-    ctx,
+  const width=image.width*scale;
+  const height=image.height*scale;
+
+  ctx.drawImage(
     image,
-    W,
-    H
-){
-
-    const scale =
-        Math.max(
-            W / image.width,
-            H / image.height
-        );
-
-
-    const width =
-        image.width * scale;
-
-    const height =
-        image.height * scale;
-
-
-    ctx.drawImage(
-
-        image,
-
-        (W - width) / 2,
-
-        (H - height) / 2,
-
-        width,
-
-        height
-
-    );
-
-
-    ctx.fillStyle =
-        "rgba(255,255,255,.78)";
-
-
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
-
+    (W-width)/2,
+    (H-height)/2,
+    width,
+    height
+  );
 }
-
-
-function drawGraphicContent(
-    ctx,
-    W,
-    H
-){
-
-    if(
-        !database.design.background
-    ){
-
-        const gradient =
-            ctx.createLinearGradient(
-                0,
-                0,
-                0,
-                H
-            );
-
-
-        gradient.addColorStop(
-            0,
-            "#f8fbf7"
-        );
-
-        gradient.addColorStop(
-            .35,
-            "#dcefd5"
-        );
-
-        gradient.addColorStop(
-            .72,
-            "#8fca70"
-        );
-
-        gradient.addColorStop(
-            1,
-            "#173b19"
-        );
-
-
-        ctx.fillStyle =
-            gradient;
-
-
-        ctx.fillRect(
-            0,
-            0,
-            W,
-            H
-        );
-
-    }
-
-
-    /* Überschrift */
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.fillStyle =
-        "#173b19";
-
-
-    ctx.font =
-        "900 50px Arial";
-
-
-    ctx.fillText(
-        "USV TU DRESDEN",
-        W / 2,
-        70
-    );
-
-
-    ctx.fillStyle =
-        "#2f8f24";
-
-
-    ctx.font =
-        "900 92px Arial";
-
-
-    ctx.fillText(
-        database.design.title,
-        W / 2,
-        150
-    );
-
-
-    ctx.fillStyle =
-        "#173b19";
-
-
-    ctx.font =
-        "700 30px Arial";
-
-
-    ctx.fillText(
-        database.design.subtitle,
-        W / 2,
-        200
-    );
-
-
-    const games =
-        getWeekendGames()
-            .slice(
-                0,
-                6
-            );
-
-
-    let y = 240;
-
-    let lastDay = "";
-
-
-    games.forEach(
-        game => {
-
-
-            if(
-                y > H - 220
-            ){
-
-                return;
-
-            }
-
-
-            const day =
-                new Date(
-                    game.date +
-                    "T12:00"
-                )
-                .toLocaleDateString(
-                    "de-DE",
-                    {
-                        weekday:
-                            "long"
-                    }
-                );
-
-
-            if(
-                day !== lastDay
-            ){
-
-                ctx.fillStyle =
-                    "#2f8f24";
-
-
-                ctx.font =
-                    "900 27px Arial";
-
-
-                ctx.fillText(
-                    day.toUpperCase(),
-                    W / 2,
-                    y
-                );
-
-
-                y += 40;
-
-                lastDay =
-                    day;
-
-            }
-
-
-            /* Spielkarte */
-
-            ctx.fillStyle =
-                "rgba(255,255,255,.93)";
-
-
-            roundRect(
-                ctx,
-                55,
-                y,
-                W - 110,
-                135,
-                18
-            );
-
-
-            ctx.fill();
-
-
-            ctx.fillStyle =
-                "#173b19";
-
-
-            ctx.font =
-                "900 21px Arial";
-
-
-            ctx.fillText(
-                game.team,
-                W / 2,
-                y + 28
-            );
-
-
-            const home =
-                findClub(
-                    game.home
-                );
-
-
-            const away =
-                findClub(
-                    game.away
-                );
-
-
-            /* Logos */
-
-            drawCanvasLogo(
-                ctx,
-                home?.logo,
-                W / 2 - 300,
-                y + 48,
-                62
-            );
-
-
-            drawCanvasLogo(
-                ctx,
-                away?.logo,
-                W / 2 + 238,
-                y + 48,
-                62
-            );
-
-
-            /* Mannschaftsnamen */
-
-            ctx.fillStyle =
-                "#173b19";
-
-
-            ctx.font =
-                "700 18px Arial";
-
-
-            ctx.fillText(
-                shorten(
-                    home?.name ||
-                    "Heim"
-                ),
-                W / 2 - 190,
-                y + 75
-            );
-
-
-            ctx.fillText(
-                shorten(
-                    away?.name ||
-                    "Gast"
-                ),
-                W / 2 + 190,
-                y + 75
-            );
-
-
-            /* VS */
-
-            ctx.fillStyle =
-                "#2f8f24";
-
-
-            ctx.font =
-                "900 21px Arial";
-
-
-            ctx.fillText(
-                "VS.",
-                W / 2,
-                y + 78
-            );
-
-
-            /* Uhrzeit / Ort */
-
-            ctx.fillStyle =
-                "#596159";
-
-
-            ctx.font =
-                "600 16px Arial";
-
-
-            ctx.fillText(
-
-                (
-                    game.time ||
-                    ""
-                )
-                +
-                (
-                    game.place
-                        ? "  ·  " +
-                          game.place
-                        : ""
-                ),
-
-                W / 2,
-
-                y + 108
-
-            );
-
-
-            y += 148;
-
-        }
-    );
-
-
-    /* Fußzeile */
-
-    ctx.fillStyle =
-        "#173b19";
-
-
-    ctx.font =
-        "700 16px Arial";
-
-
-    ctx.fillText(
-        "FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",
-        W / 2,
-        H - 22
-    );
-
-}
-
 
 function shorten(text){
+  text=String(text||"");
 
-    text =
-        String(
-            text
-        );
+  if(text.length<=25){
+    return text;
+  }
 
-
-    if(
-        text.length <= 25
-    ){
-
-        return text;
-
-    }
-
-
-    return (
-        text.substring(
-            0,
-            23
-        )
-        +
-        "…"
-    );
-
+  return text.slice(0,23)+"…";
 }
 
-
-function roundRect(
-    ctx,
-    x,
-    y,
-    width,
-    height,
-    radius
-){
-
+function drawCanvasLogo(ctx,source,x,y,size){
+  if(!source){
+    ctx.strokeStyle="#2f8f24";
+    ctx.lineWidth=3;
     ctx.beginPath();
-
-    ctx.roundRect(
-        x,
-        y,
-        width,
-        height,
-        radius
+    ctx.arc(
+      x+size/2,
+      y+size/2,
+      size/2-3,
+      0,
+      Math.PI*2
     );
+    ctx.stroke();
+    return;
+  }
 
+  const image=new Image();
+
+  image.onload=()=>{
+    ctx.drawImage(
+      image,
+      x,
+      y,
+      size,
+      size
+    );
+  };
+
+  image.src=source;
 }
 
+function drawGraphicContent(ctx,W,H){
+  if(!database.design.background){
+    const gradient=ctx.createLinearGradient(0,0,0,H);
 
-function drawCanvasLogo(
-    ctx,
-    source,
-    x,
-    y,
-    size
-){
+    gradient.addColorStop(0,"#f8fbf7");
+    gradient.addColorStop(.35,"#dcefd5");
+    gradient.addColorStop(.72,"#8fca70");
+    gradient.addColorStop(1,"#173b19");
 
-    if(!source){
+    ctx.fillStyle=gradient;
+    ctx.fillRect(0,0,W,H);
+  }
 
-        ctx.strokeStyle =
-            "#2f8f24";
+  ctx.textAlign="center";
 
+  ctx.fillStyle="#173b19";
+  ctx.font="900 50px Arial";
+  ctx.fillText("USV TU DRESDEN",W/2,70);
 
-        ctx.lineWidth =
-            3;
+  ctx.fillStyle="#2f8f24";
+  ctx.font="900 92px Arial";
+  ctx.fillText(database.design.title,W/2,150);
 
+  ctx.fillStyle="#173b19";
+  ctx.font="700 30px Arial";
+  ctx.fillText(database.design.subtitle,W/2,200);
 
-        ctx.beginPath();
+  const games=getWeekendGames().slice(0,6);
 
+  let y=240;
+  let lastDay="";
 
-        ctx.arc(
-
-            x + size / 2,
-
-            y + size / 2,
-
-            size / 2 - 3,
-
-            0,
-
-            Math.PI * 2
-
-        );
-
-
-        ctx.stroke();
-
-
-        return;
-
+  games.forEach(game=>{
+    if(y>H-220){
+      return;
     }
 
+    const day=new Date(
+      game.date+"T12:00"
+    ).toLocaleDateString(
+      "de-DE",
+      {weekday:"long"}
+    );
 
-    const image =
-        new Image();
+    if(day!==lastDay){
+      ctx.fillStyle="#2f8f24";
+      ctx.font="900 27px Arial";
+      ctx.fillText(day.toUpperCase(),W/2,y);
 
+      y+=40;
+      lastDay=day;
+    }
 
-    image.onload =
-        function(){
+    ctx.fillStyle="rgba(255,255,255,.93)";
 
-            ctx.drawImage(
-                image,
-                x,
-                y,
-                size,
-                size
-            );
+    roundRect(
+      ctx,
+      55,
+      y,
+      W-110,
+      135,
+      18
+    );
 
-        };
+    ctx.fill();
 
+    ctx.fillStyle="#173b19";
+    ctx.font="900 21px Arial";
+    ctx.fillText(game.team,W/2,y+28);
 
-    image.src =
-        source;
+    const home=findClub(game.home);
+    const away=findClub(game.away);
 
+    drawCanvasLogo(
+      ctx,
+      home?.logo,
+      W/2-300,
+      y+48,
+      62
+    );
+
+    drawCanvasLogo(
+      ctx,
+      away?.logo,
+      W/2+238,
+      y+48,
+      62
+    );
+
+    ctx.fillStyle="#173b19";
+    ctx.font="700 18px Arial";
+
+    ctx.fillText(
+      shorten(home?.name||"Heim"),
+      W/2-190,
+      y+75
+    );
+
+    ctx.fillText(
+      shorten(away?.name||"Gast"),
+      W/2+190,
+      y+75
+    );
+
+    ctx.fillStyle="#2f8f24";
+    ctx.font="900 21px Arial";
+    ctx.fillText("VS.",W/2,y+78);
+
+    ctx.fillStyle="#596159";
+    ctx.font="600 16px Arial";
+
+    ctx.fillText(
+      (game.time||"")
+      +(game.place?"  ·  "+game.place:""),
+      W/2,
+      y+108
+    );
+
+    y+=148;
+  });
+
+  ctx.fillStyle="#173b19";
+  ctx.font="700 16px Arial";
+
+  ctx.fillText(
+    "FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.",
+    W/2,
+    H-22
+  );
 }
 
+function createGraphic(){
+  const canvas=$("preview");
+  const ctx=canvas.getContext("2d");
 
-/* ========================================
-   DOWNLOAD
-======================================== */
+  const W=canvas.width;
+  const H=canvas.height;
 
+  ctx.clearRect(0,0,W,H);
 
-$("downloadImage")
-    .addEventListener(
-        "click",
-        function(){
+  if(database.design.background){
+    const image=new Image();
 
-            createGraphic();
+    image.onload=()=>{
+      drawCover(ctx,image,W,H);
 
+      ctx.fillStyle="rgba(255,255,255,.78)";
+      ctx.fillRect(0,0,W,H);
 
-            setTimeout(
-                function(){
+      drawGraphicContent(ctx,W,H);
+    };
 
-                    const link =
-                        document.createElement(
-                            "a"
-                        );
+    image.onerror=()=>{
+      database.design.background=null;
+      drawGraphicContent(ctx,W,H);
+    };
 
+    image.src=database.design.background;
 
-                    link.download =
-                        "USV-Matchday.png";
+  }else{
+    drawGraphicContent(ctx,W,H);
+  }
+}
 
+$("createGraphic").addEventListener("click",()=>{
+  createGraphic();
 
-                    link.href =
-                        $("preview")
-                            .toDataURL(
-                                "image/png"
-                            );
+  $("preview").scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
 
+  setStatus("✓ Matchday-Vorschau aktualisiert");
+});
 
-                    link.click();
+/* DOWNLOAD */
 
+$("downloadImage").addEventListener("click",()=>{
+  createGraphic();
 
-                    setStatus(
-                        "✓ PNG wurde erstellt"
-                    );
+  setTimeout(()=>{
+    const link=document.createElement("a");
 
-                },
-                500
-            );
+    link.download="USV-Matchday.png";
+    link.href=$("preview").toDataURL("image/png");
 
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setStatus("✓ PNG wurde erstellt");
+  },600);
+});
+
+/* TEILEN */
+
+$("shareImage").addEventListener("click",()=>{
+  createGraphic();
+
+  setTimeout(()=>{
+    $("preview").toBlob(async blob=>{
+      if(!blob){
+        alert("Bild konnte nicht erstellt werden.");
+        return;
+      }
+
+      const file=new File(
+        [blob],
+        "USV-Matchday.png",
+        {type:"image/png"}
+      );
+
+      try{
+        if(
+          navigator.share &&
+          navigator.canShare &&
+          navigator.canShare({files:[file]})
+        ){
+          await navigator.share({
+            files:[file],
+            title:"USV Matchday"
+          });
+        }else{
+          $("downloadImage").click();
         }
-    );
+      }catch(error){
+        /* Teilen wurde abgebrochen */
+      }
+    },"image/png");
+  },600);
+});
 
-
-/* ========================================
-   TEILEN
-======================================== */
-
-
-$("shareImage")
-    .addEventListener(
-        "click",
-        async function(){
-
-            createGraphic();
-
-
-            setTimeout(
-                async function(){
-
-                    const blob =
-                        await new Promise(
-                            resolve =>
-
-                                $("preview")
-                                    .toBlob(
-                                        resolve,
-                                        "image/png"
-                                    )
-                        );
-
-
-                    if(!blob){
-
-                        alert(
-                            "Bild konnte nicht erstellt werden."
-                        );
-
-                        return;
-
-                    }
-
-
-                    const file =
-                        new File(
-                            [
-                                blob
-                            ],
-
-                            "USV-Matchday.png",
-
-                            {
-                                type:
-                                    "image/png"
-                            }
-                        );
-
-
-                    try{
-
-
-                        if(
-                            navigator.share
-                            &&
-                            navigator.canShare
-                            &&
-                            navigator.canShare(
-                                {
-                                    files:
-                                        [file]
-                                }
-                            )
-                        ){
-
-                            await navigator.share({
-
-                                files:
-                                    [file],
-
-                                title:
-                                    "USV Matchday"
-
-                            });
-
-
-                        }else{
-
-                            $("downloadImage")
-                                .click();
-
-                        }
-
-
-                    }catch(error){
-
-                        /* Nutzer hat Teilen abgebrochen */
-
-                    }
-
-                },
-                500
-            );
-
-        }
-    );
-
-
-/* ========================================
-   ALLES RENDERN
-======================================== */
-
+/* RENDER */
 
 function renderAll(){
+  fillSelects();
+  renderClubs();
+  renderGames();
+  renderHome();
 
-    fillClubSelects();
+  $("designTitle").value=
+    database.design.title||"MATCHDAY";
 
-    renderClubs();
-
-    renderGames();
-
-    renderHome();
-
-
-    $("designTitle")
-        .value =
-            database.design.title;
-
-
-    $("designSubtitle")
-        .value =
-            database.design.subtitle;
-
+  $("designSubtitle").value=
+    database.design.subtitle||"UNSER WOCHENENDE";
 }
 
-
-/* ========================================
-   START
-======================================== */
-
+/* START */
 
 initializeDates();
-
 renderAll();
-
 createGraphic();
-
+saveDatabase();
 
 setStatus(
-    "● App bereit · "
-    +
-    database.clubs.length
-    +
-    " Vereine geladen"
+  "● App bereit · "+
+  database.clubs.length+
+  " Vereine geladen"
 );
-
-
-/* Button für Grafik */
-
-$("createGraphic")
-    .addEventListener(
-        "click",
-        function(){
-
-            createGraphic();
-
-            document
-                .getElementById(
-                    "preview"
-                )
-                .scrollIntoView({
-                    behavior:"smooth"
-                });
-
-            setStatus(
-                "✓ Matchday-Vorschau aktualisiert"
-            );
-
-        }
-    );
-
 
 </script>
 
