@@ -129,16 +129,26 @@ hr{border:0;border-top:1px solid var(--border);margin:14px 0}
 </section>
 
 <section id="clubs" class="view">
-  <div class="card">
-    <h2>Vereine & Logos</h2>
-    <p class="muted">Einmal hinterlegen – danach stehen sie bei jedem Spiel zur Auswahl.</p>
-    <div class="grid">
-      <div class="field"><label>Vereinsname</label><input id="clubName" placeholder="z. B. Dresdner SC"></div>
-      <div class="field"><label>Logo PNG/JPG</label><input id="clubLogo" type="file" accept="image/png,image/jpeg,image/webp"></div>
-    </div>
-    <div style="height:10px"></div><button class="btn primary" onclick="addClub()">＋ Verein speichern</button>
+ <div class="card">
+  <div class="row"><h2>🏟️ Vereine & Logos</h2><span class="tag right">STAMMDATEN</span></div>
+  <p class="muted">Diese Vereine sind jetzt bereits in der App hinterlegt. Beim nächsten Schritt ergänzen wir die geprüften Original-Wappen.</p>
+  <div id="clubList" class="clubgrid"></div>
+<div id="clubStaticFallback" class="clubgrid" style="display:none">
+  <div class="club"><div class="logo" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#2d8f28;color:#fff;font-weight:900">USV</div><div class="clubname">USV TU Dresden</div></div>
+  <div class="club"><div class="logo" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#2d8f28;color:#fff;font-weight:900">SGG</div><div class="clubname">SG Gittersee</div></div>
+  <div class="club"><div class="logo" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#2d8f28;color:#fff;font-weight:900">PSV</div><div class="clubname">Post SV Dresden</div></div>
+  <div class="club"><div class="logo" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#2d8f28;color:#fff;font-weight:900">SER</div><div class="clubname">Serkowitzer FSV 2</div></div>
+</div>
+
+ </div>
+ <div class="card">
+  <h2>＋ Eigenen Verein hinzufügen</h2>
+  <div class="grid">
+   <div class="field"><label>Vereinsname</label><input id="clubName" placeholder="z. B. Dresdner SC"></div>
+   <div class="field"><label>Logo PNG/JPG</label><input id="clubLogo" type="file" accept="image/png,image/jpeg,image/webp"></div>
   </div>
-  <div class="card"><div id="clubList" class="logo-list"></div></div>
+  <div style="height:10px"></div><button class="btn primary" onclick="addClub()">＋ VEREIN SPEICHERN</button>
+ </div>
 </section>
 
 <section id="design" class="view">
@@ -160,13 +170,18 @@ hr{border:0;border-top:1px solid var(--border);margin:14px 0}
 </div>
 
 <script>
-const KEY='usv_matchday_v1';
+const KEY='usv_matchday_v5';
+const SEED_CLUBS=[{"id":"usv-tu-dresden","name":"USV TU Dresden","logo":""},{"id":"sg-gittersee","name":"SG Gittersee","logo":"https://www.sg-gittersee.de/joomla_16/images/phocagallery/SGG/LOGO/Logo-single-gelb-schwarz.png"},{"id":"post-sv-dresden","name":"Post SV Dresden","logo":"https://media.tag24.de/951x634/a/b/ab8g8brnd6ck9rufao8rkgab0jhcv8td.jpg"},{"id":"fsg-wacker-90-dresden-leuben","name":"FSG Wacker 90 Dresden-Leuben","logo":"https://www.sg-buehlau.de/app/uploads/2020/08/FSG-Wacker-90-Dresden-Leuben.png"},{"id":"serkowitzer-fsv-2","name":"Serkowitzer FSV 2","logo":"https://serkowitzer-fsv.de/wordpress/wp-content/uploads/2024/07/cropped-Logo_SerkoFSV.webp"},{"id":"sv-eintracht-strehlen-2","name":"SV Eintracht Strehlen 2 - Kinderfestival","logo":"https://www.eintrachtstrehlen.de/sportfrei/wp-content/uploads/2020/02/Logo-2048x2046.png"},{"id":"fsv-lokomotive-dresden","name":"FSV Lokomotive Dresden","logo":""},{"id":"tsv-rotation-dresden-2","name":"TSV Rotation Dresden 2","logo":""},{"id":"racket-ballsport-dresden-2","name":"Racket- und Ballsport Dresden 2","logo":""},{"id":"spvgg-dresden-loebtau-4","name":"SpVgg. Dresden-Löbtau 4","logo":""},{"id":"ffc-fortuna-dresden-4","name":"1. FFC Fortuna Dresden 4","logo":""},{"id":"fv-loebtauer-kickers-3","name":"FV Löbtauer Kickers 3","logo":""},{"id":"sg-ullersdorf","name":"SG Ullersdorf","logo":""}];
 let db=JSON.parse(localStorage.getItem(KEY)||'null')||{
-  teams:['A-Jugend','B-Jugend','C-Jugend','D-Jugend','E-Jugend','F-Jugend','Fußballschule'],
-  clubs:[],
-  games:[],
-  design:{title:'MATCHDAY',subtitle:'UNSER WOCHENENDE',bg:null}
+ teams:['A-Jugend','B-Jugend','C-Jugend','D-Jugend','E-Jugend','F-Jugend','Fußballschule'],
+ clubs:SEED_CLUBS,
+ games:[],design:{title:'MATCHDAY',subtitle:'UNSER WOCHENENDE',bg:null}
 };
+if(!Array.isArray(db.clubs)||db.clubs.length===0){db.clubs=SEED_CLUBS;}
+else {
+  const have=new Set(db.clubs.map(c=>c.id));
+  SEED_CLUBS.forEach(c=>{if(!have.has(c.id))db.clubs.push(c);});
+}
 function persist(){localStorage.setItem(KEY,JSON.stringify(db))}
 function $(id){return document.getElementById(id)}
 function go(view){
@@ -223,7 +238,7 @@ function gameHtml(g){
     <div class="muted">📅 ${formatDate(g.date)} · ⏰ ${g.time||'–'} · 📍 ${esc(g.place||'–')}</div>
   </div>`
 }
-function logoHtml(c){return c?.logo?`<img class="logo" src="${c.logo}">`:`<div class="logo" style="display:grid;place-items:center;border:1px solid #ddd;border-radius:50%;font-size:9px">LOGO</div>`}
+function logoHtml(c){return c?.logo?`<img class="logo" src="${c.logo}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo',textContent:'WAPPEN'}))">`:`<div class="logo" style="display:grid;place-items:center;border:1px solid #ddd;border-radius:50%;font-size:9px">LOGO</div>`}
 function formatDate(s){if(!s)return '–';return new Date(s+'T12:00').toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'})}
 
 function render(){
@@ -233,70 +248,15 @@ function renderGames(){
   $('gamesList').innerHTML=db.games.length?db.games.slice().sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time)).map(gameHtml).join(''):'<div class="empty">Noch keine Spiele angelegt.</div>';
 }
 function renderClubs(){
-  $('clubList').innerHTML=db.clubs.length?db.clubs.map(c=>`<div class="club">${c.logo?`<img src="${c.logo}">`:'<div class="logo">?</div>'}<div class="name">${esc(c.name)}</div><button class="btn danger" onclick="deleteClub('${c.id}')">×</button></div>`).join(''):'<div class="empty">Noch keine Vereine/Logos hinterlegt.</div>';
+  const wrap=$('clubList');
+  wrap.innerHTML=db.clubs.length?db.clubs.map(c=>{
+    const initials=c.name.split(/\s+/).filter(Boolean).slice(0,3).map(x=>x[0]).join('').toUpperCase();
+    return `<div class="club">
+      ${c.logo?`<img src="${c.logo}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:''}
+      <div class="logo" style="display:${c.logo?'none':'grid'};width:42px;height:42px;border-radius:50%;place-items:center;background:linear-gradient(135deg,#173b19,#69b64a);color:#fff;font-size:10px;font-weight:900">${esc(initials)}</div>
+      <div class="clubname">${esc(c.name)}</div>
+      <button onclick="delClub('${c.id}')">×</button>
+    </div>`;
+  }).join(''):'<div class="empty">Keine Vereine vorhanden.</div>';
 }
-function deleteClub(id){if(db.games.some(g=>g.home===id||g.away===id)){alert('Der Verein wird noch in einem Spiel verwendet.');return}db.clubs=db.clubs.filter(c=>c.id!==id);persist();render()}
-function addClub(){
-  const name=$('clubName').value.trim(),file=$('clubLogo').files[0];
-  if(!name||!file){alert('Bitte Vereinsname und Logo auswählen.');return}
-  const r=new FileReader();r.onload=()=>{db.clubs.push({id:crypto.randomUUID(),name,logo:r.result});persist();$('clubName').value='';$('clubLogo').value='';render()};r.readAsDataURL(file);
-}
-function renderHome(){
-  const from=$('dateFrom').value,to=$('dateTo').value;
-  const arr=db.games.filter(g=>(!from||g.date>=from)&&(!to||g.date<=to)).sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
-  $('homeGames').innerHTML=arr.length?arr.map(gameHtml).join(''):'<div class="empty">Für den gewählten Zeitraum sind noch keine Spiele angelegt.</div>';
-}
-$('dateFrom').onchange=renderHome;$('dateTo').onchange=renderHome;
-
-function saveDesign(){
-  db.design.title=$('title').value||'MATCHDAY';db.design.subtitle=$('subtitle').value||'UNSER WOCHENENDE';
-  const file=$('bgFile').files[0];
-  if(!file){persist();makeGraphic();return}
-  const r=new FileReader();r.onload=()=>{db.design.bg=r.result;persist();makeGraphic();alert('Design gespeichert.');};r.readAsDataURL(file);
-}
-function removeBg(){db.design.bg=null;persist();makeGraphic();alert('Hintergrund entfernt.')}
-function makeGraphic(){
-  const c=$('preview'),ctx=c.getContext('2d'),W=c.width,H=c.height;
-  ctx.clearRect(0,0,W,H);
-  if(db.design.bg){
-    const im=new Image();im.onload=()=>drawGraphic(ctx,W,H,im);im.src=db.design.bg;
-  }else drawGraphic(ctx,W,H,null);
-}
-function drawGraphic(ctx,W,H,bg){
-  if(bg){ctx.drawImage(bg,0,0,W,H);ctx.fillStyle='rgba(255,255,255,.78)';ctx.fillRect(0,0,W,H)}
-  else{let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f7fbf4');g.addColorStop(.34,'#dcefd5');g.addColorStop(.66,'#7fba5d');g.addColorStop(1,'#183b1d');ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
-  ctx.fillStyle='#173b19';ctx.textAlign='center';ctx.font='900 58px Arial';ctx.fillText('USV TU DRESDEN',W/2,82);
-  ctx.fillStyle='#2f8f24';ctx.font='900 104px Arial';ctx.fillText(db.design.title,W/2,178);
-  ctx.fillStyle='#173b19';ctx.font='700 38px Arial';ctx.fillText(db.design.subtitle,W/2,230);
-  const from=$('dateFrom').value,to=$('dateTo').value;
-  const games=db.games.filter(g=>(!from||g.date>=from)&&(!to||g.date<=to)).sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
-  let y=285, last='';
-  games.slice(0,6).forEach((g)=>{
-    if(y>1230)return;
-    const day=new Date(g.date+'T12:00').toLocaleDateString('de-DE',{weekday:'long'});
-    if(day!==last){ctx.fillStyle='#2f8f24';ctx.font='900 30px Arial';ctx.fillText(day.toUpperCase(),W/2,y);y+=48;last=day}
-    ctx.fillStyle='rgba(255,255,255,.88)';roundRect(ctx,60,y,W-120,145,18);ctx.fill();
-    ctx.fillStyle='#173b19';ctx.font='900 24px Arial';ctx.fillText(g.team,W/2,y+31);
-    const h=clubById(g.home),a=clubById(g.away);
-    drawLogo(ctx,h?.logo,W/2-270,y+75,70);drawLogo(ctx,a?.logo,W/2+200,y+75,70);
-    ctx.fillStyle='#173b19';ctx.font='700 23px Arial';ctx.fillText(h?.name||'Heim',W/2-180,y+94);
-    ctx.fillText(a?.name||'Gast',W/2+180,y+94);
-    ctx.fillStyle='#2f8f24';ctx.font='900 26px Arial';ctx.fillText('VS.',W/2,y+96);
-    ctx.fillStyle='#586258';ctx.font='600 18px Arial';ctx.fillText(`${g.time||''}  ·  ${g.place||''}`,W/2,y+126);
-    y+=162;
-  });
-  ctx.fillStyle='#173b19';ctx.font='700 20px Arial';ctx.fillText('FUSSBALL IST MEHR ALS TORE. FUSSBALL IST WIR.',W/2,H-28);
-}
-function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
-function drawLogo(ctx,src,x,y,size){
-  if(!src){ctx.strokeStyle='#2f8f24';ctx.lineWidth=3;ctx.beginPath();ctx.arc(x+size/2,y+size/2,size/2-3,0,Math.PI*2);ctx.stroke();return}
-  const im=new Image();im.onload=()=>ctx.drawImage(im,x,y,size,size);im.src=src;
-}
-function downloadGraphic(){makeGraphic();setTimeout(()=>{const a=document.createElement('a');a.href=$('preview').toDataURL('image/png');a.download='USV-Matchday.png';a.click()},300)}
-async function shareGraphic(){
-  makeGraphic();setTimeout(async()=>{const blob=await new Promise(r=>$('preview').toBlob(r,'image/png'));const file=new File([blob],'USV-Matchday.png',{type:'image/png'});if(navigator.share&&navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'USV Matchday'});else downloadGraphic()},400)
-}
-initDates();render();makeGraphic();
-</script>
-</body>
-</html>
+>
