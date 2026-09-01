@@ -4770,8 +4770,6 @@ ctx.clearRect(
 
 
 const backgroundSource =
-db.design.background
-||
 DEFAULT_BACKGROUND;
 
 
@@ -4904,6 +4902,117 @@ ctx.lineTo(
 
 ctx.stroke();
 
+
+/* ========================================
+   USV-IDENTITÄT / WOCHENENDE
+======================================== */
+
+/* Vereinslogo oben links */
+const usvHeaderLogo =
+await loadImage(
+  "logos/usv-tu-dresden.png"
+);
+
+if(usvHeaderLogo){
+
+ctx.save();
+ctx.shadowColor =
+"rgba(0,0,0,.16)";
+ctx.shadowBlur =
+14;
+ctx.shadowOffsetY =
+4;
+ctx.fillStyle =
+"rgba(255,255,255,.94)";
+roundRectPath(
+  ctx,
+  54,
+  62,
+  92,
+  92,
+  18
+);
+ctx.fill();
+ctx.restore();
+
+drawImageContain(
+  ctx,
+  usvHeaderLogo,
+  64,
+  72,
+  72,
+  72
+);
+
+}
+
+/* Wochenend-Datum oben rechts */
+const fromValue =
+$("dateFrom").value;
+
+const toValue =
+$("dateTo").value;
+
+const shortDate = value => {
+  if(!value) return "";
+  return new Date(value+"T12:00")
+    .toLocaleDateString(
+      "de-DE",
+      {day:"2-digit",month:"2-digit"}
+    );
+};
+
+const weekendLabel =
+fromValue && toValue
+? shortDate(fromValue)+" – "+shortDate(toValue)
+: "WOCHENENDE";
+
+ctx.fillStyle =
+"rgba(23,59,25,.88)";
+
+roundRectPath(
+  ctx,
+  width-226,
+  74,
+  172,
+  54,
+  16
+);
+ctx.fill();
+
+ctx.fillStyle =
+"#ffffff";
+ctx.font =
+"900 20px Arial";
+ctx.textAlign =
+"center";
+ctx.fillText(
+  weekendLabel,
+  width-140,
+  108
+);
+
+/* Dynamische schräge Akzentkante */
+ctx.save();
+ctx.globalAlpha =
+.38;
+ctx.fillStyle =
+"#6fba50";
+ctx.beginPath();
+ctx.moveTo(0,188);
+ctx.lineTo(235,188);
+ctx.lineTo(175,214);
+ctx.lineTo(0,214);
+ctx.closePath();
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(width,188);
+ctx.lineTo(width-235,188);
+ctx.lineTo(width-175,214);
+ctx.lineTo(width,214);
+ctx.closePath();
+ctx.fill();
+ctx.restore();
 
 /* ========================================
    MATCHDAY
@@ -5050,7 +5159,7 @@ weekendGames()
 
 
 let y =
-220;
+242;
 
 
 let lastDay =
@@ -5099,40 +5208,63 @@ if(
   day !== lastDay
 ){
 
+/* Deutlich mehr Abstand zur vorherigen Karte */
 if(lastDay){
-  y += 18;
+  y += 42;
 }
 
+/* Linien links und rechts geben dem Wochentag einen eigenen Bereich */
+ctx.strokeStyle =
+"rgba(36,95,30,.45)";
+
+ctx.lineWidth =
+2;
+
+ctx.beginPath();
+ctx.moveTo(70,y-8);
+ctx.lineTo(width/2-270,y-8);
+ctx.moveTo(width/2+270,y-8);
+ctx.lineTo(width-70,y-8);
+ctx.stroke();
+
+ctx.save();
+ctx.shadowColor =
+"rgba(0,0,0,.13)";
+ctx.shadowBlur =
+12;
+ctx.shadowOffsetY =
+4;
+
 ctx.fillStyle =
-"rgba(255,255,255,.92)";
+"rgba(255,255,255,.96)";
 
 roundRectPath(
   ctx,
-  width/2-230,
-  y-30,
-  460,
-  42,
-  14
+  width/2-250,
+  y-34,
+  500,
+  52,
+  18
 );
 
 ctx.fill();
+ctx.restore();
 
 ctx.fillStyle =
 "#245f1e";
 
 ctx.font =
-"900 26px Arial";
+"900 28px Arial";
 
 ctx.fillText(
   day.toUpperCase(),
   width/2,
-  y
+  y+2
 );
 
-
+/* Luft zwischen Tageszeile und erster Karte */
 y +=
-50;
-
+68;
 
 lastDay =
 day;
