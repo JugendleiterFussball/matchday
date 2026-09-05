@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#2f8f24">
 
 <title>USV Matchday</title>
+<!-- Sortierung: Datum → Jugend A-G → Uhrzeit -->
 
 <style>
 :root{
@@ -3006,15 +3007,80 @@ button.onclick =
 ======================================== */
 
 
+function ageRank(age){
+
+const order =
+["A","B","C","D","E","F","G"];
+
+const index =
+order.indexOf(
+String(age || "").toUpperCase()
+);
+
+return index === -1
+? 999
+: index;
+
+}
+
+
+function compareGames(a,b){
+
+const dateCompare =
+(a.date || "")
+.localeCompare(
+b.date || ""
+);
+
+if(dateCompare !== 0){
+return dateCompare;
+}
+
+const ageCompare =
+ageRank(a.age)
+-
+ageRank(b.age);
+
+if(ageCompare !== 0){
+return ageCompare;
+}
+
+const timeCompare =
+(a.time || "")
+.localeCompare(
+b.time || ""
+);
+
+if(timeCompare !== 0){
+return timeCompare;
+}
+
+const aName =
+a.type === "festival"
+? (a.organizer || "")
+: (a.home || "");
+
+const bName =
+b.type === "festival"
+? (b.organizer || "")
+: (b.home || "");
+
+return aName.localeCompare(
+bName,
+"de",
+{ sensitivity:"base" }
+);
+
+}
+
+
 function weekendGames(){
 
 const from =
 $("dateFrom").value;
 
-
 const to =
 $("dateTo").value;
-
 
 return db.games
 
@@ -3037,42 +3103,10 @@ return db.games
 
 )
 
-.sort(
-  (a,b) =>{
-
-  const dateCompare =
-  (a.date || "")
-  .localeCompare(
-    b.date || ""
-  );
-
-  if(dateCompare){
-    return dateCompare;
-  }
-
-  const ageOrder =
-  ["A","B","C","D","E","F","G"];
-
-  const ageCompare =
-  ageOrder.indexOf(a.age)
-  -
-  ageOrder.indexOf(b.age);
-
-  if(ageCompare){
-    return ageCompare;
-  }
-
-  return
-  (a.time || "")
-  .localeCompare(
-    b.time || ""
-  );
-
-  }
-
-);
+.sort(compareGames);
 
 }
+
 
 
 /* ========================================
@@ -3084,15 +3118,7 @@ function renderGames(){
 
 const games =
 [...db.games]
-
-.sort(
-  (a,b) =>
-
-  (a.date || "")
-  .localeCompare(
-    b.date || ""
-  )
-);
+.sort(compareGames);
 
 
 $("gamesList").innerHTML =
@@ -5158,13 +5184,75 @@ weekendGames()
 );
 
 
-let y =
-242;
+/* ========================================
+   DYNAMISCHE VERTIKALE VERTEILUNG
+   Der komplette Terminblock wird als Einheit
+   im freien Bereich zentriert. Bei vielen
+   Terminen wird nur der Abstand kompakter.
+======================================== */
 
+const CONTENT_TOP = 230;
+const CONTENT_BOTTOM = height - 82;
+const AVAILABLE_HEIGHT = CONTENT_BOTTOM - CONTENT_TOP;
 
-let lastDay =
-"";
+const dayKeys = [];
+for(const game of games){
+  if(!dayKeys.includes(game.date)){
+    dayKeys.push(game.date);
+  }
+}
 
+let normalBoxHeight = 150;
+let festivalBoxHeight = 225;
+let cardGap = 14;
+let dayHeaderHeight = 72;
+let dayGap = 40;
+
+function contentHeight(){
+  let total = 0;
+  let previousDate = "";
+
+  for(const game of games){
+    if(game.date !== previousDate){
+      if(previousDate){
+        total += dayGap;
+      }
+      total += dayHeaderHeight;
+      previousDate = game.date;
+    }
+
+    total +=
+      (game.type === "festival"
+        ? festivalBoxHeight
+        : normalBoxHeight)
+      + cardGap;
+  }
+
+  if(games.length){
+    total -= cardGap;
+  }
+
+  return total;
+}
+
+/* Nur wenn es wirklich eng wird, Abstände etwas verdichten.
+   Namen und Uhrzeiten bleiben groß. */
+if(contentHeight() > AVAILABLE_HEIGHT){
+  normalBoxHeight = 145;
+  festivalBoxHeight = 210;
+  cardGap = 6;
+  dayHeaderHeight = 54;
+  dayGap = 14;
+}
+
+const totalContentHeight = contentHeight();
+
+let y = CONTENT_TOP + Math.max(
+  0,
+  (AVAILABLE_HEIGHT - totalContentHeight) / 2
+);
+
+let lastDay = "";
 
 for(
   const game
@@ -5208,9 +5296,10 @@ if(
   day !== lastDay
 ){
 
-/* Deutlich mehr Abstand zur vorherigen Karte */
+/* Der Wochentag gehört optisch zum folgenden Tagesblock,
+   nicht zur vorherigen Karte. */
 if(lastDay){
-  y += 42;
+  y += dayGap;
 }
 
 /* Linien links und rechts geben dem Wochentag einen eigenen Bereich */
@@ -5262,9 +5351,8 @@ ctx.fillText(
   y+2
 );
 
-/* Luft zwischen Tageszeile und erster Karte */
-y +=
-68;
+/* Fester eigener Bereich für den Wochentag */
+y += dayHeaderHeight;
 
 lastDay =
 day;
